@@ -1,0 +1,118 @@
+<html>
+<head>
+	<meta charset='utf-8' />
+	<title>Texas Charter Campuses Over Time</title>
+	<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+	<script src='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js'></script>
+	<link href='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css' rel='stylesheet' />
+	<link href='css/ryht-charter-campuses.css' rel='stylesheet' />
+
+</head>
+
+<body>	
+	
+<div id='map'></div>
+<div id='console'>
+  <h1>Charter Campuses in Texas</h1>
+  <p>Data: <a href='https://raiseyourhandtexas.org'>Raise Your Hand Texas</a></p>
+  
+  <!--create legend-->
+  <div class='session'>
+  <h2>Percentage of Economically Disadvantaged Students</h2>
+  <div class='row colors'>
+  </div>
+	  <div class='row labels'>
+		<div class='label'>0</div>
+		<div class='label'>20%</div>
+		<div class='label'>40%</div>
+		<div class='label'>60%</div>
+		<div class='label'>80%</div>
+		<div class='label'>100%</div>
+	  </div>
+  
+  <!--create time slider-->
+	  <div class='session' id='sliderbar'>
+	  <h2>Year: <label id='active-year'>1997</label></h2>
+	  <input id='slider' class='row' type='range' min='1997' max='2018' step='1' value='2000' />
+	</div>
+  
+</div>
+  
+</div>
+
+
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoiY29yZS1naXMiLCJhIjoiaUxqQS1zQSJ9.mDT5nb8l_dWIHzbnOTebcQ';
+
+		//set bounds to Texas
+		var bounds = [
+				[-114.9594, 21.637], // southwest coords
+				[-85.50, 39.317] // northeast coords
+			];
+			
+		//let's make a map!	
+		var map = new mapboxgl.Map({
+			container: 'map', // container id
+			style: 'mapbox://styles/core-gis/cjbcz8eyg70il2snv8ccgahf7', // stylesheet location; this is the style with markers turned OFF
+			center: [-98.887939, 31.821565], // starting position [lng, lat]
+			zoom: 5.5, // starting zoom
+			maxBounds: bounds // sets bounds as max
+		});
+		
+		//add point data from Mapbox
+		map.on('load', function() {
+		  	map.addSource('points',{
+				type:'vector',
+				url:'mapbox://core-gis.dtxi921f'
+				});
+		  
+		  map.addLayer({
+			'id': 'campuses',
+			'type': 'circle',
+			'source':'points',
+			'source-layer':'ryht_tx_charter_campuses_10_3-bf7r7v',
+			'filter':['==', ['number', ['get', 'year']], 1997],
+			'layout':{	},
+			'paint': {
+			  'circle-radius': [
+				'interpolate',
+				['linear'],
+				//This will scale the points based on total enrollment at each campus
+				['number', ['get', 'CPETALLC']],
+				1, 6,
+				1000, 30
+			  ],
+			  'circle-color': [
+				'interpolate',
+				['linear'],
+				//This will change the color of the points based on the percentage of economically disadvantaged
+				//students at each campus
+				['number', ['get', 'CPETECOP']],
+				0, '#2DC4B2',
+				20, '#3BB3C3',
+				40, '#669EC4',
+				50, '#8B88B6',
+				60, '#A2719B',
+				80, '#AA5E79'
+			  ],
+			  'circle-opacity': 0.8
+			}
+		  });
+		  
+		  //add interactivity to the time slider
+		  document.getElementById('slider').addEventListener('input', function(e) {
+			  var year = parseInt(e.target.value);
+			  // update the map
+			  map.setFilter('campuses', ['==', ['number', ['get', 'year']], year]);
+			  
+			  // update text in the UI
+			  document.getElementById('active-year').innerText = year;
+
+			});
+		});
+		
+
+</script>
+
+</body>
+</html>
