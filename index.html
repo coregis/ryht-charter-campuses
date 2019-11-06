@@ -20,7 +20,6 @@
 		<script>
 
 		//Adding showHide functionality from legislative map to this map
-
 		function showHideLayer(layerName, markerName, showOnly=false, hideOnly=false) {
 			var visibility = map.getLayoutProperty(layerName, 'visibility');
 			if ((visibility === 'visible' || hideOnly) && !showOnly) {
@@ -36,6 +35,13 @@
 					document.getElementById(markerName).classList.remove('inactive');
 				}
 			}
+		}
+
+		// Update the year slider and corresponding map filter
+		function updateYearSlider(numberID, year) {
+		  map.setFilter('campuses', ['==', ['number', ['get', 'year']], parseInt(year, 10)]);
+		  // update text in the UI
+		  document.getElementById(numberID).innerText = year;
 		}
 
 
@@ -165,6 +171,29 @@
 					}
 				}
 			}
+
+			// the following functions are to automate control over the time slider
+			function moveYearSlider(sliderID, numberID, increment, loop=false) {
+				slider = document.getElementById(sliderID);
+				minYear = parseInt(slider.min, 10);
+				currentYear = parseInt(slider.value, 10);
+				maxYear = parseInt(slider.max, 10);
+
+				desiredYear = currentYear + increment;
+
+				if (loop) { // if we're looping then wrap any overflow around
+					if (desiredYear > maxYear) {desiredYear = minYear;}
+					else if (desiredYear < minYear) {desiredYear = maxYear;}
+				} else { // if not looping then keep changes within the min/max bounds
+					if ((desiredYear > maxYear) || (desiredYear < minYear)) {
+						desiredYear = currentYear;
+						console.log('Hacked too much time');
+					}
+				}
+
+				slider.value = desiredYear;
+				updateYearSlider(numberID, desiredYear);
+			}
 		</script>
 
 </head>
@@ -241,6 +270,11 @@
 		  <h2>Year: <label id='active-year'>1997</label></h2>
 		  <input id='slider' class='row' type='range' min='1997' max='2018' step='1' value='1997' />
 		  </div>
+		  <div id='slidercontrols'>
+		  	<span id='slider_back' onclick="moveYearSlider('slider', 'active-year', -1);" title='Go back one year'>&lt;</span>
+		  	<span id='slider_play' onclick="moveYearSlider('slider', 'active-year', 1, true);" title='Animate timeline'>play</span>
+		  	<span id='slider_forward' onclick="moveYearSlider('slider', 'active-year', 1);" title='Go forward one year'>&gt;</span>
+		  </div>
 
 	</div>
 
@@ -248,7 +282,7 @@
 
 
 <script>
-mapboxgl.accessToken = 'pk.eyJ1IjoiY29yZS1naXMiLCJhIjoiaUxqQS1zQSJ9.mDT5nb8l_dWIHzbnOTebcQ';
+		mapboxgl.accessToken = 'pk.eyJ1IjoiY29yZS1naXMiLCJhIjoiaUxqQS1zQSJ9.mDT5nb8l_dWIHzbnOTebcQ';
 
 		//set bounds to Texas
 		var bounds = [
@@ -417,13 +451,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiY29yZS1naXMiLCJhIjoiaUxqQS1zQSJ9.mDT5nb8l_dWI
 
 		  //add interactivity to the time slider
 		  document.getElementById('slider').addEventListener('input', function(e) {
-			  var year = parseInt(e.target.value);
-			  // update the map
-			  map.setFilter('campuses', ['==', ['number', ['get', 'year']], year]);
-
-			  // update text in the UI
-			  document.getElementById('active-year').innerText = year;
-
+		  	updateYearSlider('active-year', e.target.value);
 			});
 
 			runWhenLoadComplete();
