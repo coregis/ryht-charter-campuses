@@ -56,6 +56,7 @@
 					setTimeout(runWhenLoadComplete, 100);
 				}
 				else {
+					moveYearSlider('slider', 'active-year', 0); // calling this with a 0 increment will make sure that the filter, caption and slider position all match.  Without doing this, the browser seems to keep the slider position between refreshes, but reset the filter and caption so they get out of sync.
 					populateZoomControl("school-districts-control", "texas-school-districts", "NAME", "Texas School Districts");
 					map.moveLayer('texas-school-districts-lines', 'country-label-sm');
 					map.moveLayer('texas-school-districts-poly', 'texas-school-districts-lines');
@@ -267,7 +268,7 @@
 
 		<!--create time slider-->
 		  <div class='session' id='sliderbar'>
-		  <h2>Year: <label id='active-year'>1997</label></h2>
+		  <h2>Year: <label id='active-year'></label></h2>
 		  <input id='slider' class='row' type='range' min='1997' max='2018' step='1' value='1997' />
 		  </div>
 		  <div id='slidercontrols'>
