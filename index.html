@@ -7,37 +7,243 @@
 	<link href='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css' rel='stylesheet' />
 	<link href='css/ryht-charter-campuses.css' rel='stylesheet' />
 
+	<style>
+			body { margin:0; padding:0; }
+			#map { position:absolute; top:0; bottom:0; width:100%; }
+			.mapboxgl-popup {
+				max-width: 240px;
+				font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+			}
+
+	</style>
+
+		<script>
+
+		//Adding showHide functionality from legislative map to this map
+
+		function showHideLayer(layerName, markerName, showOnly=false, hideOnly=false) {
+			var visibility = map.getLayoutProperty(layerName, 'visibility');
+			if ((visibility === 'visible' || hideOnly) && !showOnly) {
+				map.setLayoutProperty(layerName, 'visibility', 'none');
+				this.className = '';
+				if (markerName !== '') {
+					document.getElementById(markerName).classList.add('inactive');
+				}
+			} else {
+				this.className = 'active';
+				map.setLayoutProperty(layerName, 'visibility', 'visible');
+				if (markerName !== '') {
+					document.getElementById(markerName).classList.remove('inactive');
+				}
+			}
+		}
+
+
+		//These are the four functions written by Eldan that power the zoom-to-district feature
+		// runWhenLoadComplete() checks if the map has finished loading data, and once it has then it calls the next one.
+		//populateZoomControl() fills the dropdowns with options generated from reading the data layers for all the district names.
+		//getIDsList() does the actual work of fetching the district names
+		//zoomToPolygon() zooms the map to the district extent
+
+			function runWhenLoadComplete() {
+				if (!map.loaded() || !map.getLayer('texas-school-districts-poly')) {
+					setTimeout(runWhenLoadComplete, 100);
+				}
+				else {
+					populateZoomControl("school-districts-control", "texas-school-districts", "NAME", "Texas School Districts");
+					map.moveLayer('texas-school-districts-lines', 'country-label-sm');
+					map.moveLayer('texas-school-districts-poly', 'texas-school-districts-lines');
+					for (i=0; i < loadedLineLayers.length; i++) {
+						if (loadedLineLayers[i][1] !== "texas_school_districts") {
+							map.moveLayer(loadedLineLayers[i][0], 'texas-school-districts-poly');
+							map.moveLayer(loadedPolygonLayers[i][0], loadedLineLayers[i][0]);
+						}
+					}
+				}
+			}
+
+			function populateZoomControl(selectID, sourceID, fieldName, layerName) {
+				polygons = getPolygons(sourceID, fieldName);
+				var select = document.getElementById(selectID);
+				select.options[0] = new Option(layerName, "-108,25,-88,37,whole state of Texas");
+				for (i in polygons) {
+					select.options[select.options.length] = new Option(
+						polygons[i].name,
+						polygons[i].bbox.toString() + ',' + polygons[i].name
+					);
+				}
+				map.setLayoutProperty(sourceID + '-poly', 'visibility', 'none');
+// IMPORTANT: these paint properties define the appearance of the mask layer that deemphasises districts outside the one we've zoomed to.  They will overrule anything that's set when that mask layer was loaded.
+				map.setPaintProperty(sourceID + '-poly', 'fill-color', 'rgba(200, 200, 200, 0.5)');
+				map.setPaintProperty(sourceID + '-lines', 'line-color', 'rgba(50, 50, 50, .7)');
+			}
+
+			function getPolygons(sourceID, nameField) {
+				layerID = map.getSource(sourceID).vectorLayerIds[0];
+				features = map.querySourceFeatures(sourceID, {'sourceLayer': layerID})
+				polygons = [];
+				existingItems = [];
+				for (i in features) {
+					existing = existingItems.indexOf(features[i].properties[nameField]);
+					if (existing > -1) {
+						polygons[existing].bbox = getFeatureBounds(
+							features[i].toJSON().geometry.coordinates,
+							polygons[existing].bbox
+						);
+					}
+					else {
+						existingItems.push(features[i].properties[nameField]);
+						polygons.push({
+							name: features[i].properties[nameField],
+							bbox: getFeatureBounds(features[i].toJSON().geometry.coordinates)
+						});
+					}
+				}
+				polygons.sort(function(a, b){
+					var x = a.name.toLowerCase();
+					var y = b.name.toLowerCase();
+					if (x < y) {return -1;}
+					if (x > y) {return 1;}
+					return 0;
+				});
+				return polygons;
+			}
+
+			function getFeatureBounds(coords, startingBBOX) {
+				if (startingBBOX === undefined) {
+					minX = 180;
+					maxX = -180;
+					minY = 90;
+					maxY = -90;
+				}
+				else {
+					minX = startingBBOX[0][0];
+					maxX = startingBBOX[1][0];
+					minY = startingBBOX[0][1];
+					maxY = startingBBOX[1][1];
+				}
+				for (i in coords) {
+					// coords may be a simple array of coords, or an array of arrays if it's a multipolygon
+					for (j in coords[i]) {
+						if (!(coords[i][j][0] instanceof Array)) {
+							if (coords[i][j][0] < minX) { minX = coords[i][j][0]; }
+							if (coords[i][j][0] > maxX) { maxX = coords[i][j][0]; }
+							if (coords[i][j][1] < minY) { minY = coords[i][j][1]; }
+							if (coords[i][j][1] > maxY) { maxY = coords[i][j][1]; }
+						}
+						else {
+							for (k in coords[i][j]) {
+								if (coords[i][j][k][0] < minX) { minX = coords[i][j][k][0]; }
+								if (coords[i][j][k][0] > maxX) { maxX = coords[i][j][k][0]; }
+								if (coords[i][j][k][1] < minY) { minY = coords[i][j][k][1]; }
+								if (coords[i][j][k][1] > maxY) { maxY = coords[i][j][k][1]; }
+							}
+						}
+					}
+				}
+				return [[minX, minY], [maxX, maxY]];
+			}
+
+			function zoomToPolygon(sourceID, coords) {
+				if (typeof coords !== 'undefined') {
+					coords = coords.split(",");
+					bbox = [
+						[coords[0], coords[1]],
+						[coords[2], coords[3]]
+					];
+					map.fitBounds(bbox, options={padding: 10, duration: 5000});
+					if (coords[4] === "whole state of Texas") { // if we're zooming out to the whole state again
+						showHideLayer('texas-school-districts-poly', markerName='', showOnly=false, hideOnly=true);
+						showHideLayer('texas-school-districts-lines', markerName='', showOnly=false, hideOnly=true);
+					} else {
+						showHideLayer('texas-school-districts-poly', markerName='', showOnly=true);
+						showHideLayer('texas-school-districts-lines', markerName='', showOnly=true);
+						map.setFilter(
+							'texas-school-districts-poly',
+							['!=', 'NAME', coords[4]]
+						);
+					}
+				}
+			}
+		</script>
+
 </head>
 
-<body>	
-	
+<body>
+
+	<!--BEGIN FLYOUT FOR 'ZOOM TO LAYERS'-->
+
+		<div id="mySidenav" class="sidenav">
+			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+			<p>
+				<br /><br /><br />
+			</p>
+			<p class="moreinfo">
+				Use the drop-down menu below to zoom to a School District of your choice. Choose the top entry to return to the full extent of the state.
+				<br /><br />
+
+				<!--Drop down controls-->
+
+				<select id="school-districts-control" onchange="zoomToPolygon('texas-school-districts', this.value);"></select>
+				<br /><br />
+
+				<br /><br />
+				Map produced by <a href="http://www.coregis.net/" target="_blank">CoreGIS</a>.
+				<br /><br />
+				<a href="https://www.raiseyourhandtexas.org/" target="_blank">Raise Your Hand Texas</a>
+				<br />
+				<a href="https://www.raiseyourhandtexas.org/contact/" target="_blank">Contact</a>
+			</p>
+		</div>
+
+		<div id="main">
+
+		<div id="about">
+			<span style="font-size:16px;cursor:pointer" onclick="openNav()">&#9776; Zoom to Districts</span>
+		</div>
+
+		<script>
+			function openNav() {
+				document.getElementById("mySidenav").style.width = "300px";
+				document.getElementById("main").style.marginLeft = "300px";
+			}
+
+			function closeNav() {
+				document.getElementById("mySidenav").style.width = "0";
+				document.getElementById("main").style.marginLeft= "0";
+			}
+		</script>
+
+	<!--END FLYOUT FOR 'ZOOM TO LAYERS'-->
+
 <div id='map'></div>
 <div id='console'>
   <h1>Charter Campuses in Texas</h1>
   <p>Data: <a href='https://raiseyourhandtexas.org'>Raise Your Hand Texas</a></p>
-  
+
   <!--create legend-->
   <div class='session'>
   <h2>Percentage of Economically Disadvantaged Students</h2>
-  <div class='row colors'>
-  </div>
-	  <div class='row labels'>
-		<div class='label'>0</div>
-		<div class='label'>20%</div>
-		<div class='label'>40%</div>
-		<div class='label'>60%</div>
-		<div class='label'>80%</div>
-		<div class='label'>100%</div>
+
+	  <div class='row colors'>
 	  </div>
-  
-  <!--create time slider-->
-	  <div class='session' id='sliderbar'>
-	  <h2>Year: <label id='active-year'>1997</label></h2>
-	  <input id='slider' class='row' type='range' min='1997' max='2018' step='1' value='2000' />
+		  <div class='row labels'>
+			<div class='label'>0</div>
+			<div class='label'>20%</div>
+			<div class='label'>40%</div>
+			<div class='label'>60%</div>
+			<div class='label'>80%</div>
+			<div class='label'>100%</div>
+		  </div>
+
+		<!--create time slider-->
+		  <div class='session' id='sliderbar'>
+		  <h2>Year: <label id='active-year'>1997</label></h2>
+		  <input id='slider' class='row' type='range' min='1997' max='2018' step='1' value='1997' />
+		  </div>
+
 	</div>
-  
-</div>
-  
+
 </div>
 
 
@@ -49,8 +255,8 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiY29yZS1naXMiLCJhIjoiaUxqQS1zQSJ9.mDT5nb8l_dWI
 				[-114.9594, 21.637], // southwest coords
 				[-85.50, 39.317] // northeast coords
 			];
-			
-		//let's make a map!	
+
+		//let's make a map!
 		var map = new mapboxgl.Map({
 			container: 'map', // container id
 			style: 'mapbox://styles/core-gis/cjbcz8eyg70il2snv8ccgahf7', // stylesheet location; this is the style with markers turned OFF
@@ -58,19 +264,110 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiY29yZS1naXMiLCJhIjoiaUxqQS1zQSJ9.mDT5nb8l_dWI
 			zoom: 5.5, // starting zoom
 			maxBounds: bounds // sets bounds as max
 		});
-		
+
+			var originalZoomLevel = map.getZoom();
+
+			function setVisibilityState(params) {
+				if ((params.visibleOnLoad === undefined) || (params.visibleOnLoad === false)) {
+					return 'none';
+				} else {
+					return 'visible';
+				}
+			}
+
+			var loadedLineLayers = [];
+			var loadedPolygonLayers = [];
+
+			function addPointLayer(map, params) {
+				gus_api(params.gusID, function(jsondata) {
+					var visibilityState = setVisibilityState(params);
+					if (params.scalingFactor === undefined) { params.scalingFactor = 2.5; }
+					map.addSource(params.sourceName, {
+						type: 'geojson',
+						data: jsondata
+					});
+					map.addLayer({
+						'id': params.layerName,
+						'type': 'symbol',
+						'source': params.sourceName,
+						'layout': {
+							'icon-image': params.icon,
+							'icon-size': params.iconSize,
+							'icon-allow-overlap': true,
+							'visibility': visibilityState
+						}
+					});
+					map.on("zoomend", function(){
+						map.setLayoutProperty(params.layerName, 'icon-size', (1 + (map.getZoom() / originalZoomLevel - 1) * params.scalingFactor) * params.iconSize);
+					});
+				});
+			}
+
+			function addVectorLayer(map, params) {
+				var visibilityState = setVisibilityState(params);
+				map.addSource(params.sourceName, {
+					type: 'vector',
+					url: params.sourceURL
+				});
+				if ((params.lineLayerName !== undefined) && (params.lineLayerName !== false)) {
+					map.addLayer(
+						{
+							'id': params.lineLayerName,
+							'type': 'line',
+							'source': params.sourceName,
+							'source-layer': params.sourceID,
+							'layout': {
+								'visibility': visibilityState,
+								'line-join': 'round',
+								'line-cap': 'round'
+							},
+							'paint': {
+								'line-color': params.lineColor,
+								'line-width': 1
+							},
+						},
+						params.displayBehind
+					);
+					if (params.legendID !== undefined) {
+						loadedLineLayers.push([params.lineLayerName, params.legendID]);
+					}
+				}
+				if ((params.polygonLayerName !== undefined) && (params.polygonLayerName !== false)) {
+					if (params.usedInZoomControl) { visibilityState = 'visible'; }
+					map.addLayer(
+						{
+							'id': params.polygonLayerName,
+							'type': 'fill',
+							'source': params.sourceName,
+							'source-layer': params.sourceID,
+							'layout': {
+								'visibility': visibilityState
+							},
+							'paint': {
+								'fill-color': params.polygonFillColor,
+								'fill-outline-color': params.polygonOutlineColor
+							},
+						}
+					);
+					if (params.legendID !== undefined) {
+						loadedPolygonLayers.push([params.polygonLayerName, params.legendID]);
+					}
+				}
+			}
+
 		//add point data from Mapbox
 		map.on('load', function() {
+
 		  	map.addSource('points',{
 				type:'vector',
-				url:'mapbox://core-gis.dtxi921f'
+				url:'mapbox://core-gis.7csrpxnt'
 				});
-		  
+
 		  map.addLayer({
 			'id': 'campuses',
 			'type': 'circle',
 			'source':'points',
-			'source-layer':'ryht_tx_charter_campuses_10_3-bf7r7v',
+			'source-layer':'ryht_tx_charter_campuses_11_0-0gr08r',
 			'filter':['==', ['number', ['get', 'year']], 1997],
 			'layout':{	},
 			'paint': {
@@ -98,19 +395,46 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiY29yZS1naXMiLCJhIjoiaUxqQS1zQSJ9.mDT5nb8l_dWI
 			  'circle-opacity': 0.8
 			}
 		  });
-		  
+
+				//add data to power the zoom control
+		  		addVectorLayer(
+					map,
+					{
+						'sourceName': 'texas-school-districts', // data source name for internal use
+						'sourceID': 'texas_school_districts_v2', // name of the Mapbox layer from which the data will be loaded
+						'sourceURL': 'mapbox://core-gis.e4af0de1', // Mapbox URL
+						'lineLayerName': 'texas-school-districts-lines', // OPTIONAL name we'll use for the layer that shows the outlines. Leave out or set to false if you don't want outlines displayed.
+						'lineColor': '#cdcecb', // colour to draw those outlines with; safe to leave out if we're not drawing outlines, but must be explicitly set if we are
+						'legendID': 'texas_school_districts', // OPTIONAL: the id in the legend, so we can set it to active or inactive as appropriate. Simply leave out for layers that don't appear in the legend
+						'displayBehind': 'waterway-label', // ID of another existing layer, which Mapbox will make sure this one gets drawn behind
+						'polygonLayerName': 'texas-school-districts-poly', // OPTIONAL name we'll use for the layer that invisibly stores the polygon extents. Needed if we're either going to add this layer to either the zoom to districts control or set click events (e.g. popups) on it.	Leave out or set to false if you don't want one.
+						'polygonFillColor': 'rgba(200, 100, 240, 0)', // colour to fill polygons with. Needed if there's going to be a polygon layer; simply leave out if not.
+						'polygonOutlineColor': 'rgba(200, 100, 240, 0)', // colour to draw polygon boundaries with. Needed if there's going to be a polygon layer; simply leave out if not.
+						'visibleOnLoad': true, // set this optional argument to true to have the layer visible on load. Leave out or set to false to have it hidden on load
+						'usedInZoomControl': true // set this optional argument to true if this layer will be used in the Zoom to Districts control, otherwise leave it out or set it to false.
+					}
+				);
+
 		  //add interactivity to the time slider
 		  document.getElementById('slider').addEventListener('input', function(e) {
 			  var year = parseInt(e.target.value);
 			  // update the map
 			  map.setFilter('campuses', ['==', ['number', ['get', 'year']], year]);
-			  
+
 			  // update text in the UI
 			  document.getElementById('active-year').innerText = year;
 
 			});
-		});
-		
+
+			runWhenLoadComplete();
+
+		}); // end of map.on(load) block
+
+// Add zoom controls to the map, with the compass turned off; position is modified in CSS
+		map.addControl(new mapboxgl.NavigationControl({
+			// Hide rotation control.
+			showCompass: false
+			}), 'bottom-right');
 
 </script>
 
