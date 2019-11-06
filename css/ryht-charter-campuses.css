@@ -59,6 +59,31 @@ input#slider {
 	height: 16px;
 }
 
+div#slidercontrols {
+	text-align: center;
+}
+
+div#slidercontrols span {
+	cursor: pointer;
+}
+
+span#slider_back {
+	float: left;
+}
+
+span#slider_play, span#slider_stop {
+	margin: 0 auto;
+	width: 100%;
+}
+
+span#slider_stop {
+	display: none;
+}
+
+span#slider_forward {
+	float: right;
+}
+
 .colors {
   background: linear-gradient(to right, #2dc4b2, #3bb3c3, #669ec4, #8b88b6, #a2719b, #aa5e79);
   margin-bottom: 5px;

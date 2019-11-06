@@ -18,9 +18,10 @@
 	</style>
 
 		<script>
+		// global variable for whether the animation should be playing or not
+		var animationRunning = false;
 
 		//Adding showHide functionality from legislative map to this map
-
 		function showHideLayer(layerName, markerName, showOnly=false, hideOnly=false) {
 			var visibility = map.getLayoutProperty(layerName, 'visibility');
 			if ((visibility === 'visible' || hideOnly) && !showOnly) {
@@ -38,6 +39,13 @@
 			}
 		}
 
+		// Update the year slider and corresponding map filter
+		function updateYearSlider(numberID, year) {
+		  map.setFilter('campuses', ['==', ['number', ['get', 'year']], parseInt(year, 10)]);
+		  // update text in the UI
+		  document.getElementById(numberID).innerText = year;
+		}
+
 
 		//These are the four functions written by Eldan that power the zoom-to-district feature
 		// runWhenLoadComplete() checks if the map has finished loading data, and once it has then it calls the next one.
@@ -50,6 +58,7 @@
 					setTimeout(runWhenLoadComplete, 100);
 				}
 				else {
+					moveYearSlider('slider', 'active-year', 0); // calling this with a 0 increment will make sure that the filter, caption and slider position all match.  Without doing this, the browser seems to keep the slider position between refreshes, but reset the filter and caption so they get out of sync.
 					populateZoomControl("school-districts-control", "texas-school-districts", "NAME", "Texas School Districts");
 					map.moveLayer('texas-school-districts-lines', 'country-label-sm');
 					map.moveLayer('texas-school-districts-poly', 'texas-school-districts-lines');
@@ -165,6 +174,52 @@
 					}
 				}
 			}
+
+			// the following functions are to automate control over the time slider
+			function moveYearSlider(sliderID, numberID, increment, loop=false) {
+				slider = document.getElementById(sliderID);
+				minYear = parseInt(slider.min, 10);
+				currentYear = parseInt(slider.value, 10);
+				maxYear = parseInt(slider.max, 10);
+
+				desiredYear = currentYear + increment;
+
+				if (loop) { // if we're looping then wrap any overflow around
+					if (desiredYear > maxYear) {desiredYear = minYear;}
+					else if (desiredYear < minYear) {desiredYear = maxYear;}
+				} else { // if not looping then keep changes within the min/max bounds
+					if ((desiredYear > maxYear) || (desiredYear < minYear)) {
+						desiredYear = currentYear;
+						console.log('Hacked too much time');
+					}
+				}
+
+				slider.value = desiredYear;
+				updateYearSlider(numberID, desiredYear);
+			}
+
+			function animateYearSlider(sliderID, numberID, delay) {
+				if (animationRunning) {
+					moveYearSlider(sliderID, numberID, 1, loop=true);
+					setTimeout(
+						function() {animateYearSlider(sliderID, numberID, delay)},
+						delay
+					);
+				}
+			}
+
+			function startYearAnimation(sliderID, numberID, delay, playID, stopID) {
+				animationRunning = true;
+				document.getElementById(playID).style.display = 'none';
+				document.getElementById(stopID).style.display = 'inline';
+				animateYearSlider(sliderID, numberID, delay);
+			}
+
+			function stopYearAnimation(playID, stopID) {
+				animationRunning = false;
+				document.getElementById(playID).style.display = 'inline';
+				document.getElementById(stopID).style.display = 'none';
+			}
 		</script>
 
 </head>
@@ -238,8 +293,14 @@
 
 		<!--create time slider-->
 		  <div class='session' id='sliderbar'>
-		  <h2>Year: <label id='active-year'>1997</label></h2>
+		  <h2>Year: <label id='active-year'></label></h2>
 		  <input id='slider' class='row' type='range' min='1997' max='2018' step='1' value='1997' />
+		  </div>
+		  <div id='slidercontrols'>
+		  	<span id='slider_back' onclick="moveYearSlider('slider', 'active-year', -1);" title='Go back one year'>&lt;</span>
+		  	<span id='slider_play' onclick="startYearAnimation('slider', 'active-year', 1000, 'slider_play', 'slider_stop');" title='Animate timeline'>play</span>
+		  	<span id='slider_stop' onclick="stopYearAnimation('slider_play', 'slider_stop');" title='Stop animation'>stop</span>
+		  	<span id='slider_forward' onclick="moveYearSlider('slider', 'active-year', 1);" title='Go forward one year'>&gt;</span>
 		  </div>
 
 	</div>
@@ -248,7 +309,7 @@
 
 
 <script>
-mapboxgl.accessToken = 'pk.eyJ1IjoiY29yZS1naXMiLCJhIjoiaUxqQS1zQSJ9.mDT5nb8l_dWIHzbnOTebcQ';
+		mapboxgl.accessToken = 'pk.eyJ1IjoiY29yZS1naXMiLCJhIjoiaUxqQS1zQSJ9.mDT5nb8l_dWIHzbnOTebcQ';
 
 		//set bounds to Texas
 		var bounds = [
@@ -417,13 +478,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiY29yZS1naXMiLCJhIjoiaUxqQS1zQSJ9.mDT5nb8l_dWI
 
 		  //add interactivity to the time slider
 		  document.getElementById('slider').addEventListener('input', function(e) {
-			  var year = parseInt(e.target.value);
-			  // update the map
-			  map.setFilter('campuses', ['==', ['number', ['get', 'year']], year]);
-
-			  // update text in the UI
-			  document.getElementById('active-year').innerText = year;
-
+		  	updateYearSlider('active-year', e.target.value);
 			});
 
 			runWhenLoadComplete();
