@@ -18,6 +18,8 @@
 	</style>
 
 		<script>
+		// global variable for whether the animation should be playing or not
+		var animationRunning = false;
 
 		//Adding showHide functionality from legislative map to this map
 		function showHideLayer(layerName, markerName, showOnly=false, hideOnly=false) {
@@ -195,6 +197,29 @@
 				slider.value = desiredYear;
 				updateYearSlider(numberID, desiredYear);
 			}
+
+			function animateYearSlider(sliderID, numberID, delay) {
+				if (animationRunning) {
+					moveYearSlider(sliderID, numberID, 1, loop=true);
+					setTimeout(
+						function() {animateYearSlider(sliderID, numberID, delay)},
+						delay
+					);
+				}
+			}
+
+			function startYearSlider(sliderID, numberID, delay, playID, stopID) {
+				animationRunning = true;
+				document.getElementById(playID).style.display = 'none';
+				document.getElementById(stopID).style.display = 'inline';
+				animateYearSlider(sliderID, numberID, delay);
+			}
+
+			function stopYearSlider(playID, stopID) {
+				animationRunning = false;
+				document.getElementById(playID).style.display = 'inline';
+				document.getElementById(stopID).style.display = 'none';
+			}
 		</script>
 
 </head>
@@ -273,7 +298,8 @@
 		  </div>
 		  <div id='slidercontrols'>
 		  	<span id='slider_back' onclick="moveYearSlider('slider', 'active-year', -1);" title='Go back one year'>&lt;</span>
-		  	<span id='slider_play' onclick="moveYearSlider('slider', 'active-year', 1, true);" title='Animate timeline'>play</span>
+		  	<span id='slider_play' onclick="startYearSlider('slider', 'active-year', 1000, 'slider_play', 'slider_stop');" title='Animate timeline'>play</span>
+		  	<span id='slider_stop' onclick="stopYearSlider('slider_play', 'slider_stop');" title='Stop animation'>stop</span>
 		  	<span id='slider_forward' onclick="moveYearSlider('slider', 'active-year', 1);" title='Go forward one year'>&gt;</span>
 		  </div>
 
