@@ -208,14 +208,14 @@
 				}
 			}
 
-			function startYearSlider(sliderID, numberID, delay, playID, stopID) {
+			function startYearAnimation(sliderID, numberID, delay, playID, stopID) {
 				animationRunning = true;
 				document.getElementById(playID).style.display = 'none';
 				document.getElementById(stopID).style.display = 'inline';
 				animateYearSlider(sliderID, numberID, delay);
 			}
 
-			function stopYearSlider(playID, stopID) {
+			function stopYearAnimation(playID, stopID) {
 				animationRunning = false;
 				document.getElementById(playID).style.display = 'inline';
 				document.getElementById(stopID).style.display = 'none';
@@ -298,8 +298,8 @@
 		  </div>
 		  <div id='slidercontrols'>
 		  	<span id='slider_back' onclick="moveYearSlider('slider', 'active-year', -1);" title='Go back one year'>&lt;</span>
-		  	<span id='slider_play' onclick="startYearSlider('slider', 'active-year', 1000, 'slider_play', 'slider_stop');" title='Animate timeline'>play</span>
-		  	<span id='slider_stop' onclick="stopYearSlider('slider_play', 'slider_stop');" title='Stop animation'>stop</span>
+		  	<span id='slider_play' onclick="startYearAnimation('slider', 'active-year', 1000, 'slider_play', 'slider_stop');" title='Animate timeline'>play</span>
+		  	<span id='slider_stop' onclick="stopYearAnimation('slider_play', 'slider_stop');" title='Stop animation'>stop</span>
 		  	<span id='slider_forward' onclick="moveYearSlider('slider', 'active-year', 1);" title='Go forward one year'>&gt;</span>
 		  </div>
 
