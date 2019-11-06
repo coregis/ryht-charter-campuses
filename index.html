@@ -357,16 +357,17 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiY29yZS1naXMiLCJhIjoiaUxqQS1zQSJ9.mDT5nb8l_dWI
 		
 		//add point data from Mapbox
 		map.on('load', function() {
+		
 		  	map.addSource('points',{
 				type:'vector',
-				url:'mapbox://core-gis.dtxi921f'
+				url:'mapbox://core-gis.7csrpxnt'
 				});
 		  
 		  map.addLayer({
 			'id': 'campuses',
 			'type': 'circle',
 			'source':'points',
-			'source-layer':'ryht_tx_charter_campuses_10_3-bf7r7v',
+			'source-layer':'ryht_tx_charter_campuses_11_0-0gr08r',
 			'filter':['==', ['number', ['get', 'year']], 1997],
 			'layout':{	},
 			'paint': {
@@ -403,13 +404,13 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiY29yZS1naXMiLCJhIjoiaUxqQS1zQSJ9.mDT5nb8l_dWI
 						'sourceID': 'texas_school_districts_v2', // name of the Mapbox layer from which the data will be loaded
 						'sourceURL': 'mapbox://core-gis.e4af0de1', // Mapbox URL
 						'lineLayerName': 'texas-school-districts-lines', // OPTIONAL name we'll use for the layer that shows the outlines. Leave out or set to false if you don't want outlines displayed.
-						'lineColor': '#a1b082', // colour to draw those outlines with; safe to leave out if we're not drawing outlines, but must be explicitly set if we are
+						'lineColor': '#cdcecb', // colour to draw those outlines with; safe to leave out if we're not drawing outlines, but must be explicitly set if we are
 						'legendID': 'texas_school_districts', // OPTIONAL: the id in the legend, so we can set it to active or inactive as appropriate. Simply leave out for layers that don't appear in the legend
-						'displayBehind': 'campuses', // ID of another existing layer, which Mapbox will make sure this one gets drawn behind
+						'displayBehind': 'waterway-label', // ID of another existing layer, which Mapbox will make sure this one gets drawn behind
 						'polygonLayerName': 'texas-school-districts-poly', // OPTIONAL name we'll use for the layer that invisibly stores the polygon extents. Needed if we're either going to add this layer to either the zoom to districts control or set click events (e.g. popups) on it.	Leave out or set to false if you don't want one.
 						'polygonFillColor': 'rgba(200, 100, 240, 0)', // colour to fill polygons with. Needed if there's going to be a polygon layer; simply leave out if not.
 						'polygonOutlineColor': 'rgba(200, 100, 240, 0)', // colour to draw polygon boundaries with. Needed if there's going to be a polygon layer; simply leave out if not.
-						'visibleOnLoad': false, // set this optional argument to true to have the layer visible on load. Leave out or set to false to have it hidden on load
+						'visibleOnLoad': true, // set this optional argument to true to have the layer visible on load. Leave out or set to false to have it hidden on load
 						'usedInZoomControl': true // set this optional argument to true if this layer will be used in the Zoom to Districts control, otherwise leave it out or set it to false.
 					}
 				);
