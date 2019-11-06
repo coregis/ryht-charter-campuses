@@ -6,7 +6,7 @@
 	<script src='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js'></script>
 	<link href='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css' rel='stylesheet' />
 	<link href='css/ryht-charter-campuses.css' rel='stylesheet' />
-	
+
 	<style>
 			body { margin:0; padding:0; }
 			#map { position:absolute; top:0; bottom:0; width:100%; }
@@ -16,9 +16,9 @@
 			}
 
 	</style>
-	
+
 		<script>
-		
+
 		//Adding showHide functionality from legislative map to this map
 
 		function showHideLayer(layerName, markerName, showOnly=false, hideOnly=false) {
@@ -169,7 +169,7 @@
 
 </head>
 
-<body>	
+<body>
 
 	<!--BEGIN FLYOUT FOR 'ZOOM TO LAYERS'-->
 
@@ -215,16 +215,16 @@
 		</script>
 
 	<!--END FLYOUT FOR 'ZOOM TO LAYERS'-->
-	
+
 <div id='map'></div>
 <div id='console'>
   <h1>Charter Campuses in Texas</h1>
   <p>Data: <a href='https://raiseyourhandtexas.org'>Raise Your Hand Texas</a></p>
-  
+
   <!--create legend-->
   <div class='session'>
   <h2>Percentage of Economically Disadvantaged Students</h2>
-	  
+
 	  <div class='row colors'>
 	  </div>
 		  <div class='row labels'>
@@ -235,15 +235,15 @@
 			<div class='label'>80%</div>
 			<div class='label'>100%</div>
 		  </div>
-  
+
 		<!--create time slider-->
 		  <div class='session' id='sliderbar'>
 		  <h2>Year: <label id='active-year'>1997</label></h2>
 		  <input id='slider' class='row' type='range' min='1997' max='2018' step='1' value='1997' />
 		  </div>
-  
+
 	</div>
-  
+
 </div>
 
 
@@ -255,8 +255,8 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiY29yZS1naXMiLCJhIjoiaUxqQS1zQSJ9.mDT5nb8l_dWI
 				[-114.9594, 21.637], // southwest coords
 				[-85.50, 39.317] // northeast coords
 			];
-			
-		//let's make a map!	
+
+		//let's make a map!
 		var map = new mapboxgl.Map({
 			container: 'map', // container id
 			style: 'mapbox://styles/core-gis/cjbcz8eyg70il2snv8ccgahf7', // stylesheet location; this is the style with markers turned OFF
@@ -264,7 +264,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiY29yZS1naXMiLCJhIjoiaUxqQS1zQSJ9.mDT5nb8l_dWI
 			zoom: 5.5, // starting zoom
 			maxBounds: bounds // sets bounds as max
 		});
-		
+
 			var originalZoomLevel = map.getZoom();
 
 			function setVisibilityState(params) {
@@ -353,16 +353,16 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiY29yZS1naXMiLCJhIjoiaUxqQS1zQSJ9.mDT5nb8l_dWI
 						loadedPolygonLayers.push([params.polygonLayerName, params.legendID]);
 					}
 				}
-			}		
-		
+			}
+
 		//add point data from Mapbox
 		map.on('load', function() {
-		
+
 		  	map.addSource('points',{
 				type:'vector',
 				url:'mapbox://core-gis.7csrpxnt'
 				});
-		  
+
 		  map.addLayer({
 			'id': 'campuses',
 			'type': 'circle',
@@ -395,7 +395,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiY29yZS1naXMiLCJhIjoiaUxqQS1zQSJ9.mDT5nb8l_dWI
 			  'circle-opacity': 0.8
 			}
 		  });
-		  
+
 				//add data to power the zoom control
 		  		addVectorLayer(
 					map,
@@ -414,24 +414,27 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiY29yZS1naXMiLCJhIjoiaUxqQS1zQSJ9.mDT5nb8l_dWI
 						'usedInZoomControl': true // set this optional argument to true if this layer will be used in the Zoom to Districts control, otherwise leave it out or set it to false.
 					}
 				);
-		  
+
 		  //add interactivity to the time slider
 		  document.getElementById('slider').addEventListener('input', function(e) {
 			  var year = parseInt(e.target.value);
 			  // update the map
 			  map.setFilter('campuses', ['==', ['number', ['get', 'year']], year]);
-			  
+
 			  // update text in the UI
 			  document.getElementById('active-year').innerText = year;
 
 			});
-		});
+
+			runWhenLoadComplete();
+
+		}); // end of map.on(load) block
 
 // Add zoom controls to the map, with the compass turned off; position is modified in CSS
 		map.addControl(new mapboxgl.NavigationControl({
 			// Hide rotation control.
 			showCompass: false
-			}), 'bottom-right');		
+			}), 'bottom-right');
 
 </script>
 
