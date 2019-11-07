@@ -74,7 +74,6 @@
 					for (i=0; i < loadedLineLayers.length; i++) {
 						if (loadedLineLayers[i][1] !== "texas_school_districts") {
 							map.moveLayer(loadedLineLayers[i][0], 'texas-school-districts-poly');
-							map.moveLayer(loadedPolygonLayers[i][0], loadedLineLayers[i][0]);
 						}
 					}
 				}
@@ -508,7 +507,7 @@
 		  	updateYearSlider('active-year', e.target.value);
 			});
 
-		// When a click event occurs on a feature in the pre-k districts layer, open a 
+		// When a click event occurs on a feature in the pre-k districts layer, open a
 		// popup at the location of the click, with description HTML from its properties.
 		map.on('click', 'campuses', function (e) {
 			new mapboxgl.Popup()
@@ -537,14 +536,14 @@
 			html = html + "<br>"
 			html = html + "<span class='varname'>Economically Disadvantaged Students: </span> <span class='attribute'>" + data.CPETCOPNUM +"</span>";
 			html = html + "<br>"
-			html = html + "<span class='varname'>Rating: </span> <span class='attribute'>" + data.C_RATING_F +"</span>";				
+			html = html + "<span class='varname'>Rating: </span> <span class='attribute'>" + data.C_RATING_F +"</span>";
 			return html;
 			//this will return the string to the calling function
 
-		}			
-			
-			runWhenLoadComplete();			
-			
+		}
+
+			runWhenLoadComplete();
+
 		}); // end of map.on(load) block
 
 // Add zoom controls to the map, with the compass turned off; position is modified in CSS
