@@ -508,8 +508,43 @@
 		  	updateYearSlider('active-year', e.target.value);
 			});
 
-			runWhenLoadComplete();
+		// When a click event occurs on a feature in the pre-k districts layer, open a 
+		// popup at the location of the click, with description HTML from its properties.
+		map.on('click', 'campuses', function (e) {
+			new mapboxgl.Popup()
+				.setLngLat(e.lngLat)
+				.setHTML(fillpopup(e.features[0].properties))
+				.addTo(map);
+		});
 
+		 // Change the cursor to a pointer when the mouse is over the campuses layer.
+		map.on('mouseenter', 'campuses', function () {
+			map.getCanvas().style.cursor = 'pointer';
+		});
+
+		// Change it back to a pointer when it leaves
+		map.on('mouseleave', 'campuses', function () {
+			map.getCanvas().style.cursor = '';
+		});
+
+		function fillpopup(data){
+			var html = "";
+			html = html + "<span class='varname'>Campus: </span> <span class='attribute'>" + data.CAMPNAME + "</span>";
+			html = html + "<br>"
+			html = html + "<span class='varname'>District: </span> <span class='attribute'>" + data.NAME + "</span>";
+			html = html + "<br>"
+			html = html + "<span class='varname'>Total Students: </span> <span class='attribute'>" + data.CPETALLC +"</span>";
+			html = html + "<br>"
+			html = html + "<span class='varname'>Economically Disadvantaged Students: </span> <span class='attribute'>" + data.CPETCOPNUM +"</span>";
+			html = html + "<br>"
+			html = html + "<span class='varname'>Rating: </span> <span class='attribute'>" + data.C_RATING_F +"</span>";				
+			return html;
+			//this will return the string to the calling function
+
+		}			
+			
+			runWhenLoadComplete();			
+			
 		}); // end of map.on(load) block
 
 // Add zoom controls to the map, with the compass turned off; position is modified in CSS
