@@ -17,7 +17,16 @@
 
 	</style>
 
+	<!-- https://d3js.org/ for the non-geospatial charts -->
+	<!-- TODO: replace the link below with the minified version here before publication
+	<script src="https://d3js.org/d3.v5.min.js"></script>
+	-->
+	<script src="https://d3js.org/d3.v5.js"></script>
+
 		<script>
+		// global variable for the path to the historical districts data file
+		var districtsFile = './data/qrySumStatsAllDistAllYears.csv';
+
 		// global variable for whether the animation should be playing or not
 		var animationRunning = false;
 
@@ -475,7 +484,7 @@
 						'usedInZoomControl': true // set this optional argument to true if this layer will be used in the Zoom to Districts control, otherwise leave it out or set it to false.
 					}
 				);
-				
+
 				//Add districts as reference on load
 								addVectorLayer(
 					map,
@@ -489,7 +498,7 @@
 						'displayBehind': 'waterway-label',
 						'polygonFillColor': 'rgba(124, 124, 124, 0)',
 						'polygonOutlineColor': 'rgba(103, 65, 30, 0)',
-						'visibleOnLoad': true, 
+						'visibleOnLoad': true,
 						'usedInZoomControl': false
 					}
 				);
@@ -508,6 +517,13 @@
 			// Hide rotation control.
 			showCompass: false
 			}), 'bottom-right');
+
+	// load districtsFile and draw the line chart on completion
+	d3.csv(districtsFile).then(function(data) {
+		data.forEach(function(d) {
+			console.log(d);
+		});
+	});
 
 </script>
 
