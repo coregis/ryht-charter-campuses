@@ -26,6 +26,9 @@
 		<script>
 		// global variable for the path to the historical districts data file
 		var districtsFile = 'data/qrySumStatsAllDistAllYears.csv';
+		// blank data structure to parse the above file into
+		var districtHistory = {'statewide': {}};
+
 
 		// global variable for whether the animation should be playing or not
 		var animationRunning = false;
@@ -554,8 +557,6 @@
 
 	// load and parse districtsFile and then call the chart-drawing function
 	d3.csv(districtsFile).then(function(data) {
-		var districtHistory = {};
-		var stateHistory = {};
 		data.forEach(function(d) {
 			// pre-parse the numbers to avoid repetition
 			vals = {
@@ -564,23 +565,21 @@
 				'disadvantaged': parseInt(d.SumOfCPETCOPNUM, 10)
 			};
 			year = parseInt(d.year, 10);
-			// add blank object to history for each new district
-			if (!districtHistory.hasOwnProperty(d.NAME)) {
-				districtHistory[d.NAME] = {};
+			// add blank object to history for each new year
+			if (!districtHistory.hasOwnProperty(year)) {
+				districtHistory[year] = {
+					'statewide': vals
+				};
+			} else {
+				// add the data to the appropriate running totals in the state-wide history
+				districtHistory[year]['statewide'].campuses += vals.campuses;
+				districtHistory[year]['statewide'].students += vals.students;
+				districtHistory[year]['statewide'].disadvantaged += vals.disadvantaged;
 			}
 			// add each year of data to the appropriate district
-			districtHistory[d.NAME][year] = vals;
-			// add the data to the appropriate running totals in the state-wide history
-			if (!stateHistory.hasOwnProperty(year)) {
-				stateHistory[year] = vals;
-			} else {
-				stateHistory[year].campuses += vals.campuses;
-				stateHistory[year].students += vals.students;
-				stateHistory[year].disadvantaged += vals.disadvantaged;
-			}
+			districtHistory[year][d.NAME] = vals;
 		});
 		console.log(districtHistory);
-		console.log(stateHistory);
 	});
 
 </script>
