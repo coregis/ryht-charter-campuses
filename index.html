@@ -557,27 +557,26 @@
 		var districtHistory = {};
 		var stateHistory = {};
 		data.forEach(function(d) {
+			// pre-parse the numbers to avoid repetition
+			vals = {
+				'campuses': parseInt(d.CountOfCAMPNAME, 10),
+				'students': parseInt(d.SumOfCPETALLC, 10),
+				'disadvantaged': parseInt(d.SumOfCPETCOPNUM, 10)
+			};
+			year = parseInt(d.year, 10);
 			// add blank object to history for each new district
 			if (!districtHistory.hasOwnProperty(d.NAME)) {
 				districtHistory[d.NAME] = {};
 			}
 			// add each year of data to the appropriate district
-			districtHistory[d.NAME][d.year] = {
-				'campuses': parseInt(d.CountOfCAMPNAME, 10),
-				'students': parseInt(d.SumOfCPETALLC, 10),
-				'disadvantaged': parseInt(d.SumOfCPETCOPNUM, 10)
-			};
+			districtHistory[d.NAME][year] = vals;
 			// add the data to the appropriate running totals in the state-wide history
-			if (!stateHistory.hasOwnProperty(d.year)) {
-				stateHistory[d.year] = {
-				'campuses': parseInt(d.CountOfCAMPNAME, 10),
-				'students': parseInt(d.SumOfCPETALLC, 10),
-				'disadvantaged': parseInt(d.SumOfCPETCOPNUM, 10)
-				};
+			if (!stateHistory.hasOwnProperty(year)) {
+				stateHistory[year] = vals;
 			} else {
-				stateHistory[d.year].campuses += parseInt(d.CountOfCAMPNAME, 10);
-				stateHistory[d.year].students += parseInt(d.SumOfCPETALLC, 10);
-				stateHistory[d.year].disadvantaged += parseInt(d.SumOfCPETCOPNUM, 10);
+				stateHistory[year].campuses += vals.campuses;
+				stateHistory[year].students += vals.students;
+				stateHistory[year].disadvantaged += vals.disadvantaged;
 			}
 		});
 		console.log(districtHistory);
