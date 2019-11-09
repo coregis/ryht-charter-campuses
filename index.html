@@ -23,9 +23,8 @@
 		<script>
 		// global variable for the path to the historical districts data file
 		var districtsFile = 'data/qrySumStatsAllDistAllYears.csv';
-		// blank data structure to parse the above file into
-		var districtHistory = {'Statewide': {}};
-
+		// blank data structure to hold state for the chart
+		var chartData = {}
 
 		// global variable for whether the animation should be playing or not
 		var animationRunning = false;
@@ -242,17 +241,17 @@
 				return arr;
 			}
 
-			function drawChart(svgID, dataset, districtName, fieldName, fieldLabel) {
+			function drawChart() {
 				// preprocess the data
-				data = unspoolOneDistrict(dataset, districtName, fieldName);
+				data = unspoolOneDistrict(chartData.dataset, chartData.districtName, chartData.fieldName);
 				// set up the sizing of everything
-				var svgWidth = document.getElementById(svgID).getBoundingClientRect().width;
-				var svgHeight = document.getElementById(svgID).getBoundingClientRect().height;
+				var svgWidth = document.getElementById(chartData.svgID).getBoundingClientRect().width;
+				var svgHeight = document.getElementById(chartData.svgID).getBoundingClientRect().height;
 				var margin = { top: 20, right: 50, bottom: 30, left: 50 };
 				var width = svgWidth - margin.left - margin.right;
 				var height = svgHeight - margin.top - margin.bottom;
 				// standard d3 elements setup
-				var svg = d3.select('#' + svgID);
+				var svg = d3.select('#' + chartData.svgID);
 				var g = svg.append("g").attr(
 					"transform", "translate(" + margin.left + "," + margin.top + ")"
 				);
@@ -261,9 +260,8 @@
 					.attr("x", (width/2))
 					.attr("y", (margin.top/2))
 					.attr("text-anchor", "middle")
-//					.style("font-size", "16px")
 					.style("text-decoration", "bold")
-					.text(districtName);
+					.text(chartData.districtName);
 
 				// set up scales and add axes
 				var x = d3.scaleLinear().rangeRound([0, width]);
@@ -281,7 +279,7 @@
 					.attr("y", 6)
 					.attr("dy", "1ex")
 					.attr("text-anchor", "end")
-					.text(fieldLabel);
+					.text(chartData.fieldLabel);
 				// add the actual data
 				var line = d3.line()
 					.x(function(d) { return x(d.year)})
@@ -294,6 +292,13 @@
 					.attr("stroke-linecap", "round")
 					.attr("stroke-width", 3)
 					.attr("d", line);
+			}
+
+			// this will be called on resize; it simply resets the chart to scale it right
+			function redrawChart() {
+				var svg = d3.select('#' + chartData.svgID);
+				svg.select("g").remove();
+				drawChart();
 			}
 		</script>
 
@@ -623,6 +628,7 @@
 
 	// load and parse districtsFile and then call the chart-drawing function
 	d3.csv(districtsFile).then(function(data) {
+		var districtHistory = {'Statewide': {}};
 		data.forEach(function(d) {
 			// pre-parse the numbers to avoid repetition
 			vals = {
@@ -646,7 +652,15 @@
 				districtHistory['Statewide'][year].disadvantaged += vals.disadvantaged;
 			}
 		});
-		drawChart('chart', districtHistory, 'Statewide', 'campuses', '# Charter campuses');
+		chartData = {
+			svgID: 'chart',
+			dataset: districtHistory,
+			districtName: 'Statewide',
+			fieldName: 'campuses',
+			fieldLabel: '# Charter campuses'
+		};
+		drawChart();
+		window.addEventListener("resize", redrawChart);
 	});
 
 </script>
