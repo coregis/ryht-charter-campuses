@@ -24,7 +24,16 @@
 		// global variable for the path to the historical districts data file
 		var districtsFile = 'data/qrySumStatsAllDistAllYears.csv';
 		// blank data structure to hold state for the chart
-		var chartData = {}
+		var chartData = {
+			svgID: 'chart',
+			districtName: 'Statewide',
+			fieldNameLeft: 'campuses',
+			fieldLabelLeft: '# Charter campuses',
+			leftColor: 'steelblue',
+			fieldNameRight: 'students',
+			fieldLabelLeft: '# Charter students',
+			rightColor: 'orange'
+		};
 
 		// global variable for whether the animation should be playing or not
 		var animationRunning = false;
@@ -229,13 +238,14 @@
 			}
 
 			// now draw the time series chart
-			function unspoolOneDistrict(dataset, districtName, fieldName) {
-				var data = dataset[districtName];
+			function unspoolOneDistrict() {
+				var data = chartData.dataset[chartData.districtName];
 				var arr = [];
 				for (i in data) {
 					arr.push({
 						year: i,
-						value: data[i][fieldName]
+						valueLeft: data[i][chartData.fieldNameLeft],
+						valueRight: data[i][chartData.fieldNameRight]
 					});
 				}
 				return arr;
@@ -243,7 +253,7 @@
 
 			function drawChart() {
 				// preprocess the data
-				data = unspoolOneDistrict(chartData.dataset, chartData.districtName, chartData.fieldName);
+				data = unspoolOneDistrict();
 				// set up the sizing of everything
 				var svgWidth = document.getElementById(chartData.svgID).getBoundingClientRect().width;
 				var svgHeight = document.getElementById(chartData.svgID).getBoundingClientRect().height;
@@ -262,36 +272,60 @@
 					.attr("text-anchor", "middle")
 					.style("text-decoration", "bold")
 					.text(chartData.districtName);
-
 				// set up scales and add axes
 				var x = d3.scaleLinear().rangeRound([0, width]);
-				var y = d3.scaleLinear().rangeRound([height, 0]);
+				var yLeft = d3.scaleLinear().rangeRound([height, 0]);
+				var yRight = d3.scaleLinear().rangeRound([height, 0]);
 				x.domain(d3.extent(data, function(d) { return d.year }));
-				y.domain(d3.extent(data, function(d) { return d.value }));
+				yLeft.domain(d3.extent(data, function(d) { return d.valueLeft }));
+				yRight.domain(d3.extent(data, function(d) { return d.valueRight }));
 				g.append("g")
 					.attr("transform", "translate(0," + height + ")")
 					.call(d3.axisBottom(x).tickFormat(d3.format("1000")));
 				g.append("g")
-					.call(d3.axisLeft(y))
+					.call(d3.axisLeft(yLeft))
+					.attr("stroke", chartData.leftColor)
 					.append("text")
-					.attr("fill", "steelblue")
-					.attr("transform", "rotate(-90)")
-					.attr("y", 6)
-					.attr("dy", "1ex")
-					.attr("text-anchor", "end")
-					.text(chartData.fieldLabel);
+						.attr("fill", chartData.leftColor)
+						.attr("transform", "rotate(-90)")
+						.attr("y", 6)
+						.attr("dy", "1ex")
+						.attr("text-anchor", "end")
+						.text(chartData.fieldLabelLeft);
+				g.append("g")
+					.attr("transform", "translate( " + width + ", 0 )")
+					.call(d3.axisRight(yRight))
+					.attr("stroke", chartData.rightColor)
+					.append("text")
+						.attr("fill", chartData.rightColor)
+						.attr("transform", "rotate(-90)")
+						.attr("y", 6)
+						.attr("dy", "1ex")
+						.attr("text-anchor", "end")
+						.text(chartData.fieldLabelRight);
 				// add the actual data
-				var line = d3.line()
+				var leftLine = d3.line()
 					.x(function(d) { return x(d.year)})
-					.y(function(d) { return y(d.value)});
+					.y(function(d) { return yLeft(d.valueLeft)});
 				g.append("path")
 					.datum(data)
-					.attr("fill", "none")
-					.attr("stroke", "steelblue")
-					.attr("stroke-linejoin", "round")
-					.attr("stroke-linecap", "round")
-					.attr("stroke-width", 3)
-					.attr("d", line);
+						.attr("fill", "none")
+						.attr("stroke", chartData.leftColor)
+						.attr("stroke-linejoin", "round")
+						.attr("stroke-linecap", "round")
+						.attr("stroke-width", 4)
+						.attr("d", leftLine);
+				var rightLine = d3.line()
+					.x(function(d) { return x(d.year)})
+					.y(function(d) { return yRight(d.valueRight)});
+				g.append("path")
+					.datum(data)
+						.attr("fill", "none")
+						.attr("stroke", chartData.rightColor)
+						.attr("stroke-linejoin", "round")
+						.attr("stroke-linecap", "round")
+						.attr("stroke-width", 4)
+						.attr("d", rightLine);
 			}
 
 			// this will be called on resize; it simply resets the chart to scale it right
@@ -652,13 +686,7 @@
 				districtHistory['Statewide'][year].disadvantaged += vals.disadvantaged;
 			}
 		});
-		chartData = {
-			svgID: 'chart',
-			dataset: districtHistory,
-			districtName: 'Statewide',
-			fieldName: 'campuses',
-			fieldLabel: '# Charter campuses'
-		};
+		chartData.dataset = districtHistory;
 		drawChart();
 		window.addEventListener("resize", redrawChart);
 	});
