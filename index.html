@@ -249,7 +249,7 @@
 				data = unspoolOneDistrict(dataset, districtName, fieldName);
 				var svgWidth = document.getElementById(svgID).getBoundingClientRect().width;
 				var svgHeight = document.getElementById(svgID).getBoundingClientRect().height;
-				var margin = { top: 20, right: 20, bottom: 30, left: 50 };
+				var margin = { top: 20, right: 50, bottom: 30, left: 50 };
 				var width = svgWidth - margin.left - margin.right;
 				var height = svgHeight - margin.top - margin.bottom;
 				var svg = d3.select('#' + svgID);
@@ -265,16 +265,14 @@
 				y.domain(d3.extent(data, function(d) { return d.value }));
 				g.append("g")
 					.attr("transform", "translate(0," + height + ")")
-					.call(d3.axisBottom(x))
-					.select(".domain")
-					.remove();
+					.call(d3.axisBottom(x));
 				g.append("g")
 					.call(d3.axisLeft(y))
 					.append("text")
-					.attr("fill", "#000")
+					.attr("fill", "steelblue")
 					.attr("transform", "rotate(-90)")
 					.attr("y", 6)
-					.attr("dy", "0.71em")
+					.attr("dy", "1ex")
 					.attr("text-anchor", "end")
 					.text(fieldLabel);
 				g.append("path")
@@ -283,7 +281,7 @@
 					.attr("stroke", "steelblue")
 					.attr("stroke-linejoin", "round")
 					.attr("stroke-linecap", "round")
-					.attr("stroke-width", 1.5)
+					.attr("stroke-width", 3)
 					.attr("d", line);
 			}
 		</script>
