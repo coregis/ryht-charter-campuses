@@ -27,7 +27,7 @@
 		// global variable for the path to the historical districts data file
 		var districtsFile = 'data/qrySumStatsAllDistAllYears.csv';
 		// blank data structure to parse the above file into
-		var districtHistory = {};
+		var districtHistory = {'statewide': {}};
 
 
 		// global variable for whether the animation should be playing or not
@@ -230,6 +230,61 @@
 				animationRunning = false;
 				document.getElementById(playID).style.display = 'inline';
 				document.getElementById(stopID).style.display = 'none';
+			}
+
+			// now draw the time series chart
+			function unspoolOneDistrict(dataset, districtName, fieldName) {
+				var data = dataset[districtName];
+				var arr = [];
+				for (i in data) {
+					arr.push({
+						year: i,
+						value: data[i][fieldName]
+					});
+				}
+				return arr;
+			}
+
+			function drawChart(svgID, dataset, districtName, fieldName, fieldLabel) {
+				data = unspoolOneDistrict(dataset, districtName, fieldName);
+				var svgWidth = document.getElementById(svgID).getBoundingClientRect().width;
+				var svgHeight = document.getElementById(svgID).getBoundingClientRect().height;
+				var margin = { top: 20, right: 20, bottom: 30, left: 50 };
+				var width = svgWidth - margin.left - margin.right;
+				var height = svgHeight - margin.top - margin.bottom;
+				var svg = d3.select('#' + svgID);
+				var g = svg.append("g").attr(
+					"transform", "translate(" + margin.left + "," + margin.top + ")"
+				);
+				var x = d3.scaleLinear().rangeRound([0, width]);
+				var y = d3.scaleLinear().rangeRound([height, 0]);
+				var line = d3.line()
+					.x(function(d) { return x(d.year)})
+					.y(function(d) { return y(d.value)});
+				x.domain(d3.extent(data, function(d) { return d.year }));
+				y.domain(d3.extent(data, function(d) { return d.value }));
+				g.append("g")
+					.attr("transform", "translate(0," + height + ")")
+					.call(d3.axisBottom(x))
+					.select(".domain")
+					.remove();
+				g.append("g")
+					.call(d3.axisLeft(y))
+					.append("text")
+					.attr("fill", "#000")
+					.attr("transform", "rotate(-90)")
+					.attr("y", 6)
+					.attr("dy", "0.71em")
+					.attr("text-anchor", "end")
+					.text(fieldLabel);
+				g.append("path")
+					.datum(data)
+					.attr("fill", "none")
+					.attr("stroke", "steelblue")
+					.attr("stroke-linejoin", "round")
+					.attr("stroke-linecap", "round")
+					.attr("stroke-width", 1.5)
+					.attr("d", line);
 			}
 		</script>
 
@@ -567,21 +622,22 @@
 				'disadvantaged': parseInt(d.SumOfCPETCOPNUM, 10)
 			};
 			year = parseInt(d.year, 10);
-			// add blank object to history for each new year
-			if (!districtHistory.hasOwnProperty(year)) {
-				districtHistory[year] = {
-					'statewide': vals
-				};
-			} else {
-				// add the data to the appropriate running totals in the state-wide history
-				districtHistory[year]['statewide'].campuses += vals.campuses;
-				districtHistory[year]['statewide'].students += vals.students;
-				districtHistory[year]['statewide'].disadvantaged += vals.disadvantaged;
+			// add blank object to history for each new district
+			if (!districtHistory.hasOwnProperty(name)) {
+				districtHistory[d.NAME] = {};
 			}
-			// add each year of data to the appropriate district
-			districtHistory[year][d.NAME] = vals;
+			// add one year of data to the relevant district's object
+			districtHistory[d.NAME][year] = vals;
+			// add year to statewide totals object if this is the first data for it
+			if (!districtHistory['statewide'].hasOwnProperty(year)) {
+				districtHistory['statewide'][year] = vals;
+			} else { // or add to the running totals otherwise
+				districtHistory['statewide'][year].campuses += vals.campuses;
+				districtHistory['statewide'][year].students += vals.students;
+				districtHistory['statewide'][year].disadvantaged += vals.disadvantaged;
+			}
 		});
-		console.log(districtHistory);
+		drawChart('chart', districtHistory, 'statewide', 'campuses', '# Charter campuses');
 	});
 
 </script>
