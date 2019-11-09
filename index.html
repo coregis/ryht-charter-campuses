@@ -18,16 +18,13 @@
 	</style>
 
 	<!-- https://d3js.org/ for the non-geospatial charts -->
-	<!-- TODO: replace the link below with the minified version here before publication
 	<script src="https://d3js.org/d3.v5.min.js"></script>
-	-->
-	<script src="https://d3js.org/d3.v5.js"></script>
 
 		<script>
 		// global variable for the path to the historical districts data file
 		var districtsFile = 'data/qrySumStatsAllDistAllYears.csv';
 		// blank data structure to parse the above file into
-		var districtHistory = {'statewide': {}};
+		var districtHistory = {'Statewide': {}};
 
 
 		// global variable for whether the animation should be playing or not
@@ -246,21 +243,31 @@
 			}
 
 			function drawChart(svgID, dataset, districtName, fieldName, fieldLabel) {
+				// preprocess the data
 				data = unspoolOneDistrict(dataset, districtName, fieldName);
+				// set up the sizing of everything
 				var svgWidth = document.getElementById(svgID).getBoundingClientRect().width;
 				var svgHeight = document.getElementById(svgID).getBoundingClientRect().height;
 				var margin = { top: 20, right: 50, bottom: 30, left: 50 };
 				var width = svgWidth - margin.left - margin.right;
 				var height = svgHeight - margin.top - margin.bottom;
+				// standard d3 elements setup
 				var svg = d3.select('#' + svgID);
 				var g = svg.append("g").attr(
 					"transform", "translate(" + margin.left + "," + margin.top + ")"
 				);
+				// add a chart title
+				g.append("text")
+					.attr("x", (width/2))
+					.attr("y", (margin.top/2))
+					.attr("text-anchor", "middle")
+//					.style("font-size", "16px")
+					.style("text-decoration", "bold")
+					.text(districtName);
+
+				// set up scales and add axes
 				var x = d3.scaleLinear().rangeRound([0, width]);
 				var y = d3.scaleLinear().rangeRound([height, 0]);
-				var line = d3.line()
-					.x(function(d) { return x(d.year)})
-					.y(function(d) { return y(d.value)});
 				x.domain(d3.extent(data, function(d) { return d.year }));
 				y.domain(d3.extent(data, function(d) { return d.value }));
 				g.append("g")
@@ -275,6 +282,10 @@
 					.attr("dy", "1ex")
 					.attr("text-anchor", "end")
 					.text(fieldLabel);
+				// add the actual data
+				var line = d3.line()
+					.x(function(d) { return x(d.year)})
+					.y(function(d) { return y(d.value)});
 				g.append("path")
 					.datum(data)
 					.attr("fill", "none")
@@ -627,15 +638,15 @@
 			// add one year of data to the relevant district's object
 			districtHistory[d.NAME][year] = vals;
 			// add year to statewide totals object if this is the first data for it
-			if (!districtHistory['statewide'].hasOwnProperty(year)) {
-				districtHistory['statewide'][year] = vals;
+			if (!districtHistory['Statewide'].hasOwnProperty(year)) {
+				districtHistory['Statewide'][year] = vals;
 			} else { // or add to the running totals otherwise
-				districtHistory['statewide'][year].campuses += vals.campuses;
-				districtHistory['statewide'][year].students += vals.students;
-				districtHistory['statewide'][year].disadvantaged += vals.disadvantaged;
+				districtHistory['Statewide'][year].campuses += vals.campuses;
+				districtHistory['Statewide'][year].students += vals.students;
+				districtHistory['Statewide'][year].disadvantaged += vals.disadvantaged;
 			}
 		});
-		drawChart('chart', districtHistory, 'statewide', 'campuses', '# Charter campuses');
+		drawChart('chart', districtHistory, 'Statewide', 'campuses', '# Charter campuses');
 	});
 
 </script>
