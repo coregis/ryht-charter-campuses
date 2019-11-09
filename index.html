@@ -265,7 +265,7 @@
 				y.domain(d3.extent(data, function(d) { return d.value }));
 				g.append("g")
 					.attr("transform", "translate(0," + height + ")")
-					.call(d3.axisBottom(x));
+					.call(d3.axisBottom(x).tickFormat(d3.format("1000")));
 				g.append("g")
 					.call(d3.axisLeft(y))
 					.append("text")
