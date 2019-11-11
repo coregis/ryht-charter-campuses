@@ -672,7 +672,7 @@
 			};
 			year = parseInt(d.year, 10);
 			// add blank object to history for each new district
-			if (!districtHistory.hasOwnProperty(name)) {
+			if (!districtHistory.hasOwnProperty(d.NAME)) {
 				districtHistory[d.NAME] = {};
 			}
 			// add one year of data to the relevant district's object
