@@ -71,6 +71,13 @@ a {
 	font-weight: 600;
 }
 
+/* subtitle only shows up conditionally when some explanation is needed */
+#chart #chart-subtitle {
+	font-size: 12px;
+	font-weight: 500;
+	font-style: italic;
+}
+
 /* axis labels; leave colours and positioning for these to be defined by the JS */
 #chart #left-axis-label, #chart #right-axis-label {
 	font-size: 16px;

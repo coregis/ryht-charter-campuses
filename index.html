@@ -252,21 +252,14 @@
 					});
 				}
 				// if it was empty, then go back to statewide
-				if (arr.length === 0) {
-					console.log("Reverting chart to statewide because there's no data for", chartData.districtName);
-					chartData.districtName = "Statewide";
-					arr = unspoolOneDistrict();
-				}
 				return arr;
 			}
 
 			function drawChart() {
-				// preprocess the data
-				data = unspoolOneDistrict();
 				// set up the sizing of everything
 				var svgWidth = document.getElementById(chartData.svgID).getBoundingClientRect().width;
 				var svgHeight = document.getElementById(chartData.svgID).getBoundingClientRect().height;
-				var margin = { top: 25, right: 60, bottom: 35, left: 60 };
+				var margin = { top: 25, right: 75, bottom: 35, left: 75 };
 				var width = svgWidth - margin.left - margin.right;
 				var height = svgHeight - margin.top - margin.bottom;
 				// standard d3 elements setup
@@ -274,13 +267,53 @@
 				var g = svg.append("g").attr(
 					"transform", "translate(" + margin.left + "," + margin.top + ")"
 				);
-				// add a chart title
+				// parse the data
+				data = unspoolOneDistrict();
+				// if we get no data, then revert to statewide
+				if (data.length === 0) {
+					console.log("Reverting chart to statewide because there's no data for", chartData.districtName);
+					var selectedDistrict = chartData.districtName;
+					chartData.districtName = "Statewide";
+					data = unspoolOneDistrict();
+					g.append("text")
+						.attr("id", "chart-subtitle")
+						.attr("x", 10)
+						.attr("y", margin.top)
+						.attr("text-anchor", "start")
+						.text("Showing statewide data because");
+					g.append("text")
+						.attr("id", "chart-subtitle")
+						.attr("x", 12)
+						.attr("y", margin.top+15)
+						.attr("text-anchor", "start")
+						.text(selectedDistrict);
+					g.append("text")
+						.attr("id", "chart-subtitle")
+						.attr("x", 12)
+						.attr("y", margin.top+30)
+						.attr("text-anchor", "start")
+						.text("has no charter campuses");
+				}
+				// add a chart title and Y axis labels
 				g.append("text")
 					.attr("id", "chart-title")
 					.attr("x", (width/2))
 					.attr("y", (margin.top/4))
 					.attr("text-anchor", "middle")
 					.text(chartData.districtName);
+				g.append("text")
+					.attr("id", "left-axis-label")
+					.attr("fill", chartData.leftColor)
+					.attr("y", 10-margin.left)
+					.attr("dy", "1ex")
+					.attr("text-anchor", "end")
+					.text(chartData.leftFieldLabel);
+				g.append("text")
+					.attr("id", "right-axis-label")
+					.attr("fill", chartData.rightColor)
+					.attr("y", width+margin.right-10)
+					.attr("text-anchor", "end")
+					.text(chartData.rightFieldLabel);
 				// set up scales and add axes
 				var x = d3.scaleLinear().rangeRound([0, width]);
 				var yLeft = d3.scaleLinear().rangeRound([height, 0]);
@@ -293,26 +326,11 @@
 					.call(d3.axisBottom(x).tickFormat(d3.format("1000")));
 				g.append("g")
 					.call(d3.axisLeft(yLeft))
-					.attr("stroke", chartData.leftColor)
-					.append("text")
-						.attr("id", "left-axis-label")
-						.attr("fill", chartData.leftColor)
-						.attr("y", 8)
-						.attr("dy", "1ex")
-						.attr("text-anchor", "end")
-						.text(chartData.leftFieldLabel);
+					.attr("stroke", chartData.leftColor);
 				g.append("g")
 					.attr("transform", "translate( " + width + ", 0 )")
 					.call(d3.axisRight(yRight))
-					.attr("stroke", chartData.rightColor)
-					.append("text")
-						.attr("id", "right-axis-label")
-						.attr("fill", chartData.rightColor)
-						.attr("y", -4)
-						.attr("x", -height)
-						.attr("dx", "1ex")
-						.attr("text-anchor", "start")
-						.text(chartData.rightFieldLabel);
+					.attr("stroke", chartData.rightColor);
 				// add the actual data
 				var leftLine = d3.line()
 					.x(function(d) { return x(d.year)})
