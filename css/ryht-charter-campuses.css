@@ -47,13 +47,41 @@ a {
   overflow: hidden; /*planning ahead to clear floats*/
 }
 
+/* SVG element that holds the d3 chart */
 #chart {
 	position: absolute;
 	width: 60%;
 	height: 25%;
 	right: 10%;
 	bottom: 0;
-	background: rgb(250,250,250);
+	background: rgb(255,255,255);
+}
+
+/* d3 chart default text; this governs the axis tick labels in practice */
+#chart text {
+	font-family: "Montserrat", helvetica, arial, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	color: #363635;
+}
+
+/* chart title styling; leave positioning to the JS */
+#chart #chart-title {
+	font-size: 20px;
+	font-weight: 600;
+}
+
+/* axis labels; leave colours for these to be defined by the JS */
+#chart #left-axis-label, #chart #right-axis-label {
+	font-size: 16px;
+}
+
+#chart #left-axis-label {
+	transform: rotate(-90deg);
+}
+
+#chart #right-axis-label {
+	transform: rotate(-90deg);
 }
 
 .session {

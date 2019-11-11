@@ -257,7 +257,7 @@
 				// set up the sizing of everything
 				var svgWidth = document.getElementById(chartData.svgID).getBoundingClientRect().width;
 				var svgHeight = document.getElementById(chartData.svgID).getBoundingClientRect().height;
-				var margin = { top: 20, right: 50, bottom: 30, left: 50 };
+				var margin = { top: 20, right: 60, bottom: 30, left: 60 };
 				var width = svgWidth - margin.left - margin.right;
 				var height = svgHeight - margin.top - margin.bottom;
 				// standard d3 elements setup
@@ -267,10 +267,10 @@
 				);
 				// add a chart title
 				g.append("text")
+					.attr("id", "chart-title")
 					.attr("x", (width/2))
 					.attr("y", (margin.top/2))
 					.attr("text-anchor", "middle")
-					.style("text-decoration", "bold")
 					.text(chartData.districtName);
 				// set up scales and add axes
 				var x = d3.scaleLinear().rangeRound([0, width]);
@@ -286,9 +286,9 @@
 					.call(d3.axisLeft(yLeft))
 					.attr("stroke", chartData.leftColor)
 					.append("text")
+						.attr("id", "left-axis-label")
 						.attr("fill", chartData.leftColor)
-						.attr("transform", "rotate(-90)")
-						.attr("y", 6)
+						.attr("y", 8)
 						.attr("dy", "1ex")
 						.attr("text-anchor", "end")
 						.text(chartData.fieldLabelLeft);
@@ -297,10 +297,9 @@
 					.call(d3.axisRight(yRight))
 					.attr("stroke", chartData.rightColor)
 					.append("text")
+						.attr("id", "right-axis-label")
 						.attr("fill", chartData.rightColor)
-						.attr("transform", "rotate(-90)")
-						.attr("y", -6)
-//						.attr("dy", "-1ex")
+						.attr("y", -4)
 						.attr("x", -height)
 						.attr("dx", "1ex")
 						.attr("text-anchor", "start")
