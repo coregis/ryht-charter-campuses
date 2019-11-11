@@ -90,7 +90,7 @@
 			function populateZoomControl(selectID, sourceID, fieldName, layerName) {
 				polygons = getPolygons(sourceID, fieldName);
 				var select = document.getElementById(selectID);
-				select.options[0] = new Option(layerName, "-108,25,-88,37,whole state of Texas");
+				select.options[0] = new Option(layerName, "-108,25,-88,37,Statewide");
 				for (i in polygons) {
 					select.options[select.options.length] = new Option(
 						polygons[i].name,
@@ -177,7 +177,7 @@
 						[coords[2], coords[3]]
 					];
 					map.fitBounds(bbox, options={padding: 10, duration: 5000});
-					if (coords[4] === "whole state of Texas") { // if we're zooming out to the whole state again
+					if (coords[4] === "Statewide") { // if we're zooming out to the whole state again
 						showHideLayer('texas-school-districts-poly', markerName='', showOnly=false, hideOnly=true);
 						showHideLayer('texas-school-districts-lines', markerName='', showOnly=false, hideOnly=true);
 					} else {
@@ -188,6 +188,9 @@
 							['!=', 'NAME', coords[4]]
 						);
 					}
+					// while the zoom goes, update the chart
+					chartData.districtName = coords[4];
+					redrawChart();
 				}
 			}
 
@@ -247,6 +250,12 @@
 						valueLeft: data[i][chartData.leftFieldName],
 						valueRight: data[i][chartData.rightFieldName]
 					});
+				}
+				// if it was empty, then go back to statewide
+				if (arr.length === 0) {
+					console.log("Reverting chart to statewide because there's no data for", chartData.districtName);
+					chartData.districtName = "Statewide";
+					arr = unspoolOneDistrict();
 				}
 				return arr;
 			}
