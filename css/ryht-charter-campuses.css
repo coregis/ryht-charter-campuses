@@ -57,7 +57,7 @@ a {
 	background: rgb(255,255,255);
 }
 
-/* d3 chart default text; this governs the axis tick labels in practice */
+/* d3 chart default text; everything but the axis tick labels also have a more specific selector below which can override these values */
 #chart text {
 	font-family: "Montserrat", helvetica, arial, sans-serif;
 	font-size: 12px;
@@ -71,7 +71,7 @@ a {
 	font-weight: 600;
 }
 
-/* axis labels; leave colours for these to be defined by the JS */
+/* axis labels; leave colours and positioning for these to be defined by the JS */
 #chart #left-axis-label, #chart #right-axis-label {
 	font-size: 16px;
 }

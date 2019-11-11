@@ -27,11 +27,11 @@
 		var chartData = {
 			svgID: 'chart',
 			districtName: 'Statewide',
-			fieldNameLeft: 'campuses',
-			fieldLabelLeft: '# Charter campuses',
+			leftFieldName: 'campuses',
+			leftFieldLabel: '# Charter campuses',
 			leftColor: 'steelblue',
-			fieldNameRight: 'students',
-			fieldLabelRight: '# Charter students',
+			rightFieldName: 'students',
+			rightFieldLabel: '# Charter students',
 			rightColor: 'orange'
 		};
 
@@ -244,8 +244,8 @@
 				for (i in data) {
 					arr.push({
 						year: i,
-						valueLeft: data[i][chartData.fieldNameLeft],
-						valueRight: data[i][chartData.fieldNameRight]
+						valueLeft: data[i][chartData.leftFieldName],
+						valueRight: data[i][chartData.rightFieldName]
 					});
 				}
 				return arr;
@@ -257,7 +257,7 @@
 				// set up the sizing of everything
 				var svgWidth = document.getElementById(chartData.svgID).getBoundingClientRect().width;
 				var svgHeight = document.getElementById(chartData.svgID).getBoundingClientRect().height;
-				var margin = { top: 20, right: 60, bottom: 30, left: 60 };
+				var margin = { top: 25, right: 60, bottom: 35, left: 60 };
 				var width = svgWidth - margin.left - margin.right;
 				var height = svgHeight - margin.top - margin.bottom;
 				// standard d3 elements setup
@@ -269,7 +269,7 @@
 				g.append("text")
 					.attr("id", "chart-title")
 					.attr("x", (width/2))
-					.attr("y", (margin.top/2))
+					.attr("y", (margin.top/4))
 					.attr("text-anchor", "middle")
 					.text(chartData.districtName);
 				// set up scales and add axes
@@ -291,7 +291,7 @@
 						.attr("y", 8)
 						.attr("dy", "1ex")
 						.attr("text-anchor", "end")
-						.text(chartData.fieldLabelLeft);
+						.text(chartData.leftFieldLabel);
 				g.append("g")
 					.attr("transform", "translate( " + width + ", 0 )")
 					.call(d3.axisRight(yRight))
@@ -303,7 +303,7 @@
 						.attr("x", -height)
 						.attr("dx", "1ex")
 						.attr("text-anchor", "start")
-						.text(chartData.fieldLabelRight);
+						.text(chartData.rightFieldLabel);
 				// add the actual data
 				var leftLine = d3.line()
 					.x(function(d) { return x(d.year)})
