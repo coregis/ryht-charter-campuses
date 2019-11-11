@@ -31,7 +31,7 @@
 			fieldLabelLeft: '# Charter campuses',
 			leftColor: 'steelblue',
 			fieldNameRight: 'students',
-			fieldLabelLeft: '# Charter students',
+			fieldLabelRight: '# Charter students',
 			rightColor: 'orange'
 		};
 
@@ -299,9 +299,11 @@
 					.append("text")
 						.attr("fill", chartData.rightColor)
 						.attr("transform", "rotate(-90)")
-						.attr("y", 6)
-						.attr("dy", "1ex")
-						.attr("text-anchor", "end")
+						.attr("y", -6)
+//						.attr("dy", "-1ex")
+						.attr("x", -height)
+						.attr("dx", "1ex")
+						.attr("text-anchor", "start")
 						.text(chartData.fieldLabelRight);
 				// add the actual data
 				var leftLine = d3.line()
