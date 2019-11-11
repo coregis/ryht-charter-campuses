@@ -654,6 +654,8 @@
 				.setLngLat(e.lngLat)
 				.setHTML(fillpopup(e.features[0].properties))
 				.addTo(map);
+			chartData.districtName = e.features[0].properties.NAME;
+			redrawChart();
 		});
 
 		 // Change the cursor to a pointer when the mouse is over the campuses layer.
