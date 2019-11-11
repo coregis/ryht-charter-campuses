@@ -9,7 +9,6 @@
 
 	<style>
 			body { margin:0; padding:0; }
-			#map { position:absolute; top:0; bottom:0; width:100%; }
 			.mapboxgl-popup {
 				max-width: 240px;
 				font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
@@ -257,13 +256,22 @@
 
 			function drawChart() {
 				// set up the sizing of everything
-				var svgWidth = document.getElementById(chartData.svgID).getBoundingClientRect().width;
-				var svgHeight = document.getElementById(chartData.svgID).getBoundingClientRect().height;
-				var margin = { top: 25, right: 75, bottom: 35, left: 75 };
+				var viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+				var viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+				var sidenavWidth = 300;
+				console.log(viewportWidth, viewportHeight, sidenavWidth);
+				var svgWidth = viewportWidth - sidenavWidth;
+				var svgHeight = Math.max((viewportHeight / 4), 250);
+				var svg = document.getElementById(chartData.svgID);
+				svg.style.width = svgWidth;
+				svg.style.height = svgHeight;
+				var map = document.getElementById("map");
+				map.style.height = viewportHeight - svgHeight;
+				var margin = { top: 25, right: 80, bottom: 35, left: 80 };
 				var width = svgWidth - margin.left - margin.right;
 				var height = svgHeight - margin.top - margin.bottom;
 				// standard d3 elements setup
-				var svg = d3.select('#' + chartData.svgID);
+				svg = d3.select('#' + chartData.svgID);
 				var g = svg.append("g").attr(
 					"transform", "translate(" + margin.left + "," + margin.top + ")"
 				);
@@ -277,14 +285,12 @@
 					data = unspoolOneDistrict();
 					g.append("text")
 						.attr("id", "chart-subtitle")
-						.attr("x", 10)
-						.attr("y", margin.top)
+						.attr("x", 10).attr("y", margin.top)
 						.attr("text-anchor", "start")
 						.text("Showing statewide data because");
 					g.append("text")
 						.attr("id", "chart-subtitle")
-						.attr("x", 12)
-						.attr("y", margin.top+15)
+						.attr("x", 12).attr("y", margin.top+15)
 						.attr("text-anchor", "start")
 						.text(selectedDistrict);
 					g.append("text")
@@ -297,15 +303,13 @@
 				// add a chart title and Y axis labels
 				g.append("text")
 					.attr("id", "chart-title")
-					.attr("x", (width/2))
-					.attr("y", (margin.top/4))
+					.attr("x", (width/2)).attr("y", (margin.top/4))
 					.attr("text-anchor", "middle")
 					.text(chartData.districtName);
 				g.append("text")
 					.attr("id", "left-axis-label")
 					.attr("fill", chartData.leftColor)
-					.attr("y", 10-margin.left)
-					.attr("dy", "1ex")
+					.attr("y", 10-margin.left).attr("dy", "1ex")
 					.attr("text-anchor", "end")
 					.text(chartData.leftFieldLabel);
 				g.append("text")
@@ -337,26 +341,22 @@
 					.y(function(d) { return yLeft(d.valueLeft)});
 				g.append("path")
 					.datum(data)
-						.attr("fill", "none")
+						.attr("fill", "none").attr("stroke-width", 4)
 						.attr("stroke", chartData.leftColor)
-						.attr("stroke-linejoin", "round")
-						.attr("stroke-linecap", "round")
-						.attr("stroke-width", 4)
+						.attr("stroke-linejoin", "round").attr("stroke-linecap", "round")
 						.attr("d", leftLine);
 				var rightLine = d3.line()
 					.x(function(d) { return x(d.year)})
 					.y(function(d) { return yRight(d.valueRight)});
 				g.append("path")
 					.datum(data)
-						.attr("fill", "none")
+						.attr("fill", "none").attr("stroke-width", 4)
 						.attr("stroke", chartData.rightColor)
-						.attr("stroke-linejoin", "round")
-						.attr("stroke-linecap", "round")
-						.attr("stroke-width", 4)
+						.attr("stroke-linejoin", "round").attr("stroke-linecap", "round")
 						.attr("d", rightLine);
 			}
 
-			// this will be called on resize; it simply resets the chart to scale it right
+			// this will be called on resizing the window or changing any chart attributes; it simply resets the chart because that's the easiest way to keep it scaled correctly
 			function redrawChart() {
 				var svg = d3.select('#' + chartData.svgID);
 				svg.select("g").remove();
@@ -403,6 +403,8 @@
 			function openNav() {
 				document.getElementById("mySidenav").style.width = "300px";
 				document.getElementById("main").style.marginLeft = "300px";
+				var viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+				document.getElementById("map").style.width = viewportWidth - 300;
 			}
 
 			function closeNav() {
@@ -461,12 +463,14 @@
 				[-85.50, 39.317] // northeast coords
 			];
 
+		openNav();
+
 		//let's make a map!
 		var map = new mapboxgl.Map({
 			container: 'map', // container id
 			style: 'mapbox://styles/core-gis/cjbcz8eyg70il2snv8ccgahf7', // stylesheet location; this is the style with markers turned OFF
-			center: [-98.887939, 31.821565], // starting position [lng, lat]
-			zoom: 5.5, // starting zoom
+			center: [-98.887939, 31], // starting position [lng, lat]
+			zoom: 5, // starting zoom
 			maxBounds: bounds // sets bounds as max
 		});
 

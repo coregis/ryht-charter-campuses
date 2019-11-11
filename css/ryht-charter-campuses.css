@@ -7,9 +7,9 @@ body {
 #map {
   position: absolute;
   top: 0;
-  bottom: 0;
+  right: 0;
   width: 100%;
-  height: 100%;
+  height: 75%;
 }
 
 h1 {
@@ -52,7 +52,7 @@ a {
 	position: absolute;
 	width: 60%;
 	height: 25%;
-	right: 10%;
+	right: 0;
 	bottom: 0;
 	background: rgb(255,255,255);
 }
