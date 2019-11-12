@@ -323,8 +323,8 @@
 				var yLeft = d3.scaleLinear().rangeRound([height, 0]);
 				var yRight = d3.scaleLinear().rangeRound([height, 0]);
 				x.domain(d3.extent(data, function(d) { return d.year }));
-				yLeft.domain(d3.extent(data, function(d) { return d.valueLeft }));
-				yRight.domain(d3.extent(data, function(d) { return d.valueRight }));
+				yLeft.domain([0, d3.extent(data, function(d) { return d.valueLeft })[1]]);
+				yRight.domain([0, d3.extent(data, function(d) { return d.valueRight })[1]]);
 				g.append("g")
 					.attr("transform", "translate(0," + height + ")")
 					.call(d3.axisBottom(x).tickFormat(d3.format("1000")));
