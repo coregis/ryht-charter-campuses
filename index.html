@@ -334,7 +334,7 @@
 					.attr("transform", "translate(0," + height + ")")
 					.call(
 						d3.axisBottom(x)
-						.ticks(Math.min((xMax - xMin), width / 45))
+						.ticks(Math.min((xMax - xMin), width / 50))
 						.tickFormat(d3.format("1000"))
 					);
 				g.append("g")
