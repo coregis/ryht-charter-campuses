@@ -23,15 +23,18 @@
 		// global variable for the path to the historical districts data file
 		var districtsFile = 'data/qrySumStatsAllDistAllYears.csv';
 		// blank data structure to hold state for the chart
+		// see https://github.com/d3/d3-format#locale_format for tick format strings
 		var chartData = {
 			svgID: 'chart',
 			districtName: 'Statewide',
 			leftFieldName: 'campuses',
 			leftFieldLabel: '# Charter campuses',
 			leftColor: 'steelblue',
+			leftTickFormat: '1',
 			rightFieldName: 'students',
 			rightFieldLabel: '# Charter students',
-			rightColor: 'orange'
+			rightColor: 'orange',
+			rightTickFormat: '~s'
 		};
 
 		// global variable for whether the animation should be playing or not
@@ -322,18 +325,28 @@
 				var x = d3.scaleLinear().rangeRound([0, width]);
 				var yLeft = d3.scaleLinear().rangeRound([height, 0]);
 				var yRight = d3.scaleLinear().rangeRound([height, 0]);
+				yLeftMax = d3.max(data, function(d) { return d.valueLeft });
+				yRightMax = d3.max(data, function(d) { return d.valueRight });
 				x.domain(d3.extent(data, function(d) { return d.year }));
-				yLeft.domain([0, d3.extent(data, function(d) { return d.valueLeft })[1]]);
-				yRight.domain([0, d3.extent(data, function(d) { return d.valueRight })[1]]);
+				yLeft.domain([0, yLeftMax]);
+				yRight.domain([0, yRightMax]);
 				g.append("g")
 					.attr("transform", "translate(0," + height + ")")
 					.call(d3.axisBottom(x).tickFormat(d3.format("1000")));
 				g.append("g")
-					.call(d3.axisLeft(yLeft))
+					.call(
+						d3.axisLeft(yLeft)
+							.ticks(Math.min(height / 25, yLeftMax))
+							.tickFormat(d3.format(chartData.leftTickFormat))
+					)
 					.attr("stroke", chartData.leftColor);
 				g.append("g")
 					.attr("transform", "translate( " + width + ", 0 )")
-					.call(d3.axisRight(yRight))
+					.call(
+						d3.axisRight(yRight)
+							.ticks(Math.min(height / 25, yRightMax))
+							.tickFormat(d3.format(chartData.rightTickFormat))
+					)
 					.attr("stroke", chartData.rightColor);
 				// add the actual data
 				var leftLine = d3.line()
