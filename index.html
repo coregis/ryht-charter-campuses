@@ -262,7 +262,6 @@
 				var viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 				var viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 				var sidenavWidth = 300;
-				console.log(viewportWidth, viewportHeight, sidenavWidth);
 				var svgWidth = viewportWidth - sidenavWidth;
 				var svgHeight = Math.max((viewportHeight / 4), 250);
 				var svg = document.getElementById(chartData.svgID);
@@ -270,7 +269,7 @@
 				svg.style.height = svgHeight;
 				var map = document.getElementById("map");
 				map.style.height = viewportHeight - svgHeight;
-				var margin = { top: 25, right: 80, bottom: 35, left: 80 };
+				var margin = { top: 35, right: 80, bottom: 28, left: 80 };
 				var width = svgWidth - margin.left - margin.right;
 				var height = svgHeight - margin.top - margin.bottom;
 				// standard d3 elements setup
@@ -288,25 +287,24 @@
 					data = unspoolOneDistrict();
 					g.append("text")
 						.attr("id", "chart-subtitle")
-						.attr("x", 10).attr("y", margin.top)
+						.attr("x", 0).attr("dx", "1em").attr("y", 0)
 						.attr("text-anchor", "start")
 						.text("Showing statewide data because");
 					g.append("text")
 						.attr("id", "chart-subtitle")
-						.attr("x", 12).attr("y", margin.top+15)
+						.attr("x", 0).attr("dx", "1em").attr("y", 0).attr("dy", "2.5ex")
 						.attr("text-anchor", "start")
 						.text(selectedDistrict);
 					g.append("text")
 						.attr("id", "chart-subtitle")
-						.attr("x", 12)
-						.attr("y", margin.top+30)
+						.attr("x", 0).attr("dx", "1em").attr("y", 0).attr("dy", "5ex")
 						.attr("text-anchor", "start")
 						.text("has no charter campuses");
 				}
 				// add a chart title and Y axis labels
 				g.append("text")
 					.attr("id", "chart-title")
-					.attr("x", (width/2)).attr("y", (margin.top/4))
+					.attr("x", (width/2)).attr("y", (-margin.top/4))
 					.attr("text-anchor", "middle")
 					.text(chartData.districtName);
 				g.append("text")
