@@ -325,12 +325,18 @@
 				var yRight = d3.scaleLinear().rangeRound([height, 0]);
 				yLeftMax = d3.max(data, function(d) { return d.valueLeft });
 				yRightMax = d3.max(data, function(d) { return d.valueRight });
-				x.domain(d3.extent(data, function(d) { return d.year }));
+				xMin = d3.min(data, function(d) { return d.year });
+				xMax = d3.max(data, function(d) { return d.year });
+				x.domain([xMin, xMax]);
 				yLeft.domain([0, yLeftMax]);
 				yRight.domain([0, yRightMax]);
 				g.append("g")
 					.attr("transform", "translate(0," + height + ")")
-					.call(d3.axisBottom(x).tickFormat(d3.format("1000")));
+					.call(
+						d3.axisBottom(x)
+						.ticks(Math.min((xMax - xMin), width / 45))
+						.tickFormat(d3.format("1000"))
+					);
 				g.append("g")
 					.call(
 						d3.axisLeft(yLeft)
