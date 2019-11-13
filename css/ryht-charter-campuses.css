@@ -172,6 +172,10 @@ span.attribute {
 }
 
 /*This is formatting for the text that appears in the 'on hover' popup for charter schools*/
+.mapboxgl-popup {
+	max-width: 240px;
+	font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
 
 .mapboxgl-popup-content {
 	font-family: "Open Sans", Arial, Helvetica, sans-serif;
