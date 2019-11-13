@@ -358,7 +358,7 @@ a:active {
 /* Use this to style the 'Zoom to Districts' pop-out */
 .sidenav {
     height: 100%;
-    width: 0;
+    width: 300px;
     position: fixed;
     z-index: 1;
     top: 0;
