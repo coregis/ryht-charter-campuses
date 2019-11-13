@@ -25,14 +25,14 @@ h2 {
 
 a {
   text-decoration: none;
-  color: #2dc4b2;
+  color: #ee5e2a;
 }
 
 #console {
   position: absolute;
   width: 240px;
   margin: 10px;
-  padding: 10px 20px 30px;
+  padding: 10px 20px 1px;
   position: fixed;
   z-index : 1;
   left: 0;
@@ -45,6 +45,15 @@ a {
   margin-right: 10px;
   margin-bottom: 20px;
   overflow: hidden; /*planning ahead to clear floats*/
+}
+
+.console a {
+    /*padding: 8px 8px 8px 32px;*/
+    text-decoration: none;
+	font-family: "Montserrat", Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #ee5e2a;
+    transition: 0.3s
 }
 
 /* SVG element that holds the d3 chart */
@@ -93,6 +102,7 @@ a {
 
 .session {
   margin-bottom: 20px;
+  margin-top:20px;
 }
 
 .row {
@@ -385,7 +395,18 @@ p.moreinfo  {
   background: #ffff;
   color:#4a4a4a;
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  font-size:14px;
+  font-size:12px;
+  text-align:left;
+ /* width:auto !important;*/
+  }
+  
+  p.mapcredits  {
+  padding: 8px 8px 8px 8px;
+  background: #ffff;
+  color:#4a4a4a;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-size:12px;
+  text-align:left;
  /* width:auto !important;*/
   }
 
