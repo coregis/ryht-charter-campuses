@@ -388,10 +388,12 @@
 	<!--BEGIN FLYOUT FOR 'ZOOM TO LAYERS'-->
 
 		<div id="mySidenav" class="sidenav">
+			<!--
 			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 			<p>
 				<br /><br /><br />
 			</p>
+			-->
 			<p class="moreinfo">
 				Use the drop-down menu below to zoom to a School District of your choice. Choose the top entry to return to the full extent of the state.
 				<br /><br />
@@ -400,7 +402,8 @@
 
 				<select id="school-districts-control" onchange="zoomToPolygon('texas-school-districts', this.value);"></select>
 				<br /><br />
-
+				
+				<!--
 				<br /><br />
 				Map produced by <a href="http://www.coregis.net/" target="_blank">CoreGIS</a>.
 				<br /><br />
@@ -408,13 +411,17 @@
 				<br />
 				<a href="https://www.raiseyourhandtexas.org/contact/" target="_blank">Contact</a>
 			</p>
+			-->
 		</div>
 
 		<div id="main">
 
-		<div id="about">
+<!--		
+<div id="about">
 			<span style="font-size:16px;cursor:pointer" onclick="openNav()">&#9776; Zoom to Districts</span>
 		</div>
+-->		
+	
 
 		<script>
 			function openNav() {
@@ -423,20 +430,22 @@
 				var viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 				document.getElementById("map").style.width = viewportWidth - 300;
 			}
-
+			/*
 			function closeNav() {
 				document.getElementById("mySidenav").style.width = "0";
 				document.getElementById("main").style.marginLeft= "0";
 			}
+			*/
 		</script>
+		
+		
 
 	<!--END FLYOUT FOR 'ZOOM TO LAYERS'-->
 
 <div id='map'></div>
 <div id='console'>
   <h1>Charter Campuses in Texas</h1>
-  <p>Data: <a href='https://raiseyourhandtexas.org'>Raise Your Hand Texas</a></p>
-
+  
   <!--create legend-->
   <div class='session'>
   <h2>Percentage of Economically Disadvantaged Students</h2>
@@ -462,6 +471,17 @@
 		  	<span id='slider_play' onclick="startYearAnimation('slider', 'active-year', 1000, 'slider_play', 'slider_stop');" title='Animate timeline'><img src="img/play.svg"></span>
 		  	<span id='slider_stop' onclick="stopYearAnimation('slider_play', 'slider_stop');" title='Stop animation'><img src="img/stop.svg"></span>
 		  	<span id='slider_forward' onclick="moveYearSlider('slider', 'active-year', 1);" title='Go forward one year'><img src="img/skip_forward.svg"></span>
+			
+			<p class="mapcredits">
+				Data: <a href='https://raiseyourhandtexas.org'>Raise Your Hand Texas</a>
+				<br /><br />
+				Map produced by <a href="http://www.coregis.net/" target="_blank">CoreGIS</a>.
+				<br /><br />
+				<a href="https://www.raiseyourhandtexas.org/" target="_blank">Raise Your Hand Texas</a>
+				<br />
+				<a href="https://www.raiseyourhandtexas.org/contact/" target="_blank">Contact</a>
+			</p>
+			
 		  </div>
 
 	</div>
