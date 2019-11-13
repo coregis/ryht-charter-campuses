@@ -5,7 +5,7 @@ allocateScreenSpace();
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiY29yZS1naXMiLCJhIjoiaUxqQS1zQSJ9.mDT5nb8l_dWIHzbnOTebcQ';
 
-//set max bounds to Texas + some padding (we have to pad quite a lot because otherwise very non-square window dimensions run into an issue where the E-W limit stops the whole state from fitting N-S, or vice versa)
+// set max bounds to Texas + some padding (we have to pad quite a lot because otherwise very non-square window dimensions run into an issue where the E-W limit stops the whole state from fitting N-S, or vice versa)
 var maxBounds = [
 	[-125, 15], // southwest coords
 	[-75, 45] // northeast coords
@@ -107,7 +107,7 @@ map.on('load', function() {
 		updateYearSlider('active-year', e.target.value);
 	});
 
-// When a click event occurs on a feature in the pre-k districts layer, open a
+// When a click event occurs on a feature in the campus points layer, open a
 // popup at the location of the click, with description HTML from its properties.
 	map.on('click', 'campuses', function (e) {
 		new mapboxgl.Popup()
@@ -130,26 +130,27 @@ map.on('load', function() {
 
 	function fillpopup(data){
 		var html = "";
-		html = html + "<span class='varname'>Campus: </span> <span class='attribute'>" + data.CAMPNAME + "</span>";
-		html = html + "<br>"
-		html = html + "<span class='varname'>Year: </span> <span class='attribute'>" + data.year + "</span>";
-		html = html + "<br>"
-		html = html + "<span class='varname'>District: </span> <span class='attribute'>" + data.NAME + "</span>";
-		html = html + "<br>"
-		html = html + "<span class='varname'>Total Students: </span> <span class='attribute'>" + data.CPETALLC +"</span>";
-		html = html + "<br>"
-		html = html + "<span class='varname'>Economically Disadvantaged Students: </span> <span class='attribute'>" + data.CPETCOPNUM +"</span>";
-		html = html + "<br>"
-		html = html + "<span class='varname'>Rating: </span> <span class='attribute'>" + data.C_RATING_F +"</span>";
+		html += "<span class='varname'>Campus: </span> <span class='attribute'>" + data.CAMPNAME + "</span>";
+		html += "<br>"
+		html += "<span class='varname'>Year: </span> <span class='attribute'>" + data.year + "</span>";
+		html += "<br>"
+		html += "<span class='varname'>District: </span> <span class='attribute'>" + data.NAME + "</span>";
+		html += "<br>"
+		html += "<span class='varname'>Total Students: </span> <span class='attribute'>" + data.CPETALLC +"</span>";
+		html += "<br>"
+		html += "<span class='varname'>Economically Disadvantaged Students: </span> <span class='attribute'>" + data.CPETCOPNUM +"</span>";
+		html += "<br>"
+		html += "<span class='varname'>Rating: </span> <span class='attribute'>" + data.C_RATING_F +"</span>";
 		return html;
 		//this will return the string to the calling function
-
 	}
 
 	// call other functions which will wait until the *data load* is complete before actually running
 	runWhenLoadComplete();
 
 }); // end of map.on(load) block
+
+
 
 // Add zoom controls to the map, with the compass turned off; position is modified in CSS
 map.addControl(new mapboxgl.NavigationControl({showCompass: false}), 'bottom-right');
