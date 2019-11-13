@@ -23,43 +23,43 @@ var animationRunning = false;
 
 // dynamically size the 3 core elements of the page relative to each other
 function allocateScreenSpace() {
-var viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-var viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-var sidenavWidth = 300;
-var svgWidth = viewportWidth - sidenavWidth;
-var svgHeight = Math.max((viewportHeight / 4), 250);
-var svg = document.getElementById(chartData.svgID);
-svg.style.width = svgWidth;
-svg.style.height = svgHeight;
-var map = document.getElementById("map");
-map.style.height = viewportHeight - svgHeight;
-map.style.width = viewportWidth - sidenavWidth;
-return [svgWidth, svgHeight];
+	var viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+	var viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+	var sidenavWidth = 300;
+	var svgWidth = viewportWidth - sidenavWidth;
+	var svgHeight = Math.max((viewportHeight / 4), 250);
+	var svg = document.getElementById(chartData.svgID);
+	svg.style.width = svgWidth;
+	svg.style.height = svgHeight;
+	var map = document.getElementById("map");
+	map.style.height = viewportHeight - svgHeight;
+	map.style.width = viewportWidth - sidenavWidth;
+	return [svgWidth, svgHeight];
 }
 
 //Adding showHide functionality from legislative map to this map
 function showHideLayer(layerName, markerName, showOnly=false, hideOnly=false) {
-var visibility = map.getLayoutProperty(layerName, 'visibility');
-if ((visibility === 'visible' || hideOnly) && !showOnly) {
-	map.setLayoutProperty(layerName, 'visibility', 'none');
-	this.className = '';
-	if (markerName !== '') {
-		document.getElementById(markerName).classList.add('inactive');
+	var visibility = map.getLayoutProperty(layerName, 'visibility');
+	if ((visibility === 'visible' || hideOnly) && !showOnly) {
+		map.setLayoutProperty(layerName, 'visibility', 'none');
+		this.className = '';
+		if (markerName !== '') {
+			document.getElementById(markerName).classList.add('inactive');
+		}
+	} else {
+		this.className = 'active';
+		map.setLayoutProperty(layerName, 'visibility', 'visible');
+		if (markerName !== '') {
+			document.getElementById(markerName).classList.remove('inactive');
+		}
 	}
-} else {
-	this.className = 'active';
-	map.setLayoutProperty(layerName, 'visibility', 'visible');
-	if (markerName !== '') {
-		document.getElementById(markerName).classList.remove('inactive');
-	}
-}
 }
 
 // Update the year slider and corresponding map filter
 function updateYearSlider(numberID, year) {
-map.setFilter('campuses', ['==', ['number', ['get', 'year']], parseInt(year, 10)]);
-// update text in the UI
-document.getElementById(numberID).innerText = year;
+	map.setFilter('campuses', ['==', ['number', ['get', 'year']], parseInt(year, 10)]);
+	// update text in the UI
+	document.getElementById(numberID).innerText = year;
 }
 
 
@@ -210,10 +210,11 @@ function moveYearSlider(sliderID, numberID, increment, loop=false) {
 	if (loop) { // if we're looping then wrap any overflow around
 		if (desiredYear > maxYear) {desiredYear = minYear;}
 		else if (desiredYear < minYear) {desiredYear = maxYear;}
-	} else { // if not looping then keep changes within the min/max bounds
+	}
+	else { // if not looping then keep changes within the min/max bounds
 		if ((desiredYear > maxYear) || (desiredYear < minYear)) {
 			desiredYear = currentYear;
-			console.log('Hacked too much time');
+			console.log('Hacking too much time');
 		}
 	}
 
