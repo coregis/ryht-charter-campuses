@@ -40,6 +40,22 @@
 		// global variable for whether the animation should be playing or not
 		var animationRunning = false;
 
+		// dynamically size the 3 core elements of the page relative to each other
+		function allocateScreenSpace() {
+			var viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+			var viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+			var sidenavWidth = 300;
+			var svgWidth = viewportWidth - sidenavWidth;
+			var svgHeight = Math.max((viewportHeight / 4), 250);
+			var svg = document.getElementById(chartData.svgID);
+			svg.style.width = svgWidth;
+			svg.style.height = svgHeight;
+			var map = document.getElementById("map");
+			map.style.height = viewportHeight - svgHeight;
+			map.style.width = viewportWidth - sidenavWidth;
+			return [svgWidth, svgHeight];
+		}
+
 		//Adding showHide functionality from legislative map to this map
 		function showHideLayer(layerName, markerName, showOnly=false, hideOnly=false) {
 			var visibility = map.getLayoutProperty(layerName, 'visibility');
@@ -77,6 +93,11 @@
 					setTimeout(runWhenLoadComplete, 100);
 				}
 				else {
+					// make sure we really have enough space for Texas
+					map.fitBounds([
+						[-107, 25.25], // southwest coords
+						[-93.25, 36.75] // northeast coords, exaggerated somewhat towards the NE to make the state appear more visually centred
+					]);
 					moveYearSlider('slider', 'active-year', 0); // calling this with a 0 increment will make sure that the filter, caption and slider position all match.  Without doing this, the browser seems to keep the slider position between refreshes, but reset the filter and caption so they get out of sync.
 					populateZoomControl("school-districts-control", "texas-school-districts", "NAME", "Texas School Districts");
 					map.moveLayer('texas-school-districts-lines', 'country-label-sm');
@@ -259,16 +280,9 @@
 
 			function drawChart() {
 				// set up the sizing of everything
-				var viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-				var viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-				var sidenavWidth = 300;
-				var svgWidth = viewportWidth - sidenavWidth;
-				var svgHeight = Math.max((viewportHeight / 4), 250);
-				var svg = document.getElementById(chartData.svgID);
-				svg.style.width = svgWidth;
-				svg.style.height = svgHeight;
-				var map = document.getElementById("map");
-				map.style.height = viewportHeight - svgHeight;
+				var svgDims = allocateScreenSpace();
+				var svgWidth = svgDims[0];
+				var svgHeight = svgDims[1];
 				var margin = { top: 35, right: 80, bottom: 28, left: 80 };
 				var width = svgWidth - margin.left - margin.right;
 				var height = svgHeight - margin.top - margin.bottom;
@@ -375,6 +389,7 @@
 
 			// this will be called on resizing the window or changing any chart attributes; it simply resets the chart because that's the easiest way to keep it scaled correctly
 			function redrawChart() {
+				allocateScreenSpace();
 				var svg = d3.select('#' + chartData.svgID);
 				svg.select("g").remove();
 				drawChart();
@@ -402,7 +417,7 @@
 
 				<select id="school-districts-control" onchange="zoomToPolygon('texas-school-districts', this.value);"></select>
 				<br /><br />
-				
+
 				<!--
 				<br /><br />
 				Map produced by <a href="http://www.coregis.net/" target="_blank">CoreGIS</a>.
@@ -416,36 +431,35 @@
 
 		<div id="main">
 
-<!--		
+<!--
 <div id="about">
 			<span style="font-size:16px;cursor:pointer" onclick="openNav()">&#9776; Zoom to Districts</span>
 		</div>
--->		
-	
 
 		<script>
+			/*
 			function openNav() {
 				document.getElementById("mySidenav").style.width = "300px";
 				document.getElementById("main").style.marginLeft = "300px";
 				var viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 				document.getElementById("map").style.width = viewportWidth - 300;
 			}
-			/*
 			function closeNav() {
 				document.getElementById("mySidenav").style.width = "0";
 				document.getElementById("main").style.marginLeft= "0";
 			}
 			*/
 		</script>
-		
-		
+-->
+
+
 
 	<!--END FLYOUT FOR 'ZOOM TO LAYERS'-->
 
 <div id='map'></div>
 <div id='console'>
   <h1>Charter Campuses in Texas</h1>
-  
+
   <!--create legend-->
   <div class='session'>
   <h2>Percentage of Economically Disadvantaged Students</h2>
@@ -471,7 +485,7 @@
 		  	<span id='slider_play' onclick="startYearAnimation('slider', 'active-year', 1000, 'slider_play', 'slider_stop');" title='Animate timeline'><img src="img/play.svg"></span>
 		  	<span id='slider_stop' onclick="stopYearAnimation('slider_play', 'slider_stop');" title='Stop animation'><img src="img/stop.svg"></span>
 		  	<span id='slider_forward' onclick="moveYearSlider('slider', 'active-year', 1);" title='Go forward one year'><img src="img/skip_forward.svg"></span>
-			
+
 			<p class="mapcredits">
 				Data: <a href='https://raiseyourhandtexas.org'>Raise Your Hand Texas</a>
 				<br /><br />
@@ -481,7 +495,7 @@
 				<br />
 				<a href="https://www.raiseyourhandtexas.org/contact/" target="_blank">Contact</a>
 			</p>
-			
+
 		  </div>
 
 	</div>
@@ -492,23 +506,26 @@
 
 
 <script>
+		// call this a first time before anything else loads, so the map is in its likely final size
+		allocateScreenSpace();
+
 		mapboxgl.accessToken = 'pk.eyJ1IjoiY29yZS1naXMiLCJhIjoiaUxqQS1zQSJ9.mDT5nb8l_dWIHzbnOTebcQ';
 
-		//set bounds to Texas
-		var bounds = [
-				[-114.9594, 21.637], // southwest coords
-				[-85.50, 39.317] // northeast coords
+		//set max bounds to Texas + some padding (we have to pad quite a lot because otherwise very non-square window dimensions run into an issue where the E-W limit stops the whole state from fitting N-S, or vice versa)
+		var maxBounds = [
+				[-125, 15], // southwest coords
+				[-75, 45] // northeast coords
 			];
 
-		openNav();
+//		openNav();
 
 		//let's make a map!
 		var map = new mapboxgl.Map({
 			container: 'map', // container id
 			style: 'mapbox://styles/core-gis/cjbcz8eyg70il2snv8ccgahf7', // stylesheet location; this is the style with markers turned OFF
-			center: [-98.887939, 31], // starting position [lng, lat]
+			center: [-99.1725892, 31.3915247], // starting position [lng, lat] https://atlas.thc.state.tx.us/Details/5307002146
 			zoom: 5, // starting zoom
-			maxBounds: bounds // sets bounds as max
+			maxBounds: maxBounds // sets bounds as max
 		});
 
 			var originalZoomLevel = map.getZoom();
@@ -603,11 +620,10 @@
 
 		//add point data from Mapbox
 		map.on('load', function() {
-
-		  	map.addSource('points',{
-				type:'vector',
-				url:'mapbox://core-gis.7csrpxnt'
-				});
+			map.addSource('points',{
+			type:'vector',
+			url:'mapbox://core-gis.7csrpxnt'
+			});
 
 		  map.addLayer({
 			'id': 'campuses',
