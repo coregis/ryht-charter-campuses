@@ -8,7 +8,7 @@ body {
   position: absolute;
   top: 0;
   right: 0;
-  width: 100%;
+  width: 80%;
   height: 75%;
 }
 
@@ -36,14 +36,12 @@ a {
   position: fixed;
   z-index : 1;
   left: 0;
-  bottom: 10;
+  bottom: 0;
   background-color: white;
   font-family: "Montserrat", helvetica, arial, sans-serif;
   font-weight: normal;
   color: #363635;
   text-decoration: none;
-  margin-right: 10px;
-  margin-bottom: 20px;
   overflow: hidden; /*planning ahead to clear floats*/
 }
 
@@ -399,7 +397,7 @@ p.moreinfo  {
   text-align:left;
  /* width:auto !important;*/
   }
-  
+
   p.mapcredits  {
   padding: 8px 8px 8px 8px;
   background: #ffff;
