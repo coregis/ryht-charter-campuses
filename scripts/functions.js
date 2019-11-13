@@ -7,7 +7,7 @@ var districtsFile = 'data/qrySumStatsAllDistAllYears.csv';
 // see https://github.com/d3/d3-format#locale_format for tick format strings
 var chartData = {
 	svgID: 'chart',
-	visible: false,
+	visible: true,
 	districtName: 'Statewide',
 	leftFieldName: 'campuses',
 	leftFieldLabel: '# Charter campuses',
@@ -44,9 +44,9 @@ function allocateScreenSpace() {
 	svg.style.width = svgWidth;
 	svg.style.height = svgHeight;
 	activeControlDiv.style.height = svgHeight - activeControlPadding;
-	var map = document.getElementById("map");
-	map.style.height = viewportHeight - svgHeight;
-	map.style.width = viewportWidth - sidenavWidth;
+	var mapDiv = document.getElementById("map");
+	mapDiv.style.height = viewportHeight - svgHeight;
+	mapDiv.style.width = viewportWidth - sidenavWidth;
 	return [svgWidth, svgHeight];
 }
 
@@ -391,6 +391,7 @@ function redrawChart() {
 	var svg = d3.select('#' + chartData.svgID);
 	svg.select("g").remove();
 	drawChart();
+	map.resize();
 }
 
 function showChart() {
