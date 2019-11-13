@@ -269,12 +269,13 @@ function unspoolOneDistrict() {
 			valueRight: data[i][chartData.rightFieldName]
 		});
 	}
-	// if it was empty, then go back to statewide
 	return arr;
 }
 
 function drawChart() {
 	if (chartData.visible) {
+		//  hide the reset chart link if we're showing statewide data
+		document.getElementById('chart-reset-link').style.display = ((chartData.districtName === 'Statewide') ? 'none' : 'block');
 		// set up the sizing of everything
 		var svgDims = allocateScreenSpace();
 		var svgWidth = svgDims[0];
@@ -402,7 +403,11 @@ function showChart() {
 function hideChart() {
 	chartData.visible = false;
 	redrawChart();
-	allocateScreenSpace();
+}
+
+function resetChart() {
+	chartData.districtName = 'Statewide';
+	redrawChart();
 }
 
 

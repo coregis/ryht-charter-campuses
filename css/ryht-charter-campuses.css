@@ -71,10 +71,17 @@ a {
 #chart-controls {
 	height: 25%;
 	padding: 15px; /* padding must be in pixels for the JS to position everything right */
+	width: 100px;
 }
 
 #chart-controls span {
+  display: block;
 	cursor: pointer;
+  line-height: 2em;
+}
+
+#chart-controls span#chart-reset-link {
+	display: none;
 }
 
 /* container for the show chart control */
