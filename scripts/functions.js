@@ -3,19 +3,19 @@
 
 // global variable for the path to the historical districts data file
 var districtsFile = 'data/qrySumStatsAllDistAllYears.csv';
-// blank data structure to hold state for the chart
+// data structure to hold state for the chart; the actual data will be attached on load
 // see https://github.com/d3/d3-format#locale_format for tick format strings
 var chartData = {
-svgID: 'chart',
-districtName: 'Statewide',
-leftFieldName: 'campuses',
-leftFieldLabel: '# Charter campuses',
-leftColor: 'steelblue',
-leftTickFormat: '1',
-rightFieldName: 'students',
-rightFieldLabel: '# Charter students',
-rightColor: 'orange',
-rightTickFormat: '~s'
+	svgID: 'chart',
+	districtName: 'Statewide',
+	leftFieldName: 'campuses',
+	leftFieldLabel: '# Charter campuses',
+	leftColor: 'steelblue',
+	leftTickFormat: '1',
+	rightFieldName: 'students',
+	rightFieldLabel: '# Charter students',
+	rightColor: 'orange',
+	rightTickFormat: '~s'
 };
 
 // global variable for whether the animation should be playing or not
