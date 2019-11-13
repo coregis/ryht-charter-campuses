@@ -7,6 +7,7 @@ var districtsFile = 'data/qrySumStatsAllDistAllYears.csv';
 // see https://github.com/d3/d3-format#locale_format for tick format strings
 var chartData = {
 	svgID: 'chart',
+	visible: false,
 	districtName: 'Statewide',
 	leftFieldName: 'campuses',
 	leftFieldLabel: '# Charter campuses',
@@ -26,11 +27,23 @@ function allocateScreenSpace() {
 	var viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 	var viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 	var sidenavWidth = 300;
-	var svgWidth = viewportWidth - sidenavWidth;
-	var svgHeight = Math.max((viewportHeight / 4), 250);
+	var activeControlDiv = document.getElementById(
+		(chartData.visible ? 'chart-controls' : 'chart-open-link')
+	);
+	var hiddenControlDiv = document.getElementById(
+		(chartData.visible ? 'chart-open-link' : 'chart-controls' )
+	);
+	activeControlDiv.style.display = 'block';
+	hiddenControlDiv.style.display = 'none';
+	var activeControlStyle = (activeControlDiv.currentStyle || window.getComputedStyle(activeControlDiv));
+	var activeControlPadding = parseInt(activeControlStyle.paddingTop, 10) + parseInt(activeControlStyle.paddingBottom, 10);
+	var controlsWidth = activeControlDiv.offsetWidth;
+	var svgWidth = viewportWidth - sidenavWidth - controlsWidth;
+	var svgHeight = (chartData.visible ? Math.max((viewportHeight / 4), 250) : activeControlDiv.offsetHeight);
 	var svg = document.getElementById(chartData.svgID);
 	svg.style.width = svgWidth;
 	svg.style.height = svgHeight;
+	activeControlDiv.style.height = svgHeight - activeControlPadding;
 	var map = document.getElementById("map");
 	map.style.height = viewportHeight - svgHeight;
 	map.style.width = viewportWidth - sidenavWidth;
@@ -261,120 +274,134 @@ function unspoolOneDistrict() {
 }
 
 function drawChart() {
-	// set up the sizing of everything
-	var svgDims = allocateScreenSpace();
-	var svgWidth = svgDims[0];
-	var svgHeight = svgDims[1];
-	var margin = { top: 35, right: 80, bottom: 28, left: 80 };
-	var width = svgWidth - margin.left - margin.right;
-	var height = svgHeight - margin.top - margin.bottom;
-	// standard d3 elements setup
-	svg = d3.select('#' + chartData.svgID);
-	var g = svg.append("g").attr(
-		"transform", "translate(" + margin.left + "," + margin.top + ")"
-	);
-	// parse the data
-	data = unspoolOneDistrict();
-	// if we get no data, then revert to statewide
-	if (data.length === 0) {
-		console.log("Reverting chart to statewide because there's no data for", chartData.districtName);
-		var selectedDistrict = chartData.districtName;
-		chartData.districtName = "Statewide";
-		data = unspoolOneDistrict();
-		g.append("text")
-			.attr("id", "chart-subtitle")
-			.attr("x", 0).attr("dx", "1em").attr("y", 0)
-			.attr("text-anchor", "start")
-			.text("Showing statewide data because");
-		g.append("text")
-			.attr("id", "chart-subtitle")
-			.attr("x", 0).attr("dx", "1em").attr("y", 0).attr("dy", "2.5ex")
-			.attr("text-anchor", "start")
-			.text(selectedDistrict);
-		g.append("text")
-			.attr("id", "chart-subtitle")
-			.attr("x", 0).attr("dx", "1em").attr("y", 0).attr("dy", "5ex")
-			.attr("text-anchor", "start")
-			.text("has no charter campuses");
-	}
-	// add a chart title and Y axis labels
-	g.append("text")
-		.attr("id", "chart-title")
-		.attr("x", (width/2)).attr("y", (-margin.top/4))
-		.attr("text-anchor", "middle")
-		.text(chartData.districtName);
-	g.append("text")
-		.attr("id", "left-axis-label")
-		.attr("fill", chartData.leftColor)
-		.attr("y", 10-margin.left).attr("dy", "1ex")
-		.attr("text-anchor", "end")
-		.text(chartData.leftFieldLabel);
-	g.append("text")
-		.attr("id", "right-axis-label")
-		.attr("fill", chartData.rightColor)
-		.attr("y", width+margin.right-10)
-		.attr("text-anchor", "end")
-		.text(chartData.rightFieldLabel);
-	// set up scales and add axes
-	var x = d3.scaleLinear().rangeRound([0, width]);
-	var yLeft = d3.scaleLinear().rangeRound([height, 0]);
-	var yRight = d3.scaleLinear().rangeRound([height, 0]);
-	yLeftMax = d3.max(data, function(d) { return d.valueLeft });
-	yRightMax = d3.max(data, function(d) { return d.valueRight });
-	xMin = d3.min(data, function(d) { return d.year });
-	xMax = d3.max(data, function(d) { return d.year });
-	x.domain([xMin, xMax]);
-	yLeft.domain([0, yLeftMax]);
-	yRight.domain([0, yRightMax]);
-	g.append("g")
-		.attr("transform", "translate(0," + height + ")")
-		.call(
-			d3.axisBottom(x)
-			.ticks(Math.min((xMax - xMin), width / 50))
-			.tickFormat(d3.format("1000"))
+	if (chartData.visible) {
+		// set up the sizing of everything
+		var svgDims = allocateScreenSpace();
+		var svgWidth = svgDims[0];
+		var svgHeight = svgDims[1];
+		var margin = { top: 35, right: 80, bottom: 28, left: 80 };
+		var width = svgWidth - margin.left - margin.right;
+		var height = svgHeight - margin.top - margin.bottom;
+		// standard d3 elements setup
+		svg = d3.select('#' + chartData.svgID);
+		var g = svg.append("g").attr(
+			"transform", "translate(" + margin.left + "," + margin.top + ")"
 		);
-	g.append("g")
-		.call(
-			d3.axisLeft(yLeft)
-				.ticks(Math.min(height / 25, yLeftMax))
-				.tickFormat(d3.format(chartData.leftTickFormat))
-		)
-		.attr("stroke", chartData.leftColor);
-	g.append("g")
-		.attr("transform", "translate( " + width + ", 0 )")
-		.call(
-			d3.axisRight(yRight)
-				.ticks(Math.min(height / 25, yRightMax))
-				.tickFormat(d3.format(chartData.rightTickFormat))
-		)
-		.attr("stroke", chartData.rightColor);
-	// add the actual data
-	var leftLine = d3.line()
-		.x(function(d) { return x(d.year)})
-		.y(function(d) { return yLeft(d.valueLeft)});
-	g.append("path")
-		.datum(data)
-			.attr("fill", "none").attr("stroke-width", 4)
-			.attr("stroke", chartData.leftColor)
-			.attr("stroke-linejoin", "round").attr("stroke-linecap", "round")
-			.attr("d", leftLine);
-	var rightLine = d3.line()
-		.x(function(d) { return x(d.year)})
-		.y(function(d) { return yRight(d.valueRight)});
-	g.append("path")
-		.datum(data)
-			.attr("fill", "none").attr("stroke-width", 4)
-			.attr("stroke", chartData.rightColor)
-			.attr("stroke-linejoin", "round").attr("stroke-linecap", "round")
-			.attr("d", rightLine);
+		// parse the data
+		data = unspoolOneDistrict();
+		// if we get no data, then revert to statewide
+		if (data.length === 0) {
+			console.log("Reverting chart to statewide because there's no data for", chartData.districtName);
+			var selectedDistrict = chartData.districtName;
+			chartData.districtName = "Statewide";
+			data = unspoolOneDistrict();
+			g.append("text")
+				.attr("id", "chart-subtitle")
+				.attr("x", 0).attr("dx", "1em").attr("y", 0)
+				.attr("text-anchor", "start")
+				.text("Showing statewide data because");
+			g.append("text")
+				.attr("id", "chart-subtitle")
+				.attr("x", 0).attr("dx", "1em").attr("y", 0).attr("dy", "2.5ex")
+				.attr("text-anchor", "start")
+				.text(selectedDistrict);
+			g.append("text")
+				.attr("id", "chart-subtitle")
+				.attr("x", 0).attr("dx", "1em").attr("y", 0).attr("dy", "5ex")
+				.attr("text-anchor", "start")
+				.text("has no charter campuses");
+		}
+		// add a chart title and Y axis labels
+		g.append("text")
+			.attr("id", "chart-title")
+			.attr("x", (width/2)).attr("y", (-margin.top/4))
+			.attr("text-anchor", "middle")
+			.text(chartData.districtName);
+		g.append("text")
+			.attr("id", "left-axis-label")
+			.attr("fill", chartData.leftColor)
+			.attr("y", 10-margin.left).attr("dy", "1ex")
+			.attr("text-anchor", "end")
+			.text(chartData.leftFieldLabel);
+		g.append("text")
+			.attr("id", "right-axis-label")
+			.attr("fill", chartData.rightColor)
+			.attr("y", width+margin.right-10)
+			.attr("text-anchor", "end")
+			.text(chartData.rightFieldLabel);
+		// set up scales and add axes
+		var x = d3.scaleLinear().rangeRound([0, width]);
+		var yLeft = d3.scaleLinear().rangeRound([height, 0]);
+		var yRight = d3.scaleLinear().rangeRound([height, 0]);
+		yLeftMax = d3.max(data, function(d) { return d.valueLeft });
+		yRightMax = d3.max(data, function(d) { return d.valueRight });
+		xMin = d3.min(data, function(d) { return d.year });
+		xMax = d3.max(data, function(d) { return d.year });
+		x.domain([xMin, xMax]);
+		yLeft.domain([0, yLeftMax]);
+		yRight.domain([0, yRightMax]);
+		g.append("g")
+			.attr("transform", "translate(0," + height + ")")
+			.call(
+				d3.axisBottom(x)
+				.ticks(Math.min((xMax - xMin), width / 50))
+				.tickFormat(d3.format("1000"))
+			);
+		g.append("g")
+			.call(
+				d3.axisLeft(yLeft)
+					.ticks(Math.min(height / 25, yLeftMax))
+					.tickFormat(d3.format(chartData.leftTickFormat))
+			)
+			.attr("stroke", chartData.leftColor);
+		g.append("g")
+			.attr("transform", "translate( " + width + ", 0 )")
+			.call(
+				d3.axisRight(yRight)
+					.ticks(Math.min(height / 25, yRightMax))
+					.tickFormat(d3.format(chartData.rightTickFormat))
+			)
+			.attr("stroke", chartData.rightColor);
+		// add the actual data
+		var leftLine = d3.line()
+			.x(function(d) { return x(d.year)})
+			.y(function(d) { return yLeft(d.valueLeft)});
+		g.append("path")
+			.datum(data)
+				.attr("fill", "none").attr("stroke-width", 4)
+				.attr("stroke", chartData.leftColor)
+				.attr("stroke-linejoin", "round").attr("stroke-linecap", "round")
+				.attr("d", leftLine);
+		var rightLine = d3.line()
+			.x(function(d) { return x(d.year)})
+			.y(function(d) { return yRight(d.valueRight)});
+		g.append("path")
+			.datum(data)
+				.attr("fill", "none").attr("stroke-width", 4)
+				.attr("stroke", chartData.rightColor)
+				.attr("stroke-linejoin", "round").attr("stroke-linecap", "round")
+				.attr("d", rightLine);
+	} else { // if we're not drawing the chart, still call this function to keep everything laid out nicely
+		allocateScreenSpace();
+	}
 }
 
 // this will be called on resizing the window or changing any chart attributes; it simply resets the chart because that's the easiest way to keep it scaled correctly
 function redrawChart() {
-	allocateScreenSpace();
 	var svg = d3.select('#' + chartData.svgID);
 	svg.select("g").remove();
 	drawChart();
+}
+
+function showChart() {
+	chartData.visible = true;
+	redrawChart();
+}
+
+function hideChart() {
+	chartData.visible = false;
+	redrawChart();
+	allocateScreenSpace();
 }
 
 
