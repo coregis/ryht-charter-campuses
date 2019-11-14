@@ -22,6 +22,11 @@ var chartData = {
 // global variable for whether the animation should be playing or not
 var animationRunning = false;
 
+// a little state storage for popups
+var popupState = {
+	campusName: ''
+};
+
 // dynamically size the 3 core elements of the page relative to each other
 function allocateScreenSpace() {
 	var viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
@@ -233,6 +238,17 @@ function moveYearSlider(sliderID, numberID, increment, loop=false) {
 
 	slider.value = desiredYear;
 	updateYearSlider(numberID, desiredYear);
+	popups = document.getElementsByClassName('mapboxgl-popup-content');
+	if (popups.length > 0) {
+		console.log(popups[0]);
+		console.log(popupState.campusName, desiredYear, 'points');
+		console.log(pickFeature(
+			popupState.campusName, desiredYear, 'points'
+		));
+		popups[0].innerHTML = fillpopup(pickFeature(
+			popupState.campusName, desiredYear, 'points'
+		));
+	}
 }
 
 function animateYearSlider(sliderID, numberID, delay) {
@@ -497,4 +513,38 @@ function setVisibilityState(params) {
 	} else {
 		return 'visible';
 	}
+}
+
+
+
+
+function pickFeature(campusName, year, sourceID) {
+	var year = parseInt(document.getElementById('active-year').innerText, 10);
+	var sourceID = 'points';
+
+	var layerID = map.getSource(sourceID).vectorLayerIds[0];
+	var features = map.querySourceFeatures(sourceID, {'sourceLayer': layerID});
+	for (i in features) {
+		if (features[i].properties.CAMPNAME === campusName && features[i].properties.year === year) {
+			return features[i].properties;
+		}
+	}
+}
+
+// process some Mapbox data to make inner text for a popup
+function fillpopup(data){
+	var html = "";
+	html += "<span class='varname'>Campus: </span> <span class='attribute'>" + data.CAMPNAME + "</span>";
+	html += "<br>"
+	html += "<span class='varname'>Year: </span> <span class='attribute'>" + data.year + "</span>";
+	html += "<br>"
+	html += "<span class='varname'>District: </span> <span class='attribute'>" + data.NAME + "</span>";
+	html += "<br>"
+	html += "<span class='varname'>Total Students: </span> <span class='attribute'>" + data.CPETALLC +"</span>";
+	html += "<br>"
+	html += "<span class='varname'>Economically Disadvantaged Students: </span> <span class='attribute'>" + data.CPETCOPNUM +"</span>";
+	html += "<br>"
+	html += "<span class='varname'>Rating: </span> <span class='attribute'>" + data.C_RATING_F +"</span>";
+	return html;
+	//this will return the string to the calling function
 }
