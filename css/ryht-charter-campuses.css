@@ -80,6 +80,13 @@ a {
   line-height: 2em;
 }
 
+#chart-controls .closebtn {
+	display: inline;
+	clear: none;
+	float: right;
+	font-size: 110%;
+}
+
 #chart-controls span#chart-reset-link {
 	display: none;
 }
