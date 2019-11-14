@@ -238,16 +238,15 @@ function moveYearSlider(sliderID, numberID, increment, loop=false) {
 
 	slider.value = desiredYear;
 	updateYearSlider(numberID, desiredYear);
-	popups = document.getElementsByClassName('mapboxgl-popup-content');
+	popups = document.getElementsByClassName('popup-text-holder');
 	if (popups.length > 0) {
-		console.log(popups[0]);
-		console.log(popupState.campusName, desiredYear, 'points');
-		console.log(pickFeature(
-			popupState.campusName, desiredYear, 'points'
-		));
-		popups[0].innerHTML = fillpopup(pickFeature(
-			popupState.campusName, desiredYear, 'points'
-		));
+		data = pickFeature(popupState.campusName, desiredYear, 'points');
+		if (data === undefined) {
+			console.log("Removing popup because " + popupState.campusName + " didn't exist in " + desiredYear);
+			document.getElementsByClassName('mapboxgl-popup')[0].style.display = 'none';
+		} else {
+			popups[0].innerHTML = fillpopup(data);
+		}
 	}
 }
 
@@ -533,7 +532,7 @@ function pickFeature(campusName, year, sourceID) {
 
 // process some Mapbox data to make inner text for a popup
 function fillpopup(data){
-	var html = "";
+	var html = "<span class='popup-text-holder'>";
 	html += "<span class='varname'>Campus: </span> <span class='attribute'>" + data.CAMPNAME + "</span>";
 	html += "<br>"
 	html += "<span class='varname'>Year: </span> <span class='attribute'>" + data.year + "</span>";
@@ -545,6 +544,7 @@ function fillpopup(data){
 	html += "<span class='varname'>Economically Disadvantaged Students: </span> <span class='attribute'>" + data.CPETCOPNUM +"</span>";
 	html += "<br>"
 	html += "<span class='varname'>Rating: </span> <span class='attribute'>" + data.C_RATING_F +"</span>";
+	html += "</span>";
 	return html;
 	//this will return the string to the calling function
 }
