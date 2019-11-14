@@ -16,9 +16,9 @@ Then the page should be available at http://localhost:1883/ (of course you can c
 
 Exactly where to edit options for the chart can be a bit confusing, so here's a primer:
 
-**Text positioning**: this is set by various `.attr(...)` lines in the `drawChart()` function, so that it can position everything relative to the size of the chart area.
+**Text positioning**: this is set by various `.attr(...)` lines in the `drawChart()` function in the function.js file in /scripts, so that it can position everything relative to the size of the chart area.
 
-**Y axis label colours**: these are defined by the `chartData` object at the top of the main `<script>` block in the HTML `<head>` element.  This is done here because that's the easiest way to have a single place to edit which controls labels and line colours together.
+**Y axis label colours**: these are defined by the `chartData` object in the function.js file in /scripts.  This is done here because that's the easiest way to have a single place to edit which controls labels and line colours together.
 
 **Which data series are loaded by default**: same `chartData` object as above.
 
