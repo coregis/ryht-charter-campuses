@@ -1,407 +1,23 @@
 <html>
-<head>
-	<meta charset='utf-8' />
-	<title>Texas Charter Campuses Over Time</title>
-	<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-	<script src='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js'></script>
-	<link href='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css' rel='stylesheet' />
-	<link href='css/ryht-charter-campuses.css' rel='stylesheet' />
+	<head>
+		<meta charset='utf-8' />
+		<title>Texas Charter Campuses Over Time</title>
+		<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+		<script src='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js'></script>
+		<link href='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css' rel='stylesheet' />
+		<link href='css/ryht-charter-campuses.css' rel='stylesheet' />
 
-	<style>
-			body { margin:0; padding:0; }
-			.mapboxgl-popup {
-				max-width: 240px;
-				font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
-			}
+<!-- https://d3js.org/ for the non-geospatial charts -->
+		<script src="https://d3js.org/d3.v5.min.js"></script>
 
-	</style>
+<!-- load functions & object definitions that we'll call later -->
+		<script src='scripts/functions.js'></script>
 
-	<!-- https://d3js.org/ for the non-geospatial charts -->
-	<script src="https://d3js.org/d3.v5.min.js"></script>
+	</head>
 
-		<script>
-		// global variable for the path to the historical districts data file
-		var districtsFile = 'data/qrySumStatsAllDistAllYears.csv';
-		// blank data structure to hold state for the chart
-		// see https://github.com/d3/d3-format#locale_format for tick format strings
-		var chartData = {
-			svgID: 'chart',
-			districtName: 'Statewide',
-			leftFieldName: 'campuses',
-			leftFieldLabel: '# Charter campuses',
-			leftColor: 'steelblue',
-			leftTickFormat: '1',
-			rightFieldName: 'students',
-			rightFieldLabel: '# Charter students',
-			rightColor: 'orange',
-			rightTickFormat: '~s'
-		};
+	<body>
 
-		// global variable for whether the animation should be playing or not
-		var animationRunning = false;
-
-		// dynamically size the 3 core elements of the page relative to each other
-		function allocateScreenSpace() {
-			var viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-			var viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-			var sidenavWidth = 300;
-			var svgWidth = viewportWidth - sidenavWidth;
-			var svgHeight = Math.max((viewportHeight / 4), 250);
-			var svg = document.getElementById(chartData.svgID);
-			svg.style.width = svgWidth;
-			svg.style.height = svgHeight;
-			var map = document.getElementById("map");
-			map.style.height = viewportHeight - svgHeight;
-			map.style.width = viewportWidth - sidenavWidth;
-			return [svgWidth, svgHeight];
-		}
-
-		//Adding showHide functionality from legislative map to this map
-		function showHideLayer(layerName, markerName, showOnly=false, hideOnly=false) {
-			var visibility = map.getLayoutProperty(layerName, 'visibility');
-			if ((visibility === 'visible' || hideOnly) && !showOnly) {
-				map.setLayoutProperty(layerName, 'visibility', 'none');
-				this.className = '';
-				if (markerName !== '') {
-					document.getElementById(markerName).classList.add('inactive');
-				}
-			} else {
-				this.className = 'active';
-				map.setLayoutProperty(layerName, 'visibility', 'visible');
-				if (markerName !== '') {
-					document.getElementById(markerName).classList.remove('inactive');
-				}
-			}
-		}
-
-		// Update the year slider and corresponding map filter
-		function updateYearSlider(numberID, year) {
-		  map.setFilter('campuses', ['==', ['number', ['get', 'year']], parseInt(year, 10)]);
-		  // update text in the UI
-		  document.getElementById(numberID).innerText = year;
-		}
-
-
-		//These are the four functions written by Eldan that power the zoom-to-district feature
-		// runWhenLoadComplete() checks if the map has finished loading data, and once it has then it calls the next one.
-		//populateZoomControl() fills the dropdowns with options generated from reading the data layers for all the district names.
-		//getIDsList() does the actual work of fetching the district names
-		//zoomToPolygon() zooms the map to the district extent
-
-			function runWhenLoadComplete() {
-				if (!map.loaded() || !map.getLayer('texas-school-districts-poly')) {
-					setTimeout(runWhenLoadComplete, 100);
-				}
-				else {
-					// make sure we really have enough space for Texas
-					map.fitBounds([
-						[-107, 25.25], // southwest coords
-						[-93.25, 36.75] // northeast coords, exaggerated somewhat towards the NE to make the state appear more visually centred
-					]);
-					moveYearSlider('slider', 'active-year', 0); // calling this with a 0 increment will make sure that the filter, caption and slider position all match.  Without doing this, the browser seems to keep the slider position between refreshes, but reset the filter and caption so they get out of sync.
-					populateZoomControl("school-districts-control", "texas-school-districts", "NAME", "Texas School Districts");
-					map.moveLayer('texas-school-districts-lines', 'country-label-sm');
-					map.moveLayer('texas-school-districts-poly', 'texas-school-districts-lines');
-					for (i=0; i < loadedLineLayers.length; i++) {
-						if (loadedLineLayers[i][1] !== "texas_school_districts") {
-							map.moveLayer(loadedLineLayers[i][0], 'texas-school-districts-poly');
-						}
-					}
-				}
-			}
-
-			function populateZoomControl(selectID, sourceID, fieldName, layerName) {
-				polygons = getPolygons(sourceID, fieldName);
-				var select = document.getElementById(selectID);
-				select.options[0] = new Option(layerName, "-108,25,-88,37,Statewide");
-				for (i in polygons) {
-					select.options[select.options.length] = new Option(
-						polygons[i].name,
-						polygons[i].bbox.toString() + ',' + polygons[i].name
-					);
-				}
-				map.setLayoutProperty(sourceID + '-poly', 'visibility', 'none');
-// IMPORTANT: these paint properties define the appearance of the mask layer that deemphasises districts outside the one we've zoomed to.  They will overrule anything that's set when that mask layer was loaded.
-				map.setPaintProperty(sourceID + '-poly', 'fill-color', 'rgba(200, 200, 200, 0.5)');
-				map.setPaintProperty(sourceID + '-lines', 'line-color', 'rgba(50, 50, 50, .7)');
-			}
-
-			function getPolygons(sourceID, nameField) {
-				layerID = map.getSource(sourceID).vectorLayerIds[0];
-				features = map.querySourceFeatures(sourceID, {'sourceLayer': layerID})
-				polygons = [];
-				existingItems = [];
-				for (i in features) {
-					existing = existingItems.indexOf(features[i].properties[nameField]);
-					if (existing > -1) {
-						polygons[existing].bbox = getFeatureBounds(
-							features[i].toJSON().geometry.coordinates,
-							polygons[existing].bbox
-						);
-					}
-					else {
-						existingItems.push(features[i].properties[nameField]);
-						polygons.push({
-							name: features[i].properties[nameField],
-							bbox: getFeatureBounds(features[i].toJSON().geometry.coordinates)
-						});
-					}
-				}
-				polygons.sort(function(a, b){
-					var x = a.name.toLowerCase();
-					var y = b.name.toLowerCase();
-					if (x < y) {return -1;}
-					if (x > y) {return 1;}
-					return 0;
-				});
-				return polygons;
-			}
-
-			function getFeatureBounds(coords, startingBBOX) {
-				if (startingBBOX === undefined) {
-					minX = 180;
-					maxX = -180;
-					minY = 90;
-					maxY = -90;
-				}
-				else {
-					minX = startingBBOX[0][0];
-					maxX = startingBBOX[1][0];
-					minY = startingBBOX[0][1];
-					maxY = startingBBOX[1][1];
-				}
-				for (i in coords) {
-					// coords may be a simple array of coords, or an array of arrays if it's a multipolygon
-					for (j in coords[i]) {
-						if (!(coords[i][j][0] instanceof Array)) {
-							if (coords[i][j][0] < minX) { minX = coords[i][j][0]; }
-							if (coords[i][j][0] > maxX) { maxX = coords[i][j][0]; }
-							if (coords[i][j][1] < minY) { minY = coords[i][j][1]; }
-							if (coords[i][j][1] > maxY) { maxY = coords[i][j][1]; }
-						}
-						else {
-							for (k in coords[i][j]) {
-								if (coords[i][j][k][0] < minX) { minX = coords[i][j][k][0]; }
-								if (coords[i][j][k][0] > maxX) { maxX = coords[i][j][k][0]; }
-								if (coords[i][j][k][1] < minY) { minY = coords[i][j][k][1]; }
-								if (coords[i][j][k][1] > maxY) { maxY = coords[i][j][k][1]; }
-							}
-						}
-					}
-				}
-				return [[minX, minY], [maxX, maxY]];
-			}
-
-			function zoomToPolygon(sourceID, coords) {
-				if (typeof coords !== 'undefined') {
-					coords = coords.split(",");
-					bbox = [
-						[coords[0], coords[1]],
-						[coords[2], coords[3]]
-					];
-					map.fitBounds(bbox, options={padding: 10, duration: 5000});
-					if (coords[4] === "Statewide") { // if we're zooming out to the whole state again
-						showHideLayer('texas-school-districts-poly', markerName='', showOnly=false, hideOnly=true);
-						showHideLayer('texas-school-districts-lines', markerName='', showOnly=false, hideOnly=true);
-					} else {
-						showHideLayer('texas-school-districts-poly', markerName='', showOnly=true);
-						showHideLayer('texas-school-districts-lines', markerName='', showOnly=true);
-						map.setFilter(
-							'texas-school-districts-poly',
-							['!=', 'NAME', coords[4]]
-						);
-					}
-					// while the zoom goes, update the chart
-					chartData.districtName = coords[4];
-					redrawChart();
-				}
-			}
-
-			// the following functions are to automate control over the time slider
-			function moveYearSlider(sliderID, numberID, increment, loop=false) {
-				slider = document.getElementById(sliderID);
-				minYear = parseInt(slider.min, 10);
-				currentYear = parseInt(slider.value, 10);
-				maxYear = parseInt(slider.max, 10);
-
-				desiredYear = currentYear + increment;
-
-				if (loop) { // if we're looping then wrap any overflow around
-					if (desiredYear > maxYear) {desiredYear = minYear;}
-					else if (desiredYear < minYear) {desiredYear = maxYear;}
-				} else { // if not looping then keep changes within the min/max bounds
-					if ((desiredYear > maxYear) || (desiredYear < minYear)) {
-						desiredYear = currentYear;
-						console.log('Hacked too much time');
-					}
-				}
-
-				slider.value = desiredYear;
-				updateYearSlider(numberID, desiredYear);
-			}
-
-			function animateYearSlider(sliderID, numberID, delay) {
-				if (animationRunning) {
-					moveYearSlider(sliderID, numberID, 1, loop=true);
-					setTimeout(
-						function() {animateYearSlider(sliderID, numberID, delay)},
-						delay
-					);
-				}
-			}
-
-			function startYearAnimation(sliderID, numberID, delay, playID, stopID) {
-				animationRunning = true;
-				document.getElementById(playID).style.display = 'none';
-				document.getElementById(stopID).style.display = 'inline';
-				animateYearSlider(sliderID, numberID, delay);
-			}
-
-			function stopYearAnimation(playID, stopID) {
-				animationRunning = false;
-				document.getElementById(playID).style.display = 'inline';
-				document.getElementById(stopID).style.display = 'none';
-			}
-
-			// now draw the time series chart
-			function unspoolOneDistrict() {
-				var data = chartData.dataset[chartData.districtName];
-				var arr = [];
-				for (i in data) {
-					arr.push({
-						year: i,
-						valueLeft: data[i][chartData.leftFieldName],
-						valueRight: data[i][chartData.rightFieldName]
-					});
-				}
-				// if it was empty, then go back to statewide
-				return arr;
-			}
-
-			function drawChart() {
-				// set up the sizing of everything
-				var svgDims = allocateScreenSpace();
-				var svgWidth = svgDims[0];
-				var svgHeight = svgDims[1];
-				var margin = { top: 35, right: 80, bottom: 28, left: 80 };
-				var width = svgWidth - margin.left - margin.right;
-				var height = svgHeight - margin.top - margin.bottom;
-				// standard d3 elements setup
-				svg = d3.select('#' + chartData.svgID);
-				var g = svg.append("g").attr(
-					"transform", "translate(" + margin.left + "," + margin.top + ")"
-				);
-				// parse the data
-				data = unspoolOneDistrict();
-				// if we get no data, then revert to statewide
-				if (data.length === 0) {
-					console.log("Reverting chart to statewide because there's no data for", chartData.districtName);
-					var selectedDistrict = chartData.districtName;
-					chartData.districtName = "Statewide";
-					data = unspoolOneDistrict();
-					g.append("text")
-						.attr("id", "chart-subtitle")
-						.attr("x", 0).attr("dx", "1em").attr("y", 0)
-						.attr("text-anchor", "start")
-						.text("Showing statewide data because");
-					g.append("text")
-						.attr("id", "chart-subtitle")
-						.attr("x", 0).attr("dx", "1em").attr("y", 0).attr("dy", "2.5ex")
-						.attr("text-anchor", "start")
-						.text(selectedDistrict);
-					g.append("text")
-						.attr("id", "chart-subtitle")
-						.attr("x", 0).attr("dx", "1em").attr("y", 0).attr("dy", "5ex")
-						.attr("text-anchor", "start")
-						.text("has no charter campuses");
-				}
-				// add a chart title and Y axis labels
-				g.append("text")
-					.attr("id", "chart-title")
-					.attr("x", (width/2)).attr("y", (-margin.top/4))
-					.attr("text-anchor", "middle")
-					.text(chartData.districtName);
-				g.append("text")
-					.attr("id", "left-axis-label")
-					.attr("fill", chartData.leftColor)
-					.attr("y", 10-margin.left).attr("dy", "1ex")
-					.attr("text-anchor", "end")
-					.text(chartData.leftFieldLabel);
-				g.append("text")
-					.attr("id", "right-axis-label")
-					.attr("fill", chartData.rightColor)
-					.attr("y", width+margin.right-10)
-					.attr("text-anchor", "end")
-					.text(chartData.rightFieldLabel);
-				// set up scales and add axes
-				var x = d3.scaleLinear().rangeRound([0, width]);
-				var yLeft = d3.scaleLinear().rangeRound([height, 0]);
-				var yRight = d3.scaleLinear().rangeRound([height, 0]);
-				yLeftMax = d3.max(data, function(d) { return d.valueLeft });
-				yRightMax = d3.max(data, function(d) { return d.valueRight });
-				xMin = d3.min(data, function(d) { return d.year });
-				xMax = d3.max(data, function(d) { return d.year });
-				x.domain([xMin, xMax]);
-				yLeft.domain([0, yLeftMax]);
-				yRight.domain([0, yRightMax]);
-				g.append("g")
-					.attr("transform", "translate(0," + height + ")")
-					.call(
-						d3.axisBottom(x)
-						.ticks(Math.min((xMax - xMin), width / 50))
-						.tickFormat(d3.format("1000"))
-					);
-				g.append("g")
-					.call(
-						d3.axisLeft(yLeft)
-							.ticks(Math.min(height / 25, yLeftMax))
-							.tickFormat(d3.format(chartData.leftTickFormat))
-					)
-					.attr("stroke", chartData.leftColor);
-				g.append("g")
-					.attr("transform", "translate( " + width + ", 0 )")
-					.call(
-						d3.axisRight(yRight)
-							.ticks(Math.min(height / 25, yRightMax))
-							.tickFormat(d3.format(chartData.rightTickFormat))
-					)
-					.attr("stroke", chartData.rightColor);
-				// add the actual data
-				var leftLine = d3.line()
-					.x(function(d) { return x(d.year)})
-					.y(function(d) { return yLeft(d.valueLeft)});
-				g.append("path")
-					.datum(data)
-						.attr("fill", "none").attr("stroke-width", 4)
-						.attr("stroke", chartData.leftColor)
-						.attr("stroke-linejoin", "round").attr("stroke-linecap", "round")
-						.attr("d", leftLine);
-				var rightLine = d3.line()
-					.x(function(d) { return x(d.year)})
-					.y(function(d) { return yRight(d.valueRight)});
-				g.append("path")
-					.datum(data)
-						.attr("fill", "none").attr("stroke-width", 4)
-						.attr("stroke", chartData.rightColor)
-						.attr("stroke-linejoin", "round").attr("stroke-linecap", "round")
-						.attr("d", rightLine);
-			}
-
-			// this will be called on resizing the window or changing any chart attributes; it simply resets the chart because that's the easiest way to keep it scaled correctly
-			function redrawChart() {
-				allocateScreenSpace();
-				var svg = d3.select('#' + chartData.svgID);
-				svg.select("g").remove();
-				drawChart();
-			}
-		</script>
-
-</head>
-
-<body>
-
-	<!--BEGIN FLYOUT FOR 'ZOOM TO LAYERS'-->
-
+<!--BEGIN FLYOUT FOR 'ZOOM TO LAYERS'-->
 		<div id="mySidenav" class="sidenav">
 			<!--
 			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -427,360 +43,83 @@
 				<a href="https://www.raiseyourhandtexas.org/contact/" target="_blank">Contact</a>
 			</p>
 			-->
-		</div>
-
-		<div id="main">
+		</div> <!-- id="mySidenav" -->
 
 <!--
-<div id="about">
-			<span style="font-size:16px;cursor:pointer" onclick="openNav()">&#9776; Zoom to Districts</span>
-		</div>
+		<div id="main">
+		<div id="about">
+					<span style="font-size:16px;cursor:pointer" onclick="openNav()">&#9776; Zoom to Districts</span>
+				</div>
 
-		<script>
-			/*
-			function openNav() {
-				document.getElementById("mySidenav").style.width = "300px";
-				document.getElementById("main").style.marginLeft = "300px";
-				var viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-				document.getElementById("map").style.width = viewportWidth - 300;
-			}
-			function closeNav() {
-				document.getElementById("mySidenav").style.width = "0";
-				document.getElementById("main").style.marginLeft= "0";
-			}
-			*/
-		</script>
+				<script>
+					/*
+					function openNav() {
+						document.getElementById("mySidenav").style.width = "300px";
+						document.getElementById("main").style.marginLeft = "300px";
+						var viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+						document.getElementById("map").style.width = viewportWidth - 300;
+					}
+					function closeNav() {
+						document.getElementById("mySidenav").style.width = "0";
+						document.getElementById("main").style.marginLeft= "0";
+					}
+					*/
+				</script>
 -->
+<!--END FLYOUT FOR 'ZOOM TO LAYERS'-->
 
+<!-- Mapbox will draw the map into this div -->
+		<div id='map'></div>
 
+<!-- div for the legend and date controls -->
+		<div id='console'>
+			<h1>Charter Campuses in Texas</h1>
 
-	<!--END FLYOUT FOR 'ZOOM TO LAYERS'-->
+			<!--create legend-->
+			<div class='session'>
+				<h2>Percentage of Economically Disadvantaged Students</h2>
+			</div>
 
-<div id='map'></div>
-<div id='console'>
-  <h1>Charter Campuses in Texas</h1>
+			<div class='row colors'></div>
+			<div class='row labels'>
+				<div class='label'>0</div>
+				<div class='label'>20%</div>
+				<div class='label'>40%</div>
+				<div class='label'>60%</div>
+				<div class='label'>80%</div>
+				<div class='label'>100%</div>
+			</div> <!-- class='row labels' -->
 
-  <!--create legend-->
-  <div class='session'>
-  <h2>Percentage of Economically Disadvantaged Students</h2>
+<!--create time slider-->
+			<div class='session' id='sliderbar'>
+				<h2>Year: <label id='active-year'></label></h2>
+				<input id='slider' class='row' type='range' min='1997' max='2018' step='1' value='1997' />
+			</div>
+			<div id='slidercontrols'>
+				<span id='slider_back' onclick="moveYearSlider('slider', 'active-year', -1);" title='Go back one year'><img src="img/skip_backward.svg"></span>
+				<span id='slider_play' onclick="startYearAnimation('slider', 'active-year', 1000, 'slider_play', 'slider_stop');" title='Animate timeline'><img src="img/play.svg"></span>
+				<span id='slider_stop' onclick="stopYearAnimation('slider_play', 'slider_stop');" title='Stop animation'><img src="img/stop.svg"></span>
+				<span id='slider_forward' onclick="moveYearSlider('slider', 'active-year', 1);" title='Go forward one year'><img src="img/skip_forward.svg"></span>
 
-	  <div class='row colors'>
-	  </div>
-		  <div class='row labels'>
-			<div class='label'>0</div>
-			<div class='label'>20%</div>
-			<div class='label'>40%</div>
-			<div class='label'>60%</div>
-			<div class='label'>80%</div>
-			<div class='label'>100%</div>
-		  </div>
+				<p class="mapcredits">
+					Data: <a href='https://raiseyourhandtexas.org'>Raise Your Hand Texas</a>
+					<br /><br />
+					Map produced by <a href="http://www.coregis.net/" target="_blank">CoreGIS</a>.
+					<br /><br />
+					<a href="https://www.raiseyourhandtexas.org/" target="_blank">Raise Your Hand Texas</a>
+					<br />
+					<a href="https://www.raiseyourhandtexas.org/contact/" target="_blank">Contact</a>
+				</p>
 
-		<!--create time slider-->
-		  <div class='session' id='sliderbar'>
-		  <h2>Year: <label id='active-year'></label></h2>
-		  <input id='slider' class='row' type='range' min='1997' max='2018' step='1' value='1997' />
-		  </div>
-		  <div id='slidercontrols'>
-		  	<span id='slider_back' onclick="moveYearSlider('slider', 'active-year', -1);" title='Go back one year'><img src="img/skip_backward.svg"></span>
-		  	<span id='slider_play' onclick="startYearAnimation('slider', 'active-year', 1000, 'slider_play', 'slider_stop');" title='Animate timeline'><img src="img/play.svg"></span>
-		  	<span id='slider_stop' onclick="stopYearAnimation('slider_play', 'slider_stop');" title='Stop animation'><img src="img/stop.svg"></span>
-		  	<span id='slider_forward' onclick="moveYearSlider('slider', 'active-year', 1);" title='Go forward one year'><img src="img/skip_forward.svg"></span>
+				</div> <!-- id='slidercontrols' -->
 
-			<p class="mapcredits">
-				Data: <a href='https://raiseyourhandtexas.org'>Raise Your Hand Texas</a>
-				<br /><br />
-				Map produced by <a href="http://www.coregis.net/" target="_blank">CoreGIS</a>.
-				<br /><br />
-				<a href="https://www.raiseyourhandtexas.org/" target="_blank">Raise Your Hand Texas</a>
-				<br />
-				<a href="https://www.raiseyourhandtexas.org/contact/" target="_blank">Contact</a>
-			</p>
+			</div> <!-- id='console' -->
 
-		  </div>
+<!-- d3 will draw the chart into this element -->
+		<svg id='chart'></svg>
 
-	</div>
+<!-- JS that needs the above elements to be declared before it runs -->
+		<script src='scripts/onload.js'></script>
 
-</div>
-
-<svg id='chart'></svg>
-
-
-<script>
-		// call this a first time before anything else loads, so the map is in its likely final size
-		allocateScreenSpace();
-
-		mapboxgl.accessToken = 'pk.eyJ1IjoiY29yZS1naXMiLCJhIjoiaUxqQS1zQSJ9.mDT5nb8l_dWIHzbnOTebcQ';
-
-		//set max bounds to Texas + some padding (we have to pad quite a lot because otherwise very non-square window dimensions run into an issue where the E-W limit stops the whole state from fitting N-S, or vice versa)
-		var maxBounds = [
-				[-125, 15], // southwest coords
-				[-75, 45] // northeast coords
-			];
-
-//		openNav();
-
-		//let's make a map!
-		var map = new mapboxgl.Map({
-			container: 'map', // container id
-			style: 'mapbox://styles/core-gis/cjbcz8eyg70il2snv8ccgahf7', // stylesheet location; this is the style with markers turned OFF
-			center: [-99.1725892, 31.3915247], // starting position [lng, lat] https://atlas.thc.state.tx.us/Details/5307002146
-			zoom: 5, // starting zoom
-			maxBounds: maxBounds // sets bounds as max
-		});
-
-			var originalZoomLevel = map.getZoom();
-
-			function setVisibilityState(params) {
-				if ((params.visibleOnLoad === undefined) || (params.visibleOnLoad === false)) {
-					return 'none';
-				} else {
-					return 'visible';
-				}
-			}
-
-			var loadedLineLayers = [];
-			var loadedPolygonLayers = [];
-
-			function addPointLayer(map, params) {
-				gus_api(params.gusID, function(jsondata) {
-					var visibilityState = setVisibilityState(params);
-					if (params.scalingFactor === undefined) { params.scalingFactor = 2.5; }
-					map.addSource(params.sourceName, {
-						type: 'geojson',
-						data: jsondata
-					});
-					map.addLayer({
-						'id': params.layerName,
-						'type': 'symbol',
-						'source': params.sourceName,
-						'layout': {
-							'icon-image': params.icon,
-							'icon-size': params.iconSize,
-							'icon-allow-overlap': true,
-							'visibility': visibilityState
-						}
-					});
-					map.on("zoomend", function(){
-						map.setLayoutProperty(params.layerName, 'icon-size', (1 + (map.getZoom() / originalZoomLevel - 1) * params.scalingFactor) * params.iconSize);
-					});
-				});
-			}
-
-			function addVectorLayer(map, params) {
-				var visibilityState = setVisibilityState(params);
-				map.addSource(params.sourceName, {
-					type: 'vector',
-					url: params.sourceURL
-				});
-				if ((params.lineLayerName !== undefined) && (params.lineLayerName !== false)) {
-					map.addLayer(
-						{
-							'id': params.lineLayerName,
-							'type': 'line',
-							'source': params.sourceName,
-							'source-layer': params.sourceID,
-							'layout': {
-								'visibility': visibilityState,
-								'line-join': 'round',
-								'line-cap': 'round'
-							},
-							'paint': {
-								'line-color': params.lineColor,
-								'line-width': 1
-							},
-						},
-						params.displayBehind
-					);
-					if (params.legendID !== undefined) {
-						loadedLineLayers.push([params.lineLayerName, params.legendID]);
-					}
-				}
-				if ((params.polygonLayerName !== undefined) && (params.polygonLayerName !== false)) {
-					if (params.usedInZoomControl) { visibilityState = 'visible'; }
-					map.addLayer(
-						{
-							'id': params.polygonLayerName,
-							'type': 'fill',
-							'source': params.sourceName,
-							'source-layer': params.sourceID,
-							'layout': {
-								'visibility': visibilityState
-							},
-							'paint': {
-								'fill-color': params.polygonFillColor,
-								'fill-outline-color': params.polygonOutlineColor
-							},
-						}
-					);
-					if (params.legendID !== undefined) {
-						loadedPolygonLayers.push([params.polygonLayerName, params.legendID]);
-					}
-				}
-			}
-
-		//add point data from Mapbox
-		map.on('load', function() {
-			map.addSource('points',{
-			type:'vector',
-			url:'mapbox://core-gis.7csrpxnt'
-			});
-
-		  map.addLayer({
-			'id': 'campuses',
-			'type': 'circle',
-			'source':'points',
-			'source-layer':'ryht_tx_charter_campuses_11_0-0gr08r',
-			'filter':['==', ['number', ['get', 'year']], 1997],
-			'layout':{	},
-			'paint': {
-			  'circle-radius': [
-				'interpolate',
-				['linear'],
-				//This will scale the points based on total enrollment at each campus
-				['number', ['get', 'CPETALLC']],
-				1, 6,
-				1000, 30
-			  ],
-			  'circle-color': [
-				'interpolate',
-				['linear'],
-				//This will change the color of the points based on the percentage of economically disadvantaged
-				//students at each campus
-				['number', ['get', 'CPETECOP']],
-				0, '#2DC4B2',
-				20, '#3BB3C3',
-				40, '#669EC4',
-				50, '#8B88B6',
-				60, '#A2719B',
-				80, '#AA5E79'
-			  ],
-			  'circle-opacity': 0.8
-			}
-		  });
-
-				//add data to power the zoom control
-		  		addVectorLayer(
-					map,
-					{
-						'sourceName': 'texas-school-districts', // data source name for internal use
-						'sourceID': 'texas_school_districts_v2', // name of the Mapbox layer from which the data will be loaded
-						'sourceURL': 'mapbox://core-gis.e4af0de1', // Mapbox URL
-						'lineLayerName': 'texas-school-districts-lines', // OPTIONAL name we'll use for the layer that shows the outlines. Leave out or set to false if you don't want outlines displayed.
-						'lineColor': '#cdcecb', // colour to draw those outlines with; safe to leave out if we're not drawing outlines, but must be explicitly set if we are
-						'legendID': 'texas_school_districts', // OPTIONAL: the id in the legend, so we can set it to active or inactive as appropriate. Simply leave out for layers that don't appear in the legend
-						'displayBehind': 'waterway-label', // ID of another existing layer, which Mapbox will make sure this one gets drawn behind
-						'polygonLayerName': 'texas-school-districts-poly', // OPTIONAL name we'll use for the layer that invisibly stores the polygon extents. Needed if we're either going to add this layer to either the zoom to districts control or set click events (e.g. popups) on it.	Leave out or set to false if you don't want one.
-						'polygonFillColor': 'rgba(200, 100, 240, 0)', // colour to fill polygons with. Needed if there's going to be a polygon layer; simply leave out if not.
-						'polygonOutlineColor': 'rgba(200, 100, 240, 0)', // colour to draw polygon boundaries with. Needed if there's going to be a polygon layer; simply leave out if not.
-						'visibleOnLoad': false, // set this optional argument to true to have the layer visible on load. Leave out or set to false to have it hidden on load
-						'usedInZoomControl': true // set this optional argument to true if this layer will be used in the Zoom to Districts control, otherwise leave it out or set it to false.
-					}
-				);
-
-				//Add districts as reference on load
-								addVectorLayer(
-					map,
-					{
-						'sourceName': 'texas-school-districts-ref',
-						'sourceID': 'texas_districts_1882_v4',
-						'sourceURL': 'mapbox://core-gis.b73007d3',
-						'lineLayerName': 'texas-school-districts-ref-lines',
-						'lineColor': '#cdcecb',
-						'legendID': 'texas_school_districts-ref',
-						'displayBehind': 'waterway-label',
-						'polygonFillColor': 'rgba(124, 124, 124, 0)',
-						'polygonOutlineColor': 'rgba(103, 65, 30, 0)',
-						'visibleOnLoad': true,
-						'usedInZoomControl': false
-					}
-				);
-
-		  //add interactivity to the time slider
-		  document.getElementById('slider').addEventListener('input', function(e) {
-		  	updateYearSlider('active-year', e.target.value);
-			});
-
-		// When a click event occurs on a feature in the pre-k districts layer, open a
-		// popup at the location of the click, with description HTML from its properties.
-		map.on('click', 'campuses', function (e) {
-			new mapboxgl.Popup()
-				.setLngLat(e.lngLat)
-				.setHTML(fillpopup(e.features[0].properties))
-				.addTo(map);
-			chartData.districtName = e.features[0].properties.NAME;
-			redrawChart();
-		});
-
-		 // Change the cursor to a pointer when the mouse is over the campuses layer.
-		map.on('mouseenter', 'campuses', function () {
-			map.getCanvas().style.cursor = 'pointer';
-		});
-
-		// Change it back to a pointer when it leaves
-		map.on('mouseleave', 'campuses', function () {
-			map.getCanvas().style.cursor = '';
-		});
-
-		function fillpopup(data){
-			var html = "";
-			html = html + "<span class='varname'>Campus: </span> <span class='attribute'>" + data.CAMPNAME + "</span>";
-			html = html + "<br>"
-			html = html + "<span class='varname'>Year: </span> <span class='attribute'>" + data.year + "</span>";
-			html = html + "<br>"
-			html = html + "<span class='varname'>District: </span> <span class='attribute'>" + data.NAME + "</span>";
-			html = html + "<br>"
-			html = html + "<span class='varname'>Total Students: </span> <span class='attribute'>" + data.CPETALLC +"</span>";
-			html = html + "<br>"
-			html = html + "<span class='varname'>Economically Disadvantaged Students: </span> <span class='attribute'>" + data.CPETCOPNUM +"</span>";
-			html = html + "<br>"
-			html = html + "<span class='varname'>Rating: </span> <span class='attribute'>" + data.C_RATING_F +"</span>";
-			return html;
-			//this will return the string to the calling function
-
-		}
-
-			runWhenLoadComplete();
-
-		}); // end of map.on(load) block
-
-// Add zoom controls to the map, with the compass turned off; position is modified in CSS
-		map.addControl(new mapboxgl.NavigationControl({
-			// Hide rotation control.
-			showCompass: false
-			}), 'bottom-right');
-
-	// load and parse districtsFile and then call the chart-drawing function
-	d3.csv(districtsFile).then(function(data) {
-		var districtHistory = {'Statewide': {}};
-		data.forEach(function(d) {
-			// pre-parse the numbers to avoid repetition
-			vals = {
-				'campuses': parseInt(d.CountOfCAMPNAME, 10),
-				'students': parseInt(d.SumOfCPETALLC, 10),
-				'disadvantaged': parseInt(d.SumOfCPETCOPNUM, 10)
-			};
-			year = parseInt(d.year, 10);
-			// add blank object to history for each new district
-			if (!districtHistory.hasOwnProperty(d.NAME)) {
-				districtHistory[d.NAME] = {};
-			}
-			// add one year of data to the relevant district's object
-			districtHistory[d.NAME][year] = vals;
-			// add year to statewide totals object if this is the first data for it
-			if (!districtHistory['Statewide'].hasOwnProperty(year)) {
-				districtHistory['Statewide'][year] = vals;
-			} else { // or add to the running totals otherwise
-				districtHistory['Statewide'][year].campuses += vals.campuses;
-				districtHistory['Statewide'][year].students += vals.students;
-				districtHistory['Statewide'][year].disadvantaged += vals.disadvantaged;
-			}
-		});
-		chartData.dataset = districtHistory;
-		drawChart();
-		window.addEventListener("resize", redrawChart);
-	});
-
-</script>
-
-</body>
+	</body>
 </html>
