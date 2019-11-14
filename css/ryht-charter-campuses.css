@@ -55,10 +55,45 @@ a {
     transition: 0.3s
 }
 
+/* containers for the chart controls */
+#chart-controls, #chart-open-link {
+	position: absolute;
+	left: 300px;
+	bottom: 0;
+	background-color: white;
+	font-family: "Montserrat", helvetica, arial, sans-serif;
+	font-weight: normal;
+	color: #363635;
+	text-decoration: none;
+}
+
+/* controls that show when the chart is open */
+#chart-controls {
+	height: 25%;
+	padding: 15px; /* padding must be in pixels for the JS to position everything right */
+	width: 100px;
+}
+
+#chart-controls span {
+  display: block;
+	cursor: pointer;
+  line-height: 2em;
+}
+
+#chart-controls span#chart-reset-link {
+	display: none;
+}
+
+/* container for the show chart control */
+#chart-open-link {
+	cursor: pointer;
+	padding: 5px 15px; /* padding must be in pixels for the JS to position everything right */
+}
+
 /* SVG element that holds the d3 chart */
 #chart {
 	position: absolute;
-	width: 60%;
+	width: 50%; /* will get overriden by the JS, but we need something to start with */
 	height: 25%;
 	right: 0;
 	bottom: 0;
