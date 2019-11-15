@@ -93,7 +93,7 @@
 <!--create time slider-->
 			<div class='session' id='sliderbar'>
 				<h2>Year: <label id='active-year'></label></h2>
-				<input id='slider' class='row' type='range' min='1997' max='2018' step='1' value='1997' />
+				<input id='slider' class='row' type='range' min='1997' max='2018' step='1' value='1997' onmouseup="moveYearSlider('slider', 'active-year', 0);"/>
 			</div>
 			<div id='slidercontrols'>
 				<span id='slider_back' onclick="moveYearSlider('slider', 'active-year', -1);" title='Go back one year'><img src="img/skip_backward.svg"></span>

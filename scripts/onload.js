@@ -110,7 +110,8 @@ map.on('load', function() {
 // When a click event occurs on a feature in the campus points layer, open a
 // popup at the location of the click, with description HTML from its properties.
 	map.on('click', 'campuses', function (e) {
-		new mapboxgl.Popup()
+		popupState.campusID = e.features[0].properties.CAMPUS;
+		popupState.popup = new mapboxgl.Popup()
 			.setLngLat(e.lngLat)
 			.setHTML(fillpopup(e.features[0].properties))
 			.addTo(map);
@@ -127,23 +128,6 @@ map.on('load', function() {
 	map.on('mouseleave', 'campuses', function () {
 		map.getCanvas().style.cursor = '';
 	});
-
-	function fillpopup(data){
-		var html = "";
-		html += "<span class='varname'>Campus: </span> <span class='attribute'>" + data.CAMPNAME + "</span>";
-		html += "<br>"
-		html += "<span class='varname'>Year: </span> <span class='attribute'>" + data.year + "</span>";
-		html += "<br>"
-		html += "<span class='varname'>District: </span> <span class='attribute'>" + data.NAME + "</span>";
-		html += "<br>"
-		html += "<span class='varname'>Total Students: </span> <span class='attribute'>" + data.CPETALLC +"</span>";
-		html += "<br>"
-		html += "<span class='varname'>Economically Disadvantaged Students: </span> <span class='attribute'>" + data.CPETCOPNUM +"</span>";
-		html += "<br>"
-		html += "<span class='varname'>Rating: </span> <span class='attribute'>" + data.C_RATING_F +"</span>";
-		return html;
-		//this will return the string to the calling function
-	}
 
 	// call other functions which will wait until the *data load* is complete before actually running
 	runWhenLoadComplete();
