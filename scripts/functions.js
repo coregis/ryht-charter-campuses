@@ -498,3 +498,31 @@ function setVisibilityState(params) {
 		return 'visible';
 	}
 }
+
+
+
+// process some Mapbox data to make inner text for a popup
+function fillpopup(data){
+	console.log(data);
+	var html = "<span class='popup-text-holder'>";
+	html += "<span class='varname'>Campus: </span> <span class='attribute'>" + data.CAMPNAME + "</span>";
+	html += "<br>"
+	html += "<span class='varname'>Year: </span> <span class='attribute'>" + data.year + "</span>";
+	html += "<br>"
+	html += "<span class='varname'>District: </span> <span class='attribute'>" + data.NAME + "</span>";
+	html += "<br>"
+	html += "<span class='varname'>Total Students: </span> <span class='attribute'>" + data.CPETALLC +"</span>";
+	html += "<br>"
+	html += "<span class='varname'>Economically Disadvantaged Students: </span> <span class='attribute'>" + data.CPETECOC +"</span>";
+	html += "<br>"
+	html += "<span class='varname'>English Learners Students: </span> <span class='attribute'>" + data.CPETLEPC +"</span>";
+	html += "<br>"
+	html += "<span class='varname'>Bilingual Education Students: </span> <span class='attribute'>" + data.CPETBILC +"</span>";
+	html += "<br>"
+	html += "<span class='varname'>Special Education Students: </span> <span class='attribute'>" + data.CPETSPEC +"</span>";
+	html += "<br>"
+	html += "<span class='varname'>Rating: </span> <span class='attribute'>" + data.C_RATING_F +"</span>";
+	html += "</span>";
+	return html;
+	//this will return the string to the calling function
+}
