@@ -4,40 +4,40 @@
 // global variable for the path to the historical districts data file
 var districtsFile = 'data/qrySumStatsAllDistAllYears_v2.csv';
 
-// mappings of field names in the CSV to variable names.  Update references here to follow any field renaming in the CSV; add items using the same basic structure to add options.
+// mappings of field names in the CSV & mapbox account to variable names for local use.  Update references here to follow any field renaming in the data sources; add items using the same basic structure to add options.
 var fieldMappings = {
 	totalStudents: {
-		variable: 'CPETALLC', // column name in the CSV
+		mapboxVarName: 'CPETALLC', // field name in Mapbox
 		popupLabel: 'Total Students', // label to use in popups
 		selectorLabel: 'charter students', // label to use in variable selector dropdown,
 		chartLabel: 'Charter students' // label to use on the chart itself
 	},
 	disadvantagedStudents: {
-		variable: 'CPETECOC',
+		mapboxVarName: 'CPETECOC',
 		popupLabel: 'Economically Disadvantaged Students',
 		selectorLabel: 'economically disadvantaged students',
 		chartLabel: 'economically disadvantaged'
 	},
 	ellStudents: {
-		variable: 'CPETLEPC',
+		mapboxVarName: 'CPETLEPC',
 		popupLabel: 'English Learners Students',
 		selectorLabel: 'English learners students',
 		chartLabel: 'English learners'
 	},
 	bleStudents: {
-		variable: 'CPETBILC',
+		mapboxVarName: 'CPETBILC',
 		popupLabel: 'Bilingual Education Students',
 		selectorLabel: 'bilingual education students',
 		chartLabel: 'bilingual education'
 	},
 	seStudents: {
-		variable: 'CPETSPEC',
+		mapboxVarName: 'CPETSPEC',
 		popupLabel: 'Special Education Students',
 		selectorLabel: 'special education students',
 		chartLabel: 'special education'
 	},
 	rating: {
-		variable: 'C_RATING_F',
+		mapboxVarName: 'C_RATING_F',
 		popupLabel: 'Rating' // no selector or chart label for this field because it's non-numeric
 	}
 }
@@ -596,7 +596,7 @@ function popupRow(varName, data) {
 	var html = "<br /><span class='varname'>";
 	html += fieldMappings[varName].popupLabel;
 	html += ": </span> <span class='attribute'>"
-	html += data[fieldMappings[varName].variable];
+	html += data[fieldMappings[varName].mapboxVarName];
 	html += "</span>";
 	return html
 }
