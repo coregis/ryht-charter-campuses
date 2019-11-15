@@ -238,9 +238,9 @@ function moveYearSlider(sliderID, numberID, increment, loop=false) {
 	updateYearSlider(numberID, desiredYear);
 	popups = document.getElementsByClassName('popup-text-holder');
 	if (popups.length > 0) {
-		data = pickFeature(popupState.campusName, desiredYear, 'points');
+		data = pickFeature(popupState.campusID, desiredYear, 'points');
 		if (data === undefined) {
-			console.log("Removing popup because " + popupState.campusName + " didn't exist in " + desiredYear);
+			console.log("Removing popup because campus " + popupState.campusID + " didn't exist in " + desiredYear);
 			popupState.popup.remove();
 		} else {
 			popups[0].innerHTML = fillpopup(data);
@@ -515,14 +515,14 @@ function setVisibilityState(params) {
 
 
 
-function pickFeature(campusName, year, sourceID) {
+function pickFeature(campusID, year, sourceID) {
 	var year = parseInt(document.getElementById('active-year').innerText, 10);
 	var sourceID = 'points';
 
 	var layerID = map.getSource(sourceID).vectorLayerIds[0];
 	var features = map.querySourceFeatures(sourceID, {'sourceLayer': layerID});
 	for (i in features) {
-		if (features[i].properties.CAMPNAME === campusName && features[i].properties.year === year) {
+		if (features[i].properties.CAMPUS === campusID && features[i].properties.year === year) {
 			return features[i].properties;
 		}
 	}
@@ -530,6 +530,7 @@ function pickFeature(campusName, year, sourceID) {
 
 // process some Mapbox data to make inner text for a popup
 function fillpopup(data){
+	console.log(data);
 	var html = "<span class='popup-text-holder'>";
 	html += "<span class='varname'>Campus: </span> <span class='attribute'>" + data.CAMPNAME + "</span>";
 	html += "<br>"
