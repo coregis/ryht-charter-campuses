@@ -2,7 +2,7 @@
 
 
 // global variable for the path to the historical districts data file
-var districtsFile = 'data/qrySumStatsAllDistAllYears.csv';
+var districtsFile = 'data/qrySumStatsAllDistAllYears_v2.csv';
 // data structure to hold state for the chart; the actual data will be attached on load
 // see https://github.com/d3/d3-format#locale_format for tick format strings
 var chartData = {
@@ -11,11 +11,11 @@ var chartData = {
 	districtName: 'Statewide',
 	leftFieldName: 'campuses',
 	leftFieldLabel: '# Charter campuses',
-	leftColor: 'steelblue',
+	leftColor: '#ee5e2a',
 	leftTickFormat: '1',
 	rightFieldName: 'students',
 	rightFieldLabel: '# Charter students',
-	rightColor: 'orange',
+	rightColor: '#2DC4B2',
 	rightTickFormat: '~s'
 };
 

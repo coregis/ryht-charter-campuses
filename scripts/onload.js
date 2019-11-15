@@ -28,7 +28,7 @@ var loadedPolygonLayers = [];
 map.on('load', function() {
 	map.addSource('points',{
 		type:'vector',
-		url:'mapbox://core-gis.7csrpxnt'
+		url:'mapbox://core-gis.cdf36461'
 	});
 
 	//add point data from Mapbox
@@ -36,7 +36,7 @@ map.on('load', function() {
 		'id': 'campuses',
 		'type': 'circle',
 		'source':'points',
-		'source-layer':'ryht_tx_charter_campuses_11_0-0gr08r',
+		'source-layer':'ryht_tx_charter_campuses_11_0-2blig5',
 		'filter':['==', ['number', ['get', 'year']], 1997],
 		'layout':{	},
 		'paint': {
@@ -46,7 +46,7 @@ map.on('load', function() {
 				//This will scale the points based on total enrollment at each campus
 				['number', ['get', 'CPETALLC']],
 				1, 6,
-				1000, 30
+				1000, 15
 			],
 			'circle-color': [
 				'interpolate',
@@ -138,7 +138,13 @@ map.on('load', function() {
 		html += "<br>"
 		html += "<span class='varname'>Total Students: </span> <span class='attribute'>" + data.CPETALLC +"</span>";
 		html += "<br>"
-		html += "<span class='varname'>Economically Disadvantaged Students: </span> <span class='attribute'>" + data.CPETCOPNUM +"</span>";
+		html += "<span class='varname'>Economically Disadvantaged Students: </span> <span class='attribute'>" + data.CPETECOC +"</span>";
+		html += "<br>"
+		html += "<span class='varname'>English Learners Students: </span> <span class='attribute'>" + data.CPETLEPC +"</span>";		
+		html += "<br>"
+		html += "<span class='varname'>Bilingual Education Students: </span> <span class='attribute'>" + data.CPETBILC +"</span>";		
+		html += "<br>"
+		html += "<span class='varname'>Special Education Students: </span> <span class='attribute'>" + data.CPETSPEC +"</span>";		
 		html += "<br>"
 		html += "<span class='varname'>Rating: </span> <span class='attribute'>" + data.C_RATING_F +"</span>";
 		return html;
