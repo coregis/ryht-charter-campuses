@@ -80,6 +80,15 @@ a {
   line-height: 2em;
 }
 
+#chart-controls .closebtn {
+	display: inline;
+	clear: none;
+	float: right;
+	font-size: 300%;
+	margin-top: -1ex;
+	font-weight: 900;
+}
+
 #chart-controls span#chart-reset-link {
 	display: none;
 }

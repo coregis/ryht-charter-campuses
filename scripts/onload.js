@@ -110,7 +110,8 @@ map.on('load', function() {
 // When a click event occurs on a feature in the campus points layer, open a
 // popup at the location of the click, with description HTML from its properties.
 	map.on('click', 'campuses', function (e) {
-		new mapboxgl.Popup()
+		popupState.campusID = e.features[0].properties.CAMPUS;
+		popupState.popup = new mapboxgl.Popup()
 			.setLngLat(e.lngLat)
 			.setHTML(fillpopup(e.features[0].properties))
 			.addTo(map);
@@ -127,8 +128,6 @@ map.on('load', function() {
 	map.on('mouseleave', 'campuses', function () {
 		map.getCanvas().style.cursor = '';
 	});
-
-
 
 	// call other functions which will wait until the *data load* is complete before actually running
 	runWhenLoadComplete();
