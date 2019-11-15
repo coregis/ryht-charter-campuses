@@ -147,11 +147,12 @@ d3.csv(districtsFile).then(function(data) {
 	var districtHistory = {'Statewide': {}};
 	data.forEach(function(d) {
 		// pre-parse the numbers to avoid repetition
-		vals = {
-			'campuses': parseInt(d.CountOfCAMPNAME, 10),
-			'students': parseInt(d.SumOfCPETALLC, 10),
-			'disadvantaged': parseInt(d.SumOfCPETCOPNUM, 10)
-		};
+		vals = {};
+		for (i in chartFields) {
+			varName = fieldMappings[chartFields[i]].csvVarName;
+			vals[varName] = {};
+			vals[varName].abs = parseInt(d[varName], 10);
+		}
 		year = parseInt(d.year, 10);
 		// add blank object to history for each new district
 		if (!districtHistory.hasOwnProperty(d.NAME)) {
@@ -163,9 +164,10 @@ d3.csv(districtsFile).then(function(data) {
 		if (!districtHistory['Statewide'].hasOwnProperty(year)) {
 			districtHistory['Statewide'][year] = vals;
 		} else { // or add to the running totals otherwise
-			districtHistory['Statewide'][year].campuses += vals.campuses;
-			districtHistory['Statewide'][year].students += vals.students;
-			districtHistory['Statewide'][year].disadvantaged += vals.disadvantaged;
+			keys = Object.keys(vals);
+			for (i in keys) {
+				districtHistory['Statewide'][year][keys[i]].abs += vals[keys[i]].abs;
+			}
 		}
 	});
 	chartData.dataset = districtHistory;

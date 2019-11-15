@@ -8,37 +8,57 @@ var districtsFile = 'data/qrySumStatsAllDistAllYears_v2.csv';
 var fieldMappings = {
 	totalStudents: {
 		mapboxVarName: 'CPETALLC', // field name in Mapbox
+		csvVarName: 'SumOfCPETALLC', // field name in the CSV
 		popupLabel: 'Total Students', // label to use in popups
-		selectorLabel: 'charter students', // label to use in variable selector dropdown,
-		chartLabel: 'Charter students' // label to use on the chart itself
+		selectorLabel: 'charter students', // label to use in variable selector dropdown; things like "# of" and "% of" will be prepended as appropriate
+		chartLabel: 'Charter students', // label to use on the chart itself
+		tickFormat: '~s' // Y axis tick format for this variable; see https://github.com/d3/d3-format#locale_format for tick format strings
 	},
 	disadvantagedStudents: {
 		mapboxVarName: 'CPETECOC',
+		csvVarName: 'SumOfCPETECOPNUM',
 		popupLabel: 'Economically Disadvantaged Students',
 		selectorLabel: 'economically disadvantaged students',
-		chartLabel: 'economically disadvantaged'
+		chartLabel: 'economically disadvantaged',
+		tickFormat: '~s',
+		ratioBase: 'totalStudents' // IFF this attribute is defined, then also calculate the ratio of this variable to the base and make that available in the chart as a percentage
 	},
 	ellStudents: {
 		mapboxVarName: 'CPETLEPC',
+		csvVarName: 'SumOfCPETLEPC',
 		popupLabel: 'English Learners Students',
 		selectorLabel: 'English learners students',
-		chartLabel: 'English learners'
+		chartLabel: 'English learners',
+		tickFormat: '~s',
+		ratioBase: 'totalStudents'
 	},
 	bleStudents: {
 		mapboxVarName: 'CPETBILC',
+		csvVarName: 'SumOfCPETBILC',
 		popupLabel: 'Bilingual Education Students',
 		selectorLabel: 'bilingual education students',
-		chartLabel: 'bilingual education'
+		chartLabel: 'bilingual education',
+		tickFormat: '~s',
+		ratioBase: 'totalStudents'
 	},
 	seStudents: {
 		mapboxVarName: 'CPETSPEC',
+		csvVarName: 'SumOfCPETSPEC',
 		popupLabel: 'Special Education Students',
 		selectorLabel: 'special education students',
-		chartLabel: 'special education'
+		chartLabel: 'special education',
+		tickFormat: '~s',
+		ratioBase: 'totalStudents'
 	},
 	rating: {
 		mapboxVarName: 'C_RATING_F',
-		popupLabel: 'Rating' // no selector or chart label for this field because it's non-numeric
+		popupLabel: 'Rating' // other attributes left out for this one because being non-numeric it can't be used for the chart
+	},
+	campuses: {
+		csvVarName: 'CountOfCAMPNAME',
+		selectorLabel: 'charter school campuses',
+		chartLabel: 'charter campuses',
+		tickFormat: '1' // other attributes left out for this one because it only makes sense as an aggregate, so won't be displayed in popups
 	}
 }
 
@@ -54,6 +74,7 @@ var popupFields = [
 
 // list of fields to make available for the chart, _in dropdown order_
 var chartFields = [
+	'campuses',
 	'totalStudents',
 	'disadvantagedStudents',
 	'ellStudents',
@@ -62,19 +83,14 @@ var chartFields = [
 ];
 
 // data structure to hold state for the chart; the actual data will be attached on load
-// see https://github.com/d3/d3-format#locale_format for tick format strings
 var chartData = {
 	svgID: 'chart',
 	visible: true,
 	districtName: 'Statewide',
-	leftFieldName: 'campuses',
-	leftFieldLabel: '# Charter campuses',
+	leftField: fieldMappings.campuses,
 	leftColor: '#ee5e2a',
-	leftTickFormat: '1',
-	rightFieldName: 'students',
-	rightFieldLabel: '# Charter students',
+	rightField: fieldMappings.totalStudents,
 	rightColor: '#2DC4B2',
-	rightTickFormat: '~s'
 };
 
 // global variable for whether the animation should be playing or not
@@ -336,8 +352,8 @@ function unspoolOneDistrict() {
 	for (i in data) {
 		arr.push({
 			year: i,
-			valueLeft: data[i][chartData.leftFieldName],
-			valueRight: data[i][chartData.rightFieldName]
+			valueLeft: data[i][chartData.leftField.csvVarName].abs,
+			valueRight: data[i][chartData.rightField.csvVarName].abs
 		});
 	}
 	return arr;
@@ -394,13 +410,13 @@ function drawChart() {
 			.attr("fill", chartData.leftColor)
 			.attr("y", 10-margin.left).attr("dy", "1ex")
 			.attr("text-anchor", "end")
-			.text(chartData.leftFieldLabel);
+			.text(chartData.leftField.chartLabel);
 		g.append("text")
 			.attr("id", "right-axis-label")
 			.attr("fill", chartData.rightColor)
 			.attr("y", width+margin.right-10)
 			.attr("text-anchor", "end")
-			.text(chartData.rightFieldLabel);
+			.text(chartData.rightField.chartLabel);
 		// set up scales and add axes
 		var x = d3.scaleLinear().rangeRound([0, width]);
 		var yLeft = d3.scaleLinear().rangeRound([height, 0]);
@@ -423,7 +439,7 @@ function drawChart() {
 			.call(
 				d3.axisLeft(yLeft)
 					.ticks(Math.min(height / 25, yLeftMax))
-					.tickFormat(d3.format(chartData.leftTickFormat))
+					.tickFormat(d3.format(chartData.leftField.tickFormat))
 			)
 			.attr("stroke", chartData.leftColor);
 		g.append("g")
@@ -431,7 +447,7 @@ function drawChart() {
 			.call(
 				d3.axisRight(yRight)
 					.ticks(Math.min(height / 25, yRightMax))
-					.tickFormat(d3.format(chartData.rightTickFormat))
+					.tickFormat(d3.format(chartData.rightField.tickFormat))
 			)
 			.attr("stroke", chartData.rightColor);
 		// add the actual data
