@@ -23,9 +23,7 @@ var chartData = {
 var animationRunning = false;
 
 // a little state storage for popups
-var popupState = {
-	campusName: ''
-};
+var popupState = {};
 
 // dynamically size the 3 core elements of the page relative to each other
 function allocateScreenSpace() {
@@ -243,7 +241,7 @@ function moveYearSlider(sliderID, numberID, increment, loop=false) {
 		data = pickFeature(popupState.campusName, desiredYear, 'points');
 		if (data === undefined) {
 			console.log("Removing popup because " + popupState.campusName + " didn't exist in " + desiredYear);
-			document.getElementsByClassName('mapboxgl-popup')[0].style.display = 'none';
+			popupState.popup.remove();
 		} else {
 			popups[0].innerHTML = fillpopup(data);
 		}

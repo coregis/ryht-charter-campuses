@@ -110,12 +110,12 @@ map.on('load', function() {
 // When a click event occurs on a feature in the campus points layer, open a
 // popup at the location of the click, with description HTML from its properties.
 	map.on('click', 'campuses', function (e) {
-		new mapboxgl.Popup()
+		popupState.campusName = e.features[0].properties.CAMPNAME;
+		popupState.popup = new mapboxgl.Popup()
 			.setLngLat(e.lngLat)
 			.setHTML(fillpopup(e.features[0].properties))
 			.addTo(map);
 		chartData.districtName = e.features[0].properties.NAME;
-		popupState.campusName = e.features[0].properties.CAMPNAME;
 		redrawChart();
 	});
 
