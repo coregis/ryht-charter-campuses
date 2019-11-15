@@ -3,6 +3,64 @@
 
 // global variable for the path to the historical districts data file
 var districtsFile = 'data/qrySumStatsAllDistAllYears_v2.csv';
+
+// mappings of field names in the CSV to variable names.  Update references here to follow any field renaming in the CSV; add items using the same basic structure to add options.
+var fieldMappings = {
+	totalStudents: {
+		variable: 'CPETALLC', // column name in the CSV
+		popupLabel: 'Total Students', // label to use in popups
+		selectorLabel: 'charter students', // label to use in variable selector dropdown,
+		chartLabel: 'Charter students' // label to use on the chart itself
+	},
+	disadvantagedStudents: {
+		variable: 'CPETECOC',
+		popupLabel: 'Economically Disadvantaged Students',
+		selectorLabel: 'economically disadvantaged students',
+		chartLabel: 'economically disadvantaged'
+	},
+	ellStudents: {
+		variable: 'CPETLEPC',
+		popupLabel: 'English Learners Students',
+		selectorLabel: 'English learners students',
+		chartLabel: 'English learners'
+	},
+	bleStudents: {
+		variable: 'CPETBILC',
+		popupLabel: 'Bilingual Education Students',
+		selectorLabel: 'bilingual education students',
+		chartLabel: 'bilingual education'
+	},
+	seStudents: {
+		variable: 'CPETSPEC',
+		popupLabel: 'Special Education Students',
+		selectorLabel: 'special education students',
+		chartLabel: 'special education'
+	},
+	rating: {
+		variable: 'C_RATING_F',
+		popupLabel: 'Rating' // no selector or chart label for this field because it's non-numeric
+	}
+}
+
+// list of fields to expand in map popups, _in display order_
+var popupFields = [
+	'totalStudents',
+	'disadvantagedStudents',
+	'ellStudents',
+	'bleStudents',
+	'seStudents',
+	'rating'
+];
+
+// list of fields to make available for the chart, _in dropdown order_
+var chartFields = [
+	'totalStudents',
+	'disadvantagedStudents',
+	'ellStudents',
+	'bleStudents',
+	'seStudents'
+];
+
 // data structure to hold state for the chart; the actual data will be attached on load
 // see https://github.com/d3/d3-format#locale_format for tick format strings
 var chartData = {
@@ -529,27 +587,28 @@ function pickFeature(campusID, year, sourceID) {
 	}
 }
 
+
+
+
+
 // process some Mapbox data to make inner text for a popup
+function popupRow(varName, data) {
+	var html = "<br /><span class='varname'>";
+	html += fieldMappings[varName].popupLabel;
+	html += ": </span> <span class='attribute'>"
+	html += data[fieldMappings[varName].variable];
+	html += "</span>";
+	return html
+}
+
 function fillpopup(data){
-	console.log(data);
 	var html = "<span class='popup-text-holder'>";
 	html += "<span class='varname'>Campus: </span> <span class='attribute'>" + data.CAMPNAME + "</span>";
 	html += "<br>"
 	html += "<span class='varname'>Year: </span> <span class='attribute'>" + data.year + "</span>";
 	html += "<br>"
 	html += "<span class='varname'>District: </span> <span class='attribute'>" + data.NAME + "</span>";
-	html += "<br>"
-	html += "<span class='varname'>Total Students: </span> <span class='attribute'>" + data.CPETALLC +"</span>";
-	html += "<br>"
-	html += "<span class='varname'>Economically Disadvantaged Students: </span> <span class='attribute'>" + data.CPETECOC +"</span>";
-	html += "<br>"
-	html += "<span class='varname'>English Learners Students: </span> <span class='attribute'>" + data.CPETLEPC +"</span>";
-	html += "<br>"
-	html += "<span class='varname'>Bilingual Education Students: </span> <span class='attribute'>" + data.CPETBILC +"</span>";
-	html += "<br>"
-	html += "<span class='varname'>Special Education Students: </span> <span class='attribute'>" + data.CPETSPEC +"</span>";
-	html += "<br>"
-	html += "<span class='varname'>Rating: </span> <span class='attribute'>" + data.C_RATING_F +"</span>";
+	for (i in popupFields) { html += popupRow(popupFields[i], data); }
 	html += "</span>";
 	return html;
 	//this will return the string to the calling function
