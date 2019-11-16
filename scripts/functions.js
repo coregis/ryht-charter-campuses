@@ -10,8 +10,8 @@ var fieldMappings = {
 		mapboxVarName: 'CPETALLC', // field name in Mapbox
 		csvVarName: 'SumOfCPETALLC', // field name in the CSV
 		popupLabel: 'Total Students', // label to use in popups
-		selectorLabel: 'charter students', // label to use in variable selector dropdown; things like "# of" and "% of" will be prepended as appropriate
-		chartLabel: 'Charter students', // label to use on the chart itself
+		selectorLabel: 'charter school students', // label to use in variable selector dropdown; things like "# of" and "% of" will be prepended as appropriate
+		chartLabel: 'charter students', // label to use on the chart itself
 		tickFormat: '~s' // Y axis tick format for this variable; see https://github.com/d3/d3-format#locale_format for tick format strings
 	},
 	disadvantagedStudents: {
@@ -19,7 +19,7 @@ var fieldMappings = {
 		csvVarName: 'SumOfCPETECOPNUM',
 		popupLabel: 'Economically Disadvantaged Students',
 		selectorLabel: 'economically disadvantaged students',
-		chartLabel: 'economically disadvantaged',
+		chartLabel: 'disadvantaged',
 		tickFormat: '~s',
 		ratioBase: 'totalStudents' // IFF this attribute is defined, then also calculate the ratio of this variable to the base and make that available in the chart as a percentage
 	},
@@ -82,7 +82,7 @@ var chartFields = [
 	'seStudents'
 ];
 
-// data structure to hold state for the chart; the actual data will be attached on load
+// data structure to hold state for the chart; the actual data will be attached on load, and the leftField and rightField values specify the default variables
 var chartData = {
 	svgID: 'chart',
 	visible: true,
@@ -346,6 +346,21 @@ function stopYearAnimation(playID, stopID) {
 }
 
 // now draw the time series chart
+function populateChartControls() {
+	var leftControl = document.getElementById('left-axis-selector');
+	var rightControl = document.getElementById('right-axis-selector');
+	for (i in chartFields) {
+		leftControl.options[leftControl.options.length] = new Option(
+			"Number of " + fieldMappings[chartFields[i]].selectorLabel,
+			"abs," + chartFields[i]
+		);
+		rightControl.options[rightControl.options.length] = new Option(
+			"Number of " + fieldMappings[chartFields[i]].selectorLabel,
+			"abs," + chartFields[i]
+		);
+	}
+}
+
 function unspoolOneDistrict() {
 	var data = chartData.dataset[chartData.districtName];
 	var arr = [];
@@ -410,13 +425,13 @@ function drawChart() {
 			.attr("fill", chartData.leftColor)
 			.attr("y", 10-margin.left).attr("dy", "1ex")
 			.attr("text-anchor", "end")
-			.text(chartData.leftField.chartLabel);
+			.text("# " + chartData.leftField.chartLabel);
 		g.append("text")
 			.attr("id", "right-axis-label")
 			.attr("fill", chartData.rightColor)
 			.attr("y", width+margin.right-10)
 			.attr("text-anchor", "end")
-			.text(chartData.rightField.chartLabel);
+			.text("# " + chartData.rightField.chartLabel);
 		// set up scales and add axes
 		var x = d3.scaleLinear().rangeRound([0, width]);
 		var yLeft = d3.scaleLinear().rangeRound([height, 0]);
@@ -475,7 +490,13 @@ function drawChart() {
 }
 
 // this will be called on resizing the window or changing any chart attributes; it simply resets the chart because that's the easiest way to keep it scaled correctly
-function redrawChart() {
+function redrawChart(axis, params) {
+	if (params !== undefined) {
+		params = params.split(',');
+		if (params.length > 1) {
+			chartData[axis] = fieldMappings[params[1]];
+		}
+	}
 	var svg = d3.select('#' + chartData.svgID);
 	svg.select("g").remove();
 	drawChart();

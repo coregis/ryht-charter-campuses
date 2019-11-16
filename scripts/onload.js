@@ -144,6 +144,7 @@ map.addControl(new mapboxgl.NavigationControl({showCompass: false}), 'bottom-rig
 
 // load and parse districtsFile and then call the chart-drawing function
 d3.csv(districtsFile).then(function(data) {
+	populateChartControls();
 	var districtHistory = {'Statewide': {}};
 	data.forEach(function(d) {
 		// pre-parse the numbers to avoid repetition

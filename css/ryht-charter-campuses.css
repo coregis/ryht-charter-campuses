@@ -71,13 +71,13 @@ a {
 #chart-controls {
 	height: 25%;
 	padding: 15px; /* padding must be in pixels for the JS to position everything right */
-	width: 100px;
+	width: 150px;
 }
 
 #chart-controls span {
   display: block;
 	cursor: pointer;
-  line-height: 2em;
+  margin-bottom: 1em;
 }
 
 #chart-controls .closebtn {
@@ -85,7 +85,7 @@ a {
 	clear: none;
 	float: right;
 	font-size: 300%;
-	margin-top: -1ex;
+	margin-top: -0.5ex;
 	font-weight: 900;
 }
 

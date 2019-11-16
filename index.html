@@ -118,6 +118,20 @@
 <!-- containers for chart controls -->
 		<div id='chart-controls'>
 			<span onclick='hideChart();'>Hide chart <span class="closebtn">&#735;</span></span>
+			<span>
+				Left axis variable:
+				<br />
+				<select id="left-axis-selector" onchange="redrawChart('leftField', this.value);">
+					<option>Choose one</option>
+				</select>
+			</span>
+			<span>
+				Right axis variable:
+				<br />
+				<select id="right-axis-selector" onchange="redrawChart('rightField', this.value);">
+					<option>Choose one</option>
+				</select>
+			</span>
 			<span id='chart-reset-link' onclick='resetChart();'>Reset chart</span>
 		</div>
 		<div id='chart-open-link' onclick='showChart();'>
