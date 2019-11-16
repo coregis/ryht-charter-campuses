@@ -107,7 +107,7 @@ var popupState = {};
 function allocateScreenSpace() {
 	var viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 	var viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-	var sidenavWidth = 300;
+	var sidenavWidth = Math.max(document.getElementById('mySidenav').clientWidth, document.getElementById('mySidenav').innerWidth || 0);
 	var activeControlDiv = document.getElementById(
 		(chartData.visible ? 'chart-controls' : 'chart-open-link')
 	);
@@ -117,17 +117,22 @@ function allocateScreenSpace() {
 	activeControlDiv.style.display = 'block';
 	hiddenControlDiv.style.display = 'none';
 	var activeControlStyle = (activeControlDiv.currentStyle || window.getComputedStyle(activeControlDiv));
-	var activeControlPadding = parseInt(activeControlStyle.paddingTop, 10) + parseInt(activeControlStyle.paddingBottom, 10);
-	var controlsWidth = activeControlDiv.offsetWidth;
-	var svgWidth = viewportWidth - sidenavWidth - controlsWidth;
-	var svgHeight = (chartData.visible ? Math.max((viewportHeight / 4), 250) : activeControlDiv.offsetHeight);
+	var activeControlPadding = [
+		parseInt(activeControlStyle.paddingLeft, 10) + parseInt(activeControlStyle.paddingRight, 10),
+		parseInt(activeControlStyle.paddingTop, 10) + parseInt(activeControlStyle.paddingBottom, 10)
+	];
+	var controlsHeight = activeControlDiv.offsetHeight;
+	var svgWidth = viewportWidth - sidenavWidth;
+	var svgHeight = (chartData.visible ? Math.max((viewportHeight / 4), 250) - activeControlPadding[1] : 0);
 	var svg = document.getElementById(chartData.svgID);
 	svg.style.width = svgWidth;
 	svg.style.height = svgHeight;
-	activeControlDiv.style.height = svgHeight - activeControlPadding;
+	svg.style.bottom = controlsHeight;
+	activeControlDiv.style.width = svgWidth - activeControlPadding[0];
 	var mapDiv = document.getElementById("map");
-	mapDiv.style.height = viewportHeight - svgHeight;
+	mapDiv.style.height = viewportHeight - svgHeight - controlsHeight;
 	mapDiv.style.width = viewportWidth - sidenavWidth;
+	console.log(viewportWidth, sidenavWidth, activeControlPadding, svgWidth);
 	return [svgWidth, svgHeight];
 }
 
@@ -393,7 +398,7 @@ function unspoolOneDistrict() {
 function drawChart() {
 	if (chartData.visible) {
 		//  hide the reset chart link if we're showing statewide data
-		document.getElementById('chart-reset-link').style.display = ((chartData.districtName === 'Statewide') ? 'none' : 'block');
+		document.getElementById('chart-reset-link').style.display = ((chartData.districtName === 'Statewide') ? 'none' : 'inline');
 		// set up the sizing of everything
 		var svgDims = allocateScreenSpace();
 		var svgWidth = svgDims[0];

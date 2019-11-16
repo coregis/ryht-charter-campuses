@@ -2,6 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Helvetica Neue', Helvetica, Arial, Sans-serif;
+  overflow: hidden;
 }
 
 #map {
@@ -59,34 +60,48 @@ a {
 #chart-controls, #chart-open-link {
 	position: absolute;
 	left: 300px;
+	right: 0;
 	bottom: 0;
 	background-color: white;
 	font-family: "Montserrat", helvetica, arial, sans-serif;
 	font-weight: normal;
 	color: #363635;
 	text-decoration: none;
+	padding: 5px 15px; /* padding must be in pixels for the JS to position everything right */
+	margin: 0;
 }
 
 /* controls that show when the chart is open */
 #chart-controls {
-	height: 25%;
-	padding: 15px; /* padding must be in pixels for the JS to position everything right */
-	width: 150px;
+	height: 20px;
+	width: 75%; /* will get overriden by the JS, but we need something to start with */
 }
 
 #chart-controls span {
-  display: block;
+  display: inline;
 	cursor: pointer;
-  margin-bottom: 1em;
+  margin-right: 2.5em;
+}
+
+#chart-controls span select {
+	width: 120px;
+}
+
+#chart-controls span#chart-close-link {
+	float: right;
+	text-align: right;
+	margin-right: 0;
 }
 
 #chart-controls .closebtn {
 	display: inline;
 	clear: none;
 	float: right;
-	font-size: 300%;
-	margin-top: -0.5ex;
+	font-size: 250%;
 	font-weight: 900;
+	margin-left: 1ex;
+	margin-top: -0.2ex;
+	margin-right: 0;
 }
 
 #chart-controls span#chart-reset-link {
@@ -96,16 +111,19 @@ a {
 /* container for the show chart control */
 #chart-open-link {
 	cursor: pointer;
-	padding: 5px 15px; /* padding must be in pixels for the JS to position everything right */
+	width: 75%;
+	float: right;
+	text-align: right;
+	margin-right: 0;
 }
 
 /* SVG element that holds the d3 chart */
 #chart {
 	position: absolute;
-	width: 50%; /* will get overriden by the JS, but we need something to start with */
+	width: 75%; /* will get overriden by the JS, but we need something to start with */
 	height: 25%;
 	right: 0;
-	bottom: 0;
+	bottom: 20px;
 	background: rgb(255,255,255);
 }
 
