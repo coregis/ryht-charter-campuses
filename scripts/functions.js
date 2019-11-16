@@ -91,6 +91,10 @@ var chartData = {
 	leftColor: '#ee5e2a',
 	rightField: fieldMappings.totalStudents,
 	rightColor: '#2DC4B2',
+	showRatio: {
+		leftField: false,
+		rightField: false
+	}
 };
 
 // global variable for whether the animation should be playing or not
@@ -350,14 +354,26 @@ function populateChartControls() {
 	var leftControl = document.getElementById('left-axis-selector');
 	var rightControl = document.getElementById('right-axis-selector');
 	for (i in chartFields) {
+		baseLabel = fieldMappings[chartFields[i]].selectorLabel;
+		fieldName = chartFields[i]
 		leftControl.options[leftControl.options.length] = new Option(
-			"Number of " + fieldMappings[chartFields[i]].selectorLabel,
-			"abs," + chartFields[i]
+			"Number of " + baseLabel,
+			"abs," + fieldName
 		);
 		rightControl.options[rightControl.options.length] = new Option(
-			"Number of " + fieldMappings[chartFields[i]].selectorLabel,
-			"abs," + chartFields[i]
+			"Number of " + baseLabel,
+			"abs," + fieldName
 		);
+		if (fieldMappings[chartFields[i]].hasOwnProperty('ratioBase')) {
+			leftControl.options[leftControl.options.length] = new Option(
+				"% " + baseLabel,
+				"pct," + fieldName
+			);
+			rightControl.options[rightControl.options.length] = new Option(
+				"% " + baseLabel,
+				"pct," + fieldName
+			);
+		}
 	}
 }
 
@@ -367,8 +383,8 @@ function unspoolOneDistrict() {
 	for (i in data) {
 		arr.push({
 			year: i,
-			valueLeft: data[i][chartData.leftField.csvVarName].abs,
-			valueRight: data[i][chartData.rightField.csvVarName].abs
+			valueLeft: data[i][chartData.leftField.csvVarName][(chartData.showRatio.leftField ? 'pct' : 'abs')],
+			valueRight: data[i][chartData.rightField.csvVarName][(chartData.showRatio.rightField ? 'pct' : 'abs')]
 		});
 	}
 	return arr;
@@ -425,13 +441,13 @@ function drawChart() {
 			.attr("fill", chartData.leftColor)
 			.attr("y", 10-margin.left).attr("dy", "1ex")
 			.attr("text-anchor", "end")
-			.text("# " + chartData.leftField.chartLabel);
+			.text((chartData.showRatio.leftField ? "% " : "# ") + chartData.leftField.chartLabel);
 		g.append("text")
 			.attr("id", "right-axis-label")
 			.attr("fill", chartData.rightColor)
 			.attr("y", width+margin.right-10)
 			.attr("text-anchor", "end")
-			.text("# " + chartData.rightField.chartLabel);
+			.text((chartData.showRatio.rightField ? "% " : "# ") + chartData.rightField.chartLabel);
 		// set up scales and add axes
 		var x = d3.scaleLinear().rangeRound([0, width]);
 		var yLeft = d3.scaleLinear().rangeRound([height, 0]);
@@ -453,16 +469,24 @@ function drawChart() {
 		g.append("g")
 			.call(
 				d3.axisLeft(yLeft)
-					.ticks(Math.min(height / 25, yLeftMax))
-					.tickFormat(d3.format(chartData.leftField.tickFormat))
+					.ticks(
+						(chartData.showRatio.leftField ? 5 : Math.min(height / 25, yLeftMax))
+					)
+					.tickFormat(d3.format(
+						(chartData.showRatio.leftField ? '~%' : chartData.leftField.tickFormat)
+					))
 			)
 			.attr("stroke", chartData.leftColor);
 		g.append("g")
 			.attr("transform", "translate( " + width + ", 0 )")
 			.call(
 				d3.axisRight(yRight)
-					.ticks(Math.min(height / 25, yRightMax))
-					.tickFormat(d3.format(chartData.rightField.tickFormat))
+					.ticks(
+						(chartData.showRatio.rightField ? 5 : Math.min(height / 25, yRightMax))
+					)
+					.tickFormat(d3.format(
+						(chartData.showRatio.rightField ? '~%' : chartData.rightField.tickFormat)
+					))
 			)
 			.attr("stroke", chartData.rightColor);
 		// add the actual data
@@ -495,6 +519,11 @@ function redrawChart(axis, params) {
 		params = params.split(',');
 		if (params.length > 1) {
 			chartData[axis] = fieldMappings[params[1]];
+			if (params[0] === 'pct') {
+				chartData.showRatio[axis] = true;
+			} else {
+				chartData.showRatio[axis] = false;
+			}
 		}
 	}
 	var svg = d3.select('#' + chartData.svgID);

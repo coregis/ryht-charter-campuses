@@ -153,6 +153,9 @@ d3.csv(districtsFile).then(function(data) {
 			varName = fieldMappings[chartFields[i]].csvVarName;
 			vals[varName] = {};
 			vals[varName].abs = parseInt(d[varName], 10);
+			if (fieldMappings[chartFields[i]].hasOwnProperty('ratioBase')) {
+				vals[varName].pct = vals[varName].abs / parseInt(d[fieldMappings[fieldMappings[chartFields[i]].ratioBase].csvVarName], 10);
+			}
 		}
 		year = parseInt(d.year, 10);
 		// add blank object to history for each new district
