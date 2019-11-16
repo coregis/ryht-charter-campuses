@@ -174,6 +174,18 @@ d3.csv(districtsFile).then(function(data) {
 			}
 		}
 	});
+	// then after iterating over the whole file, recalculate percentages for the statewide totals
+	for (i in chartFields) {
+		if (fieldMappings[chartFields[i]].hasOwnProperty('ratioBase')) {
+			for (j in districtHistory['Statewide']) {
+				datum = districtHistory['Statewide'][j];
+				field = fieldMappings[chartFields[i]].csvVarName;
+				base = fieldMappings[chartFields[i]].ratioBase;
+				console.log(datum, field, base);
+				datum[field].pct = datum[field].abs / datum[fieldMappings[base].csvVarName].abs;
+			}
+		}
+	}
 	chartData.dataset = districtHistory;
 	drawChart();
 	window.addEventListener("resize", redrawChart);
