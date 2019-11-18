@@ -2,21 +2,99 @@
 
 
 // global variable for the path to the historical districts data file
-var districtsFile = 'data/qrySumStatsAllDistAllYears.csv';
-// data structure to hold state for the chart; the actual data will be attached on load
-// see https://github.com/d3/d3-format#locale_format for tick format strings
+var districtsFile = 'data/qrySumStatsAllDistAllYears_v2.csv';
+
+// mappings of field names in the CSV & mapbox account to variable names for local use.  Update references here to follow any field renaming in the data sources; add items using the same basic structure to add options.
+var fieldMappings = {
+	totalStudents: {
+		mapboxVarName: 'CPETALLC', // field name in Mapbox
+		csvVarName: 'SumOfCPETALLC', // field name in the CSV
+		popupLabel: 'Total Students', // label to use in popups
+		selectorLabel: 'charter school students', // label to use in variable selector dropdown; things like "# of" and "% of" will be prepended as appropriate
+		chartLabel: 'charter students', // label to use on the chart itself
+		tickFormat: '~s' // Y axis tick format for this variable; see https://github.com/d3/d3-format#locale_format for tick format strings
+	},
+	disadvantagedStudents: {
+		mapboxVarName: 'CPETECOC',
+		csvVarName: 'SumOfCPETECOPNUM',
+		popupLabel: 'Economically Disadvantaged Students',
+		selectorLabel: 'economically disadvantaged students',
+		chartLabel: 'disadvantaged',
+		tickFormat: '~s',
+		ratioBase: 'totalStudents' // IFF this attribute is defined, then also calculate the ratio of this variable to the base and make that available in the chart as a percentage
+	},
+	ellStudents: {
+		mapboxVarName: 'CPETLEPC',
+		csvVarName: 'SumOfCPETLEPC',
+		popupLabel: 'English Learners Students',
+		selectorLabel: 'English learners students',
+		chartLabel: 'English learners',
+		tickFormat: '~s',
+		ratioBase: 'totalStudents'
+	},
+	bleStudents: {
+		mapboxVarName: 'CPETBILC',
+		csvVarName: 'SumOfCPETBILC',
+		popupLabel: 'Bilingual Education Students',
+		selectorLabel: 'bilingual education students',
+		chartLabel: 'bilingual education',
+		tickFormat: '~s',
+		ratioBase: 'totalStudents'
+	},
+	seStudents: {
+		mapboxVarName: 'CPETSPEC',
+		csvVarName: 'SumOfCPETSPEC',
+		popupLabel: 'Special Education Students',
+		selectorLabel: 'special education students',
+		chartLabel: 'special education',
+		tickFormat: '~s',
+		ratioBase: 'totalStudents'
+	},
+	rating: {
+		mapboxVarName: 'C_RATING_F',
+		popupLabel: 'Rating' // other attributes left out for this one because being non-numeric it can't be used for the chart
+	},
+	campuses: {
+		csvVarName: 'CountOfCAMPNAME',
+		selectorLabel: 'charter school campuses',
+		chartLabel: 'charter campuses',
+		tickFormat: '1' // other attributes left out for this one because it only makes sense as an aggregate, so won't be displayed in popups
+	}
+}
+
+// list of fields to expand in map popups, _in display order_
+var popupFields = [
+	'totalStudents',
+	'disadvantagedStudents',
+	'ellStudents',
+	'bleStudents',
+	'seStudents',
+	'rating'
+];
+
+// list of fields to make available for the chart, _in dropdown order_
+var chartFields = [
+	'campuses',
+	'totalStudents',
+	'disadvantagedStudents',
+	'ellStudents',
+	'bleStudents',
+	'seStudents'
+];
+
+// data structure to hold state for the chart; the actual data will be attached on load, and the leftField and rightField values specify the default variables
 var chartData = {
 	svgID: 'chart',
 	visible: true,
 	districtName: 'Statewide',
-	leftFieldName: 'campuses',
-	leftFieldLabel: '# Charter campuses',
-	leftColor: 'steelblue',
-	leftTickFormat: '1',
-	rightFieldName: 'students',
-	rightFieldLabel: '# Charter students',
-	rightColor: 'orange',
-	rightTickFormat: '~s'
+	leftField: fieldMappings.campuses,
+	leftColor: '#ee5e2a',
+	rightField: fieldMappings.totalStudents,
+	rightColor: '#2DC4B2',
+	showRatio: {
+		leftField: false,
+		rightField: false
+	}
 };
 
 // global variable for whether the animation should be playing or not
@@ -29,7 +107,7 @@ var popupState = {};
 function allocateScreenSpace() {
 	var viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 	var viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-	var sidenavWidth = 300;
+	var sidenavWidth = Math.max(document.getElementById('mySidenav').clientWidth, document.getElementById('mySidenav').innerWidth || 0);
 	var activeControlDiv = document.getElementById(
 		(chartData.visible ? 'chart-controls' : 'chart-open-link')
 	);
@@ -39,17 +117,22 @@ function allocateScreenSpace() {
 	activeControlDiv.style.display = 'block';
 	hiddenControlDiv.style.display = 'none';
 	var activeControlStyle = (activeControlDiv.currentStyle || window.getComputedStyle(activeControlDiv));
-	var activeControlPadding = parseInt(activeControlStyle.paddingTop, 10) + parseInt(activeControlStyle.paddingBottom, 10);
-	var controlsWidth = activeControlDiv.offsetWidth;
-	var svgWidth = viewportWidth - sidenavWidth - controlsWidth;
-	var svgHeight = (chartData.visible ? Math.max((viewportHeight / 4), 250) : activeControlDiv.offsetHeight);
+	var activeControlPadding = [
+		parseInt(activeControlStyle.paddingLeft, 10) + parseInt(activeControlStyle.paddingRight, 10),
+		parseInt(activeControlStyle.paddingTop, 10) + parseInt(activeControlStyle.paddingBottom, 10)
+	];
+	var controlsHeight = activeControlDiv.offsetHeight;
+	var svgWidth = viewportWidth - sidenavWidth;
+	var svgHeight = (chartData.visible ? Math.max((viewportHeight / 4), 250) - activeControlPadding[1] : 0);
 	var svg = document.getElementById(chartData.svgID);
 	svg.style.width = svgWidth;
 	svg.style.height = svgHeight;
-	activeControlDiv.style.height = svgHeight - activeControlPadding;
+	svg.style.bottom = controlsHeight;
+	activeControlDiv.style.width = svgWidth - activeControlPadding[0];
 	var mapDiv = document.getElementById("map");
-	mapDiv.style.height = viewportHeight - svgHeight;
+	mapDiv.style.height = viewportHeight - svgHeight - controlsHeight;
 	mapDiv.style.width = viewportWidth - sidenavWidth;
+	console.log(viewportWidth, sidenavWidth, activeControlPadding, svgWidth);
 	return [svgWidth, svgHeight];
 }
 
@@ -272,14 +355,41 @@ function stopYearAnimation(playID, stopID) {
 }
 
 // now draw the time series chart
+function populateChartControls() {
+	var leftControl = document.getElementById('left-axis-selector');
+	var rightControl = document.getElementById('right-axis-selector');
+	for (i in chartFields) {
+		baseLabel = fieldMappings[chartFields[i]].selectorLabel;
+		fieldName = chartFields[i]
+		leftControl.options[leftControl.options.length] = new Option(
+			"Number of " + baseLabel,
+			"abs," + fieldName
+		);
+		rightControl.options[rightControl.options.length] = new Option(
+			"Number of " + baseLabel,
+			"abs," + fieldName
+		);
+		if (fieldMappings[chartFields[i]].hasOwnProperty('ratioBase')) {
+			leftControl.options[leftControl.options.length] = new Option(
+				"% " + baseLabel,
+				"pct," + fieldName
+			);
+			rightControl.options[rightControl.options.length] = new Option(
+				"% " + baseLabel,
+				"pct," + fieldName
+			);
+		}
+	}
+}
+
 function unspoolOneDistrict() {
 	var data = chartData.dataset[chartData.districtName];
 	var arr = [];
 	for (i in data) {
 		arr.push({
 			year: i,
-			valueLeft: data[i][chartData.leftFieldName],
-			valueRight: data[i][chartData.rightFieldName]
+			valueLeft: data[i][chartData.leftField.csvVarName][(chartData.showRatio.leftField ? 'pct' : 'abs')],
+			valueRight: data[i][chartData.rightField.csvVarName][(chartData.showRatio.rightField ? 'pct' : 'abs')]
 		});
 	}
 	return arr;
@@ -288,7 +398,7 @@ function unspoolOneDistrict() {
 function drawChart() {
 	if (chartData.visible) {
 		//  hide the reset chart link if we're showing statewide data
-		document.getElementById('chart-reset-link').style.display = ((chartData.districtName === 'Statewide') ? 'none' : 'block');
+		document.getElementById('chart-reset-link').style.display = ((chartData.districtName === 'Statewide') ? 'none' : 'inline');
 		// set up the sizing of everything
 		var svgDims = allocateScreenSpace();
 		var svgWidth = svgDims[0];
@@ -336,13 +446,13 @@ function drawChart() {
 			.attr("fill", chartData.leftColor)
 			.attr("y", 10-margin.left).attr("dy", "1ex")
 			.attr("text-anchor", "end")
-			.text(chartData.leftFieldLabel);
+			.text((chartData.showRatio.leftField ? "% " : "# ") + chartData.leftField.chartLabel);
 		g.append("text")
 			.attr("id", "right-axis-label")
 			.attr("fill", chartData.rightColor)
 			.attr("y", width+margin.right-10)
 			.attr("text-anchor", "end")
-			.text(chartData.rightFieldLabel);
+			.text((chartData.showRatio.rightField ? "% " : "# ") + chartData.rightField.chartLabel);
 		// set up scales and add axes
 		var x = d3.scaleLinear().rangeRound([0, width]);
 		var yLeft = d3.scaleLinear().rangeRound([height, 0]);
@@ -364,16 +474,24 @@ function drawChart() {
 		g.append("g")
 			.call(
 				d3.axisLeft(yLeft)
-					.ticks(Math.min(height / 25, yLeftMax))
-					.tickFormat(d3.format(chartData.leftTickFormat))
+					.ticks(
+						(chartData.showRatio.leftField ? 5 : Math.min(height / 25, yLeftMax))
+					)
+					.tickFormat(d3.format(
+						(chartData.showRatio.leftField ? '~%' : chartData.leftField.tickFormat)
+					))
 			)
 			.attr("stroke", chartData.leftColor);
 		g.append("g")
 			.attr("transform", "translate( " + width + ", 0 )")
 			.call(
 				d3.axisRight(yRight)
-					.ticks(Math.min(height / 25, yRightMax))
-					.tickFormat(d3.format(chartData.rightTickFormat))
+					.ticks(
+						(chartData.showRatio.rightField ? 5 : Math.min(height / 25, yRightMax))
+					)
+					.tickFormat(d3.format(
+						(chartData.showRatio.rightField ? '~%' : chartData.rightField.tickFormat)
+					))
 			)
 			.attr("stroke", chartData.rightColor);
 		// add the actual data
@@ -401,7 +519,18 @@ function drawChart() {
 }
 
 // this will be called on resizing the window or changing any chart attributes; it simply resets the chart because that's the easiest way to keep it scaled correctly
-function redrawChart() {
+function redrawChart(axis, params) {
+	if (params !== undefined) {
+		params = params.split(',');
+		if (params.length > 1) {
+			chartData[axis] = fieldMappings[params[1]];
+			if (params[0] === 'pct') {
+				chartData.showRatio[axis] = true;
+			} else {
+				chartData.showRatio[axis] = false;
+			}
+		}
+	}
 	var svg = d3.select('#' + chartData.svgID);
 	svg.select("g").remove();
 	drawChart();
@@ -515,6 +644,7 @@ function setVisibilityState(params) {
 
 
 
+
 function pickFeature(campusID, year, sourceID) {
 	var year = parseInt(document.getElementById('active-year').innerText, 10);
 	var sourceID = 'points';
@@ -528,21 +658,28 @@ function pickFeature(campusID, year, sourceID) {
 	}
 }
 
+
+
+
+
 // process some Mapbox data to make inner text for a popup
+function popupRow(varName, data) {
+	var html = "<br /><span class='varname'>";
+	html += fieldMappings[varName].popupLabel;
+	html += ": </span> <span class='attribute'>"
+	html += data[fieldMappings[varName].mapboxVarName];
+	html += "</span>";
+	return html
+}
+
 function fillpopup(data){
-	console.log(data);
 	var html = "<span class='popup-text-holder'>";
 	html += "<span class='varname'>Campus: </span> <span class='attribute'>" + data.CAMPNAME + "</span>";
 	html += "<br>"
 	html += "<span class='varname'>Year: </span> <span class='attribute'>" + data.year + "</span>";
 	html += "<br>"
 	html += "<span class='varname'>District: </span> <span class='attribute'>" + data.NAME + "</span>";
-	html += "<br>"
-	html += "<span class='varname'>Total Students: </span> <span class='attribute'>" + data.CPETALLC +"</span>";
-	html += "<br>"
-	html += "<span class='varname'>Economically Disadvantaged Students: </span> <span class='attribute'>" + data.CPETCOPNUM +"</span>";
-	html += "<br>"
-	html += "<span class='varname'>Rating: </span> <span class='attribute'>" + data.C_RATING_F +"</span>";
+	for (i in popupFields) { html += popupRow(popupFields[i], data); }
 	html += "</span>";
 	return html;
 	//this will return the string to the calling function

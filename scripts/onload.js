@@ -28,7 +28,7 @@ var loadedPolygonLayers = [];
 map.on('load', function() {
 	map.addSource('points',{
 		type:'vector',
-		url:'mapbox://core-gis.7csrpxnt'
+		url:'mapbox://core-gis.cdf36461'
 	});
 
 	//add point data from Mapbox
@@ -36,7 +36,7 @@ map.on('load', function() {
 		'id': 'campuses',
 		'type': 'circle',
 		'source':'points',
-		'source-layer':'ryht_tx_charter_campuses_11_0-0gr08r',
+		'source-layer':'ryht_tx_charter_campuses_11_0-2blig5',
 		'filter':['==', ['number', ['get', 'year']], 1997],
 		'layout':{	},
 		'paint': {
@@ -46,7 +46,7 @@ map.on('load', function() {
 				//This will scale the points based on total enrollment at each campus
 				['number', ['get', 'CPETALLC']],
 				1, 6,
-				1000, 30
+				1000, 15
 			],
 			'circle-color': [
 				'interpolate',
@@ -144,14 +144,19 @@ map.addControl(new mapboxgl.NavigationControl({showCompass: false}), 'bottom-rig
 
 // load and parse districtsFile and then call the chart-drawing function
 d3.csv(districtsFile).then(function(data) {
+	populateChartControls();
 	var districtHistory = {'Statewide': {}};
 	data.forEach(function(d) {
 		// pre-parse the numbers to avoid repetition
-		vals = {
-			'campuses': parseInt(d.CountOfCAMPNAME, 10),
-			'students': parseInt(d.SumOfCPETALLC, 10),
-			'disadvantaged': parseInt(d.SumOfCPETCOPNUM, 10)
-		};
+		vals = {};
+		for (i in chartFields) {
+			varName = fieldMappings[chartFields[i]].csvVarName;
+			vals[varName] = {};
+			vals[varName].abs = parseInt(d[varName], 10);
+			if (fieldMappings[chartFields[i]].hasOwnProperty('ratioBase')) {
+				vals[varName].pct = vals[varName].abs / parseInt(d[fieldMappings[fieldMappings[chartFields[i]].ratioBase].csvVarName], 10);
+			}
+		}
 		year = parseInt(d.year, 10);
 		// add blank object to history for each new district
 		if (!districtHistory.hasOwnProperty(d.NAME)) {
@@ -163,11 +168,24 @@ d3.csv(districtsFile).then(function(data) {
 		if (!districtHistory['Statewide'].hasOwnProperty(year)) {
 			districtHistory['Statewide'][year] = vals;
 		} else { // or add to the running totals otherwise
-			districtHistory['Statewide'][year].campuses += vals.campuses;
-			districtHistory['Statewide'][year].students += vals.students;
-			districtHistory['Statewide'][year].disadvantaged += vals.disadvantaged;
+			keys = Object.keys(vals);
+			for (i in keys) {
+				districtHistory['Statewide'][year][keys[i]].abs += vals[keys[i]].abs;
+			}
 		}
 	});
+	// then after iterating over the whole file, recalculate percentages for the statewide totals
+	for (i in chartFields) {
+		if (fieldMappings[chartFields[i]].hasOwnProperty('ratioBase')) {
+			for (j in districtHistory['Statewide']) {
+				datum = districtHistory['Statewide'][j];
+				field = fieldMappings[chartFields[i]].csvVarName;
+				base = fieldMappings[chartFields[i]].ratioBase;
+				console.log(datum, field, base);
+				datum[field].pct = datum[field].abs / datum[fieldMappings[base].csvVarName].abs;
+			}
+		}
+	}
 	chartData.dataset = districtHistory;
 	drawChart();
 	window.addEventListener("resize", redrawChart);
