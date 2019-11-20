@@ -440,7 +440,7 @@ function drawChart() {
 			.attr("id", "chart-title")
 			.attr("x", (width/2)).attr("y", (-margin.top/4))
 			.attr("text-anchor", "middle")
-			.text(chartData.districtName);
+			.text((chartData.districtName === "Statewide" ? "All charter schools in Texas" : "Charter schools located within " + chartData.districtName));
 		g.append("text")
 			.attr("id", "left-axis-label")
 			.attr("fill", chartData.leftColor)
