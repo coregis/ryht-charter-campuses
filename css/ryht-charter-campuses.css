@@ -137,8 +137,9 @@ a {
 
 /* chart title styling; leave positioning to the JS */
 #chart #chart-title {
-	font-size: 20px;
+	font-size: 18px;
 	font-weight: 600;
+	color: #363635;
 }
 
 /* subtitle only shows up conditionally when some explanation is needed */

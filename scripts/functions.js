@@ -678,7 +678,7 @@ function fillpopup(data){
 	html += "<br>"
 	html += "<span class='varname'>Year: </span> <span class='attribute'>" + data.year + "</span>";
 	html += "<br>"
-	html += "<span class='varname'>District: </span> <span class='attribute'>" + data.NAME + "</span>";
+	html += "<span class='varname'>Located Within: </span> <span class='attribute'>" + data.NAME + "</span>";
 	for (i in popupFields) { html += popupRow(popupFields[i], data); }
 	html += "</span>";
 	return html;
