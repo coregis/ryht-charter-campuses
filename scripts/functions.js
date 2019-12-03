@@ -97,6 +97,13 @@ var chartData = {
 	}
 };
 
+// data structure to hold a list of districts and their bounding boxes.  Format for each entry is:
+// 'Name': 'W,N,E,S'  // WNES being how Mapbox gives us bboxes
+// and individual districts' values will be auto-populated from data
+var districts = {
+	'Statewide': '-108,25,-88,37'
+}
+
 // global variable for whether the animation should be playing or not
 var animationRunning = false;
 
@@ -192,12 +199,13 @@ function runWhenLoadComplete() {
 function populateZoomControl(selectID, sourceID, fieldName, layerName) {
 	polygons = getPolygons(sourceID, fieldName);
 	var select = document.getElementById(selectID);
-	select.options[0] = new Option(layerName, "-108,25,-88,37,Statewide");
+	select.options[0] = new Option(layerName, districts.Statewide + ",Statewide");
 	for (i in polygons) {
+		bbox = polygons[i].bbox.toString();
 		select.options[select.options.length] = new Option(
-			polygons[i].name,
-			polygons[i].bbox.toString() + ',' + polygons[i].name
+			polygons[i].name, bbox + ',' + polygons[i].name
 		);
+		districts[polygons[i].name] = bbox;
 	}
 	map.setLayoutProperty(sourceID + '-poly', 'visibility', 'none');
 // IMPORTANT: these paint properties define the appearance of the mask layer that deemphasises districts outside the one we've zoomed to.  They will overrule anything that's set when that mask layer was loaded.
