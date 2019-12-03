@@ -98,11 +98,16 @@ var chartData = {
 };
 
 // data structure to hold a list of districts and their bounding boxes.  Format for each entry is:
-// 'Name': 'W,N,E,S'  // WNES being how Mapbox gives us bboxes
+// 'Name': 'W,N,E,S,Name'  // WNES being how Mapbox gives us bboxes, and the name repetition being what we feed to the chart updater
 // and individual districts' values will be auto-populated from data
 var districts = {
-	'Statewide': '-108,25,-88,37'
+	'Statewide': '-108,25,-88,37,Statewide'
 }
+
+// now let's give "Statewide" some synonyms for usability
+districts['Texas'] = districts['Statewide']
+districts['All'] = districts['Statewide']
+districts['zoom out'] = districts['Statewide']
 
 // global variable for whether the animation should be playing or not
 var animationRunning = false;
@@ -201,11 +206,11 @@ function populateZoomControl(selectID, sourceID, fieldName, layerName) {
 	var select = document.getElementById(selectID);
 	select.options[0] = new Option(layerName, districts.Statewide + ",Statewide");
 	for (i in polygons) {
-		bbox = polygons[i].bbox.toString();
+		payload = polygons[i].bbox.toString() + ',' + polygons[i].name;
 		select.options[select.options.length] = new Option(
-			polygons[i].name, bbox + ',' + polygons[i].name
+			polygons[i].name, payload
 		);
-		districts[polygons[i].name] = bbox;
+		districts[polygons[i].name] = payload;
 	}
 	map.setLayoutProperty(sourceID + '-poly', 'visibility', 'none');
 // IMPORTANT: these paint properties define the appearance of the mask layer that deemphasises districts outside the one we've zoomed to.  They will overrule anything that's set when that mask layer was loaded.
