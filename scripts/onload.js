@@ -189,4 +189,3 @@ d3.csv(districtsFile).then(function(data) {
 	drawChart();
 	window.addEventListener("resize", redrawChart);
 });
-
