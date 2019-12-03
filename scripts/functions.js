@@ -132,7 +132,6 @@ function allocateScreenSpace() {
 	var mapDiv = document.getElementById("map");
 	mapDiv.style.height = viewportHeight - svgHeight - controlsHeight;
 	mapDiv.style.width = viewportWidth - sidenavWidth;
-	console.log(viewportWidth, sidenavWidth, activeControlPadding, svgWidth);
 	return [svgWidth, svgHeight];
 }
 
