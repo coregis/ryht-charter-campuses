@@ -181,7 +181,6 @@ d3.csv(districtsFile).then(function(data) {
 				datum = districtHistory['Statewide'][j];
 				field = fieldMappings[chartFields[i]].csvVarName;
 				base = fieldMappings[chartFields[i]].ratioBase;
-				console.log(datum, field, base);
 				datum[field].pct = datum[field].abs / datum[fieldMappings[base].csvVarName].abs;
 			}
 		}
@@ -190,4 +189,3 @@ d3.csv(districtsFile).then(function(data) {
 	drawChart();
 	window.addEventListener("resize", redrawChart);
 });
-
