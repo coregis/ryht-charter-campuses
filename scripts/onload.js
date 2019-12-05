@@ -102,6 +102,24 @@ map.on('load', function() {
 		}
 	);
 
+
+	// add charters as invisible data layer
+	addVectorLayer(
+		map,
+		{
+			'sourceName': 'texas-charter-companies',
+			'sourceID': 'ryht_tx_charter_districts_12_-1urjcm',
+			'sourceURL': 'mapbox://core-gis.8nbi875o',
+			'lineLayerName': 'texas-charter-companies-lines',
+			'lineColor': '#cdcecb',
+			'polygonLayerName': 'texas-charter-companies-poly',
+			'polygonFillColor': 'rgba(124, 124, 124, 0)',
+			'polygonOutlineColor': 'rgba(103, 65, 30, 0)',
+			'visibleOnLoad': false,
+			'usedInZoomControl': true
+		}
+	);
+
 	//add interactivity to the time slider
 	document.getElementById('slider').addEventListener('input', function(e) {
 		updateYearSlider('active-year', e.target.value);

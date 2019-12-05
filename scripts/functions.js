@@ -102,13 +102,19 @@ var chartData = {
 // and individual districts' values will be auto-populated from data
 var districts = {
 	'Statewide': '-108,25,-88,37,Statewide'
-}
+};
 
 // now let's give "Statewide" some synonyms for usability
-districts['Texas'] = districts['Statewide']
-districts['All'] = districts['Statewide']
-districts['zoom out'] = districts['Statewide']
-districts[''] = districts['Statewide']
+districts['Texas'] = districts['Statewide'];
+districts['All'] = districts['Statewide'];
+districts['zoom out'] = districts['Statewide'];
+districts[''] = districts['Statewide'];
+
+// same as districts, but for the charter companies
+var charters = {};
+charters['All'] = districts['Statewide'];
+charters[''] = charters['All'];
+charters['select all'] = charters['All'];
 
 // global variable for whether the animation should be playing or not
 var animationRunning = false;
@@ -191,7 +197,8 @@ function runWhenLoadComplete() {
 			[-93.25, 36.75] // northeast coords, exaggerated somewhat towards the NE to make the state appear more visually centred
 		]);
 		moveYearSlider('slider', 'active-year', 0); // calling this with a 0 increment will make sure that the filter, caption and slider position all match.  Without doing this, the browser seems to keep the slider position between refreshes, but reset the filter and caption so they get out of sync.
-		populateZoomControl("school-districts-control", "texas-school-districts", "NAME", "Texas School Districts");
+		populateZoomControl("school-districts-control", "texas-school-districts", "NAME", "Texas School Districts", districts, districts.Statewide);
+		populateZoomControl("charter-filter-control", "texas-charter-companies", "DISTNAME", "All charter schools", charters, charters.All);
 		map.moveLayer('texas-school-districts-lines', 'country-label-sm');
 		map.moveLayer('texas-school-districts-poly', 'texas-school-districts-lines');
 		for (i=0; i < loadedLineLayers.length; i++) {
@@ -199,31 +206,35 @@ function runWhenLoadComplete() {
 				map.moveLayer(loadedLineLayers[i][0], 'texas-school-districts-poly');
 			}
 		}
+		// start the autocompletion event loop
+		autocomplete(document.getElementById('districtAutocomplete'), districts, "texas-school-districts");
+		autocomplete(document.getElementById('charterAutocomplete'), charters, "texas-charter-companies");
 	}
 }
 
-function populateZoomControl(selectID, sourceID, fieldName, layerName) {
+function populateZoomControl(selectID, sourceID, fieldName, layerName, globalDataStruct, defaultVal) {
+	console.log(selectID, sourceID, fieldName, layerName, globalDataStruct, defaultVal);
 	polygons = getPolygons(sourceID, fieldName);
+	console.log(polygons);
 	var select = document.getElementById(selectID);
-	select.options[0] = new Option(layerName, districts.Statewide + ",Statewide");
+	select.options[0] = new Option(layerName, defaultVal + ",Statewide");
 	for (i in polygons) {
 		payload = polygons[i].bbox.toString() + ',' + polygons[i].name;
 		select.options[select.options.length] = new Option(
 			polygons[i].name, payload
 		);
-		districts[polygons[i].name] = payload;
+		globalDataStruct[polygons[i].name] = payload;
 	}
 	map.setLayoutProperty(sourceID + '-poly', 'visibility', 'none');
 // IMPORTANT: these paint properties define the appearance of the mask layer that deemphasises districts outside the one we've zoomed to.  They will overrule anything that's set when that mask layer was loaded.
 	map.setPaintProperty(sourceID + '-poly', 'fill-color', 'rgba(200, 200, 200, 0.5)');
 	map.setPaintProperty(sourceID + '-lines', 'line-color', 'rgba(50, 50, 50, .7)');
-	// start the autocompletion event loop
-	autocomplete(document.getElementById('districtAutocomplete'), districts, sourceID);
 }
 
 function getPolygons(sourceID, nameField) {
 	layerID = map.getSource(sourceID).vectorLayerIds[0];
-	features = map.querySourceFeatures(sourceID, {'sourceLayer': layerID})
+	features = map.querySourceFeatures(sourceID, {'sourceLayer': layerID});
+	console.log(features);
 	polygons = [];
 	existingItems = [];
 	for (i in features) {
