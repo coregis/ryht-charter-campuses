@@ -770,18 +770,31 @@ function autocomplete(inp, obj, sourceID) {
 				zoomToPolygon(sourceID, obj[this.value]);
 				// and close open suggestions
 				closeAllLists();
+			} else {
+				// if we have an active item, go to its district
+				var active = document.getElementsByClassName('autocomplete-active');
+				if (active.length > 0) {
+					if (arr.indexOf(active[0].innerText) > -1) {
+						zoomToPolygon(sourceID, obj[active[0].innerText]);
+						// and put the name into the text box so it's clear what happened
+						this.value = active[0].innerText;
+						closeAllLists();
+					}
+				}
 			}
 		}
 	});
 	function addActive(x) {
-		/*a function to classify an item as "active":*/
 		if (!x) return false;
-		/*start by removing the "active" class on all items:*/
-		removeActive(x);
-		if (currentFocus >= x.length) currentFocus = 0;
-		if (currentFocus < 0) currentFocus = (x.length - 1);
-		/*add class "autocomplete-active":*/
-		x[currentFocus].classList.add("autocomplete-active");
+		if (currentFocus >= x.length) { // don't allow overflows, just leave it at the end of the list
+			currentFocus = x.length - 1;
+		} else if (currentFocus < 0) { // don't allow or wrap underflows, just clear the active one
+			currentFocus = -1;
+			removeActive(x);
+		} else { // if we are in within range, move the focus
+			removeActive(x);
+			x[currentFocus].classList.add("autocomplete-active");
+		}
 	}
 	function removeActive(x) {
 		/*a function to remove the "active" class from all autocomplete items:*/
