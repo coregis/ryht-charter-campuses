@@ -1,0 +1,3211 @@
+NAME,year,CountOfCAMPNAME,SumOfCPETALLC,SumOfCPETECOC,SumOfCPETLEPC,SumOfCPETBILC,SumOfCPETSPEC
+1,2000,1,171,140,0,0,2
+1,2001,1,231,201,0,0,0
+1,2002,1,450,397,0,0,9
+1,2003,1,528,401,0,0,28
+1,2004,1,782,653,0,0,74
+1,2005,2,885,763,0,0,89
+1,2006,2,1031,878,0,0,121
+1,2007,2,1104,909,0,0,139
+1,2008,2,1170,983,0,9,115
+1,2009,2,1223,1014,14,14,108
+1,2010,2,1350,866,17,18,113
+1,2011,2,1395,1165,15,16,95
+1,2012,2,1570,1329,12,12,103
+1,2013,1,520,480,1,1,7
+1,2014,2,1991,1641,15,15,127
+1,2015,2,2152,1821,13,13,120
+1,2016,2,2161,1796,20,20,108
+1,2017,2,2278,1767,30,31,110
+1,2018,2,2144,1901,23,24,90
+2,2001,1,82,7,0,0,0
+2,2002,1,154,82,26,32,14
+2,2003,1,147,129,42,40,17
+2,2004,1,865,315,162,150,120
+2,2005,1,919,775,212,198,122
+2,2006,1,961,714,301,290,106
+2,2007,1,994,701,318,301,108
+2,2008,1,957,808,334,303,76
+2,2009,1,985,811,359,343,63
+2,2010,1,1033,940,354,341,63
+2,2011,1,1076,1011,381,369,75
+2,2012,1,951,885,307,299,83
+2,2013,1,988,918,326,319,88
+2,2014,1,994,926,362,354,103
+2,2015,1,974,914,367,363,109
+2,2016,1,940,854,371,368,106
+2,2017,1,1068,994,492,489,104
+2,2018,2,1348,1123,646,639,110
+2,2017,2,94,47,0,0,4
+2,2018,2,155,72,6,4,17
+3,2000,1,539,539,0,0,13
+3,2001,1,457,457,0,0,61
+3,2002,1,578,577,4,1,59
+3,2003,1,611,608,2,2,92
+3,2004,1,539,539,32,10,99
+3,2005,1,553,553,58,56,116
+3,2006,1,656,656,34,34,106
+3,2007,1,658,658,34,32,100
+3,2008,1,657,657,31,31,94
+3,2009,5,576,576,56,53,72
+3,2010,5,497,496,49,49,69
+3,2011,5,653,653,59,59,147
+3,2012,5,583,583,74,74,128
+3,2013,5,579,579,53,52,124
+3,2014,5,535,535,45,45,137
+3,2015,5,506,506,65,61,108
+3,2016,5,486,486,71,65,97
+3,2017,5,472,472,80,77,103
+3,2018,5,521,521,111,107,126
+4,2002,1,514,310,88,0,0
+4,2003,1,568,455,120,111,0
+4,2004,1,595,245,71,71,0
+4,2005,1,571,539,189,120,8
+4,2006,1,662,375,200,151,11
+4,2007,1,603,266,118,90,9
+4,2008,1,487,476,201,163,6
+4,2009,1,515,510,236,236,10
+4,2010,1,574,565,259,261,14
+4,2011,1,582,559,340,340,5
+4,2012,1,757,719,358,340,6
+4,2013,1,742,707,399,324,7
+4,2014,1,702,687,380,345,4
+4,2015,1,747,737,419,418,12
+4,2016,1,773,659,412,410,13
+4,2017,1,761,749,442,440,8
+4,2018,1,715,702,432,432,7
+5,2000,1,138,83,0,0,0
+5,2001,1,183,183,1,1,9
+5,2002,1,206,182,0,0,18
+5,2003,1,241,230,0,0,21
+5,2004,1,351,340,0,0,24
+5,2005,1,421,410,0,0,43
+5,2006,1,356,352,10,10,22
+5,2007,1,366,359,6,2,23
+5,2008,1,321,302,0,0,17
+5,2009,1,230,224,0,0,10
+6,2001,1,40,31,0,0,4
+6,2002,1,136,97,0,0,13
+6,2003,1,91,71,0,0,14
+6,2004,1,135,125,10,10,21
+6,2005,1,151,139,4,4,28
+6,2006,1,150,107,3,2,24
+6,2007,1,127,102,3,2,14
+6,2008,1,161,109,7,7,24
+6,2009,1,156,110,3,1,27
+6,2010,1,145,82,2,0,29
+6,2011,1,162,82,4,4,21
+6,2012,1,188,49,6,6,19
+6,2013,1,192,70,12,12,19
+6,2014,1,182,52,8,8,16
+6,2015,1,221,81,4,7,10
+6,2016,1,190,127,5,5,11
+7,2000,1,178,78,0,0,0
+7,2001,1,249,133,0,0,4
+7,2002,1,376,221,0,0,12
+7,2003,1,571,388,0,0,14
+7,2004,1,598,514,0,0,32
+7,2005,1,508,349,0,0,41
+7,2006,1,496,459,4,4,31
+7,2007,1,571,539,23,21,30
+7,2008,1,510,480,13,11,22
+7,2009,1,520,493,14,12,20
+7,2010,1,535,517,21,21,28
+7,2011,1,495,365,24,23,37
+7,2012,1,537,422,43,43,32
+7,2013,1,617,402,50,49,17
+7,2014,1,603,329,49,51,83
+7,2015,1,644,565,68,64,15
+7,2016,1,604,589,79,73,60
+7,2017,1,476,472,71,70,50
+7,2018,1,432,421,65,67,41
+8,1999,1,306,82,0,0,0
+8,2000,1,441,163,0,0,5
+8,2001,1,589,120,20,20,27
+8,2002,1,479,324,18,18,16
+8,2003,1,413,327,8,8,19
+9,2002,1,104,75,0,0,21
+9,2003,1,184,162,4,0,35
+9,2004,1,453,416,34,30,53
+9,2005,2,503,392,42,41,69
+9,2006,6,815,736,40,40,81
+9,2007,4,603,588,42,42,61
+9,2008,3,692,684,64,64,54
+9,2009,2,491,409,65,64,42
+9,2010,2,454,373,122,121,50
+9,2011,1,242,231,71,70,30
+9,2012,1,258,249,82,81,19
+9,2013,2,253,237,91,89,14
+9,2014,2,250,238,82,80,15
+9,2015,1,254,243,98,97,19
+9,2016,1,281,272,110,109,19
+9,2017,3,283,269,101,101,13
+9,2018,2,269,258,84,84,7
+10,1999,1,80,51,0,0,15
+10,2000,1,104,31,0,0,24
+10,2001,1,410,202,5,0,26
+10,2002,3,346,224,17,11,43
+10,2003,1,187,146,8,8,18
+10,2004,1,395,312,35,34,32
+10,2005,1,404,341,38,37,38
+10,2006,1,715,645,70,69,44
+10,2007,1,1212,819,138,128,66
+10,2008,1,1448,809,112,56,93
+10,2009,1,1496,882,142,146,105
+10,2010,1,1507,896,176,171,94
+10,2011,1,1424,869,198,191,106
+10,2012,1,1703,1097,227,222,132
+10,2013,1,1971,1341,380,360,144
+10,2014,1,1630,1199,383,367,106
+10,2015,1,1633,1209,422,394,117
+10,2016,1,1833,1386,475,453,111
+10,2017,1,1650,1231,406,397,95
+10,2018,1,1666,1263,391,375,74
+11,1999,1,105,36,0,0,0
+11,2000,1,93,39,26,0,4
+11,2001,1,99,46,40,0,2
+11,2002,1,135,69,65,0,4
+11,2003,1,155,83,92,0,5
+11,2004,1,162,100,94,96,7
+11,2005,1,198,134,119,120,7
+11,2006,1,213,213,139,71,11
+11,2007,1,205,175,139,139,5
+11,2008,1,218,218,136,136,6
+11,2009,1,224,224,148,148,13
+11,2010,1,238,238,129,129,11
+11,2011,1,242,242,159,159,8
+11,2012,1,280,280,169,169,6
+11,2013,1,297,243,194,193,7
+11,2014,1,283,183,201,201,11
+11,2015,1,296,176,221,220,14
+11,2016,1,294,176,193,193,15
+11,2017,1,271,106,211,211,17
+11,2018,1,285,84,231,231,21
+12,2002,1,144,55,0,0,20
+12,2003,1,131,83,0,0,15
+12,2004,1,200,76,0,0,23
+12,2005,1,211,82,0,0,41
+12,2006,1,210,100,10,10,41
+12,2007,1,261,80,16,11,35
+12,2008,1,218,134,19,14,36
+12,2009,1,219,170,13,11,43
+12,2010,1,202,125,10,8,36
+12,2011,1,176,109,9,7,26
+12,2012,1,144,107,6,6,21
+12,2013,1,127,76,5,5,24
+12,2014,1,115,69,2,2,15
+12,2015,1,156,133,2,2,14
+12,2016,1,132,121,5,3,24
+12,2017,1,171,167,5,5,18
+13,2000,1,275,111,0,0,5
+13,2001,1,855,138,0,0,33
+13,2002,1,1235,635,0,3,38
+13,2003,1,917,353,9,7,25
+13,2004,1,933,474,5,5,21
+13,2005,1,596,362,0,0,26
+13,2006,1,436,345,0,0,36
+13,2007,1,434,173,0,0,19
+13,2008,1,311,143,0,0,2
+13,2009,1,179,121,0,0,11
+14,2008,1,114,108,0,0,4
+14,2009,1,129,113,0,0,9
+14,2010,1,181,168,0,0,15
+14,2011,1,277,177,0,0,15
+14,2012,1,225,170,0,0,13
+14,2013,1,329,299,0,0,16
+14,2014,1,320,290,0,0,17
+14,2015,1,302,258,0,0,18
+14,2016,1,278,238,0,0,12
+14,2017,1,281,247,0,0,12
+14,2018,1,295,250,0,0,10
+American Academy Of Excellence Charter,2000,1,49,43,0,0,3
+American Academy Of Excellence Charter,2001,1,223,138,0,0,15
+American Academy Of Excellence Charter,2002,1,370,163,2,0,29
+American Academy Of Excellence Charter,2003,1,268,215,6,5,20
+American Academy Of Excellence Charter,2004,1,167,148,1,1,8
+American Academy Of Excellence Charter,2005,1,150,116,11,10,11
+American Academy Of Excellence Charter,2006,1,144,121,4,4,23
+American Academy Of Excellence Charter,2007,1,150,133,4,4,11
+American Youthworks Charter School,1997,1,93,75,0,0,0
+American Youthworks Charter School,1998,1,155,110,5,5,12
+American Youthworks Charter School,1999,1,239,171,10,6,17
+American Youthworks Charter School,2000,1,233,150,2,1,27
+American Youthworks Charter School,2001,1,231,112,17,15,27
+American Youthworks Charter School,2002,1,257,154,18,6,27
+American Youthworks Charter School,2003,1,350,216,7,5,35
+American Youthworks Charter School,2004,2,428,193,11,8,62
+American Youthworks Charter School,2005,2,433,194,18,9,64
+American Youthworks Charter School,2006,2,434,231,31,3,59
+American Youthworks Charter School,2007,2,422,280,21,12,63
+American Youthworks Charter School,2008,2,464,295,52,36,76
+American Youthworks Charter School,2009,2,309,212,29,20,60
+American Youthworks Charter School,2010,2,306,194,17,14,55
+American Youthworks Charter School,2011,2,257,150,31,31,45
+American Youthworks Charter School,2012,1,115,69,18,14,16
+American Youthworks Charter School,2013,1,123,72,7,6,28
+American Youthworks Charter School,2014,1,167,103,9,6,33
+Amigos Por Vida-Friends For Life Public Charter School,2000,1,244,224,212,209,1
+Amigos Por Vida-Friends For Life Public Charter School,2001,1,315,296,0,0,0
+Amigos Por Vida-Friends For Life Public Charter School,2002,1,366,342,143,144,0
+Amigos Por Vida-Friends For Life Public Charter School,2003,1,352,340,322,321,0
+Amigos Por Vida-Friends For Life Public Charter School,2004,1,317,307,292,295,18
+Amigos Por Vida-Friends For Life Public Charter School,2005,1,302,297,289,294,14
+Amigos Por Vida-Friends For Life Public Charter School,2006,1,329,328,314,324,16
+Amigos Por Vida-Friends For Life Public Charter School,2007,1,372,363,341,361,18
+Amigos Por Vida-Friends For Life Public Charter School,2008,1,432,424,389,423,26
+Amigos Por Vida-Friends For Life Public Charter School,2009,1,471,458,426,471,26
+Amigos Por Vida-Friends For Life Public Charter School,2010,1,482,480,429,451,27
+Amigos Por Vida-Friends For Life Public Charter School,2011,1,475,470,445,455,28
+Amigos Por Vida-Friends For Life Public Charter School,2012,1,485,478,448,483,27
+Amigos Por Vida-Friends For Life Public Charter School,2013,1,510,505,461,475,23
+Amigos Por Vida-Friends For Life Public Charter School,2014,1,521,509,482,501,30
+Amigos Por Vida-Friends For Life Public Charter School,2015,1,500,493,461,472,21
+Amigos Por Vida-Friends For Life Public Charter School,2016,1,527,511,475,475,24
+Amigos Por Vida-Friends For Life Public Charter School,2017,1,499,482,421,420,30
+Amigos Por Vida-Friends For Life Public Charter School,2018,1,513,505,431,430,40
+Aristoi Classical Academy,1997,1,122,0,3,0,38
+Aristoi Classical Academy,1998,1,102,3,4,0,33
+Aristoi Classical Academy,1999,2,153,0,0,0,34
+Aristoi Classical Academy,2000,2,237,0,5,0,50
+Aristoi Classical Academy,2001,2,228,0,0,0,30
+Aristoi Classical Academy,2002,2,192,0,0,0,21
+Aristoi Classical Academy,2003,2,186,0,0,0,26
+Aristoi Classical Academy,2004,2,245,0,0,0,37
+Aristoi Classical Academy,2005,2,215,0,0,0,34
+Aristoi Classical Academy,2006,2,138,0,0,0,32
+Aristoi Classical Academy,2007,2,178,0,0,0,19
+Aristoi Classical Academy,2008,1,245,0,0,0,23
+Aristoi Classical Academy,2009,1,317,57,0,0,23
+Aristoi Classical Academy,2010,1,307,61,0,0,27
+Aristoi Classical Academy,2011,1,305,88,0,0,21
+Aristoi Classical Academy,2012,1,305,86,15,18,24
+Aristoi Classical Academy,2013,1,320,76,19,18,30
+Aristoi Classical Academy,2014,1,430,106,18,17,26
+Aristoi Classical Academy,2015,2,539,100,31,27,30
+Aristoi Classical Academy,2016,2,644,104,27,27,35
+Aristoi Classical Academy,2017,2,779,130,23,23,43
+Aristoi Classical Academy,2018,2,856,206,30,30,61
+Arlington Classics Academy,2000,1,311,0,0,1,8
+Arlington Classics Academy,2001,1,272,15,0,0,14
+Arlington Classics Academy,2002,1,246,10,0,0,15
+Arlington Classics Academy,2003,1,259,19,12,12,14
+Arlington Classics Academy,2004,1,249,47,10,10,8
+Arlington Classics Academy,2005,1,274,62,9,9,25
+Arlington Classics Academy,2006,1,355,16,9,10,16
+Arlington Classics Academy,2007,1,404,27,10,9,34
+Arlington Classics Academy,2008,1,430,21,8,8,22
+Arlington Classics Academy,2009,1,461,8,7,5,27
+Arlington Classics Academy,2010,1,502,33,12,10,17
+Arlington Classics Academy,2011,1,495,26,9,8,19
+Arlington Classics Academy,2012,3,997,171,39,25,24
+Arlington Classics Academy,2013,3,1176,224,45,22,34
+Arlington Classics Academy,2014,3,1284,256,43,31,43
+Arlington Classics Academy,2015,3,1392,246,64,54,54
+Arlington Classics Academy,2016,3,1442,289,66,44,53
+Arlington Classics Academy,2017,3,1486,276,66,52,49
+Arlington Classics Academy,2018,3,1532,288,69,62,51
+Arrow Academy,2012,4,571,399,2,0,17
+Arrow Academy,2013,6,867,678,114,114,34
+Arrow Academy,2014,6,927,775,192,189,41
+Arrow Academy,2015,7,844,625,220,215,31
+Arrow Academy,2016,5,547,391,57,56,25
+Arrow Academy,2017,4,491,381,47,47,34
+Arrow Academy,2018,4,621,574,79,75,40
+Austin Achieve Public Schools,2013,1,118,111,43,43,9
+Austin Achieve Public Schools,2014,1,278,84,139,139,19
+Austin Achieve Public Schools,2015,1,411,384,180,178,52
+Austin Achieve Public Schools,2016,1,548,512,311,310,59
+Austin Achieve Public Schools,2017,1,702,626,393,393,86
+Austin Achieve Public Schools,2018,1,809,760,462,459,104
+Austin Can Academy Charter School,2003,1,81,54,0,0,11
+Austin Can Academy Charter School,2004,1,179,120,1,1,34
+Austin Can Academy Charter School,2005,1,243,208,36,10,43
+Austin Can Academy Charter School,2006,1,371,184,54,39,74
+Austin Can Academy Charter School,2007,1,271,231,82,77,55
+Austin Can Academy Charter School,2008,1,301,202,76,75,50
+Austin Can Academy Charter School,2009,1,290,269,45,45,57
+Austin Can Academy Charter School,2010,1,357,315,79,79,60
+Austin Can Academy Charter School,2011,1,363,328,94,90,67
+Austin Can Academy Charter School,2012,1,297,264,65,63,51
+Austin Can Academy Charter School,2013,1,387,334,89,88,50
+Austin Discovery School,2006,1,137,0,0,0,7
+Austin Discovery School,2007,1,213,0,2,2,13
+Austin Discovery School,2008,1,231,36,18,16,19
+Austin Discovery School,2009,1,235,25,18,16,15
+Austin Discovery School,2010,1,317,55,20,19,16
+Austin Discovery School,2011,1,375,68,15,15,24
+Austin Discovery School,2012,1,400,54,16,16,22
+Austin Discovery School,2013,1,395,84,14,13,30
+Austin Discovery School,2014,1,374,77,9,8,31
+Austin Discovery School,2015,1,491,102,12,10,34
+Austin Discovery School,2016,1,543,101,18,20,42
+Austin Discovery School,2017,1,556,65,15,15,47
+Austin Discovery School,2018,1,524,130,10,10,47
+Azleway Charter School,2002,1,71,68,0,0,48
+Azleway Charter School,2003,1,81,81,0,0,43
+Azleway Charter School,2004,1,88,88,0,0,62
+Azleway Charter School,2005,1,91,91,0,0,65
+Azleway Charter School,2006,1,91,91,0,0,71
+Azleway Charter School,2007,1,87,87,0,0,57
+Azleway Charter School,2008,2,133,131,0,0,66
+Azleway Charter School,2009,2,122,122,0,0,80
+Azleway Charter School,2010,2,139,138,0,0,94
+Azleway Charter School,2011,2,130,130,0,0,71
+Azleway Charter School,2012,2,134,132,0,0,71
+Azleway Charter School,2013,2,161,161,0,0,95
+Azleway Charter School,2014,2,162,156,0,0,81
+Basis Texas,2014,1,508,28,0,0,12
+Basis Texas,2015,2,1052,0,2,2,0
+Basis Texas,2016,2,1305,88,7,7,16
+Basis Texas,2017,2,1384,103,33,44,15
+Basis Texas,2018,3,2452,104,178,150,40
+Bay Area Charter Inc,1999,1,147,22,4,0,8
+Bay Area Charter Inc,2000,1,157,32,7,0,15
+Bay Area Charter Inc,2001,2,215,32,8,8,18
+Bay Area Charter Inc,2002,2,237,22,15,12,15
+Bay Area Charter Inc,2003,2,242,73,1,8,15
+Bay Area Charter Inc,2004,2,277,80,15,16,25
+Bay Area Charter Inc,2005,3,303,98,27,27,40
+Bay Area Charter Inc,2006,3,338,119,19,20,36
+Bay Area Charter Inc,2007,3,295,110,14,13,35
+Bay Area Charter Inc,2008,3,289,90,19,18,40
+Bay Area Charter Inc,2009,3,328,122,18,18,48
+Bay Area Charter Inc,2010,3,366,128,27,27,57
+Bay Area Charter Inc,2011,3,367,124,24,24,62
+Bay Area Charter Inc,2012,3,373,128,26,25,65
+Bay Area Charter Inc,2013,3,360,122,25,25,56
+Bay Area Charter Inc,2014,3,416,148,21,21,67
+Bay Area Charter Inc,2015,3,419,145,15,15,57
+Beatrice Mayes Institute Charter School,2002,1,236,156,0,0,4
+Beatrice Mayes Institute Charter School,2003,1,270,174,0,0,11
+Beatrice Mayes Institute Charter School,2004,1,286,180,0,0,15
+Beatrice Mayes Institute Charter School,2005,1,321,193,0,0,19
+Beatrice Mayes Institute Charter School,2006,1,340,192,0,0,23
+Beatrice Mayes Institute Charter School,2007,1,347,256,0,0,26
+Beatrice Mayes Institute Charter School,2008,1,372,266,0,0,27
+Beatrice Mayes Institute Charter School,2009,1,416,291,0,0,23
+Beatrice Mayes Institute Charter School,2010,1,415,309,0,0,24
+Beatrice Mayes Institute Charter School,2011,1,430,346,0,0,28
+Beatrice Mayes Institute Charter School,2012,1,443,352,0,0,30
+Beatrice Mayes Institute Charter School,2013,1,450,346,0,0,29
+Beatrice Mayes Institute Charter School,2014,1,424,318,0,0,28
+Beatrice Mayes Institute Charter School,2015,1,472,324,0,0,31
+Beatrice Mayes Institute Charter School,2016,1,455,350,0,0,41
+Beatrice Mayes Institute Charter School,2017,1,482,360,0,0,39
+Beatrice Mayes Institute Charter School,2018,1,445,327,0,0,31
+Benji's Special Educational Academy,2000,1,136,135,0,0,47
+Benji's Special Educational Academy,2001,1,214,214,0,0,34
+Benji's Special Educational Academy,2002,1,356,356,0,0,61
+Benji's Special Educational Academy,2003,1,411,399,0,0,69
+Benji's Special Educational Academy,2004,1,402,401,0,0,61
+Benji's Special Educational Academy,2005,1,496,484,1,0,78
+Benji's Special Educational Academy,2006,1,611,537,1,0,81
+Benji's Special Educational Academy,2007,1,635,625,1,0,94
+Benji's Special Educational Academy,2008,1,560,559,0,0,90
+Benji's Special Educational Academy,2009,1,520,414,0,0,83
+Benji's Special Educational Academy,2010,1,496,291,0,0,98
+Benji's Special Educational Academy,2011,1,268,223,0,0,31
+Beta Academy,2016,1,467,286,110,93,14
+Beta Academy,2017,1,542,344,138,118,22
+Beta Academy,2018,1,549,212,110,103,27
+Bexar County Academy,2000,1,82,8,0,0,0
+Bexar County Academy,2001,1,115,98,0,0,11
+Bexar County Academy,2002,1,284,176,21,21,21
+Bexar County Academy,2003,1,285,206,32,10,19
+Bexar County Academy,2004,1,424,254,32,31,36
+Bexar County Academy,2005,1,514,503,56,55,42
+Bexar County Academy,2006,1,524,512,47,44,34
+Bexar County Academy,2007,1,501,487,64,57,42
+Bexar County Academy,2008,1,504,484,66,59,26
+Bexar County Academy,2009,1,485,428,88,82,22
+Bexar County Academy,2010,1,482,462,100,94,24
+Bexar County Academy,2011,1,509,492,81,79,34
+Bexar County Academy,2012,1,502,474,95,101,47
+Bexar County Academy,2013,1,458,134,89,90,43
+Bexar County Academy,2014,1,505,177,102,95,58
+Bexar County Academy,2015,1,432,367,87,83,51
+Bexar County Academy,2016,1,444,391,87,84,58
+Bexar County Academy,2017,1,368,363,61,59,42
+Bexar County Academy,2018,1,374,360,96,93,39
+Big Springs Charter School,2002,1,16,15,0,0,14
+Big Springs Charter School,2003,1,15,14,0,0,13
+Big Springs Charter School,2004,1,28,23,0,0,21
+Big Springs Charter School,2005,1,66,48,0,0,36
+Big Springs Charter School,2006,2,79,69,2,2,53
+Big Springs Charter School,2007,2,101,97,0,0,80
+Big Springs Charter School,2008,2,115,109,5,5,100
+Big Springs Charter School,2009,2,117,108,0,0,106
+Big Springs Charter School,2010,2,124,120,1,1,96
+Big Springs Charter School,2011,2,144,137,2,2,85
+Big Springs Charter School,2012,2,171,163,1,1,120
+Big Springs Charter School,2013,2,165,152,6,3,100
+Big Springs Charter School,2014,2,186,171,4,3,94
+Big Springs Charter School,2015,2,231,160,4,4,98
+Big Springs Charter School,2016,2,205,187,3,3,99
+Big Springs Charter School,2017,2,204,188,1,1,91
+Big Springs Charter School,2018,2,233,207,4,4,99
+Bob Hope School,2011,1,204,177,0,0,29
+Bob Hope School,2012,1,245,223,23,12,25
+Bob Hope School,2013,1,243,222,15,10,17
+Bob Hope School,2014,1,246,228,20,14,10
+Bob Hope School,2015,1,447,399,77,41,22
+Bob Hope School,2016,1,516,451,108,66,25
+Bob Hope School,2017,2,850,779,336,332,35
+Bob Hope School,2018,2,976,874,451,439,43
+Brazos River Charter School,2001,1,57,31,0,0,0
+Brazos River Charter School,2002,1,81,41,0,0,9
+Brazos River Charter School,2003,1,114,60,0,0,26
+Brazos River Charter School,2004,1,125,61,0,0,17
+Brazos River Charter School,2005,1,137,70,0,0,34
+Brazos River Charter School,2006,1,137,73,0,0,27
+Brazos River Charter School,2007,1,135,69,0,0,24
+Brazos River Charter School,2008,1,138,70,0,0,24
+Brazos River Charter School,2009,1,137,72,0,0,27
+Brazos River Charter School,2010,1,157,95,0,0,35
+Brazos River Charter School,2011,1,130,86,0,0,23
+Brazos River Charter School,2012,1,194,125,0,0,19
+Brazos River Charter School,2013,1,226,127,0,0,37
+Brazos River Charter School,2014,1,206,123,0,0,29
+Brazos River Charter School,2015,1,238,138,0,0,36
+Brazos River Charter School,2016,1,246,123,1,1,33
+Brazos River Charter School,2017,1,228,128,0,0,35
+Brazos River Charter School,2018,1,236,153,0,0,25
+Brazos School For Inquiry & Creatitivity,2000,1,70,0,0,0,9
+Brazos School For Inquiry & Creatitivity,2001,1,86,44,0,0,8
+Brazos School For Inquiry & Creatitivity,2002,1,146,98,0,0,4
+Brazos School For Inquiry & Creatitivity,2003,1,129,91,0,0,19
+Brazos School For Inquiry & Creatitivity,2004,1,88,68,0,0,26
+Brazos School For Inquiry & Creatitivity,2005,3,264,234,0,66,27
+Brazos School For Inquiry & Creatitivity,2006,4,355,333,0,0,16
+Brazos School For Inquiry & Creatitivity,2007,3,298,266,63,63,24
+Brazos School For Inquiry & Creatitivity,2008,4,458,402,15,13,22
+Brazos School For Inquiry & Creatitivity,2009,4,461,437,67,40,35
+Brazos School For Inquiry & Creatitivity,2010,4,490,472,70,51,51
+Brazos School For Inquiry & Creatitivity,2011,4,494,467,56,37,50
+Brazos School For Inquiry & Creatitivity,2012,4,453,426,81,69,30
+Brazos School For Inquiry & Creatitivity,2013,3,448,420,78,76,37
+Brazos School For Inquiry & Creatitivity,2014,3,478,447,83,76,36
+Brazos School For Inquiry & Creatitivity,2015,3,434,398,89,82,27
+Brazos School For Inquiry & Creatitivity,2016,3,417,395,97,92,34
+Brazos School For Inquiry & Creatitivity,2017,3,387,355,69,65,39
+Brazos School For Inquiry & Creatitivity,2018,3,394,370,95,92,25
+Bright Ideas Charter,1999,1,67,3,0,0,0
+Bright Ideas Charter,2000,1,67,0,0,0,0
+Bright Ideas Charter,2001,1,69,35,0,0,0
+Bright Ideas Charter,2002,1,81,37,0,0,3
+Bright Ideas Charter,2003,1,159,63,0,0,10
+Bright Ideas Charter,2004,1,173,87,0,0,14
+Bright Ideas Charter,2005,1,156,64,0,0,9
+Bright Ideas Charter,2006,1,168,78,0,0,10
+Bright Ideas Charter,2007,1,173,71,0,0,9
+Bright Ideas Charter,2008,1,161,71,0,0,6
+Bright Ideas Charter,2009,1,166,79,0,0,4
+Bright Ideas Charter,2010,1,197,54,0,0,9
+Bright Ideas Charter,2011,1,187,55,0,0,6
+Bright Ideas Charter,2012,1,192,96,0,0,14
+Bright Ideas Charter,2013,1,168,85,0,0,18
+Bright Ideas Charter,2014,1,159,97,0,0,16
+Bright Ideas Charter,2015,1,115,60,0,0,13
+Brooks Academy Of Science And Engineering,2007,1,235,153,0,0,9
+Brooks Academy Of Science And Engineering,2008,1,451,231,16,6,16
+Brooks Academy Of Science And Engineering,2009,1,602,327,9,1,22
+Brooks Academy Of Science And Engineering,2010,1,686,391,46,0,27
+Brooks Academy Of Science And Engineering,2011,1,638,261,13,0,28
+Brooks Academy Of Science And Engineering,2012,1,1018,701,16,16,38
+Brooks Academy Of Science And Engineering,2013,1,1208,796,50,40,54
+Brooks Academy Of Science And Engineering,2014,1,1509,874,111,95,69
+Brooks Academy Of Science And Engineering,2015,3,1776,1226,125,112,72
+Brooks Academy Of Science And Engineering,2016,3,1785,1148,152,139,78
+Brooks Academy Of Science And Engineering,2017,4,1961,1326,132,128,107
+Brooks Academy Of Science And Engineering,2018,4,2898,2003,199,195,165
+Burnham Wood Charter School District,1999,1,92,22,0,0,5
+Burnham Wood Charter School District,2000,1,115,39,0,0,4
+Burnham Wood Charter School District,2001,1,169,48,3,0,10
+Burnham Wood Charter School District,2002,2,195,60,47,0,9
+Burnham Wood Charter School District,2003,2,250,73,82,77,21
+Burnham Wood Charter School District,2004,1,220,94,43,43,23
+Burnham Wood Charter School District,2005,1,217,85,25,25,27
+Burnham Wood Charter School District,2006,1,261,112,32,31,36
+Burnham Wood Charter School District,2007,2,393,172,34,25,46
+Burnham Wood Charter School District,2008,2,590,259,111,90,66
+Burnham Wood Charter School District,2009,2,685,327,128,128,60
+Burnham Wood Charter School District,2010,2,782,417,114,114,44
+Burnham Wood Charter School District,2011,2,892,455,165,140,47
+Burnham Wood Charter School District,2012,2,871,403,153,117,47
+Burnham Wood Charter School District,2013,2,856,406,160,126,38
+Burnham Wood Charter School District,2014,2,914,419,152,129,38
+Burnham Wood Charter School District,2015,2,968,495,222,197,39
+Burnham Wood Charter School District,2016,2,1031,535,269,236,46
+Burnham Wood Charter School District,2017,2,963,394,273,237,52
+Burnham Wood Charter School District,2018,2,830,279,247,205,44
+C O R E Academy,2014,1,74,70,0,0,10
+C O R E Academy,2015,1,343,303,3,3,40
+C O R E Academy,2016,1,509,451,3,3,44
+C O R E Academy,2017,1,478,443,3,3,42
+Calvin Nelms Charter Schools,2000,1,53,0,0,0,0
+Calvin Nelms Charter Schools,2001,1,168,2,10,10,8
+Calvin Nelms Charter Schools,2002,1,150,24,4,0,14
+Calvin Nelms Charter Schools,2003,2,157,32,1,0,8
+Calvin Nelms Charter Schools,2004,2,145,37,1,0,15
+Calvin Nelms Charter Schools,2005,3,171,57,0,0,34
+Calvin Nelms Charter Schools,2006,4,181,58,0,0,26
+Calvin Nelms Charter Schools,2007,4,274,60,0,0,34
+Calvin Nelms Charter Schools,2008,5,335,59,0,0,27
+Calvin Nelms Charter Schools,2009,5,280,63,0,0,32
+Calvin Nelms Charter Schools,2010,3,297,91,0,0,27
+Calvin Nelms Charter Schools,2011,3,260,71,0,0,25
+Calvin Nelms Charter Schools,2012,3,247,54,2,2,28
+Calvin Nelms Charter Schools,2013,2,253,74,2,2,26
+Calvin Nelms Charter Schools,2014,2,284,85,7,7,29
+Calvin Nelms Charter Schools,2015,2,303,84,5,5,23
+Calvin Nelms Charter Schools,2016,2,307,116,7,7,21
+Calvin Nelms Charter Schools,2017,2,319,141,10,8,18
+Calvin Nelms Charter Schools,2018,2,311,142,10,10,20
+Career Plus Learning Academy,2000,1,23,20,1,1,8
+Career Plus Learning Academy,2001,1,15,12,0,0,3
+Career Plus Learning Academy,2002,1,29,29,0,0,9
+Career Plus Learning Academy,2003,1,35,35,0,0,11
+Career Plus Learning Academy,2004,1,46,46,0,0,6
+Career Plus Learning Academy,2005,1,43,43,0,0,15
+Career Plus Learning Academy,2006,1,92,92,0,0,19
+Carpe Diem Schools,2016,1,244,150,6,0,40
+Carpe Diem Schools,2017,1,262,163,0,0,29
+Carpe Diem Schools,2018,1,226,134,3,0,25
+Cedars International Academy,2002,1,48,0,0,0,1
+Cedars International Academy,2003,1,98,42,0,0,8
+Cedars International Academy,2004,1,130,65,0,0,12
+Cedars International Academy,2005,1,154,78,3,3,10
+Cedars International Academy,2006,1,155,95,5,5,19
+Cedars International Academy,2007,1,188,123,7,7,27
+Cedars International Academy,2008,1,160,112,11,10,23
+Cedars International Academy,2009,1,182,129,22,22,25
+Cedars International Academy,2010,1,217,203,39,39,22
+Cedars International Academy,2011,1,221,193,40,38,17
+Cedars International Academy,2012,1,250,205,58,56,13
+Cedars International Academy,2013,1,308,252,102,99,18
+Cedars International Academy,2014,1,353,330,120,119,17
+Cedars International Academy,2015,1,392,325,127,126,15
+Cedars International Academy,2016,1,390,352,174,173,21
+Cedars International Academy,2017,2,455,322,193,193,36
+Cedars International Academy,2018,2,501,445,205,205,44
+Chaparral Star Academy,1999,1,30,0,0,0,0
+Chaparral Star Academy,2000,1,90,0,0,0,8
+Chaparral Star Academy,2001,1,140,0,0,0,11
+Chaparral Star Academy,2002,1,142,0,0,0,11
+Chaparral Star Academy,2003,1,178,0,0,0,9
+Chaparral Star Academy,2004,1,191,0,0,0,10
+Chaparral Star Academy,2005,1,207,0,0,0,10
+Chaparral Star Academy,2006,1,252,0,0,0,7
+Chaparral Star Academy,2007,1,301,0,0,0,7
+Chaparral Star Academy,2008,1,315,0,0,0,7
+Chaparral Star Academy,2009,1,303,0,0,0,6
+Chaparral Star Academy,2010,1,304,0,0,0,5
+Chaparral Star Academy,2011,1,346,4,0,0,4
+Chaparral Star Academy,2012,1,343,4,0,0,3
+Chaparral Star Academy,2013,1,365,1,0,0,10
+Chaparral Star Academy,2014,1,360,2,0,0,6
+Chaparral Star Academy,2015,1,358,0,0,0,9
+Chaparral Star Academy,2016,1,357,0,11,10,16
+Chaparral Star Academy,2017,1,378,0,21,21,13
+Chaparral Star Academy,2018,1,381,0,22,18,10
+Chapel Hill Academy,2009,1,127,71,3,3,8
+Chapel Hill Academy,2010,1,268,177,6,6,13
+Chapel Hill Academy,2011,1,344,213,11,11,15
+Chapel Hill Academy,2012,1,407,247,15,15,25
+Chapel Hill Academy,2013,1,488,314,21,21,38
+Chapel Hill Academy,2014,1,502,312,26,26,40
+Chapel Hill Academy,2015,1,507,319,27,25,38
+Chapel Hill Academy,2016,1,506,322,29,26,30
+Chapel Hill Academy,2017,1,518,308,34,31,34
+Chapel Hill Academy,2018,1,510,310,37,33,41
+Children First Academy,2000,2,353,0,0,0,0
+Children First Academy,2001,2,622,109,0,0,16
+Children First Academy,2002,2,743,694,0,0,29
+Children First Academy,2003,2,749,745,0,0,26
+Children First Academy,2004,2,732,717,0,0,21
+Children First Academy,2005,2,833,815,0,0,55
+Children First Academy,2006,2,756,748,0,0,59
+Children First Academy,2007,2,763,756,0,0,52
+Children First Academy,2008,2,731,710,0,0,37
+Children First Academy,2009,2,753,744,0,0,50
+Children First Academy,2010,2,750,743,0,0,53
+Children First Academy,2011,2,878,845,0,0,49
+Children First Academy,2012,2,888,878,0,0,59
+Children First Academy,2013,2,904,884,0,0,44
+Children First Academy,2015,2,716,706,0,0,1
+Children First Academy,2016,2,783,783,0,0,15
+Children Of The Sun Charter School,2003,2,70,70,0,0,10
+Children Of The Sun Charter School,2004,2,160,157,0,0,23
+City Center Health Careers,2010,1,67,42,5,4,2
+City Center Health Careers,2011,1,123,73,10,9,6
+City Center Health Careers,2012,1,145,95,8,8,14
+City Center Health Careers,2013,1,124,104,6,6,6
+City Center Health Careers,2014,1,144,131,28,28,9
+City Center Health Careers,2015,1,111,97,32,32,10
+Cityscape Schools,2009,1,128,116,73,72,2
+Cityscape Schools,2010,1,160,151,99,100,4
+Cityscape Schools,2011,1,191,178,115,114,5
+Cityscape Schools,2012,1,221,210,122,121,7
+Cityscape Schools,2013,1,201,196,118,125,5
+Cityscape Schools,2014,1,203,198,112,117,9
+Cityscape Schools,2015,1,392,376,209,195,12
+Cityscape Schools,2016,1,520,498,250,238,29
+Cityscape Schools,2017,1,620,583,334,325,26
+Cityscape Schools,2018,1,740,662,394,338,41
+Coastal Bend Youth City,1999,1,40,40,0,0,40
+Coastal Bend Youth City,2000,1,46,45,0,0,30
+Coastal Bend Youth City,2001,1,48,48,2,1,26
+Coastal Bend Youth City,2002,1,56,56,1,1,38
+Coastal Bend Youth City,2003,1,50,50,0,0,33
+Coastal Bend Youth City,2004,1,53,53,0,0,28
+Coastal Bend Youth City,2005,1,20,20,0,0,11
+Compass Academy Charter School,2012,1,250,52,0,0,8
+Compass Academy Charter School,2013,1,373,113,2,2,15
+Compass Academy Charter School,2014,1,465,135,2,2,19
+Compass Academy Charter School,2015,1,575,143,2,2,35
+Compass Academy Charter School,2016,1,673,143,0,0,45
+Compass Academy Charter School,2017,1,778,130,4,4,54
+Compass Academy Charter School,2018,1,1025,180,3,3,66
+Compass Rose Academy,2018,1,90,71,12,10,10
+Comquest Academy,2000,1,71,37,0,0,7
+Comquest Academy,2001,1,57,0,0,0,5
+Comquest Academy,2002,1,68,1,0,0,3
+Comquest Academy,2003,1,69,16,0,0,4
+Comquest Academy,2004,1,83,35,0,0,2
+Comquest Academy,2005,1,85,25,0,0,1
+Comquest Academy,2006,1,84,54,2,2,1
+Comquest Academy,2007,1,125,82,2,10,3
+Comquest Academy,2008,1,88,61,0,0,4
+Comquest Academy,2009,1,82,57,0,0,4
+Comquest Academy,2010,1,75,56,0,0,0
+Comquest Academy,2011,1,83,57,1,1,7
+Comquest Academy,2012,1,74,56,2,2,1
+Comquest Academy,2013,1,64,42,0,0,3
+Comquest Academy,2014,1,79,38,7,7,6
+Comquest Academy,2015,1,60,39,3,3,2
+Comquest Academy,2016,1,83,55,6,6,5
+Comquest Academy,2017,1,83,56,15,12,3
+Comquest Academy,2018,1,75,51,23,17,4
+Corpus Christi Montessori School,2006,1,57,7,0,0,3
+Corpus Christi Montessori School,2007,1,83,5,1,1,7
+Corpus Christi Montessori School,2008,1,115,6,0,0,13
+Corpus Christi Montessori School,2009,1,153,26,0,0,18
+Corpus Christi Montessori School,2010,1,169,20,0,0,15
+Corpus Christi Montessori School,2011,1,181,14,0,0,13
+Corpus Christi Montessori School,2012,1,175,0,0,0,13
+Corpus Christi Montessori School,2013,1,165,23,0,0,8
+Corpus Christi Montessori School,2014,1,153,19,8,7,4
+Corpus Christi Montessori School,2015,1,163,37,7,6,8
+Corpus Christi Montessori School,2016,1,168,33,5,5,16
+Corpus Christi Montessori School,2017,1,168,31,4,4,12
+Corpus Christi Montessori School,2018,1,145,25,4,4,12
+crossroads Community Ed Ctr Charter,2001,1,62,51,0,0,0
+crossroads Community Ed Ctr Charter,2002,1,119,62,0,0,0
+crossroads Community Ed Ctr Charter,2003,1,148,100,0,0,15
+crossroads Community Ed Ctr Charter,2004,1,107,77,0,0,9
+crossroads Community Ed Ctr Charter,2005,1,93,92,0,0,15
+crossroads Community Ed Ctr Charter,2006,1,113,111,0,0,10
+Crosstimbers Academy,2007,1,110,56,0,0,13
+Crosstimbers Academy,2008,1,144,60,0,0,16
+Crosstimbers Academy,2009,1,136,63,0,1,18
+Crosstimbers Academy,2010,1,149,74,0,0,20
+Crosstimbers Academy,2011,1,140,69,0,0,21
+Crosstimbers Academy,2012,1,132,65,0,0,9
+Crosstimbers Academy,2013,1,118,56,0,0,7
+Crosstimbers Academy,2014,1,117,57,0,0,12
+Crosstimbers Academy,2015,1,90,41,0,0,7
+Crosstimbers Academy,2016,1,98,47,0,0,9
+Crosstimbers Academy,2017,1,86,47,0,0,8
+Crosstimbers Academy,2018,1,109,59,0,0,10
+Cumberland Academy,1999,1,82,9,0,0,25
+Cumberland Academy,2000,1,84,12,0,0,37
+Cumberland Academy,2001,1,118,7,0,0,48
+Cumberland Academy,2002,1,309,40,0,0,85
+Cumberland Academy,2003,1,186,15,0,0,37
+Cumberland Academy,2004,1,222,105,0,0,53
+Cumberland Academy,2005,1,193,98,0,0,37
+Cumberland Academy,2006,1,205,110,0,0,41
+Cumberland Academy,2007,1,223,104,0,0,36
+Cumberland Academy,2008,1,237,107,0,0,30
+Cumberland Academy,2009,1,222,115,0,0,20
+Cumberland Academy,2010,1,241,140,0,0,35
+Cumberland Academy,2011,1,387,143,0,0,37
+Cumberland Academy,2012,1,440,172,0,0,38
+Cumberland Academy,2013,1,483,170,0,0,34
+Cumberland Academy,2014,2,852,300,28,0,58
+Cumberland Academy,2015,2,1030,397,71,58,63
+Cumberland Academy,2016,3,1161,470,90,83,67
+Cumberland Academy,2017,3,1466,478,114,90,106
+Cumberland Academy,2018,4,1774,668,158,126,128
+Dr M L Garza-Gonzalez Charter School,1997,1,148,147,0,0,0
+Dr M L Garza-Gonzalez Charter School,1998,1,182,28,0,0,8
+Dr M L Garza-Gonzalez Charter School,1999,1,184,137,0,0,18
+Dr M L Garza-Gonzalez Charter School,2000,2,212,163,0,0,16
+Dr M L Garza-Gonzalez Charter School,2001,2,213,162,0,0,7
+Dr M L Garza-Gonzalez Charter School,2002,2,307,234,0,0,18
+Dr M L Garza-Gonzalez Charter School,2003,1,261,252,1,13,32
+Dr M L Garza-Gonzalez Charter School,2004,1,257,198,18,18,37
+Dr M L Garza-Gonzalez Charter School,2005,2,205,177,5,5,27
+Dr M L Garza-Gonzalez Charter School,2006,1,200,179,0,0,15
+Dr M L Garza-Gonzalez Charter School,2007,3,252,234,0,1,12
+Dr M L Garza-Gonzalez Charter School,2008,3,268,249,49,49,6
+Dr M L Garza-Gonzalez Charter School,2009,3,270,268,31,31,19
+Dr M L Garza-Gonzalez Charter School,2010,3,282,278,73,73,22
+Dr M L Garza-Gonzalez Charter School,2011,3,260,246,134,134,22
+Dr M L Garza-Gonzalez Charter School,2012,3,213,191,94,94,12
+Dr M L Garza-Gonzalez Charter School,2013,3,228,208,93,93,5
+Dr M L Garza-Gonzalez Charter School,2014,3,211,196,77,76,4
+Dr M L Garza-Gonzalez Charter School,2015,3,185,155,56,56,1
+Dr M L Garza-Gonzalez Charter School,2016,3,169,158,41,41,0
+Dr M L Garza-Gonzalez Charter School,2017,2,152,146,38,38,2
+Dr M L Garza-Gonzalez Charter School,2018,1,171,164,34,34,3
+Draw Academy,2005,1,244,244,190,190,11
+Draw Academy,2006,1,246,246,202,203,25
+Draw Academy,2007,1,221,221,198,198,22
+Draw Academy,2008,1,245,244,204,204,25
+Draw Academy,2009,1,264,264,195,195,16
+Draw Academy,2010,1,280,279,207,207,13
+Draw Academy,2011,1,293,293,219,219,12
+Draw Academy,2012,2,422,422,254,254,12
+Draw Academy,2013,2,477,476,332,332,10
+Draw Academy,2014,2,458,458,362,361,8
+Draw Academy,2015,2,542,542,422,420,9
+Draw Academy,2016,3,698,688,508,505,11
+Draw Academy,2017,3,660,627,513,511,8
+Draw Academy,2018,3,653,634,572,568,12
+Eagle Academies of Texas,2000,14,686,0,0,0,0
+Eagle Academies of Texas,2001,14,1855,6,0,0,139
+Eagle Academies of Texas,2002,14,1943,523,296,296,247
+Eagle Academies of Texas,2003,15,2307,1203,728,728,323
+Eagle Academies of Texas,2004,17,2472,1538,630,630,431
+Eagle Academies of Texas,2005,18,2479,1297,763,763,442
+Eagle Academies of Texas,2006,16,2244,1247,741,741,306
+Eagle Academies of Texas,2007,17,2420,1381,756,756,321
+Eagle Academies of Texas,2008,22,2681,1718,821,821,266
+Eagle Academies of Texas,2009,21,3110,2000,982,982,279
+Eagle Academies of Texas,2010,21,3163,2061,1052,1052,287
+Eagle Academies of Texas,2011,21,4334,2930,1177,1177,359
+Eagle Academies of Texas,2012,6,5092,2145,6,6,309
+Eagle Academies of Texas,2013,6,6519,3315,81,81,374
+Eagle Academies of Texas,2014,6,7331,3308,198,198,636
+Eagle Academies of Texas,2015,6,7911,3354,174,174,692
+Eagle Academies of Texas,2016,6,4621,2433,297,297,402
+Eagle Academies of Texas,2017,6,4860,2541,328,318,472
+Eagle Academies of Texas,2018,5,3586,1685,177,172,398
+Eagle Project,2000,1,56,1,0,0,0
+Eagle Project,2001,1,121,1,0,0,13
+Eagle Project,2002,2,176,79,2,2,24
+Eagle Project,2003,1,119,78,22,22,13
+East Fort Worth Montessori Academy,2004,1,200,182,16,15,12
+East Fort Worth Montessori Academy,2005,1,218,204,19,19,14
+East Fort Worth Montessori Academy,2006,1,222,205,48,48,4
+East Fort Worth Montessori Academy,2007,1,247,208,73,77,6
+East Fort Worth Montessori Academy,2008,1,295,249,75,75,7
+East Fort Worth Montessori Academy,2009,1,306,279,85,85,14
+East Fort Worth Montessori Academy,2010,1,306,287,84,84,12
+East Fort Worth Montessori Academy,2011,1,355,319,86,86,13
+East Fort Worth Montessori Academy,2012,1,357,312,111,109,10
+East Fort Worth Montessori Academy,2013,2,549,426,148,145,12
+East Fort Worth Montessori Academy,2014,2,532,437,179,178,22
+East Fort Worth Montessori Academy,2015,2,492,409,159,159,19
+East Fort Worth Montessori Academy,2016,2,497,379,162,161,18
+East Fort Worth Montessori Academy,2017,2,520,387,181,178,17
+East Fort Worth Montessori Academy,2018,2,377,276,117,117,14
+East Texas Charter Schools,2000,1,52,27,0,0,0
+East Texas Charter Schools,2001,1,144,18,1,1,4
+East Texas Charter Schools,2002,1,143,19,1,1,7
+East Texas Charter Schools,2003,2,170,33,0,0,17
+East Texas Charter Schools,2004,1,140,29,0,0,7
+East Texas Charter Schools,2005,1,139,34,0,0,11
+East Texas Charter Schools,2006,1,135,45,0,0,13
+East Texas Charter Schools,2007,1,168,62,0,0,17
+East Texas Charter Schools,2008,1,162,54,0,0,27
+East Texas Charter Schools,2009,1,155,50,0,0,26
+East Texas Charter Schools,2010,1,157,49,0,0,21
+East Texas Charter Schools,2011,1,157,50,0,0,14
+East Texas Charter Schools,2012,1,165,58,0,0,15
+East Texas Charter Schools,2013,1,167,42,0,0,12
+East Texas Charter Schools,2014,1,173,51,0,0,10
+East Texas Charter Schools,2015,1,174,41,0,0,11
+East Texas Charter Schools,2016,1,167,40,0,0,12
+East Texas Charter Schools,2017,1,148,34,0,0,10
+East Texas Charter Schools,2018,1,140,42,0,0,13
+Education Center International,2002,3,234,11,7,1,42
+Education Center International,2003,3,347,47,3,1,69
+Education Center International,2004,3,332,61,4,4,61
+Education Center International,2005,3,370,123,19,19,77
+Education Center International,2006,3,417,142,14,13,64
+Education Center International,2007,3,432,128,35,34,63
+Education Center International,2008,6,807,219,41,39,105
+Education Center International,2009,7,944,253,27,26,110
+Education Center International,2010,7,962,372,11,11,103
+Education Center International,2011,7,881,389,42,42,119
+Education Center International,2012,6,793,342,27,27,100
+Education Center International,2013,6,786,429,50,47,122
+Education Center International,2014,6,1026,486,126,114,118
+Education Center International,2015,6,879,451,165,158,88
+Education Center International,2016,5,761,436,134,125,73
+Education Center International,2017,6,810,463,134,129,87
+Education Center International,2018,6,1052,647,162,161,106
+Ehrhart School,2002,1,127,49,0,0,21
+Ehrhart School,2003,1,237,126,0,0,24
+Ehrhart School,2004,1,161,128,0,1,24
+Ehrhart School,2005,1,226,187,0,0,30
+Ehrhart School,2006,1,227,190,0,0,23
+Ehrhart School,2007,1,199,170,0,0,15
+Ehrhart School,2008,1,186,156,0,0,13
+Ehrhart School,2009,1,197,174,6,6,13
+Ehrhart School,2010,1,214,189,21,21,11
+Ehrhart School,2011,1,202,179,26,26,10
+Ehrhart School,2012,1,228,193,34,34,14
+Ehrhart School,2013,1,251,216,45,45,14
+Ehrhart School,2014,1,274,241,68,67,12
+Ehrhart School,2015,1,286,242,79,79,11
+Ehrhart School,2016,1,366,303,118,118,14
+Ehrhart School,2017,1,357,293,156,156,12
+Ehrhart School,2018,1,387,319,194,193,17
+El Paso Academy,2001,1,99,99,29,29,0
+El Paso Academy,2002,1,340,241,172,0,20
+El Paso Academy,2003,1,421,310,164,12,33
+El Paso Academy,2004,1,559,383,102,18,39
+El Paso Academy,2005,2,501,316,17,6,59
+El Paso Academy,2006,2,458,319,24,17,30
+El Paso Academy,2007,2,463,302,24,22,40
+El Paso Academy,2008,2,462,322,28,23,37
+El Paso Academy,2009,2,440,304,7,7,35
+El Paso Academy,2010,2,462,312,44,43,34
+El Paso Academy,2011,2,449,294,37,31,40
+El Paso Academy,2012,2,400,282,23,18,22
+El Paso Academy,2013,2,479,338,34,31,31
+El Paso Academy,2014,2,417,285,33,29,30
+El Paso Academy,2015,2,456,243,47,42,36
+El Paso Academy,2016,2,362,270,34,31,27
+El Paso Academy,2017,2,381,275,22,22,24
+El Paso Academy,2018,2,453,274,30,28,40
+El Paso Leadership Academy,2015,1,77,56,12,11,8
+El Paso Leadership Academy,2016,1,181,136,17,5,17
+El Paso Leadership Academy,2017,1,245,195,48,48,20
+El Paso Leadership Academy,2018,1,192,169,43,41,19
+El Paso School Of Excellence,2001,1,185,150,50,0,6
+El Paso School Of Excellence,2002,2,394,241,90,78,18
+El Paso School Of Excellence,2003,2,458,373,128,113,22
+El Paso School Of Excellence,2004,2,497,277,188,129,26
+El Paso School Of Excellence,2005,2,549,511,220,167,30
+El Paso School Of Excellence,2006,2,449,421,134,152,18
+El Paso School Of Excellence,2007,2,489,456,222,175,29
+El Paso School Of Excellence,2008,2,491,472,142,103,20
+El Paso School Of Excellence,2009,2,443,390,260,256,22
+El Paso School Of Excellence,2010,2,456,406,212,181,24
+Eleanor Kolitz Hebrew Language Academy,2014,1,196,22,5,5,5
+Eleanor Kolitz Hebrew Language Academy,2015,1,258,49,8,7,7
+Eleanor Kolitz Hebrew Language Academy,2016,1,280,40,10,10,6
+Eleanor Kolitz Hebrew Language Academy,2017,1,295,39,6,6,8
+Eleanor Kolitz Hebrew Language Academy,2018,1,319,36,14,14,15
+Encino School,1999,1,61,53,9,9,1
+Encino School,2000,1,70,64,12,12,0
+Encino School,2001,1,69,64,12,12,2
+Encino School,2002,1,67,63,9,9,1
+Encino School,2003,1,62,45,8,8,2
+Encino School,2004,1,52,44,10,10,5
+Encino School,2005,1,57,45,6,6,6
+Encino School,2006,1,70,47,7,7,6
+Encino School,2007,1,73,58,11,11,8
+Encino School,2008,1,61,46,10,11,8
+Encino School,2009,1,49,34,6,7,5
+Encino School,2010,1,40,29,4,8,1
+Encino School,2011,1,32,26,2,4,1
+Erath Excels Academy,2007,1,135,70,2,2,21
+Erath Excels Academy,2008,1,85,50,0,0,20
+Erath Excels Academy,2009,2,155,117,0,0,46
+Erath Excels Academy,2010,2,158,136,0,0,35
+Erath Excels Academy,2011,2,162,125,5,5,28
+Erath Excels Academy,2012,2,170,146,6,5,24
+Erath Excels Academy,2013,2,168,151,9,9,24
+Erath Excels Academy,2014,2,208,181,14,14,25
+Erath Excels Academy,2015,2,193,146,8,8,25
+Erath Excels Academy,2016,2,159,134,7,7,15
+Erath Excels Academy,2017,2,136,119,11,10,14
+Erath Excels Academy,2018,2,115,92,9,9,15
+Evolution Academy Charter School,2003,1,238,88,2,2,23
+Evolution Academy Charter School,2004,1,274,72,6,6,42
+Evolution Academy Charter School,2005,1,337,129,10,11,46
+Evolution Academy Charter School,2006,1,352,169,32,32,42
+Evolution Academy Charter School,2007,1,347,123,21,20,35
+Evolution Academy Charter School,2008,1,359,102,30,9,44
+Evolution Academy Charter School,2009,1,405,185,25,23,43
+Evolution Academy Charter School,2010,1,379,135,27,27,65
+Evolution Academy Charter School,2011,1,420,180,26,24,73
+Evolution Academy Charter School,2012,1,483,279,27,19,78
+Evolution Academy Charter School,2013,1,421,277,27,12,64
+Evolution Academy Charter School,2014,2,536,371,25,24,66
+Evolution Academy Charter School,2015,3,794,433,28,25,82
+Evolution Academy Charter School,2016,3,795,457,42,34,77
+Evolution Academy Charter School,2017,3,802,461,58,57,77
+Evolution Academy Charter School,2018,3,809,566,51,51,89
+Excel Academy,1999,1,596,596,25,24,80
+Excel Academy,2000,6,612,612,44,44,118
+Excel Academy,2001,6,665,665,54,54,99
+Excel Academy,2002,6,686,631,79,71,137
+Excel Academy,2003,6,649,648,46,46,127
+Excel Academy,2004,6,580,580,71,71,97
+Excel Academy,2005,6,667,667,89,90,109
+Excel Academy,2006,6,732,732,110,107,103
+Excel Academy,2007,5,698,698,81,81,66
+Excel Academy,2008,5,682,682,38,38,94
+Excel Academy,2009,6,602,602,55,55,107
+Excel Academy,2010,5,529,529,56,55,94
+Excel Academy,2011,4,487,487,57,55,113
+Excel Academy,2012,4,418,416,57,57,88
+Excel Academy,2013,4,441,441,70,69,83
+Excel Academy,2014,4,429,429,62,62,70
+Excel Academy,2015,4,476,476,41,41,71
+Excel Academy,2016,5,526,526,67,66,72
+Excel Academy,2017,5,565,565,63,58,97
+Excel Academy,2018,5,478,478,30,30,60
+Excellence In Leadership Academy,2013,1,59,53,40,39,3
+Excellence In Leadership Academy,2014,1,133,112,63,60,7
+Excellence In Leadership Academy,2015,1,185,159,130,130,11
+Excellence In Leadership Academy,2016,1,201,178,147,147,16
+Excellence In Leadership Academy,2017,1,239,225,157,156,19
+Excellence In Leadership Academy,2018,1,231,195,153,149,20
+Faith Family Academy Of Oak Cliff,2000,1,398,268,0,0,12
+Faith Family Academy Of Oak Cliff,2001,1,745,552,0,0,20
+Faith Family Academy Of Oak Cliff,2002,1,844,563,19,12,22
+Faith Family Academy Of Oak Cliff,2003,1,1018,848,16,10,50
+Faith Family Academy Of Oak Cliff,2004,1,1006,861,41,41,85
+Faith Family Academy Of Oak Cliff,2005,1,1006,925,95,89,75
+Faith Family Academy Of Oak Cliff,2006,1,1170,1069,172,169,91
+Faith Family Academy Of Oak Cliff,2007,1,1333,1117,141,237,107
+Faith Family Academy Of Oak Cliff,2008,1,1233,1227,357,326,88
+Faith Family Academy Of Oak Cliff,2009,3,1310,1199,519,475,80
+Faith Family Academy Of Oak Cliff,2010,3,1262,1250,575,534,106
+Faith Family Academy Of Oak Cliff,2011,3,1344,1294,632,611,93
+Faith Family Academy Of Oak Cliff,2012,3,1757,1646,855,834,104
+Faith Family Academy Of Oak Cliff,2013,3,2041,1937,988,960,107
+Faith Family Academy Of Oak Cliff,2014,3,2182,2095,1117,1103,104
+Faith Family Academy Of Oak Cliff,2015,3,2390,2280,1291,1271,107
+Fallbrook College Preparatory Academy,2013,1,352,200,0,0,13
+Fallbrook College Preparatory Academy,2014,1,642,368,0,0,28
+Fallbrook College Preparatory Academy,2015,1,556,371,0,0,30
+Fallbrook College Preparatory Academy,2016,1,491,358,11,11,21
+Focus Learning Academy,2000,1,117,1,0,0,28
+Focus Learning Academy,2001,1,195,1,0,0,72
+Focus Learning Academy,2002,1,381,190,0,0,149
+Focus Learning Academy,2003,1,388,221,0,0,151
+Focus Learning Academy,2004,1,500,162,0,0,161
+Focus Learning Academy,2005,1,430,172,0,0,130
+Focus Learning Academy,2006,1,421,162,0,0,98
+Focus Learning Academy,2007,1,381,219,0,0,83
+Focus Learning Academy,2008,1,325,281,0,0,75
+Focus Learning Academy,2009,1,412,352,31,31,86
+Focus Learning Academy,2010,1,552,487,18,18,170
+Focus Learning Academy,2011,1,719,589,19,18,174
+Focus Learning Academy,2012,1,902,718,11,10,216
+Focus Learning Academy,2013,1,920,761,12,11,173
+Focus Learning Academy,2014,1,888,732,10,9,140
+Focus Learning Academy,2015,1,885,883,8,8,132
+Focus Learning Academy,2016,1,1155,1155,44,14,158
+Focus Learning Academy,2017,1,1018,1004,24,10,142
+Fort Worth Academy Of Fine Arts,2002,1,123,0,0,0,5
+Fort Worth Academy Of Fine Arts,2003,1,256,43,0,0,11
+Fort Worth Academy Of Fine Arts,2004,1,321,63,2,0,18
+Fort Worth Academy Of Fine Arts,2005,1,345,66,2,0,22
+Fort Worth Academy Of Fine Arts,2006,1,356,59,0,0,30
+Fort Worth Academy Of Fine Arts,2007,2,368,59,0,0,36
+Fort Worth Academy Of Fine Arts,2008,2,374,52,2,2,23
+Fort Worth Academy Of Fine Arts,2009,2,385,48,2,2,19
+Fort Worth Academy Of Fine Arts,2010,2,417,64,2,3,25
+Fort Worth Academy Of Fine Arts,2011,2,482,58,3,3,21
+Fort Worth Academy Of Fine Arts,2012,2,505,59,4,4,19
+Fort Worth Academy Of Fine Arts,2013,2,521,99,3,3,17
+Fort Worth Academy Of Fine Arts,2014,2,523,74,1,1,14
+Fort Worth Academy Of Fine Arts,2015,2,517,78,0,0,13
+Fort Worth Academy Of Fine Arts,2016,2,516,73,0,0,12
+Fort Worth Academy Of Fine Arts,2017,2,569,56,9,0,17
+Fort Worth Academy Of Fine Arts,2018,2,570,55,6,6,19
+Fort Worth Can Academy,2001,1,201,123,0,0,7
+Fort Worth Can Academy,2002,2,356,259,0,0,29
+Fort Worth Can Academy,2003,2,503,413,64,50,43
+Fort Worth Can Academy,2004,2,712,539,89,71,97
+Fort Worth Can Academy,2005,2,661,552,90,74,89
+Fort Worth Can Academy,2006,2,619,437,91,54,77
+Fort Worth Can Academy,2007,2,620,497,97,87,60
+Fort Worth Can Academy,2008,2,838,624,114,91,94
+Fort Worth Can Academy,2009,2,620,482,63,50,66
+Fort Worth Can Academy,2010,2,712,604,78,75,85
+Fort Worth Can Academy,2011,2,560,465,54,52,70
+Fort Worth Can Academy,2012,2,654,585,42,42,69
+Fort Worth Can Academy,2013,2,639,584,34,34,73
+Fruit Of Excellence,2000,1,42,36,42,0,23
+Fruit Of Excellence,2001,1,41,32,0,0,18
+Fruit Of Excellence,2002,1,88,74,0,0,31
+Fruit Of Excellence,2003,1,57,0,0,0,1
+Fruit Of Excellence,2004,1,70,53,0,0,6
+Fruit Of Excellence,2005,1,37,28,0,0,10
+Fruit Of Excellence,2006,1,43,35,0,0,14
+Fruit Of Excellence,2007,1,51,41,0,0,23
+Fruit Of Excellence,2008,1,33,29,0,0,19
+Fruit Of Excellence,2009,1,22,21,0,0,7
+Fruit Of Excellence,2010,1,27,27,0,0,11
+Gabriel Tafolla Academy,1999,1,129,83,0,0,0
+Gabriel Tafolla Academy,2000,1,91,76,2,0,18
+Gabriel Tafolla Academy,2001,1,158,139,1,0,15
+Gabriel Tafolla Academy,2002,1,181,147,13,13,12
+Gabriel Tafolla Academy,2003,1,196,155,17,17,14
+Gabriel Tafolla Academy,2004,1,138,110,12,12,17
+Gabriel Tafolla Academy,2005,1,122,103,11,11,15
+Gabriel Tafolla Academy,2006,1,140,120,8,8,17
+Gabriel Tafolla Academy,2007,1,138,111,4,4,9
+Gabriel Tafolla Academy,2008,1,132,123,0,0,11
+Gabriel Tafolla Academy,2009,1,109,102,2,2,9
+Gabriel Tafolla Academy,2010,2,108,96,1,1,11
+Gabriel Tafolla Academy,2011,1,76,66,0,0,11
+Gabriel Tafolla Academy,2012,1,125,115,0,0,10
+Gateway Academy Charter District,2000,1,117,56,1,1,12
+Gateway Academy Charter District,2001,1,119,53,15,0,14
+Gateway Academy Charter District,2002,1,193,137,33,0,20
+Gateway Academy Charter District,2003,1,220,187,48,37,28
+Gateway Academy Charter District,2004,1,313,246,30,30,33
+Gateway Academy Charter District,2005,1,273,252,11,11,41
+Gateway Academy Charter District,2006,1,316,290,10,1,59
+Gateway Academy Charter District,2007,1,342,330,6,2,75
+Gateway Academy Charter District,2008,1,318,302,2,1,91
+Gateway Academy Charter District,2009,2,499,484,11,11,128
+Gateway Academy Charter District,2010,2,515,487,16,16,137
+Gateway Academy Charter District,2011,2,475,456,8,8,102
+Gateway Academy Charter District,2012,2,492,481,7,7,92
+Gateway Academy Charter District,2013,2,455,424,17,17,68
+Gateway Academy Charter District,2014,2,408,385,24,24,57
+Gateway Academy Charter District,2015,2,347,324,29,29,36
+Gateway Academy Charter District,2016,2,373,347,29,29,42
+Gateway Academy Charter District,2017,2,390,359,72,71,36
+Gateway Academy Charter District,2018,2,316,287,113,113,33
+Gateway Charter Academy,2002,1,110,94,0,0,7
+Gateway Charter Academy,2003,1,259,195,0,0,25
+Gateway Charter Academy,2004,1,329,239,0,0,36
+Gateway Charter Academy,2005,1,468,404,1,0,56
+Gateway Charter Academy,2006,1,540,476,5,5,52
+Gateway Charter Academy,2007,1,594,512,7,3,59
+Gateway Charter Academy,2008,2,637,561,11,11,63
+Gateway Charter Academy,2009,2,701,614,7,7,66
+Gateway Charter Academy,2010,2,797,725,5,5,67
+Gateway Charter Academy,2011,2,795,554,7,7,53
+Gateway Charter Academy,2012,2,811,729,6,6,53
+Gateway Charter Academy,2013,2,804,688,6,6,54
+Gateway Charter Academy,2014,2,779,673,6,6,61
+Gateway Charter Academy,2015,2,729,536,3,4,68
+Gateway Charter Academy,2016,2,747,517,3,3,70
+Gateway Charter Academy,2017,2,618,331,1,1,50
+Gateway Charter Academy,2018,2,753,753,2,0,39
+General Alfred A Valenzuela Int,2007,1,29,26,5,5,1
+George Gervin Academy,1997,1,106,27,0,0,0
+George Gervin Academy,1998,1,189,47,0,0,6
+George Gervin Academy,1999,1,251,76,0,0,15
+George Gervin Academy,2000,1,124,89,0,0,4
+George Gervin Academy,2001,1,184,143,0,0,20
+George Gervin Academy,2002,1,162,118,0,0,24
+George Gervin Academy,2003,1,159,111,0,0,38
+George Gervin Academy,2004,1,312,239,0,0,59
+George Gervin Academy,2005,2,376,270,0,0,44
+George Gervin Academy,2006,2,384,352,11,11,46
+George Gervin Academy,2007,2,563,520,9,9,66
+George Gervin Academy,2008,2,575,548,16,16,54
+George Gervin Academy,2009,2,618,576,0,0,40
+George Gervin Academy,2010,2,779,768,3,3,33
+George Gervin Academy,2011,2,1327,1274,108,111,32
+George Gervin Academy,2012,2,1327,1305,99,101,39
+George Gervin Academy,2013,2,1228,1170,97,98,42
+George Gervin Academy,2014,2,1313,1283,276,276,40
+George Gervin Academy,2015,2,1122,1120,148,160,55
+George Gervin Academy,2016,2,1304,1302,295,299,54
+George Gervin Academy,2017,2,1355,1273,269,275,68
+George Gervin Academy,2018,2,1357,1357,252,271,86
+George I Sanchez Charter,1997,1,360,244,0,0,0
+George I Sanchez Charter,1998,2,398,246,0,0,0
+George I Sanchez Charter,1999,3,487,327,0,0,2
+George I Sanchez Charter,2000,2,368,247,0,0,18
+George I Sanchez Charter,2001,3,448,286,17,17,33
+George I Sanchez Charter,2002,4,592,343,0,28,34
+George I Sanchez Charter,2003,2,629,234,2,54,46
+George I Sanchez Charter,2004,2,685,379,93,80,71
+George I Sanchez Charter,2005,2,743,488,202,177,90
+George I Sanchez Charter,2006,2,779,623,264,186,123
+George I Sanchez Charter,2007,2,713,533,224,162,103
+George I Sanchez Charter,2008,2,751,562,218,169,73
+George I Sanchez Charter,2009,2,781,606,181,175,64
+George I Sanchez Charter,2010,2,853,642,165,157,69
+George I Sanchez Charter,2011,2,856,647,214,221,64
+George I Sanchez Charter,2012,1,633,526,200,202,45
+George I Sanchez Charter,2013,1,609,571,202,201,44
+George I Sanchez Charter,2014,1,648,607,252,252,36
+George I Sanchez Charter,2015,1,736,669,341,341,50
+George I Sanchez Charter,2016,2,828,750,400,400,63
+George I Sanchez Charter,2017,2,816,745,426,426,69
+George I Sanchez Charter,2018,2,916,853,453,453,79
+Girls & Boys Preparatory Academy,1997,1,256,100,0,0,0
+Girls & Boys Preparatory Academy,1998,1,340,172,0,0,16
+Girls & Boys Preparatory Academy,1999,1,440,91,0,0,11
+Girls & Boys Preparatory Academy,2000,1,394,151,0,0,8
+Girls & Boys Preparatory Academy,2001,1,320,165,0,0,13
+Girls & Boys Preparatory Academy,2002,2,489,287,0,0,35
+Girls & Boys Preparatory Academy,2003,2,729,437,0,0,18
+Girls & Boys Preparatory Academy,2004,2,999,709,0,0,39
+Girls & Boys Preparatory Academy,2005,2,768,638,0,0,42
+Girls & Boys Preparatory Academy,2006,2,955,780,0,0,64
+Girls & Boys Preparatory Academy,2007,2,885,722,0,0,68
+Girls & Boys Preparatory Academy,2008,3,808,692,0,0,55
+Girls & Boys Preparatory Academy,2009,3,785,702,0,0,52
+Girls & Boys Preparatory Academy,2010,3,739,661,0,0,53
+Girls & Boys Preparatory Academy,2011,3,797,745,22,7,75
+Girls & Boys Preparatory Academy,2012,3,740,677,13,4,66
+Girls & Boys Preparatory Academy,2013,3,752,716,55,51,72
+Girls & Boys Preparatory Academy,2014,3,758,743,143,134,83
+Girls & Boys Preparatory Academy,2015,3,745,711,170,153,52
+Global Learning Village,2014,1,44,33,0,0,0
+Global Learning Village,2015,1,69,26,0,0,0
+Global Learning Village,2016,1,176,95,1,96,22
+Global Learning Village,2017,1,207,188,1,0,14
+Golden Rule Charter School,2003,1,232,211,93,90,3
+Golden Rule Charter School,2004,1,427,395,203,185,38
+Golden Rule Charter School,2005,1,293,280,160,151,33
+Golden Rule Charter School,2006,1,333,320,180,172,34
+Golden Rule Charter School,2007,2,490,478,261,253,51
+Golden Rule Charter School,2008,2,600,586,292,275,53
+Golden Rule Charter School,2009,2,584,495,267,265,42
+Golden Rule Charter School,2010,3,755,746,286,281,40
+Golden Rule Charter School,2011,3,864,859,320,315,40
+Golden Rule Charter School,2012,4,981,973,435,414,28
+Golden Rule Charter School,2013,5,1215,1190,549,519,47
+Golden Rule Charter School,2014,5,1349,1320,644,619,48
+Golden Rule Charter School,2015,5,1531,1481,895,856,56
+Golden Rule Charter School,2016,5,1526,1462,899,880,59
+Golden Rule Charter School,2017,5,1476,1411,933,926,91
+Golden Rule Charter School,2018,6,1441,1404,861,857,75
+Goodwater Montessori School,2018,1,303,55,8,8,20
+Great Hearts Texas,2015,2,572,80,13,11,20
+Great Hearts Texas,2016,4,2009,293,109,90,66
+Great Hearts Texas,2017,4,2312,259,120,105,104
+Great Hearts Texas,2018,4,2766,416,139,115,140
+Guardian Angel Performance Arts Academy,2000,1,54,40,0,0,21
+Guardian Angel Performance Arts Academy,2001,1,54,40,0,0,16
+Guardian Angel Performance Arts Academy,2002,1,56,45,0,0,15
+Guardian Angel Performance Arts Academy,2003,1,33,27,3,3,6
+Guardian Angel Performance Arts Academy,2004,1,44,12,1,1,10
+Guardian Angel Performance Arts Academy,2005,1,13,10,0,0,2
+Guardian Angel Performance Arts Academy,2006,1,31,28,0,0,2
+Guardian Angel Performance Arts Academy,2007,1,10,9,0,0,1
+Guardian Angel Performance Arts Academy,2008,1,7,1,0,0,0
+Guardian Angel Performance Arts Academy,2009,1,18,14,0,0,1
+Guardian Angel Performance Arts Academy,2010,1,17,16,1,0,4
+Gulf Shores Academy,2000,1,248,247,1,0,16
+Gulf Shores Academy,2001,1,696,694,13,67,47
+Gulf Shores Academy,2002,3,45,45,0,2,2
+Gulf Shores Academy,2003,5,1271,487,27,27,72
+Gulf Shores Academy,2004,5,1324,541,0,0,101
+Gulf Shores Academy,2005,4,1045,376,0,18,94
+Gulf Shores Academy,2006,5,740,718,18,18,39
+Gulf Shores Academy,2009,1,150,4,0,0,8
+Harmony Public Schools,2001,1,186,62,0,0,10
+Harmony Public Schools,2002,1,298,118,0,0,31
+Harmony Public Schools,2003,2,436,200,22,11,39
+Harmony Public Schools,2004,2,525,286,36,36,31
+Harmony Public Schools,2005,3,811,475,44,44,42
+Harmony Public Schools,2006,4,1189,722,92,81,45
+Harmony Public Schools,2007,9,3289,1771,273,273,98
+Harmony Public Schools,2008,14,4834,2572,295,291,131
+Harmony Public Schools,2009,19,7860,3959,299,287,206
+Harmony Public Schools,2010,25,12553,7014,667,646,346
+Harmony Public Schools,2011,33,16721,9467,1550,1366,444
+Harmony Public Schools,2012,36,20178,11459,2385,2144,672
+Harmony Public Schools,2013,38,24616,14062,3450,3153,1016
+Harmony Public Schools,2014,40,25886,15207,4235,3887,1220
+Harmony Public Schools,2015,43,28318,16821,5517,5094,1498
+Harmony Public Schools,2016,46,30496,18271,6576,6130,1746
+Harmony Public Schools,2017,48,31985,19091,7648,7233,2075
+Harmony Public Schools,2018,54,33248,20192,8316,7941,2334
+Henry Ford Academy Alameda School,2010,1,74,40,0,0,3
+Henry Ford Academy Alameda School,2011,1,149,92,0,0,15
+Henry Ford Academy Alameda School,2012,1,159,92,0,0,13
+Henry Ford Academy Alameda School,2013,1,203,101,0,0,16
+Henry Ford Academy Alameda School,2014,1,181,69,3,0,16
+Henry Ford Academy Alameda School,2015,1,158,108,3,3,20
+Henry Ford Academy Alameda School,2016,1,126,71,1,0,14
+Henry Ford Academy Alameda School,2017,1,113,55,3,3,10
+Henry Ford Academy Alameda School,2018,1,137,65,1,1,11
+Heritage Academy,2000,2,275,8,0,0,18
+Heritage Academy,2001,2,245,205,0,0,31
+Heritage Academy,2002,2,280,187,0,0,27
+Heritage Academy,2003,2,338,223,2,2,39
+Heritage Academy,2004,2,379,242,0,0,42
+Heritage Academy,2005,2,409,277,0,0,43
+Heritage Academy,2006,2,411,336,9,8,42
+Heritage Academy,2007,3,498,363,9,8,54
+Heritage Academy,2008,6,632,479,35,30,58
+Heritage Academy,2009,7,788,621,59,59,79
+Heritage Academy,2010,6,740,576,93,93,51
+Heritage Academy,2011,6,857,654,96,96,56
+Heritage Academy,2012,6,722,566,79,79,51
+Heritage Academy,2013,7,482,366,73,78,37
+Heritage Academy,2014,5,556,421,89,96,35
+Heritage Academy,2015,5,579,389,133,130,36
+Heritage Academy,2016,4,501,359,152,152,26
+Heritage Academy,2017,4,467,358,145,144,27
+Heritage Academy,2018,4,508,362,148,152,42
+Higgs Carter King Gifted & Talented,1999,1,302,200,11,8,7
+Higgs Carter King Gifted & Talented,2000,1,175,150,4,2,4
+Higgs Carter King Gifted & Talented,2001,1,194,175,0,0,19
+Higgs Carter King Gifted & Talented,2002,1,233,224,0,0,38
+Higgs Carter King Gifted & Talented,2003,1,250,240,38,38,30
+Higgs Carter King Gifted & Talented,2004,1,213,209,22,20,26
+Higgs Carter King Gifted & Talented,2005,1,219,193,11,38,37
+Higgs Carter King Gifted & Talented,2006,1,286,273,49,46,24
+Higgs Carter King Gifted & Talented,2007,1,315,302,32,32,28
+Higgs Carter King Gifted & Talented,2008,1,498,495,42,31,27
+Higgs Carter King Gifted & Talented,2009,1,561,549,24,24,34
+Higgs Carter King Gifted & Talented,2010,1,498,494,10,29,36
+Higgs Carter King Gifted & Talented,2011,1,695,679,42,42,30
+Higgs Carter King Gifted & Talented,2012,1,735,700,33,33,28
+Higgs Carter King Gifted & Talented,2013,1,642,624,21,21,27
+Higgs Carter King Gifted & Talented,2014,1,485,459,48,48,28
+Higgs Carter King Gifted & Talented,2015,1,469,463,32,32,17
+High Point Academy,2016,1,457,117,1,3,40
+High Point Academy,2017,1,804,215,14,9,72
+High Point Academy,2018,1,945,271,31,26,101
+Honors Academy,2000,4,346,149,0,0,26
+Honors Academy,2001,11,1679,408,20,6,141
+Honors Academy,2002,12,2013,691,57,43,208
+Honors Academy,2003,10,1924,661,17,18,159
+Honors Academy,2004,8,1896,761,0,12,202
+Honors Academy,2005,7,1556,712,5,6,186
+Honors Academy,2006,7,844,444,9,9,145
+Honors Academy,2007,7,889,510,3,17,95
+Honors Academy,2008,7,819,435,10,10,106
+Honors Academy,2009,6,941,629,9,9,116
+Honors Academy,2010,7,1021,703,37,7,78
+Honors Academy,2011,7,1059,771,45,4,95
+Honors Academy,2012,7,977,730,54,48,80
+Honors Academy,2013,7,627,468,83,42,60
+Honors Academy,2014,7,759,566,77,77,70
+Horizon Montessori Public Schools,1999,1,123,123,0,0,0
+Horizon Montessori Public Schools,2000,1,139,129,0,0,7
+Horizon Montessori Public Schools,2001,1,119,117,0,0,3
+Horizon Montessori Public Schools,2002,1,116,97,0,0,5
+Horizon Montessori Public Schools,2003,1,93,89,0,0,1
+Horizon Montessori Public Schools,2004,1,134,115,15,15,12
+Horizon Montessori Public Schools,2005,2,263,153,18,17,20
+Horizon Montessori Public Schools,2006,2,326,198,34,34,9
+Horizon Montessori Public Schools,2007,2,451,265,85,85,13
+Horizon Montessori Public Schools,2008,2,517,319,119,119,16
+Horizon Montessori Public Schools,2009,3,543,366,132,132,21
+Horizon Montessori Public Schools,2010,3,620,438,156,174,23
+Horizon Montessori Public Schools,2011,3,767,559,201,172,37
+Horizon Montessori Public Schools,2012,3,812,602,227,180,48
+Horizon Montessori Public Schools,2013,3,881,688,250,227,43
+Horizon Montessori Public Schools,2014,3,1065,870,385,369,50
+Horizon Montessori Public Schools,2015,3,1125,773,427,391,59
+Horizon Montessori Public Schools,2016,3,1304,955,499,464,65
+Horizon Montessori Public Schools,2017,3,1350,887,537,491,70
+Horizon Montessori Public Schools,2018,3,1236,942,495,456,49
+Houston Alternative Preparatory Charter,2003,1,191,191,0,0,53
+Houston Alternative Preparatory Charter,2004,1,163,146,0,2,51
+Houston Alternative Preparatory Charter,2005,1,135,127,0,1,40
+Houston Alternative Preparatory Charter,2006,1,180,170,0,0,29
+Houston Alternative Preparatory Charter,2007,1,167,166,0,0,39
+Houston Alternative Preparatory Charter,2008,1,133,96,0,0,37
+Houston Alternative Preparatory Charter,2009,1,212,183,0,0,44
+Houston Alternative Preparatory Charter,2010,1,170,135,28,28,23
+Houston Alternative Preparatory Charter,2011,1,158,150,60,60,13
+Houston Can Academy Charter School,1999,1,309,121,0,0,7
+Houston Can Academy Charter School,2000,1,320,88,0,0,2
+Houston Can Academy Charter School,2001,1,340,158,0,0,26
+Houston Can Academy Charter School,2002,1,344,123,1,0,38
+Houston Can Academy Charter School,2003,1,342,267,0,0,32
+Houston Can Academy Charter School,2004,2,564,394,12,10,69
+Houston Can Academy Charter School,2005,2,726,618,34,27,102
+Houston Can Academy Charter School,2006,2,778,624,17,12,108
+Houston Can Academy Charter School,2007,2,848,706,10,6,114
+Houston Can Academy Charter School,2008,2,877,778,54,26,130
+Houston Can Academy Charter School,2009,2,712,635,46,23,102
+Houston Can Academy Charter School,2010,2,809,745,59,58,146
+Houston Can Academy Charter School,2011,2,696,611,32,30,123
+Houston Can Academy Charter School,2012,2,766,721,44,42,112
+Houston Can Academy Charter School,2013,2,753,693,44,43,110
+Houston Gateway Academy Inc,2000,1,229,128,0,0,12
+Houston Gateway Academy Inc,2001,1,700,460,89,65,49
+Houston Gateway Academy Inc,2002,1,631,407,157,98,42
+Houston Gateway Academy Inc,2003,1,795,533,108,77,64
+Houston Gateway Academy Inc,2004,1,798,536,137,112,76
+Houston Gateway Academy Inc,2005,1,726,536,153,124,81
+Houston Gateway Academy Inc,2006,1,603,476,131,121,65
+Houston Gateway Academy Inc,2007,1,624,463,188,177,62
+Houston Gateway Academy Inc,2008,1,656,565,213,178,83
+Houston Gateway Academy Inc,2009,1,793,636,300,275,50
+Houston Gateway Academy Inc,2010,2,864,784,328,324,46
+Houston Gateway Academy Inc,2011,2,979,925,285,285,45
+Houston Gateway Academy Inc,2012,2,1291,1225,521,521,53
+Houston Gateway Academy Inc,2013,3,1485,1376,631,631,50
+Houston Gateway Academy Inc,2014,3,1621,1520,639,639,50
+Houston Gateway Academy Inc,2015,3,1886,1712,740,740,57
+Houston Gateway Academy Inc,2016,3,2062,1855,871,871,43
+Houston Gateway Academy Inc,2017,3,2213,2035,987,987,61
+Houston Gateway Academy Inc,2018,3,2265,2128,1062,1062,67
+Houston Heights High School,2000,1,112,88,11,0,6
+Houston Heights High School,2001,1,226,193,0,0,14
+Houston Heights High School,2002,1,226,222,0,0,32
+Houston Heights High School,2003,1,234,180,0,0,26
+Houston Heights High School,2004,1,225,185,0,0,29
+Houston Heights High School,2005,1,195,168,0,0,30
+Houston Heights High School,2006,1,219,189,0,0,30
+Houston Heights High School,2007,1,239,186,0,0,25
+Houston Heights High School,2008,1,211,155,0,0,19
+Houston Heights High School,2009,1,215,164,0,0,23
+Houston Heights High School,2010,1,201,159,0,0,31
+Houston Heights High School,2011,1,200,77,0,0,34
+Houston Heights High School,2012,1,191,145,0,0,38
+Houston Heights High School,2013,1,206,169,0,0,33
+Houston Heights High School,2014,1,210,179,0,0,21
+Houston Heights High School,2015,1,205,181,0,0,13
+Houston Heights High School,2016,1,215,175,0,0,21
+Houston Heights High School,2017,1,216,187,0,0,22
+Houston Heights High School,2018,1,200,171,0,0,32
+Houston Heights Learning Academy,2000,1,73,0,0,0,0
+Houston Heights Learning Academy,2001,1,90,73,0,0,0
+Houston Heights Learning Academy,2002,1,118,101,26,22,1
+Houston Heights Learning Academy,2003,1,106,83,41,19,3
+Houston Heights Learning Academy,2004,1,94,91,32,31,2
+Houston Heights Learning Academy,2005,1,85,73,32,30,5
+Houston Heights Learning Academy,2006,1,102,92,34,34,8
+Houston Heights Learning Academy,2007,1,118,111,36,35,7
+Houston Heights Learning Academy,2008,1,121,113,30,30,5
+Houston Heights Learning Academy,2009,1,128,125,37,37,4
+Houston Heights Learning Academy,2010,1,124,120,23,23,2
+Houston Heights Learning Academy,2011,1,115,114,38,34,3
+Houston Heights Learning Academy,2012,1,130,129,32,27,6
+Houston Heights Learning Academy,2013,1,128,127,26,22,2
+Houston Heights Learning Academy,2014,1,150,149,20,17,6
+Houston Heights Learning Academy,2015,1,166,164,5,5,9
+Houston Heights Learning Academy,2016,1,173,158,6,6,11
+Houston Heights Learning Academy,2017,1,67,39,1,1,1
+Idea Public Schools,2001,1,187,168,37,37,10
+Idea Public Schools,2002,1,247,217,51,50,16
+Idea Public Schools,2003,1,336,290,48,53,20
+Idea Public Schools,2004,1,499,410,69,69,26
+Idea Public Schools,2005,1,659,528,141,108,44
+Idea Public Schools,2006,1,896,673,267,253,55
+Idea Public Schools,2007,4,1596,1153,520,505,77
+Idea Public Schools,2008,6,2714,1949,660,612,110
+Idea Public Schools,2009,10,3945,3013,898,882,150
+Idea Public Schools,2010,12,5515,4281,1261,1198,213
+Idea Public Schools,2011,16,6855,5485,1397,1360,279
+Idea Public Schools,2012,20,9505,7819,2205,2097,424
+Idea Public Schools,2013,26,12567,10491,3312,3272,539
+Idea Public Schools,2014,30,15535,13444,4706,4564,690
+Idea Public Schools,2015,36,19227,16548,6351,6226,901
+Idea Public Schools,2016,44,23525,20970,8216,8092,1107
+Idea Public Schools,2017,51,29334,25984,9993,9871,1405
+Idea Public Schools,2018,61,35595,31235,11709,11428,1844
+Ignite Public Schools And Community Serv Ctrs,1997,1,93,69,0,0,0
+Ignite Public Schools And Community Serv Ctrs,1998,1,167,14,0,0,8
+Ignite Public Schools And Community Serv Ctrs,1999,1,243,82,0,0,0
+Ignite Public Schools And Community Serv Ctrs,2000,1,179,105,0,0,2
+Ignite Public Schools And Community Serv Ctrs,2001,1,172,172,12,12,1
+Ignite Public Schools And Community Serv Ctrs,2002,3,325,263,21,21,6
+Ignite Public Schools And Community Serv Ctrs,2003,3,602,598,0,11,63
+Ignite Public Schools And Community Serv Ctrs,2004,3,655,608,114,113,86
+Ignite Public Schools And Community Serv Ctrs,2005,6,750,709,159,159,78
+Ignite Public Schools And Community Serv Ctrs,2006,6,804,790,334,326,54
+Ignite Public Schools And Community Serv Ctrs,2007,6,883,867,415,411,46
+Ignite Public Schools And Community Serv Ctrs,2008,6,968,935,421,407,62
+Ignite Public Schools And Community Serv Ctrs,2009,6,960,894,388,356,53
+Ignite Public Schools And Community Serv Ctrs,2010,6,743,683,246,199,58
+Ignite Public Schools And Community Serv Ctrs,2011,6,662,629,160,150,51
+Ignite Public Schools And Community Serv Ctrs,2012,6,1053,915,196,187,99
+Ignite Public Schools And Community Serv Ctrs,2013,6,1203,868,340,336,112
+Ignite Public Schools And Community Serv Ctrs,2014,6,1047,943,278,272,77
+Ignite Public Schools And Community Serv Ctrs,2015,6,1199,966,365,357,70
+Imagine International Academy,2013,1,900,75,4,4,37
+Imagine International Academy,2014,1,1022,74,13,12,40
+Imagine International Academy,2015,1,1097,85,31,30,53
+Imagine International Academy,2016,1,1192,84,50,47,61
+Imagine International Academy,2017,1,1230,75,97,84,67
+Imagine International Academy,2018,1,1341,109,109,99,66
+Impact Charter,1999,1,45,37,0,0,0
+Impact Charter,2000,1,98,81,0,0,0
+Impact Charter,2001,1,167,152,0,0,0
+Impact Charter,2002,1,187,181,0,0,2
+Impact Charter,2003,1,191,189,0,0,9
+Impact Charter,2004,1,266,263,0,0,11
+Impact Charter,2005,1,286,284,0,0,13
+Inspire Academies,1999,1,49,49,0,0,38
+Inspire Academies,2000,1,102,93,0,0,66
+Inspire Academies,2001,1,173,149,0,0,71
+Inspire Academies,2002,1,135,125,0,0,113
+Inspire Academies,2003,3,310,236,0,0,138
+Inspire Academies,2004,3,381,341,4,3,208
+Inspire Academies,2005,5,494,395,5,4,340
+Inspire Academies,2006,4,241,235,10,10,182
+Inspire Academies,2007,4,270,260,2,2,182
+Inspire Academies,2008,4,257,257,22,22,131
+Inspire Academies,2009,5,337,337,20,18,128
+Inspire Academies,2010,5,348,341,3,3,103
+Inspire Academies,2011,6,581,581,18,10,247
+Inspire Academies,2012,6,522,522,30,12,233
+Inspire Academies,2013,6,557,557,34,15,232
+Inspire Academies,2014,5,489,489,27,26,200
+Inspire Academies,2015,7,773,636,31,27,270
+Inspire Academies,2016,8,799,521,18,13,202
+Inspire Academies,2017,8,835,556,30,19,198
+Inspire Academies,2018,9,867,495,11,8,183
+Inspired Vision Academy,2001,1,126,10,0,0,0
+Inspired Vision Academy,2002,2,264,227,29,15,13
+Inspired Vision Academy,2003,2,449,228,106,95,24
+Inspired Vision Academy,2004,2,494,455,151,149,22
+Inspired Vision Academy,2005,2,571,527,175,170,27
+Inspired Vision Academy,2006,2,553,485,227,216,24
+Inspired Vision Academy,2007,2,670,539,270,267,28
+Inspired Vision Academy,2008,2,660,617,250,214,22
+Inspired Vision Academy,2009,2,906,806,303,281,31
+Inspired Vision Academy,2010,2,971,892,325,273,51
+Inspired Vision Academy,2011,2,944,840,314,294,51
+Inspired Vision Academy,2012,2,956,851,351,345,64
+Inspired Vision Academy,2013,2,982,907,377,331,60
+Inspired Vision Academy,2014,2,1081,980,414,383,92
+Inspired Vision Academy,2015,2,1084,1030,409,388,112
+Inspired Vision Academy,2016,2,1118,1029,420,402,113
+Inspired Vision Academy,2017,2,1128,991,466,447,101
+Inspired Vision Academy,2018,2,1322,1252,546,526,106
+International Leadership Of Texas,2014,5,2499,1373,539,540,111
+International Leadership Of Texas,2015,8,4633,1980,711,711,242
+International Leadership Of Texas,2016,9,5030,2218,1077,1075,266
+International Leadership Of Texas,2017,17,10239,5322,2397,2397,442
+International Leadership Of Texas,2018,26,16131,9893,4247,4257,774
+Jamie's House Charter School,2000,1,45,45,0,0,35
+Jamie's House Charter School,2001,1,44,43,0,0,30
+Jamie's House Charter School,2002,1,61,56,0,0,31
+Jamie's House Charter School,2003,1,46,42,0,0,22
+Jamie's House Charter School,2004,1,65,47,0,0,13
+Jamie's House Charter School,2005,1,79,67,0,0,26
+Jamie's House Charter School,2006,1,57,47,0,0,20
+Jamie's House Charter School,2007,1,81,71,0,0,27
+Jamie's House Charter School,2008,1,84,77,0,0,39
+Jamie's House Charter School,2009,1,79,59,0,0,30
+Jamie's House Charter School,2010,1,96,90,0,0,40
+Jamie's House Charter School,2011,2,220,199,0,0,38
+Jamie's House Charter School,2012,2,125,104,0,0,40
+Jamie's House Charter School,2013,2,140,130,0,0,17
+Jamie's House Charter School,2014,2,130,88,0,0,11
+Jean Massieu Academy,2000,1,39,11,0,0,34
+Jean Massieu Academy,2001,1,108,48,0,0,78
+Jean Massieu Academy,2002,1,143,0,0,0,105
+Jean Massieu Academy,2003,1,147,0,0,0,109
+Jean Massieu Academy,2004,1,149,100,0,0,106
+Jean Massieu Academy,2005,1,162,80,1,0,114
+Jean Massieu Academy,2006,1,137,95,0,0,71
+Jean Massieu Academy,2007,1,114,80,0,0,56
+Jean Massieu Academy,2008,1,91,67,0,0,47
+Jean Massieu Academy,2009,1,91,64,10,10,39
+Jean Massieu Academy,2010,1,104,69,20,20,31
+Jean Massieu Academy,2011,1,122,74,38,37,26
+Jean Massieu Academy,2012,1,182,172,59,59,22
+Jean Massieu Academy,2013,1,200,135,58,58,22
+Jean Massieu Academy,2014,1,196,183,91,91,21
+Jean Massieu Academy,2015,1,193,181,102,102,20
+Jean Massieu Academy,2016,1,195,187,105,105,13
+Jean Massieu Academy,2017,1,195,192,114,114,14
+Jean Massieu Academy,2018,1,196,191,111,111,16
+Jesse Jackson Academy,2000,1,103,50,0,0,0
+Jesse Jackson Academy,2001,1,215,156,0,0,30
+Jesse Jackson Academy,2002,1,233,211,0,0,28
+Jesse Jackson Academy,2003,1,174,160,0,0,16
+Jesse Jackson Academy,2004,1,299,292,0,0,35
+Jesse Jackson Academy,2005,1,323,321,0,0,59
+Jesse Jackson Academy,2006,1,297,297,0,0,39
+Jesse Jackson Academy,2007,1,299,299,0,0,32
+Jesse Jackson Academy,2008,1,247,243,0,0,55
+Jesse Jackson Academy,2009,1,242,236,0,0,27
+Juan B Galaviz Charter School,2003,1,49,45,9,0,5
+Juan B Galaviz Charter School,2004,1,92,76,36,36,3
+Juan B Galaviz Charter School,2005,1,86,79,42,35,10
+Juan B Galaviz Charter School,2006,1,100,96,20,16,13
+Juan B Galaviz Charter School,2007,1,70,62,8,8,2
+Juan B Galaviz Charter School,2008,1,68,57,10,10,0
+Juan B Galaviz Charter School,2009,1,64,50,1,1,0
+Juan B Galaviz Charter School,2010,1,74,28,1,2,1
+Juan B Galaviz Charter School,2011,1,65,58,3,3,6
+Juan B Galaviz Charter School,2012,1,69,65,2,2,6
+Juan B Galaviz Charter School,2013,1,75,62,2,2,3
+Jubilee Academies,2002,1,182,119,0,0,11
+Jubilee Academies,2003,1,313,219,4,4,26
+Jubilee Academies,2004,2,415,312,8,8,38
+Jubilee Academies,2005,2,453,338,8,8,48
+Jubilee Academies,2006,2,446,334,19,19,49
+Jubilee Academies,2007,2,452,358,21,21,43
+Jubilee Academies,2008,2,535,402,27,27,48
+Jubilee Academies,2009,4,677,557,145,145,40
+Jubilee Academies,2010,4,701,591,116,116,45
+Jubilee Academies,2011,5,916,758,132,130,56
+Jubilee Academies,2012,7,1836,1267,234,226,110
+Jubilee Academies,2013,8,2378,1700,503,486,161
+Jubilee Academies,2014,9,2991,2277,648,603,196
+Jubilee Academies,2015,8,4251,2968,747,652,265
+Jubilee Academies,2016,8,4598,2927,839,764,301
+Jubilee Academies,2017,9,4731,3016,924,843,322
+Jubilee Academies,2018,10,5650,3533,1080,978,372
+Katherine Anne Porter School,2000,1,61,16,0,0,12
+Katherine Anne Porter School,2001,1,114,16,0,0,18
+Katherine Anne Porter School,2002,2,201,44,0,0,40
+Katherine Anne Porter School,2003,2,171,61,0,0,36
+Katherine Anne Porter School,2004,1,125,49,0,0,21
+Katherine Anne Porter School,2005,1,115,39,0,0,26
+Katherine Anne Porter School,2006,1,99,40,0,0,18
+Katherine Anne Porter School,2007,1,124,38,0,0,21
+Katherine Anne Porter School,2008,1,122,31,0,0,16
+Katherine Anne Porter School,2009,1,121,34,0,0,10
+Katherine Anne Porter School,2010,1,124,56,0,0,14
+Katherine Anne Porter School,2011,1,139,71,0,0,13
+Katherine Anne Porter School,2012,1,146,74,0,0,12
+Katherine Anne Porter School,2013,1,137,64,0,0,14
+Katherine Anne Porter School,2014,1,150,79,0,0,17
+Katherine Anne Porter School,2015,1,146,74,0,0,14
+Katherine Anne Porter School,2016,1,164,67,0,0,16
+Katherine Anne Porter School,2017,1,159,73,0,0,17
+Katherine Anne Porter School,2018,1,157,63,0,0,14
+Kauffman Leadership Academy,2017,1,63,8,0,0,2
+Kauffman Leadership Academy,2018,1,91,22,3,3,11
+Kenny Dorham School For The Perfor,2001,1,25,3,0,0,0
+Kenny Dorham School For The Perfor,2002,1,40,21,0,0,4
+Ki Charter Academy,2016,1,173,173,0,0,88
+Ki Charter Academy,2017,1,174,174,1,0,99
+Ki Charter Academy,2018,1,174,170,4,2,96
+KIPP Public Charter Schools,1999,1,293,267,0,0,0
+KIPP Public Charter Schools,2000,1,290,266,49,32,6
+KIPP Public Charter Schools,2001,1,316,288,32,44,10
+KIPP Public Charter Schools,2002,1,338,303,29,18,12
+KIPP Public Charter Schools,2003,2,397,332,0,33,24
+KIPP Public Charter Schools,2004,4,589,481,74,79,47
+KIPP Public Charter Schools,2005,4,892,762,181,170,64
+KIPP Public Charter Schools,2006,5,1682,1472,312,288,111
+KIPP Public Charter Schools,2007,9,2371,1985,492,473,127
+KIPP Public Charter Schools,2008,13,3273,2935,773,744,180
+KIPP Public Charter Schools,2009,18,4484,4022,1163,1156,223
+KIPP Public Charter Schools,2010,22,6055,5270,1626,1616,288
+KIPP Public Charter Schools,2011,27,8014,7208,2397,2364,358
+KIPP Public Charter Schools,2012,29,9945,8975,3136,3102,457
+KIPP Public Charter Schools,2013,32,12220,10526,3868,3857,585
+KIPP Public Charter Schools,2014,36,15029,13596,4925,5005,778
+KIPP Public Charter Schools,2015,39,17773,16015,6375,6624,1038
+KIPP Public Charter Schools,2016,41,20554,18563,7559,7969,1307
+KIPP Public Charter Schools,2017,46,23279,20887,8370,8883,1541
+KIPP Public Charter Schools,2018,49,25154,22195,9182,9664,1798
+Koinonia Community Learning Academy,2011,1,43,43,0,0,0
+Koinonia Community Learning Academy,2012,1,208,200,7,7,14
+Koinonia Community Learning Academy,2013,1,176,173,5,1,10
+Koinonia Community Learning Academy,2014,1,135,134,0,0,19
+La Academia De Estrellas,2007,1,174,154,122,122,7
+La Academia De Estrellas,2008,1,271,236,158,158,18
+La Academia De Estrellas,2009,1,334,299,205,207,36
+La Academia De Estrellas,2010,1,354,318,208,208,27
+La Academia De Estrellas,2011,1,602,568,325,325,38
+La Academia De Estrellas,2012,1,743,695,396,396,59
+La Academia De Estrellas,2013,1,950,899,499,494,82
+La Academia De Estrellas,2014,1,1058,1000,548,539,103
+La Academia De Estrellas,2015,1,1048,989,578,571,99
+La Academia De Estrellas,2016,1,1126,1011,663,649,107
+La Academia De Estrellas,2017,1,1083,994,665,651,104
+La Academia De Estrellas,2018,1,1088,961,670,659,95
+La Amistad Love & Learning Academy,2000,1,52,51,0,0,0
+La Amistad Love & Learning Academy,2001,1,106,102,0,0,0
+La Amistad Love & Learning Academy,2002,1,127,125,0,0,0
+La Amistad Love & Learning Academy,2003,1,155,153,0,0,0
+La Amistad Love & Learning Academy,2004,1,255,246,0,0,0
+La Amistad Love & Learning Academy,2005,1,257,243,0,0,4
+La Amistad Love & Learning Academy,2006,1,280,279,60,57,6
+La Amistad Love & Learning Academy,2007,1,184,179,55,52,1
+La Amistad Love & Learning Academy,2008,1,199,198,57,47,0
+La Amistad Love & Learning Academy,2009,3,258,184,166,166,0
+La Amistad Love & Learning Academy,2010,3,347,342,203,195,7
+La Amistad Love & Learning Academy,2011,3,387,381,227,220,6
+La Amistad Love & Learning Academy,2012,3,397,374,227,222,12
+La Amistad Love & Learning Academy,2013,3,344,336,204,203,41
+La Amistad Love & Learning Academy,2014,3,253,243,182,181,155
+La Amistad Love & Learning Academy,2015,2,257,242,202,202,32
+La Amistad Love & Learning Academy,2016,1,228,216,176,176,7
+La Escuela De Las Americas,1999,1,45,45,19,19,11
+La Escuela De Las Americas,2000,1,99,83,34,35,4
+La Escuela De Las Americas,2001,1,63,57,34,32,8
+La Escuela De Las Americas,2002,1,73,63,43,43,4
+La Escuela De Las Americas,2003,1,89,71,47,37,2
+La Escuela De Las Americas,2004,1,98,88,42,38,9
+La Escuela De Las Americas,2005,1,121,112,55,54,8
+La Escuela De Las Americas,2006,1,142,133,64,64,8
+La Escuela De Las Americas,2007,1,124,116,66,66,5
+La Escuela De Las Americas,2008,1,149,124,74,72,7
+La Escuela De Las Americas,2009,1,161,69,85,161,8
+La Escuela De Las Americas,2010,1,98,73,53,98,4
+La Fe Preparatory School,2008,1,93,90,74,74,1
+La Fe Preparatory School,2009,1,126,118,98,98,7
+La Fe Preparatory School,2010,1,156,139,126,126,12
+La Fe Preparatory School,2011,1,190,165,149,175,14
+La Fe Preparatory School,2012,1,217,188,168,214,17
+La Fe Preparatory School,2013,1,268,240,202,262,18
+La Fe Preparatory School,2014,1,275,258,211,237,16
+La Fe Preparatory School,2015,1,251,237,184,246,25
+La Fe Preparatory School,2016,1,262,247,193,236,15
+La Fe Preparatory School,2017,1,259,248,198,234,7
+La Fe Preparatory School,2018,1,249,241,190,217,6
+Leadership Prep School,2012,1,250,20,23,22,2
+Leadership Prep School,2013,1,350,16,34,32,7
+Leadership Prep School,2014,1,425,17,36,44,20
+Leadership Prep School,2015,1,520,27,41,42,44
+Leadership Prep School,2016,1,595,20,46,45,52
+Leadership Prep School,2017,2,876,33,74,72,58
+Leadership Prep School,2018,2,1099,36,62,58,73
+Legacy Preparatory,2013,3,820,454,51,50,27
+Legacy Preparatory,2014,3,980,727,145,134,47
+Legacy Preparatory,2015,3,1252,889,301,283,71
+Legacy Preparatory,2016,3,1187,791,339,317,74
+Legacy Preparatory,2017,3,1362,887,451,432,96
+Legacy Preparatory,2018,2,1393,880,490,476,105
+Life School,1999,1,283,125,0,0,6
+Life School,2000,1,569,231,0,0,8
+Life School,2001,1,708,339,0,0,12
+Life School,2002,1,794,430,48,39,33
+Life School,2003,1,869,465,58,43,54
+Life School,2004,2,1250,607,70,69,65
+Life School,2005,2,1648,771,123,122,130
+Life School,2006,2,1964,873,140,138,203
+Life School,2007,2,2171,902,123,123,266
+Life School,2008,3,2829,1183,161,158,275
+Life School,2009,4,3124,1322,171,170,270
+Life School,2010,4,3434,1594,211,210,261
+Life School,2011,4,3705,1819,243,241,247
+Life School,2012,4,3939,2033,286,280,261
+Life School,2013,4,4206,2270,326,320,287
+Life School,2014,5,4644,2574,392,384,320
+Life School,2015,5,5026,2776,484,479,320
+Life School,2016,7,5364,3052,533,525,374
+Life School,2017,7,5668,3161,542,533,419
+Life School,2018,7,5662,3445,507,500,489
+Lighthouse Charter School,2004,1,168,109,0,0,10
+Lighthouse Charter School,2005,1,176,109,0,0,19
+Lighthouse Charter School,2006,1,152,100,0,0,16
+Lighthouse Charter School,2007,1,66,60,4,4,5
+Lighthouse Charter School,2008,1,127,108,3,4,15
+Lighthouse Charter School,2009,1,166,138,9,9,16
+Lighthouse Charter School,2010,1,207,144,10,10,20
+Lighthouse Charter School,2011,1,221,205,30,30,16
+Lighthouse Charter School,2012,1,214,194,39,39,20
+Lighthouse Charter School,2013,1,233,213,47,47,21
+Lighthouse Charter School,2014,1,247,222,63,63,20
+Lighthouse Charter School,2015,1,262,232,60,60,22
+Lighthouse Charter School,2016,2,287,249,75,75,25
+Lighthouse Charter School,2017,2,295,256,62,58,22
+Lighthouse Charter School,2018,2,302,258,67,65,22
+Lone Star Language Academy,2018,1,111,4,17,17,7
+Lumin Education,2000,1,59,44,15,0,0
+Lumin Education,2001,1,103,65,37,33,4
+Lumin Education,2002,1,126,80,45,36,10
+Lumin Education,2003,1,150,98,64,50,12
+Lumin Education,2004,1,156,101,72,61,15
+Lumin Education,2005,1,163,111,80,72,21
+Lumin Education,2006,1,171,108,82,76,16
+Lumin Education,2007,1,168,109,79,74,15
+Lumin Education,2008,1,177,106,91,86,9
+Lumin Education,2009,1,198,125,83,77,8
+Lumin Education,2010,1,207,138,81,78,11
+Lumin Education,2011,1,225,138,88,85,24
+Lumin Education,2012,1,249,154,103,101,28
+Lumin Education,2013,1,263,146,96,91,30
+Lumin Education,2014,1,273,158,107,101,23
+Lumin Education,2015,1,272,170,124,116,18
+Lumin Education,2016,1,281,186,120,115,19
+Lumin Education,2017,1,293,188,122,123,31
+Lumin Education,2018,1,313,187,119,115,36
+Lynacre Academy Charter School,2000,1,63,55,0,0,9
+Lynacre Academy Charter School,2001,1,126,119,8,0,12
+Lynacre Academy Charter School,2002,1,127,125,14,0,23
+Lynacre Academy Charter School,2003,1,139,131,0,0,26
+Lynacre Academy Charter School,2004,1,120,116,0,0,25
+Lynacre Academy Charter School,2005,1,117,116,0,0,23
+Lynacre Academy Charter School,2006,1,88,87,0,0,10
+Lynacre Academy Charter School,2007,1,105,105,0,0,0
+Lynacre Academy Charter School,2008,1,68,56,0,0,7
+Mainland Preparatory Academy,1999,1,188,79,0,0,2
+Mainland Preparatory Academy,2000,1,215,114,0,0,6
+Mainland Preparatory Academy,2001,1,259,133,3,0,5
+Mainland Preparatory Academy,2002,1,284,132,0,0,4
+Mainland Preparatory Academy,2003,1,348,165,0,0,4
+Mainland Preparatory Academy,2004,1,609,327,0,0,6
+Mainland Preparatory Academy,2005,1,589,384,0,0,8
+Mainland Preparatory Academy,2006,1,564,291,3,0,3
+Mainland Preparatory Academy,2007,1,543,321,0,0,4
+Mainland Preparatory Academy,2008,1,495,347,0,0,3
+Mainland Preparatory Academy,2009,1,505,302,0,0,4
+Mainland Preparatory Academy,2010,1,481,327,0,0,2
+Mainland Preparatory Academy,2011,1,438,322,0,0,3
+Mainland Preparatory Academy,2012,1,411,304,0,0,0
+Mainland Preparatory Academy,2013,1,392,265,1,1,5
+Mainland Preparatory Academy,2014,1,412,348,1,1,4
+Mainland Preparatory Academy,2015,1,437,365,1,1,3
+Manara Academy,2010,1,249,94,115,115,4
+Manara Academy,2011,1,202,91,77,75,8
+Manara Academy,2012,1,406,214,85,82,26
+Manara Academy,2013,1,457,241,97,95,31
+Manara Academy,2014,1,494,246,109,107,30
+Manara Academy,2015,2,693,345,131,131,40
+Manara Academy,2016,2,873,429,201,186,52
+Manara Academy,2017,3,917,401,252,197,51
+Manara Academy,2018,3,878,429,280,250,67
+Mccullough Academy Of Excellence,2001,1,185,63,0,0,4
+Mccullough Academy Of Excellence,2002,1,193,86,0,0,4
+Mccullough Academy Of Excellence,2003,1,232,1,0,0,10
+Mccullough Academy Of Excellence,2004,1,186,112,0,0,13
+Mccullough Academy Of Excellence,2005,1,180,104,0,0,10
+Mccullough Academy Of Excellence,2006,1,125,88,0,0,6
+Mccullough Academy Of Excellence,2007,1,137,110,1,1,6
+Meadowland Charter District,2009,1,30,28,0,0,17
+Meadowland Charter District,2010,1,60,53,0,0,34
+Meadowland Charter District,2011,1,48,43,0,0,28
+Meadowland Charter District,2012,1,57,47,0,0,33
+Meadowland Charter District,2013,1,70,65,0,0,27
+Meadowland Charter District,2014,1,97,86,0,0,44
+Meadowland Charter District,2015,1,100,91,0,0,46
+Meadowland Charter District,2016,1,101,88,0,0,37
+Meadowland Charter District,2017,1,86,75,0,0,36
+Meadowland Charter District,2018,2,137,127,0,0,71
+Medical Center Charter School,2000,1,83,55,9,8,0
+Medical Center Charter School,2001,1,223,88,15,2,3
+Medical Center Charter School,2002,1,255,91,27,25,10
+Medical Center Charter School,2003,1,202,107,21,18,15
+Medical Center Charter School,2004,1,188,103,28,24,25
+Medical Center Charter School,2005,1,271,202,62,55,16
+Medical Center Charter School,2006,1,251,202,58,51,11
+Medical Center Charter School,2007,1,241,206,47,38,11
+Medical Center Charter School,2008,1,240,201,47,46,11
+Medical Center Charter School,2009,1,261,224,53,49,11
+Medical Center Charter School,2010,1,222,198,32,29,6
+Medical Center Charter School,2011,1,222,204,42,37,5
+Medical Center Charter School,2012,1,262,238,60,52,9
+Medical Center Charter School,2013,1,348,283,78,60,10
+Medical Center Charter School,2014,1,306,261,89,77,7
+Medical Center Charter School,2015,1,326,259,89,77,8
+Meridian World School Llc,2012,1,669,74,8,8,23
+Meridian World School Llc,2013,1,785,63,20,18,27
+Meridian World School Llc,2014,1,975,82,27,25,39
+Meridian World School Llc,2015,1,1064,68,30,27,47
+Meridian World School Llc,2016,1,1249,95,32,27,63
+Meridian World School Llc,2017,1,1421,120,46,41,85
+Meridian World School Llc,2018,1,1594,162,63,57,111
+Metro Academy Of Math And Science,2002,1,298,26,0,0,4
+Metro Academy Of Math And Science,2003,1,300,93,0,0,10
+Metro Academy Of Math And Science,2004,1,356,135,0,0,10
+Metro Academy Of Math And Science,2005,1,417,145,0,0,14
+Metro Academy Of Math And Science,2006,1,339,174,0,0,14
+Metro Academy Of Math And Science,2007,1,568,422,0,0,16
+Metro Academy Of Math And Science,2008,3,322,208,0,0,7
+Metro Academy Of Math And Science,2009,3,313,209,0,0,16
+Metro Academy Of Math And Science,2010,3,359,283,1,1,28
+Metro Academy Of Math And Science,2011,3,376,276,1,1,24
+Meyerpark Elementary,2005,1,81,70,0,0,2
+Meyerpark Elementary,2006,1,133,114,0,0,7
+Meyerpark Elementary,2007,1,96,72,0,0,7
+Meyerpark Elementary,2008,1,131,103,0,0,5
+Meyerpark Elementary,2009,1,158,116,0,0,7
+Meyerpark Elementary,2010,1,174,145,0,0,8
+Meyerpark Elementary,2011,1,214,177,0,0,13
+Meyerpark Elementary,2012,1,236,197,0,0,6
+Meyerpark Elementary,2013,1,151,122,0,0,8
+Meyerpark Elementary,2014,1,199,181,0,0,10
+Meyerpark Elementary,2015,1,224,205,0,0,11
+Meyerpark Elementary,2016,1,249,232,0,0,14
+Meyerpark Elementary,2017,1,243,229,0,0,15
+Meyerpark Elementary,2018,1,245,228,0,0,14
+Midland Academy Charter School,2000,1,586,262,0,0,0
+Midland Academy Charter School,2001,1,702,457,0,0,42
+Midland Academy Charter School,2002,1,549,351,50,49,38
+Midland Academy Charter School,2003,1,499,342,60,60,42
+Midland Academy Charter School,2004,1,392,322,40,40,60
+Midland Academy Charter School,2005,1,511,369,62,60,60
+Midland Academy Charter School,2006,1,503,328,73,70,50
+Midland Academy Charter School,2007,1,469,285,45,41,35
+Midland Academy Charter School,2008,1,499,273,38,37,33
+Midland Academy Charter School,2009,1,488,198,35,35,32
+Midland Academy Charter School,2010,1,538,351,40,39,34
+Midland Academy Charter School,2011,1,514,354,55,55,39
+Midland Academy Charter School,2012,1,499,322,49,49,45
+Midland Academy Charter School,2013,1,490,308,45,45,31
+Midland Academy Charter School,2014,1,469,250,44,44,22
+Midland Academy Charter School,2015,1,441,170,35,35,17
+Midland Academy Charter School,2016,1,427,188,25,25,13
+Midland Academy Charter School,2017,1,428,177,20,20,14
+Midland Academy Charter School,2018,1,413,197,18,18,13
+Midvalley Academy Charter District,2000,1,51,35,1,1,1
+Midvalley Academy Charter District,2001,1,45,29,2,1,1
+Midvalley Academy Charter District,2002,1,95,36,1,1,4
+Midvalley Academy Charter District,2003,2,164,142,17,15,3
+Midvalley Academy Charter District,2004,2,253,213,21,21,10
+Midvalley Academy Charter District,2005,2,252,225,7,10,12
+Midvalley Academy Charter District,2006,2,245,163,20,6,10
+Midvalley Academy Charter District,2007,2,252,199,31,14,20
+Midvalley Academy Charter District,2008,2,302,256,55,55,18
+Midvalley Academy Charter District,2009,3,327,259,26,26,9
+Midvalley Academy Charter District,2010,3,379,330,31,31,27
+Midvalley Academy Charter District,2011,3,401,345,21,21,29
+Midvalley Academy Charter District,2012,3,396,347,37,37,34
+Midvalley Academy Charter District,2013,3,363,334,9,9,25
+Midvalley Academy Charter District,2014,3,389,366,12,12,25
+Midvalley Academy Charter District,2015,3,301,279,27,27,17
+Midvalley Academy Charter District,2016,3,346,313,24,23,27
+Midvalley Academy Charter District,2017,3,365,348,38,37,38
+Midvalley Academy Charter District,2018,3,367,356,56,53,34
+Montessori For All,2015,1,276,125,64,64,9
+Montessori For All,2016,1,332,152,86,84,21
+Montessori For All,2017,1,377,147,92,91,25
+Montessori For All,2018,1,476,205,109,108,29
+Nancy Ney Charter School,1999,1,72,57,0,0,27
+Nancy Ney Charter School,2000,1,49,38,0,0,20
+Nancy Ney Charter School,2001,1,35,17,0,0,10
+Nancy Ney Charter School,2002,1,48,28,0,0,9
+Nancy Ney Charter School,2003,1,82,52,0,0,16
+Nancy Ney Charter School,2004,1,88,60,0,0,15
+Nancy Ney Charter School,2005,1,112,84,0,0,16
+Nancy Ney Charter School,2006,1,130,88,0,0,34
+New Frontiers Public Schools Inc,1999,1,500,374,97,33,39
+New Frontiers Public Schools Inc,2000,1,652,452,3,4,49
+New Frontiers Public Schools Inc,2001,1,784,642,99,97,70
+New Frontiers Public Schools Inc,2002,1,641,540,99,85,70
+New Frontiers Public Schools Inc,2003,1,700,442,92,84,106
+New Frontiers Public Schools Inc,2004,1,622,498,96,91,78
+New Frontiers Public Schools Inc,2005,1,630,512,58,56,84
+New Frontiers Public Schools Inc,2006,2,614,477,64,60,87
+New Frontiers Public Schools Inc,2007,2,627,556,76,73,78
+New Frontiers Public Schools Inc,2008,3,583,526,61,59,68
+New Frontiers Public Schools Inc,2009,3,606,542,60,59,70
+New Frontiers Public Schools Inc,2010,3,609,548,68,66,63
+New Frontiers Public Schools Inc,2011,3,616,584,61,57,58
+New Frontiers Public Schools Inc,2012,3,608,564,62,60,53
+New Frontiers Public Schools Inc,2013,3,627,493,69,66,52
+New Frontiers Public Schools Inc,2014,3,615,549,70,62,54
+New Frontiers Public Schools Inc,2015,3,675,573,76,73,55
+New Frontiers Public Schools Inc,2016,3,707,599,79,77,51
+New Frontiers Public Schools Inc,2017,3,742,627,78,77,45
+New Frontiers Public Schools Inc,2018,2,706,587,64,63,46
+Newman International Academy,2012,1,330,28,5,0,16
+Newman International Academy,2013,1,475,261,13,9,26
+Newman International Academy,2014,1,719,338,44,40,45
+Newman International Academy,2015,1,864,392,83,83,57
+Newman International Academy,2016,2,1280,517,102,102,80
+Newman International Academy,2017,5,2208,996,222,220,105
+Newman International Academy,2018,6,2715,1205,316,302,133
+North Hills Preparatory School,2005,1,57,1,0,0,0
+North Hills Preparatory School,2008,1,421,198,66,0,7
+North Houston H S For Business,2000,1,31,22,0,0,0
+North Houston H S For Business,2001,1,79,49,0,0,3
+North Houston H S For Business,2002,1,170,110,0,0,1
+North Houston H S For Business,2003,1,224,72,0,0,3
+North Houston H S For Business,2004,1,189,86,0,0,7
+North Houston H S For Business,2005,1,189,130,0,0,5
+North Houston H S For Business,2006,1,242,185,0,0,4
+North Houston H S For Business,2007,2,275,246,0,0,9
+North Houston H S For Business,2008,2,113,89,0,0,8
+North Houston H S For Business,2009,2,102,97,0,0,13
+North Houston H S For Business,2010,1,24,20,0,0,1
+Northwest Mathematics Science & Language,2000,1,126,104,0,0,0
+Northwest Mathematics Science & Language,2001,1,132,50,0,0,4
+Northwest Mathematics Science & Language,2002,1,163,153,0,0,1
+Northwest Mathematics Science & Language,2003,1,199,191,0,38,6
+Northwest Mathematics Science & Language,2004,1,170,166,32,32,5
+Northwest Preparatory,2002,2,175,168,0,0,44
+Northwest Preparatory,2003,2,316,309,0,0,41
+Northwest Preparatory,2004,2,284,259,0,0,52
+Northwest Preparatory,2005,2,312,300,0,0,58
+Northwest Preparatory,2006,2,308,292,0,0,57
+Northwest Preparatory,2007,2,271,252,0,0,40
+Northwest Preparatory,2008,2,245,241,0,0,24
+Northwest Preparatory,2009,2,326,319,0,0,60
+Northwest Preparatory,2010,2,283,271,24,0,49
+Northwest Preparatory,2011,2,289,285,14,0,60
+Northwest Preparatory,2012,2,366,356,1,0,73
+Northwest Preparatory,2013,2,389,369,1,0,50
+Northwest Preparatory,2014,2,241,236,0,0,30
+Northwest Preparatory,2015,2,315,272,0,0,29
+Nova Academy,1999,1,100,51,0,0,2
+Nova Academy,2000,1,155,94,0,0,3
+Nova Academy,2001,2,309,247,0,0,7
+Nova Academy,2002,2,287,182,35,35,9
+Nova Academy,2003,1,248,227,3,3,11
+Nova Academy,2004,1,306,274,84,81,17
+Nova Academy,2005,2,365,333,102,99,16
+Nova Academy,2006,2,385,354,125,123,16
+Nova Academy,2007,2,423,397,144,142,17
+Nova Academy,2008,2,438,398,132,120,16
+Nova Academy,2009,2,486,434,171,170,18
+Nova Academy,2010,2,454,402,169,166,14
+Nova Academy,2011,2,477,405,174,170,25
+Nova Academy,2012,3,833,708,348,338,54
+Nova Academy,2013,3,857,784,322,308,46
+Nova Academy,2014,3,880,819,284,278,47
+Nova Academy,2015,3,944,872,340,331,47
+Nova Academy,2016,3,963,873,328,317,52
+Nova Academy,2017,3,893,774,302,288,45
+Nova Academy,2018,3,725,590,239,229,32
+Nyos Charter School,1999,1,129,4,0,0,10
+Nyos Charter School,2000,1,135,10,0,0,15
+Nyos Charter School,2001,1,152,7,0,0,15
+Nyos Charter School,2002,2,262,37,0,0,16
+Nyos Charter School,2003,2,337,79,7,4,20
+Nyos Charter School,2004,2,411,100,3,2,38
+Nyos Charter School,2005,2,415,104,12,11,39
+Nyos Charter School,2006,2,452,124,16,16,40
+Nyos Charter School,2007,2,468,137,25,25,39
+Nyos Charter School,2008,2,603,215,40,39,46
+Nyos Charter School,2009,2,665,234,61,60,52
+Nyos Charter School,2010,2,677,292,92,93,58
+Nyos Charter School,2011,2,728,298,101,100,64
+Nyos Charter School,2012,2,799,323,126,125,69
+Nyos Charter School,2013,2,843,316,131,131,80
+Nyos Charter School,2014,2,871,369,143,145,68
+Nyos Charter School,2015,2,922,375,175,175,71
+Nyos Charter School,2016,2,926,346,178,177,66
+Nyos Charter School,2017,2,958,301,173,172,81
+Nyos Charter School,2018,2,996,334,201,196,83
+Odyssey Academy Inc,2000,1,173,103,15,15,8
+Odyssey Academy Inc,2001,1,179,95,8,8,8
+Odyssey Academy Inc,2002,1,204,120,49,12,12
+Odyssey Academy Inc,2003,1,131,83,29,3,14
+Odyssey Academy Inc,2004,1,185,119,45,5,14
+Odyssey Academy Inc,2005,1,244,181,0,0,9
+Odyssey Academy Inc,2006,1,267,184,52,0,11
+Odyssey Academy Inc,2007,1,314,242,82,72,16
+Odyssey Academy Inc,2008,1,360,286,89,83,19
+Odyssey Academy Inc,2009,1,288,233,84,79,14
+Odyssey Academy Inc,2010,1,506,401,141,126,22
+Odyssey Academy Inc,2011,1,611,478,181,157,26
+Odyssey Academy Inc,2012,1,674,568,214,159,35
+Odyssey Academy Inc,2013,1,679,596,217,194,43
+Odyssey Academy Inc,2014,1,708,601,197,207,61
+Odyssey Academy Inc,2015,1,761,629,182,220,67
+Odyssey Academy Inc,2016,2,1099,748,226,204,120
+Odyssey Academy Inc,2017,2,1126,783,255,237,114
+Odyssey Academy Inc,2018,2,1150,838,253,234,104
+Orenda Charter School,2003,1,59,47,0,0,41
+Orenda Charter School,2004,1,58,58,0,0,49
+Orenda Charter School,2005,1,60,60,0,0,44
+Orenda Charter School,2006,1,54,54,0,0,34
+Orenda Charter School,2007,1,62,62,0,0,51
+Orenda Charter School,2008,1,66,66,0,0,53
+Orenda Charter School,2009,3,97,94,0,0,54
+Orenda Charter School,2010,5,185,100,0,0,69
+Orenda Charter School,2011,5,395,141,0,0,90
+Orenda Charter School,2012,5,819,256,3,1,87
+Orenda Charter School,2013,5,998,310,10,4,105
+Orenda Charter School,2014,5,1206,307,15,10,147
+Orenda Charter School,2015,5,1321,317,14,10,147
+Orenda Charter School,2016,3,1381,169,16,10,120
+Orenda Charter School,2017,5,1463,208,15,9,120
+Orenda Charter School,2018,5,1659,269,18,12,150
+Outreach Academy,2003,1,63,36,0,0,6
+Outreach Academy,2004,1,145,84,0,0,19
+Outreach Academy,2005,1,184,134,0,0,13
+Outreach Academy,2006,1,110,99,0,0,5
+Outreach Academy,2007,1,116,101,0,0,0
+Outreach Academy,2008,1,188,158,5,5,14
+Outreach Academy,2009,1,227,216,1,1,14
+Outreach Academy,2010,1,218,206,1,1,11
+Outreach Academy,2011,1,307,283,0,0,21
+Panola Charter School,2001,1,90,64,0,0,12
+Panola Charter School,2002,1,74,53,0,0,11
+Panola Charter School,2003,1,75,48,0,0,13
+Panola Charter School,2004,1,98,49,0,0,34
+Panola Charter School,2005,1,164,79,0,0,49
+Panola Charter School,2006,1,167,80,0,0,43
+Panola Charter School,2007,1,144,84,0,0,25
+Panola Charter School,2008,1,150,51,0,0,16
+Panola Charter School,2009,1,130,44,1,0,10
+Panola Charter School,2010,2,139,48,2,1,9
+Panola Charter School,2011,3,157,51,0,0,8
+Panola Charter School,2012,3,178,44,0,0,7
+Panola Charter School,2013,3,169,52,1,0,8
+Panola Charter School,2014,3,146,52,0,0,9
+Panola Charter School,2015,3,154,55,0,0,16
+Panola Charter School,2016,3,147,56,0,0,10
+Panola Charter School,2017,3,118,49,0,0,6
+Panola Charter School,2018,3,147,63,0,0,3
+Paso del Norte Academy Charter District,2000,1,148,51,8,0,6
+Paso del Norte Academy Charter District,2001,1,197,104,22,2,14
+Paso del Norte Academy Charter District,2002,1,222,115,11,9,11
+Paso del Norte Academy Charter District,2003,1,204,91,7,6,14
+Paso del Norte Academy Charter District,2004,1,211,92,0,0,15
+Paso del Norte Academy Charter District,2005,1,201,149,0,0,14
+Paso del Norte Academy Charter District,2006,1,190,121,21,21,7
+Paso del Norte Academy Charter District,2007,2,401,258,10,13,17
+Paso del Norte Academy Charter District,2008,2,293,215,26,26,14
+Paso del Norte Academy Charter District,2009,2,219,193,16,17,15
+Paso del Norte Academy Charter District,2010,2,364,343,12,12,30
+Paso del Norte Academy Charter District,2011,2,333,311,26,26,24
+Paso del Norte Academy Charter District,2012,2,298,273,22,22,19
+Paso del Norte Academy Charter District,2013,2,282,264,0,0,12
+Paso del Norte Academy Charter District,2014,2,306,290,1,1,10
+Paso del Norte Academy Charter District,2015,2,273,258,0,0,7
+Paso del Norte Academy Charter District,2016,2,241,232,36,36,16
+Paso del Norte Academy Charter District,2017,2,240,223,39,38,21
+Paso del Norte Academy Charter District,2018,2,217,202,50,48,14
+Peak Preparatory School,2008,2,389,275,51,0,8
+Pegasus School Of Liberal Arts And Sciences,1998,1,106,0,0,0,0
+Pegasus School Of Liberal Arts And Sciences,1999,1,166,31,0,0,1
+Pegasus School Of Liberal Arts And Sciences,2000,1,156,95,0,0,1
+Pegasus School Of Liberal Arts And Sciences,2001,1,168,85,4,4,3
+Pegasus School Of Liberal Arts And Sciences,2002,1,151,76,10,9,10
+Pegasus School Of Liberal Arts And Sciences,2003,1,159,116,22,16,16
+Pegasus School Of Liberal Arts And Sciences,2004,1,212,161,22,21,17
+Pegasus School Of Liberal Arts And Sciences,2005,1,266,169,41,33,25
+Pegasus School Of Liberal Arts And Sciences,2006,1,262,183,44,36,44
+Pegasus School Of Liberal Arts And Sciences,2007,1,257,185,58,56,41
+Pegasus School Of Liberal Arts And Sciences,2008,1,319,239,101,79,36
+Pegasus School Of Liberal Arts And Sciences,2009,1,487,363,136,136,44
+Pegasus School Of Liberal Arts And Sciences,2010,1,470,285,116,116,43
+Pegasus School Of Liberal Arts And Sciences,2011,1,550,428,144,144,50
+Pegasus School Of Liberal Arts And Sciences,2012,1,662,497,182,182,64
+Pegasus School Of Liberal Arts And Sciences,2013,1,780,673,282,279,67
+Pegasus School Of Liberal Arts And Sciences,2014,1,726,588,280,278,53
+Pegasus School Of Liberal Arts And Sciences,2015,1,662,573,279,279,57
+Pegasus School Of Liberal Arts And Sciences,2016,1,646,500,298,294,58
+Pegasus School Of Liberal Arts And Sciences,2017,1,599,535,242,235,55
+Pegasus School Of Liberal Arts And Sciences,2018,1,653,572,174,168,61
+Phoenix Charter School,2002,1,195,44,0,0,8
+Phoenix Charter School,2003,1,233,98,0,0,14
+Phoenix Charter School,2004,1,255,115,14,12,26
+Phoenix Charter School,2005,1,271,110,23,19,33
+Phoenix Charter School,2006,1,302,171,35,29,41
+Phoenix Charter School,2007,1,401,228,37,34,44
+Phoenix Charter School,2008,1,444,257,36,35,46
+Phoenix Charter School,2009,1,479,305,43,43,51
+Phoenix Charter School,2010,1,448,286,39,39,45
+Phoenix Charter School,2011,1,546,364,44,43,52
+Phoenix Charter School,2012,1,537,385,58,55,60
+Phoenix Charter School,2013,1,602,415,64,61,74
+Phoenix Charter School,2014,1,658,460,57,56,71
+Phoenix Charter School,2015,1,717,543,106,97,65
+Pineywoods Community Academy,2000,1,208,23,0,0,12
+Pineywoods Community Academy,2001,1,275,12,0,0,20
+Pineywoods Community Academy,2002,1,187,86,0,0,21
+Pineywoods Community Academy,2003,1,182,99,11,9,25
+Pineywoods Community Academy,2004,1,197,107,3,3,24
+Pineywoods Community Academy,2005,1,206,114,1,1,20
+Pineywoods Community Academy,2006,1,220,132,3,1,26
+Pineywoods Community Academy,2007,1,263,145,1,1,34
+Pineywoods Community Academy,2008,1,313,185,1,1,36
+Pineywoods Community Academy,2009,1,304,209,1,1,45
+Pineywoods Community Academy,2010,2,336,206,0,0,39
+Pineywoods Community Academy,2011,2,465,272,0,0,41
+Pineywoods Community Academy,2012,2,554,350,0,0,48
+Pineywoods Community Academy,2013,2,635,320,0,0,45
+Pineywoods Community Academy,2014,2,701,344,21,21,46
+Pineywoods Community Academy,2015,2,811,407,41,41,49
+Pineywoods Community Academy,2016,2,966,451,51,50,58
+Pineywoods Community Academy,2017,3,1037,470,58,58,69
+Pineywoods Community Academy,2018,3,1020,517,55,55,82
+Pioneer Technology & Arts Academy,2017,2,77,43,14,14,5
+Pioneer Technology & Arts Academy,2018,2,289,176,59,58,19
+Por Vida Academy,1997,1,153,122,0,0,0
+Por Vida Academy,1998,1,152,123,0,0,0
+Por Vida Academy,1999,1,146,118,0,0,6
+Por Vida Academy,2000,1,184,140,0,0,21
+Por Vida Academy,2001,1,183,152,0,0,10
+Por Vida Academy,2002,1,199,155,0,0,17
+Por Vida Academy,2003,2,321,238,0,0,46
+Por Vida Academy,2004,3,365,211,0,0,45
+Por Vida Academy,2005,3,361,202,2,2,47
+Por Vida Academy,2006,3,351,173,4,4,42
+Por Vida Academy,2007,3,329,193,2,2,46
+Por Vida Academy,2008,3,372,282,2,2,73
+Por Vida Academy,2009,3,307,268,0,0,66
+Por Vida Academy,2010,3,304,253,5,5,76
+Por Vida Academy,2011,3,339,254,1,1,63
+Por Vida Academy,2012,3,353,296,1,1,50
+Por Vida Academy,2013,3,311,248,4,4,47
+Por Vida Academy,2014,3,303,211,1,1,52
+Por Vida Academy,2015,3,352,224,1,1,35
+Por Vida Academy,2016,3,322,248,0,0,40
+Por Vida Academy,2017,3,262,209,1,0,31
+Por Vida Academy,2018,3,269,227,0,0,32
+Positive Solutions Charter School,1999,1,25,19,0,0,0
+Positive Solutions Charter School,2000,1,156,40,0,0,11
+Positive Solutions Charter School,2001,1,204,78,0,0,6
+Positive Solutions Charter School,2002,1,247,190,0,0,10
+Positive Solutions Charter School,2003,1,202,163,0,0,18
+Positive Solutions Charter School,2004,2,277,228,0,0,35
+Positive Solutions Charter School,2005,2,309,245,2,2,43
+Positive Solutions Charter School,2006,2,245,204,2,2,31
+Positive Solutions Charter School,2007,2,151,133,0,0,22
+Positive Solutions Charter School,2008,2,161,100,0,0,16
+Positive Solutions Charter School,2009,1,165,151,0,0,16
+Positive Solutions Charter School,2010,1,224,209,0,0,17
+Positive Solutions Charter School,2011,1,157,150,0,0,8
+Positive Solutions Charter School,2012,1,151,141,0,0,20
+Positive Solutions Charter School,2013,1,167,158,9,0,9
+Positive Solutions Charter School,2014,1,183,164,4,3,25
+Positive Solutions Charter School,2015,1,172,160,17,15,18
+Positive Solutions Charter School,2016,1,163,147,7,6,19
+Positive Solutions Charter School,2017,1,152,141,5,5,11
+Positive Solutions Charter School,2018,1,125,115,8,8,8
+Premier High Schools,2001,1,50,40,0,0,9
+Premier High Schools,2002,1,56,36,2,2,5
+Premier High Schools,2003,1,59,31,13,14,11
+Premier High Schools,2004,1,66,36,5,5,9
+Premier High Schools,2005,1,70,37,1,4,17
+Premier High Schools,2006,1,69,41,7,7,15
+Premier High Schools,2007,1,75,50,3,2,12
+Premier High Schools,2008,3,163,76,0,0,33
+Premier High Schools,2009,4,220,135,0,0,32
+Premier High Schools,2010,4,219,156,3,3,34
+Premier High Schools,2011,1,191,130,0,0,33
+Premier High Schools,2012,23,3888,2852,1292,1292,321
+Premier High Schools,2013,26,3824,2737,1215,1215,291
+Premier High Schools,2014,27,3373,2227,1014,1014,259
+Premier High Schools,2015,27,3591,2389,1022,1022,271
+Premier High Schools,2016,31,6435,3646,1126,1126,564
+Premier High Schools,2017,33,7022,4337,1262,1262,716
+Premier High Schools,2018,34,7227,4195,1122,1121,817
+Premier Learning Academy,2012,1,356,244,1,1,19
+Premier Learning Academy,2013,1,362,265,24,24,27
+Premier Learning Academy,2014,1,418,323,30,28,26
+Premier Learning Academy,2015,1,510,417,53,51,28
+Premier Learning Academy,2016,1,459,379,59,57,15
+Prepared Table,2000,1,823,602,0,0,47
+Prepared Table,2001,2,1752,1751,0,0,105
+Prepared Table,2002,3,1287,1287,0,0,38
+Prime Prep Academy,2013,2,577,307,0,0,15
+Prime Prep Academy,2014,2,606,409,0,0,25
+Prime Prep Academy,2015,2,327,243,0,0,18
+Priority Charter Schools,2000,1,43,27,0,0,13
+Priority Charter Schools,2001,1,89,47,0,0,23
+Priority Charter Schools,2002,1,161,120,0,0,37
+Priority Charter Schools,2003,1,100,79,0,0,30
+Priority Charter Schools,2004,1,144,101,0,0,26
+Priority Charter Schools,2005,1,123,95,0,0,32
+Priority Charter Schools,2006,1,106,91,0,0,26
+Priority Charter Schools,2007,1,91,75,0,0,15
+Priority Charter Schools,2008,1,142,99,3,3,14
+Priority Charter Schools,2009,1,180,122,2,2,22
+Priority Charter Schools,2010,1,179,138,2,2,26
+Priority Charter Schools,2011,1,165,115,2,2,20
+Priority Charter Schools,2012,1,267,161,0,0,27
+Priority Charter Schools,2013,2,448,253,1,0,42
+Priority Charter Schools,2014,5,885,463,1,0,90
+Priority Charter Schools,2015,5,914,463,11,11,88
+Priority Charter Schools,2016,5,1030,539,28,28,97
+Priority Charter Schools,2017,4,815,337,17,14,98
+Priority Charter Schools,2018,4,960,525,35,32,108
+Promesa Public Schools,2010,1,88,80,41,41,6
+Promesa Public Schools,2011,1,179,160,62,85,20
+Promesa Public Schools,2012,1,308,278,85,85,34
+Promesa Public Schools,2013,1,717,649,172,172,75
+Promesa Public Schools,2014,2,854,801,227,227,104
+Promesa Public Schools,2015,2,847,728,195,188,86
+Promesa Public Schools,2016,2,793,752,231,231,81
+Promesa Public Schools,2017,2,669,590,172,172,58
+Promesa Public Schools,2018,2,633,513,184,139,48
+Promise Community School,2003,1,33,31,1,0,3
+Promise Community School,2004,1,71,55,0,0,6
+Promise Community School,2005,2,384,366,0,0,20
+Promise Community School,2006,2,579,570,247,253,40
+Promise Community School,2007,2,875,864,382,377,69
+Promise Community School,2008,2,1111,1096,582,582,61
+Promise Community School,2009,4,1450,1419,644,644,60
+Promise Community School,2010,4,1530,1501,812,812,83
+Promise Community School,2011,4,1752,1726,978,977,110
+Promise Community School,2012,6,1837,1825,1102,1099,126
+Promise Community School,2013,6,1941,1874,1077,1048,173
+Promise Community School,2014,6,1998,1949,1140,1113,198
+Promise Community School,2015,5,1867,1691,1071,1046,169
+Promise Community School,2016,5,1888,1841,1103,1075,144
+Promise Community School,2017,5,1936,1902,1184,1167,162
+Promise Community School,2018,5,1913,1889,1159,1143,167
+Ranch Academy,2000,1,42,12,0,0,9
+Ranch Academy,2001,1,40,0,0,0,10
+Ranch Academy,2002,1,65,0,0,0,13
+Ranch Academy,2003,1,42,0,0,0,8
+Ranch Academy,2004,1,55,10,0,0,8
+Ranch Academy,2005,1,45,4,0,0,8
+Ranch Academy,2006,1,39,8,0,0,6
+Ranch Academy,2007,1,33,5,0,0,6
+Ranch Academy,2008,1,38,2,0,0,4
+Ranch Academy,2009,2,84,37,0,0,33
+Ranch Academy,2010,2,88,56,0,0,40
+Ranch Academy,2011,2,96,50,0,0,32
+Ranch Academy,2012,2,99,58,0,0,38
+Ranch Academy,2013,2,100,47,0,0,35
+Ranch Academy,2014,2,95,58,0,0,37
+Ranch Academy,2015,2,114,66,0,0,42
+Ranch Academy,2016,2,117,73,0,0,33
+Ranch Academy,2017,1,114,48,0,0,17
+Ranch Academy,2018,1,102,49,0,0,16
+Rapoport Academy,1999,1,39,34,0,0,0
+Rapoport Academy,2000,1,75,71,0,0,0
+Rapoport Academy,2001,1,121,113,0,0,2
+Rapoport Academy,2002,1,136,126,0,0,6
+Rapoport Academy,2003,1,150,137,0,0,9
+Rapoport Academy,2004,2,181,164,0,0,15
+Rapoport Academy,2005,2,197,178,2,2,15
+Rapoport Academy,2006,2,197,164,2,2,18
+Rapoport Academy,2007,3,231,191,0,0,12
+Rapoport Academy,2008,3,300,244,0,0,17
+Rapoport Academy,2009,3,344,255,1,1,24
+Rapoport Academy,2010,3,369,264,0,0,25
+Rapoport Academy,2011,3,387,268,1,1,24
+Rapoport Academy,2012,3,467,273,1,1,25
+Rapoport Academy,2013,4,572,344,5,4,28
+Rapoport Academy,2014,4,723,455,12,9,35
+Rapoport Academy,2015,4,783,505,17,15,45
+Rapoport Academy,2016,4,805,538,32,32,52
+Rapoport Academy,2017,3,818,558,48,48,55
+Rapoport Academy,2018,3,818,565,61,61,63
+Raul Yzaguirre School For Success,1999,1,432,268,0,0,0
+Raul Yzaguirre School For Success,2000,1,586,468,182,166,31
+Raul Yzaguirre School For Success,2001,1,621,464,205,37,47
+Raul Yzaguirre School For Success,2002,1,645,561,221,177,54
+Raul Yzaguirre School For Success,2003,2,737,688,329,306,54
+Raul Yzaguirre School For Success,2004,2,869,799,415,411,64
+Raul Yzaguirre School For Success,2005,2,895,858,467,463,68
+Raul Yzaguirre School For Success,2006,2,925,925,435,430,66
+Raul Yzaguirre School For Success,2007,2,961,919,540,530,75
+Raul Yzaguirre School For Success,2008,2,943,920,202,202,62
+Raul Yzaguirre School For Success,2009,2,931,891,444,438,60
+Raul Yzaguirre School For Success,2010,2,1142,1119,590,588,57
+Raul Yzaguirre School For Success,2011,4,1251,1241,585,582,109
+Raul Yzaguirre School For Success,2012,4,1249,1209,576,576,95
+Raul Yzaguirre School For Success,2013,4,1338,1306,621,646,94
+Raul Yzaguirre School For Success,2014,4,1339,1299,633,659,98
+Raul Yzaguirre School For Success,2015,4,1290,1262,657,705,91
+Raul Yzaguirre School For Success,2016,4,1299,1259,564,606,77
+Raul Yzaguirre School For Success,2017,4,1330,1301,668,664,82
+Raul Yzaguirre School For Success,2018,4,1289,1265,659,652,77
+Raven School,1999,1,224,224,0,0,31
+Raven School,2000,1,184,184,0,0,25
+Raven School,2001,1,194,194,0,0,34
+Raven School,2002,1,201,201,1,1,44
+Raven School,2003,1,203,203,0,0,34
+Raven School,2004,1,180,180,0,0,39
+Raven School,2005,1,168,168,0,0,30
+Raven School,2006,1,161,161,0,0,32
+Raven School,2007,1,172,172,11,11,29
+Raven School,2008,1,171,171,5,5,40
+Raven School,2009,1,146,146,0,0,21
+Raven School,2010,1,136,136,1,1,24
+Raven School,2011,1,110,110,2,2,32
+Raven School,2012,1,103,103,1,1,22
+Raven School,2013,1,100,100,0,0,28
+Raven School,2014,1,78,78,1,1,16
+Raven School,2015,1,72,72,6,6,12
+Raven School,2016,1,95,95,3,3,28
+Raven School,2017,1,89,89,3,3,18
+Raven School,2018,1,104,104,0,0,31
+Richard Milburn Academy Schools,2000,4,340,71,0,0,10
+Richard Milburn Academy Schools,2001,4,456,146,21,0,17
+Richard Milburn Academy Schools,2002,6,768,179,0,0,57
+Richard Milburn Academy Schools,2003,6,756,366,0,0,65
+Richard Milburn Academy Schools,2004,9,1069,502,0,0,113
+Richard Milburn Academy Schools,2005,9,1518,840,1,1,140
+Richard Milburn Academy Schools,2006,9,1530,921,1,1,142
+Richard Milburn Academy Schools,2007,9,1673,981,0,0,120
+Richard Milburn Academy Schools,2008,9,1559,964,0,0,117
+Richard Milburn Academy Schools,2009,9,1773,1233,0,0,168
+Richard Milburn Academy Schools,2010,9,1764,1200,0,6,182
+Richard Milburn Academy Schools,2011,8,1464,1036,0,0,174
+Richard Milburn Academy Schools,2012,8,1661,1080,0,0,203
+Richard Milburn Academy Schools,2013,8,1648,1097,0,0,203
+Richard Milburn Academy Schools,2014,8,1640,1090,13,8,175
+Richard Milburn Academy Schools,2015,8,1672,1216,9,5,162
+Richard Milburn Academy Schools,2016,8,2020,1259,24,14,219
+Richard Milburn Academy Schools,2017,10,2219,1606,61,29,237
+Richard Milburn Academy Schools,2018,9,2223,1642,112,105,240
+Richland Collegiate High School,2007,1,171,0,0,1,1
+Richland Collegiate High School,2008,1,324,14,1,1,0
+Richland Collegiate High School,2009,1,329,15,2,1,0
+Richland Collegiate High School,2010,1,374,40,0,0,0
+Richland Collegiate High School,2011,1,395,26,0,0,1
+Richland Collegiate High School,2012,1,429,91,0,0,0
+Richland Collegiate High School,2013,1,444,65,0,0,0
+Richland Collegiate High School,2014,1,458,84,0,1,0
+Richland Collegiate High School,2015,1,445,123,1,1,1
+Richland Collegiate High School,2016,1,511,100,0,0,3
+Richland Collegiate High School,2017,1,572,109,1,1,1
+Richland Collegiate High School,2018,1,581,124,0,0,2
+Rise Academy,2000,1,30,28,0,0,1
+Rise Academy,2001,1,85,78,0,0,5
+Rise Academy,2002,1,100,92,0,0,6
+Rise Academy,2003,1,117,107,0,0,10
+Rise Academy,2004,1,143,137,0,0,13
+Rise Academy,2005,1,165,157,0,0,10
+Rise Academy,2006,1,182,173,0,0,16
+Rise Academy,2007,1,197,186,0,0,20
+Rise Academy,2008,1,202,190,0,0,19
+Rise Academy,2009,1,231,205,0,0,19
+Rise Academy,2010,1,222,189,0,0,19
+Rise Academy,2011,1,205,180,0,0,24
+Rise Academy,2012,1,220,190,0,0,31
+Rise Academy,2013,1,238,201,0,0,28
+Rise Academy,2014,1,261,219,0,0,38
+Rise Academy,2015,1,267,229,0,0,34
+Rise Academy,2016,1,272,241,0,0,38
+Rise Academy,2017,1,274,240,0,0,36
+Rise Academy,2018,1,307,262,0,0,42
+Rylie Faith Family Academy,2000,1,536,225,0,0,0
+Rylie Faith Family Academy,2001,1,793,590,8,0,53
+Rylie Faith Family Academy,2002,1,781,575,89,91,46
+Rylie Faith Family Academy,2003,1,800,602,131,121,85
+Saill,2008,1,180,85,22,21,70
+Saill,2009,1,166,96,15,15,53
+Sam Houston State University Charter,2018,1,140,23,2,2,2
+San Antonio Can High School,2002,1,58,0,0,0,0
+San Antonio Can High School,2003,1,198,146,0,0,18
+San Antonio Can High School,2004,1,387,284,8,7,70
+San Antonio Can High School,2005,1,386,229,12,12,73
+San Antonio Can High School,2006,1,347,280,10,10,73
+San Antonio Can High School,2007,1,406,320,17,16,64
+San Antonio Can High School,2008,1,399,307,16,13,53
+San Antonio Can High School,2009,1,400,358,49,32,42
+San Antonio Can High School,2010,1,377,332,34,34,54
+San Antonio Can High School,2011,1,360,312,43,40,43
+San Antonio Can High School,2012,1,430,395,33,29,50
+San Antonio Can High School,2013,1,435,413,50,50,53
+San Antonio Preparatory Academy,2004,1,88,57,0,0,7
+San Antonio Preparatory Academy,2005,1,145,95,23,14,18
+San Antonio Preparatory Academy,2006,1,180,112,18,14,27
+San Antonio Preparatory Academy,2007,1,262,188,9,9,21
+San Antonio Preparatory Academy,2008,1,284,126,12,12,20
+San Antonio Preparatory Academy,2009,2,772,622,47,48,32
+San Antonio Preparatory Academy,2010,2,747,595,64,57,35
+San Antonio Preparatory Academy,2011,2,683,613,70,42,22
+San Antonio School For Inquiry & Creativity,2001,1,21,9,0,0,0
+San Antonio School For Inquiry & Creativity,2002,1,90,3,0,0,7
+San Antonio School For Inquiry & Creativity,2003,1,127,76,0,0,13
+San Antonio School For Inquiry & Creativity,2004,1,143,40,3,3,19
+San Antonio School For Inquiry & Creativity,2005,1,193,43,0,0,22
+San Antonio School For Inquiry & Creativity,2006,1,204,195,0,0,41
+San Antonio School For Inquiry & Creativity,2007,1,240,226,0,0,35
+San Antonio School For Inquiry & Creativity,2008,2,275,255,0,0,39
+San Antonio School For Inquiry & Creativity,2009,2,290,277,0,0,48
+San Antonio School For Inquiry & Creativity,2010,2,352,305,0,1,51
+San Antonio School For Inquiry & Creativity,2011,2,383,348,0,0,53
+San Antonio School For Inquiry & Creativity,2012,2,404,379,0,0,59
+San Antonio School For Inquiry & Creativity,2013,2,423,386,0,0,53
+San Antonio School For Inquiry & Creativity,2014,2,408,368,0,0,51
+San Antonio School For Inquiry & Creativity,2015,2,426,373,0,0,65
+San Antonio School For Inquiry & Creativity,2016,2,515,509,0,0,58
+San Antonio School For Inquiry & Creativity,2017,2,573,549,68,68,88
+San Antonio Technology Academy,2002,1,92,92,0,0,16
+San Antonio Technology Academy,2003,1,194,192,0,2,17
+San Antonio Technology Academy,2004,1,149,134,6,6,19
+San Antonio Technology Academy,2005,1,70,48,0,0,7
+San Antonio Technology Academy,2006,1,128,114,14,14,20
+San Antonio Technology Academy,2007,1,68,57,2,2,11
+San Antonio Technology Academy,2008,1,89,76,0,0,14
+San Antonio Technology Academy,2009,1,69,64,0,0,6
+San Antonio Technology Academy,2010,1,85,76,0,0,7
+San Antonio Technology Academy,2011,1,70,65,0,0,11
+San Antonio Technology Academy,2012,1,84,73,0,0,11
+San Antonio Technology Academy,2013,1,77,72,0,0,10
+San Antonio Technology Academy,2014,1,62,57,4,4,8
+San Antonio Technology Academy,2015,1,57,55,3,3,6
+School Of Excellence In Education,1999,1,389,187,1,0,22
+School Of Excellence In Education,2000,2,495,293,0,0,28
+School Of Excellence In Education,2001,3,826,554,0,0,26
+School Of Excellence In Education,2002,3,1094,647,2,0,65
+School Of Excellence In Education,2003,2,691,485,42,38,43
+School Of Excellence In Education,2004,2,1014,858,36,36,94
+School Of Excellence In Education,2005,4,1481,1171,127,127,175
+School Of Excellence In Education,2006,5,1767,1404,86,75,195
+School Of Excellence In Education,2007,6,2288,1821,61,54,232
+School Of Excellence In Education,2008,7,2658,2091,108,103,267
+School Of Excellence In Education,2009,8,2272,1954,86,88,219
+School Of Excellence In Education,2010,8,2085,1646,158,161,186
+School Of Excellence In Education,2011,8,1624,1349,162,167,144
+School Of Excellence In Education,2012,8,1669,1440,186,200,140
+School Of Excellence In Education,2013,7,1527,1338,176,172,114
+School Of Excellence In Education,2014,7,1384,1281,177,174,94
+School Of Excellence In Education,2015,7,1115,1044,172,170,76
+School Of Excellence In Education,2016,5,1095,973,199,195,83
+School Of Excellence In Education,2017,4,830,774,166,164,51
+School Of Excellence In Education,2018,4,667,597,134,133,47
+Schools of Science and Technology,2006,1,226,92,1,1,11
+Schools of Science and Technology,2007,1,327,99,1,1,10
+Schools of Science and Technology,2008,1,405,127,1,1,14
+Schools of Science and Technology,2009,2,678,278,4,1,19
+Schools of Science and Technology,2010,4,1353,724,15,14,40
+Schools of Science and Technology,2011,4,1487,807,40,34,43
+Schools of Science and Technology,2012,4,1674,950,75,63,78
+Schools of Science and Technology,2013,4,1753,1002,117,100,99
+Schools of Science and Technology,2014,4,1869,1062,127,112,110
+Schools of Science and Technology,2015,4,1926,1154,118,111,131
+Schools of Science and Technology,2016,4,2039,1214,121,120,153
+Schools of Science and Technology,2017,6,2772,1513,288,281,183
+Schools of Science and Technology,2018,7,3259,2226,349,337,233
+Seashore Charter Schools,1997,1,60,0,0,0,5
+Seashore Charter Schools,1998,1,109,0,0,0,6
+Seashore Charter Schools,1999,1,171,0,0,0,8
+Seashore Charter Schools,2000,1,156,0,1,1,14
+Seashore Charter Schools,2001,1,147,44,0,0,10
+Seashore Charter Schools,2002,1,139,42,1,1,9
+Seashore Charter Schools,2003,1,129,25,3,3,7
+Seashore Charter Schools,2004,1,173,15,3,3,13
+Seashore Charter Schools,2005,1,193,34,2,2,16
+Seashore Charter Schools,2006,1,204,32,1,1,17
+Seashore Charter Schools,2007,1,229,47,0,0,22
+Seashore Charter Schools,2008,2,271,26,4,4,22
+Seashore Charter Schools,2009,2,319,12,4,4,25
+Seashore Charter Schools,2010,2,345,4,1,1,26
+Seashore Charter Schools,2011,2,371,6,3,3,34
+Seashore Charter Schools,2012,2,412,10,3,3,29
+Seashore Charter Schools,2013,2,433,9,6,6,25
+Seashore Charter Schools,2014,2,461,6,8,8,23
+Seashore Charter Schools,2015,2,470,6,4,4,30
+Seashore Charter Schools,2016,2,476,4,3,3,34
+Seashore Charter Schools,2017,2,489,5,8,8,36
+Seashore Charter Schools,2018,2,488,9,9,9,40
+Sentry Technology Prep School,2000,1,261,234,0,0,0
+Sentry Technology Prep School,2001,1,206,206,0,0,2
+Sentry Technology Prep School,2002,1,191,191,0,0,0
+Sentry Technology Prep School,2003,1,187,123,0,0,6
+Sentry Technology Prep School,2004,1,163,149,30,30,15
+SER-Ni+她s Charter School,1997,1,150,144,123,122,5
+SER-Ni+她s Charter School,1998,1,219,206,192,192,9
+SER-Ni+她s Charter School,1999,1,237,219,221,221,8
+SER-Ni+她s Charter School,2000,1,258,232,243,243,11
+SER-Ni+她s Charter School,2001,1,330,277,308,308,14
+SER-Ni+她s Charter School,2002,1,370,266,346,347,17
+SER-Ni+她s Charter School,2003,1,376,340,363,363,18
+SER-Ni+她s Charter School,2004,1,392,369,374,374,22
+SER-Ni+她s Charter School,2005,1,537,499,504,504,24
+SER-Ni+她s Charter School,2006,1,507,473,456,456,25
+SER-Ni+她s Charter School,2007,1,563,531,498,498,24
+SER-Ni+她s Charter School,2008,2,587,547,520,520,31
+SER-Ni+她s Charter School,2009,2,607,474,554,554,24
+SER-Ni+她s Charter School,2010,2,622,522,531,531,24
+SER-Ni+她s Charter School,2011,2,615,556,522,522,18
+SER-Ni+她s Charter School,2012,3,831,788,734,781,36
+SER-Ni+她s Charter School,2013,3,954,917,847,886,38
+SER-Ni+她s Charter School,2014,3,1013,984,888,946,41
+SER-Ni+她s Charter School,2015,3,1031,996,936,961,41
+SER-Ni+她s Charter School,2016,3,1087,1046,964,1017,41
+SER-Ni+她s Charter School,2017,3,1104,1063,1004,1005,42
+SER-Ni+她s Charter School,2018,3,1107,1059,957,994,53
+Shekinah Radiance Academy,2000,1,138,0,0,0,5
+Shekinah Radiance Academy,2001,1,150,111,0,0,8
+Shekinah Radiance Academy,2002,3,193,84,0,0,25
+Shekinah Radiance Academy,2003,3,363,267,1,1,35
+Shekinah Radiance Academy,2004,3,416,347,3,3,48
+Shekinah Radiance Academy,2005,3,400,361,20,19,37
+Shekinah Radiance Academy,2006,4,800,522,22,22,45
+Shekinah Radiance Academy,2007,4,912,675,36,36,73
+Shekinah Radiance Academy,2008,5,945,616,44,43,62
+Shekinah Radiance Academy,2009,7,948,621,20,48,66
+Shekinah Radiance Academy,2010,8,1125,849,67,63,83
+Shekinah Radiance Academy,2011,9,1132,822,70,69,75
+Shekinah Radiance Academy,2012,8,915,641,49,48,63
+Shekinah Radiance Academy,2013,9,890,665,50,49,61
+Shekinah Radiance Academy,2014,6,798,558,26,23,49
+Shekinah Radiance Academy,2015,6,749,526,35,31,56
+Shekinah Radiance Academy,2016,4,486,369,32,30,41
+South Plains Academy Charter District,2000,1,143,66,3,1,23
+South Plains Academy Charter District,2001,1,142,88,1,0,23
+South Plains Academy Charter District,2002,1,155,92,1,1,28
+South Plains Academy Charter District,2003,1,192,95,0,0,38
+South Plains Academy Charter District,2004,1,201,116,0,0,35
+South Plains Academy Charter District,2005,1,190,144,0,0,35
+South Plains Academy Charter District,2006,1,136,110,0,0,21
+South Plains Academy Charter District,2007,1,181,139,0,0,36
+South Plains Academy Charter District,2008,1,133,105,1,1,29
+South Plains Academy Charter District,2009,1,121,107,0,0,9
+South Plains Academy Charter District,2010,1,181,157,0,0,33
+South Plains Academy Charter District,2011,1,207,172,0,0,31
+South Plains Academy Charter District,2012,1,180,160,1,1,27
+South Plains Academy Charter District,2013,1,188,143,0,0,35
+South Plains Academy Charter District,2014,1,225,186,0,0,34
+South Plains Academy Charter District,2015,1,204,189,0,0,37
+South Plains Academy Charter District,2016,1,200,176,2,2,21
+South Plains Academy Charter District,2017,1,202,182,4,4,23
+South Plains Academy Charter District,2018,1,198,183,2,2,24
+Southwest Preparatory School,1999,1,57,51,0,0,7
+Southwest Preparatory School,2000,1,177,58,0,0,19
+Southwest Preparatory School,2001,1,231,60,0,0,29
+Southwest Preparatory School,2002,2,260,86,0,0,28
+Southwest Preparatory School,2003,4,612,325,0,0,87
+Southwest Preparatory School,2004,3,694,364,0,0,112
+Southwest Preparatory School,2005,4,878,322,0,0,117
+Southwest Preparatory School,2006,4,955,602,9,7,129
+Southwest Preparatory School,2007,4,948,559,9,7,146
+Southwest Preparatory School,2008,4,920,530,14,10,123
+Southwest Preparatory School,2009,4,758,523,6,3,105
+Southwest Preparatory School,2010,4,805,515,6,2,101
+Southwest Preparatory School,2011,4,772,532,10,5,105
+Southwest Preparatory School,2012,4,468,325,2,2,66
+Southwest Preparatory School,2013,4,508,332,19,11,74
+Southwest Preparatory School,2014,5,627,483,77,53,80
+Southwest Preparatory School,2015,5,898,721,114,58,100
+Southwest Preparatory School,2016,5,891,720,99,64,91
+Southwest Preparatory School,2017,6,908,701,109,72,92
+Southwest Preparatory School,2018,6,879,685,107,77,95
+Southwest Schools,2000,2,241,173,0,0,6
+Southwest Schools,2001,2,444,200,136,137,57
+Southwest Schools,2002,1,446,104,13,13,24
+Southwest Schools,2003,3,475,243,5,4,35
+Southwest Schools,2004,4,493,327,107,107,75
+Southwest Schools,2005,3,1138,1026,297,229,83
+Southwest Schools,2006,5,1137,1041,441,367,58
+Southwest Schools,2007,6,1687,1424,646,560,188
+Southwest Schools,2008,6,1774,1361,649,603,118
+Southwest Schools,2009,5,2292,607,308,268,218
+Southwest Schools,2010,6,3594,1942,612,573,284
+Southwest Schools,2011,7,3867,1271,641,624,319
+Southwest Schools,2012,6,1613,1415,713,692,132
+Southwest Schools,2013,6,1728,1573,859,840,111
+Southwest Schools,2014,6,1948,1757,916,900,130
+Southwest Schools,2015,6,1988,1738,986,950,153
+Southwest Schools,2016,6,1853,1723,990,957,168
+Southwest Schools,2017,6,1838,1609,1054,1012,163
+Southwest Schools,2018,6,2025,1828,1175,1106,161
+St Anthony School,2004,1,202,71,0,0,0
+St Anthony School,2005,1,205,73,0,0,14
+St Anthony School,2006,1,197,76,0,0,9
+St Anthony School,2007,1,228,98,0,0,7
+St Anthony School,2008,2,231,116,0,0,10
+St Anthony School,2009,2,244,102,0,0,7
+St Anthony School,2010,2,288,171,0,0,5
+St Anthony School,2011,2,290,189,0,0,11
+St Anthony School,2012,2,308,231,0,0,20
+St Anthony School,2013,2,302,227,0,0,17
+St Anthony School,2014,2,311,211,0,0,18
+St Anthony School,2015,2,308,222,0,0,22
+St Anthony School,2016,2,316,221,0,0,22
+St Anthony School,2017,2,313,217,0,0,23
+St Anthony School,2018,2,334,228,0,0,21
+St Mary's Academy Charter School,2002,1,190,101,0,0,11
+St Mary's Academy Charter School,2003,1,208,115,0,0,22
+St Mary's Academy Charter School,2004,1,196,151,0,0,28
+St Mary's Academy Charter School,2005,1,223,179,0,0,40
+St Mary's Academy Charter School,2006,1,224,171,0,0,38
+St Mary's Academy Charter School,2007,1,283,203,0,0,35
+St Mary's Academy Charter School,2008,1,299,232,0,0,29
+St Mary's Academy Charter School,2009,1,319,248,1,1,32
+St Mary's Academy Charter School,2010,1,333,259,0,0,35
+St Mary's Academy Charter School,2011,1,361,274,5,5,32
+St Mary's Academy Charter School,2012,1,396,302,4,4,41
+St Mary's Academy Charter School,2013,1,431,333,0,0,31
+St Mary's Academy Charter School,2014,1,434,333,2,2,30
+St Mary's Academy Charter School,2015,1,450,323,7,7,24
+St Mary's Academy Charter School,2016,1,442,350,11,11,26
+St Mary's Academy Charter School,2017,1,443,355,10,10,29
+St Mary's Academy Charter School,2018,1,457,390,5,5,32
+Step Charter School,2007,1,87,87,20,20,6
+Step Charter School,2008,1,141,141,33,30,9
+Step Charter School,2009,1,172,172,56,52,18
+Step Charter School,2010,1,203,183,70,63,17
+Step Charter School,2011,1,233,210,95,94,21
+Step Charter School,2012,1,250,223,105,104,23
+Step Charter School,2013,1,290,266,128,128,28
+Step Charter School,2014,1,307,261,102,102,30
+Step Charter School,2015,1,341,340,103,103,40
+Step Charter School,2016,1,347,313,124,124,44
+Step Charter School,2017,2,452,373,207,207,41
+Step Charter School,2018,2,474,378,229,228,33
+Stephen F Austin State University,2009,1,154,16,0,0,11
+Stephen F Austin State University,2010,1,221,25,0,0,12
+Stephen F Austin State University,2011,1,261,39,0,0,10
+Stephen F Austin State University,2012,1,259,25,1,1,10
+Stephen F Austin State University,2013,1,252,19,3,2,10
+Stephen F Austin State University,2014,1,246,17,2,1,12
+Stephen F Austin State University,2015,1,250,19,3,2,8
+Stephen F Austin State University,2016,1,242,14,4,3,7
+Stephen F Austin State University,2017,1,255,22,6,5,16
+Stephen F Austin State University,2018,1,255,22,7,7,13
+Tekoa Academy Of Accelerated Studies,2000,1,157,87,0,0,5
+Tekoa Academy Of Accelerated Studies,2001,1,117,90,0,0,10
+Tekoa Academy Of Accelerated Studies,2002,2,209,165,0,0,5
+Tekoa Academy Of Accelerated Studies,2003,1,160,147,0,0,21
+Tekoa Academy Of Accelerated Studies,2004,1,222,137,0,0,18
+Tekoa Academy Of Accelerated Studies,2005,1,334,305,0,0,29
+Tekoa Academy Of Accelerated Studies,2006,1,343,207,0,0,17
+Tekoa Academy Of Accelerated Studies,2007,1,338,323,0,0,32
+Tekoa Academy Of Accelerated Studies,2008,1,411,378,0,0,27
+Tekoa Academy Of Accelerated Studies,2009,2,396,371,0,0,32
+Tekoa Academy Of Accelerated Studies,2010,2,421,405,0,0,29
+Tekoa Academy Of Accelerated Studies,2011,4,493,475,0,0,27
+Tekoa Academy Of Accelerated Studies,2012,4,491,488,0,0,29
+Tekoa Academy Of Accelerated Studies,2013,4,515,464,0,0,22
+Tekoa Academy Of Accelerated Studies,2014,4,405,348,0,0,18
+Tekoa Academy Of Accelerated Studies,2015,4,426,398,0,0,15
+Tekoa Academy Of Accelerated Studies,2016,4,492,457,0,0,17
+Tekoa Academy Of Accelerated Studies,2017,4,523,507,0,0,17
+Tekoa Academy Of Accelerated Studies,2018,4,408,257,0,0,15
+Texans Can Academies,1997,1,221,0,31,0,4
+Texans Can Academies,1998,1,565,336,2,0,14
+Texans Can Academies,1999,2,752,237,0,0,40
+Texans Can Academies,2000,2,747,510,50,27,54
+Texans Can Academies,2001,2,817,428,21,12,67
+Texans Can Academies,2002,2,849,561,89,48,93
+Texans Can Academies,2003,2,900,701,79,70,98
+Texans Can Academies,2004,3,1247,809,283,242,184
+Texans Can Academies,2005,4,1335,926,354,205,199
+Texans Can Academies,2006,4,1712,1165,346,218,184
+Texans Can Academies,2007,4,1802,1424,483,386,215
+Texans Can Academies,2008,4,1825,1282,386,306,232
+Texans Can Academies,2009,4,1736,1543,263,190,247
+Texans Can Academies,2010,4,2123,1896,333,267,291
+Texans Can Academies,2011,4,1715,1596,286,235,215
+Texans Can Academies,2012,4,2136,2051,359,314,287
+Texans Can Academies,2013,4,2092,1996,292,266,243
+Texans Can Academies,2014,10,4258,4009,624,619,498
+Texans Can Academies,2015,11,4158,3941,640,622,435
+Texans Can Academies,2016,11,4468,4199,765,766,427
+Texans Can Academies,2017,13,5262,4640,866,830,412
+Texans Can Academies,2018,13,5809,4942,973,959,429
+Texas Academy Of Excellence,1997,1,56,22,0,0,0
+Texas Academy Of Excellence,1998,1,77,44,0,0,0
+Texas Academy Of Excellence,1999,1,136,62,0,0,0
+Texas Academy Of Excellence,2000,1,178,108,0,0,0
+Texas Academy Of Excellence,2001,1,229,149,0,0,4
+Texas Academy Of Excellence,2002,1,286,177,0,0,9
+Texas Academy Of Excellence,2003,1,320,187,0,0,14
+Texas Academy Of Excellence,2004,1,377,232,2,1,25
+Texas College Preparatory Academies,2009,8,724,378,171,171,31
+Texas College Preparatory Academies,2010,13,1633,735,215,215,95
+Texas College Preparatory Academies,2011,15,2762,1293,249,249,223
+Texas College Preparatory Academies,2012,8,2167,671,0,0,220
+Texas College Preparatory Academies,2013,21,4018,1334,112,112,320
+Texas College Preparatory Academies,2014,24,5191,1933,340,340,377
+Texas College Preparatory Academies,2015,26,6120,1796,486,486,392
+Texas College Preparatory Academies,2016,30,8157,2854,804,804,478
+Texas College Preparatory Academies,2017,31,9358,4148,1160,1159,582
+Texas College Preparatory Academies,2018,31,9481,3971,1213,1206,620
+Texas Empowerment Academy,1999,1,46,20,0,0,4
+Texas Empowerment Academy,2000,1,61,38,0,0,0
+Texas Empowerment Academy,2001,1,75,51,0,0,14
+Texas Empowerment Academy,2002,1,105,61,0,0,15
+Texas Empowerment Academy,2003,1,119,50,0,0,24
+Texas Empowerment Academy,2004,1,125,44,0,0,27
+Texas Empowerment Academy,2005,1,122,73,0,0,31
+Texas Empowerment Academy,2006,1,117,33,0,0,27
+Texas Empowerment Academy,2007,1,122,85,0,0,17
+Texas Empowerment Academy,2008,1,119,78,0,0,15
+Texas Empowerment Academy,2009,1,141,90,0,0,22
+Texas Empowerment Academy,2010,2,227,161,0,0,28
+Texas Empowerment Academy,2011,2,251,171,0,0,32
+Texas Empowerment Academy,2012,2,259,191,0,0,23
+Texas Empowerment Academy,2013,2,218,152,0,0,17
+Texas Empowerment Academy,2014,2,237,187,0,0,16
+Texas Empowerment Academy,2015,2,271,271,0,0,15
+Texas Empowerment Academy,2016,2,287,205,0,0,16
+Texas Empowerment Academy,2017,2,294,194,0,0,18
+Texas Empowerment Academy,2018,2,297,245,0,0,23
+Texas Leadership,2010,1,633,287,0,0,44
+Texas Leadership,2011,1,745,334,10,6,45
+Texas Leadership,2012,1,836,385,10,10,52
+Texas Leadership,2013,1,960,406,10,10,71
+Texas Leadership,2014,2,1165,502,20,19,78
+Texas Leadership,2015,3,1766,811,44,36,100
+Texas Leadership,2016,4,2332,1127,104,99,149
+Texas Leadership,2017,4,2656,1295,107,104,180
+Texas Leadership,2018,4,2737,1384,111,109,188
+Texas Preparatory School,2002,1,87,1,0,0,8
+Texas Preparatory School,2003,1,117,66,0,0,17
+Texas Preparatory School,2004,1,124,66,1,1,18
+Texas Preparatory School,2005,1,88,45,0,0,10
+Texas Preparatory School,2006,1,88,57,0,0,8
+Texas Preparatory School,2007,1,92,64,0,0,10
+Texas Preparatory School,2008,1,77,24,0,0,5
+Texas Preparatory School,2009,1,80,39,0,0,7
+Texas Preparatory School,2010,1,105,90,0,0,4
+Texas Preparatory School,2011,1,133,66,0,0,5
+Texas Preparatory School,2012,1,146,102,0,0,11
+Texas Preparatory School,2013,1,138,97,0,0,9
+Texas Preparatory School,2014,2,199,130,0,0,14
+Texas Preparatory School,2015,2,280,195,0,0,24
+Texas Preparatory School,2016,2,251,176,0,0,21
+Texas Preparatory School,2017,2,287,215,0,0,28
+Texas Preparatory School,2018,2,248,181,0,0,28
+Texas School Of The Arts,2008,1,133,0,1,1,2
+Texas School Of The Arts,2009,1,153,6,1,1,12
+Texas School Of The Arts,2010,1,155,3,0,4,8
+Texas School Of The Arts,2011,1,152,3,3,3,12
+Texas School Of The Arts,2012,1,159,13,0,0,25
+Texas School Of The Arts,2013,1,296,45,0,0,17
+Texas School Of The Arts,2014,1,329,39,2,2,22
+Texas School Of The Arts,2015,1,334,32,4,3,17
+Texas School Of The Arts,2016,1,327,32,10,10,9
+Texas School Of The Arts,2017,1,342,35,17,23,12
+Texas School Of The Arts,2018,1,345,10,32,32,17
+Texas Serenity Academy,2000,2,25,18,0,0,16
+Texas Serenity Academy,2001,2,24,5,0,0,14
+Texas Serenity Academy,2002,2,38,30,0,0,11
+Texas Serenity Academy,2003,1,6,0,0,0,2
+Texas Serenity Academy,2004,1,6,3,0,0,2
+Texas Serenity Academy,2006,1,384,121,0,0,28
+Texas Serenity Academy,2007,2,222,188,0,0,15
+Texas Serenity Academy,2008,1,246,244,28,28,49
+Texas Serenity Academy,2009,1,339,254,77,77,31
+Texas Serenity Academy,2010,1,390,358,51,51,41
+Texas Serenity Academy,2011,1,408,381,72,61,26
+Texas Serenity Academy,2012,1,412,363,104,95,24
+Texas Serenity Academy,2013,1,427,390,143,135,27
+Texas Serenity Academy,2014,1,416,391,168,154,27
+Texas Serenity Academy,2015,1,408,375,158,146,31
+Texas Serenity Academy,2016,1,387,363,156,143,22
+Texas Serenity Academy,2017,2,507,441,170,160,27
+Texas Serenity Academy,2018,2,503,478,117,111,26
+The Excel Center,2015,1,132,106,0,0,0
+The Excel Center,2016,2,426,276,21,21,12
+The Excel Center,2017,3,374,195,103,103,9
+The Excel Center,2018,3,546,473,196,196,21
+The Lawson Academy,2012,1,276,204,12,0,13
+The Lawson Academy,2013,1,229,146,10,0,14
+The Lawson Academy,2014,1,201,146,13,0,16
+The Lawson Academy,2015,1,154,115,7,0,18
+The Lawson Academy,2016,1,149,61,6,0,17
+The Lawson Academy,2017,1,237,136,5,0,25
+The Lawson Academy,2018,1,233,195,2,0,23
+The Legends Academy,2010,1,33,1,0,0,6
+The Legends Academy,2011,1,65,28,0,0,7
+The Legends Academy,2012,1,72,15,0,0,22
+The Pro-Vision Academy,2014,2,263,253,2,2,47
+The Pro-Vision Academy,2015,2,356,335,4,4,61
+The Pro-Vision Academy,2016,2,363,338,2,2,50
+The Pro-Vision Academy,2017,2,340,309,2,2,58
+The Pro-Vision Academy,2018,2,403,379,0,0,62
+The Rhodes School,2008,1,91,73,0,0,0
+The Rhodes School,2009,1,128,51,0,0,13
+The Rhodes School,2010,1,298,237,0,0,15
+The Rhodes School,2011,1,355,287,0,0,21
+The Rhodes School,2012,1,595,514,0,0,22
+The Rhodes School,2013,1,724,587,35,24,28
+The Rhodes School,2014,1,683,496,27,20,30
+The Rhodes School,2015,2,804,562,21,14,33
+The Rhodes School,2016,3,914,703,27,19,54
+The Rhodes School,2017,4,1186,858,24,19,89
+The Rhodes School,2018,4,1177,762,33,28,90
+The School Of Liberal Arts And Sciences,2000,1,42,28,11,12,0
+The School Of Liberal Arts And Sciences,2001,1,64,51,18,18,4
+The School Of Liberal Arts And Sciences,2002,1,119,81,43,42,2
+The School Of Liberal Arts And Sciences,2003,1,249,133,40,33,11
+The School Of Liberal Arts And Sciences,2004,1,333,263,91,79,20
+The School Of Liberal Arts And Sciences,2005,1,473,369,167,133,19
+The School Of Liberal Arts And Sciences,2006,1,552,477,166,140,19
+The School Of Liberal Arts And Sciences,2007,1,545,480,132,76,19
+The School Of Liberal Arts And Sciences,2008,1,640,415,168,109,20
+The School Of Liberal Arts And Sciences,2009,1,706,669,196,196,23
+The School Of Liberal Arts And Sciences,2010,1,714,664,247,240,18
+The Varnett Public School,1999,1,347,271,0,0,24
+The Varnett Public School,2000,1,491,331,0,0,17
+The Varnett Public School,2001,1,626,72,0,0,42
+The Varnett Public School,2002,1,720,301,0,0,30
+The Varnett Public School,2003,1,749,372,0,1,39
+The Varnett Public School,2004,3,1110,241,61,61,67
+The Varnett Public School,2005,3,1126,444,0,0,71
+The Varnett Public School,2006,3,1180,1052,133,133,41
+The Varnett Public School,2007,3,1450,1120,260,259,41
+The Varnett Public School,2008,3,1525,1365,283,283,37
+The Varnett Public School,2009,3,1464,1400,368,369,32
+The Varnett Public School,2010,3,1552,1512,441,433,28
+The Varnett Public School,2011,3,1667,1638,440,421,31
+The Varnett Public School,2012,3,1729,1706,576,538,42
+The Varnett Public School,2013,3,1595,1579,577,541,30
+The Varnett Public School,2014,3,1790,1776,641,593,31
+The Varnett Public School,2015,3,1614,1594,640,600,40
+The Varnett Public School,2016,3,1668,1457,679,665,42
+The Varnett Public School,2017,3,1607,1406,707,673,51
+The Varnett Public School,2018,4,1474,1252,720,684,61
+Theresa B Lee Academy,2000,1,125,74,0,0,2
+Theresa B Lee Academy,2001,1,176,106,1,2,12
+Theresa B Lee Academy,2002,1,240,234,1,1,16
+Theresa B Lee Academy,2003,1,197,99,0,0,11
+Theresa B Lee Academy,2004,1,238,144,0,0,19
+Theresa B Lee Academy,2005,1,277,223,0,0,40
+Theresa B Lee Academy,2006,1,266,88,0,0,33
+Theresa B Lee Academy,2007,1,274,148,0,0,14
+Theresa B Lee Academy,2008,1,189,115,0,0,13
+Transformative Charter Academy,1999,1,109,0,0,0,9
+Transformative Charter Academy,2000,1,106,0,0,0,7
+Transformative Charter Academy,2001,1,73,0,0,0,1
+Transformative Charter Academy,2002,1,106,0,0,0,11
+Transformative Charter Academy,2003,1,105,1,0,0,6
+Transformative Charter Academy,2004,1,134,77,0,0,14
+Transformative Charter Academy,2005,1,99,52,0,0,8
+Transformative Charter Academy,2006,1,84,54,0,0,12
+Transformative Charter Academy,2007,1,83,50,0,0,13
+Transformative Charter Academy,2008,1,59,39,0,0,6
+Transformative Charter Academy,2009,1,69,43,0,0,2
+Transformative Charter Academy,2010,1,80,47,0,0,3
+Transformative Charter Academy,2011,1,75,46,0,0,4
+Transformative Charter Academy,2012,1,49,31,0,0,12
+Transformative Charter Academy,2013,1,66,24,0,0,9
+Transformative Charter Academy,2014,1,91,62,0,0,6
+Transformative Charter Academy,2015,1,72,47,0,0,1
+Treetops School International,1999,1,145,0,0,0,0
+Treetops School International,2000,1,221,7,2,0,0
+Treetops School International,2001,1,234,4,0,0,22
+Treetops School International,2002,1,273,3,0,0,26
+Treetops School International,2003,1,307,2,0,0,17
+Treetops School International,2004,1,301,5,0,0,25
+Treetops School International,2005,1,272,17,0,0,25
+Treetops School International,2006,1,231,13,0,0,29
+Treetops School International,2007,1,226,18,0,0,27
+Treetops School International,2008,1,262,16,0,0,40
+Treetops School International,2009,1,341,57,0,0,31
+Treetops School International,2010,1,362,47,0,0,23
+Treetops School International,2011,1,326,39,0,0,24
+Treetops School International,2012,1,325,86,0,0,20
+Treetops School International,2013,1,349,64,0,0,23
+Treetops School International,2014,1,342,48,0,2,22
+Treetops School International,2015,1,363,39,0,2,21
+Treetops School International,2016,1,392,51,0,2,22
+Treetops School International,2017,1,415,68,0,2,25
+Treetops School International,2018,1,381,67,4,4,23
+Trinity Basin Preparatory,2000,1,253,190,0,0,0
+Trinity Basin Preparatory,2001,1,613,561,0,0,16
+Trinity Basin Preparatory,2002,1,674,513,205,205,7
+Trinity Basin Preparatory,2003,1,661,285,102,101,33
+Trinity Basin Preparatory,2004,1,406,373,131,129,45
+Trinity Basin Preparatory,2005,1,478,429,236,235,43
+Trinity Basin Preparatory,2006,1,493,426,251,248,32
+Trinity Basin Preparatory,2007,1,444,408,227,222,22
+Trinity Basin Preparatory,2008,1,526,463,196,158,20
+Trinity Basin Preparatory,2009,1,554,494,211,211,17
+Trinity Basin Preparatory,2010,1,618,556,237,235,19
+Trinity Basin Preparatory,2011,2,1362,1287,591,585,36
+Trinity Basin Preparatory,2012,2,1300,1202,693,685,54
+Trinity Basin Preparatory,2013,1,1622,1485,959,947,88
+Trinity Basin Preparatory,2014,1,1732,1567,1169,1150,117
+Trinity Basin Preparatory,2015,1,1840,1673,1263,1227,130
+Trinity Basin Preparatory,2016,1,2353,2148,1442,1407,153
+Trinity Basin Preparatory,2017,1,2778,2481,1783,1757,214
+Trinity Basin Preparatory,2018,1,3151,2494,1918,1894,238
+Trinity Charter School,2005,4,226,226,0,0,218
+Trinity Charter School,2006,4,230,229,0,0,223
+Trinity Charter School,2007,4,218,218,31,31,141
+Trinity Charter School,2008,4,218,218,47,47,116
+Trinity Charter School,2009,6,288,286,2,1,181
+Trinity Charter School,2010,5,277,264,3,3,162
+Trinity Charter School,2011,4,269,172,0,0,163
+Trinity Charter School,2012,3,195,191,6,6,90
+Trinity Charter School,2013,2,137,137,5,5,54
+Trinity Charter School,2014,3,315,312,6,4,113
+Trinity Charter School,2015,7,490,488,65,65,198
+Trinity Charter School,2016,7,496,496,78,78,179
+Trinity Charter School,2017,8,597,597,174,174,160
+Trinity Charter School,2018,8,503,503,131,131,151
+Trinity Environmental Academy,2016,1,143,129,12,9,14
+Trinity Environmental Academy,2017,1,239,218,9,8,22
+Trinity Environmental Academy,2018,2,318,292,23,22,24
+Trivium Academy,2017,1,354,23,7,6,32
+Trivium Academy,2018,1,522,24,18,16,42
+Two Dimensions Preparatory Academy,1999,1,161,90,0,0,0
+Two Dimensions Preparatory Academy,2000,1,185,110,0,0,6
+Two Dimensions Preparatory Academy,2001,1,223,159,0,0,3
+Two Dimensions Preparatory Academy,2002,1,277,221,0,0,13
+Two Dimensions Preparatory Academy,2003,1,520,467,26,26,14
+Two Dimensions Preparatory Academy,2004,3,542,484,12,12,11
+Two Dimensions Preparatory Academy,2005,3,608,567,26,26,28
+Two Dimensions Preparatory Academy,2006,3,524,471,17,17,17
+Two Dimensions Preparatory Academy,2007,3,519,487,21,28,27
+Two Dimensions Preparatory Academy,2008,3,559,531,31,32,26
+Two Dimensions Preparatory Academy,2009,3,469,443,27,27,11
+Two Dimensions Preparatory Academy,2010,3,428,407,19,19,16
+Two Dimensions Preparatory Academy,2011,3,536,530,29,29,15
+Two Dimensions Preparatory Academy,2012,3,562,544,35,35,13
+Two Dimensions Preparatory Academy,2013,3,550,533,39,39,9
+Two Dimensions Preparatory Academy,2014,3,552,515,17,17,13
+Two Dimensions Preparatory Academy,2015,3,533,504,35,35,13
+Two Dimensions Preparatory Academy,2016,3,486,465,27,27,14
+Two Dimensions Preparatory Academy,2017,3,534,509,26,26,9
+Two Dimensions Preparatory Academy,2018,3,536,502,29,29,11
+Ume Preparatory Academy,2013,1,337,45,7,6,9
+Ume Preparatory Academy,2014,1,392,67,9,8,21
+Ume Preparatory Academy,2015,1,413,91,11,11,22
+Ume Preparatory Academy,2016,1,429,119,12,12,20
+Ume Preparatory Academy,2017,2,627,181,11,11,23
+Ume Preparatory Academy,2018,2,790,157,28,27,34
+Universal Academy,1999,1,76,25,0,0,0
+Universal Academy,2000,1,382,182,0,4,27
+Universal Academy,2001,1,768,319,0,3,37
+Universal Academy,2002,2,951,326,44,44,56
+Universal Academy,2003,2,1022,349,57,56,46
+Universal Academy,2004,2,1233,414,76,65,65
+Universal Academy,2005,2,1076,471,59,91,37
+Universal Academy,2006,2,1160,600,111,93,58
+Universal Academy,2007,2,1260,678,145,122,48
+Universal Academy,2008,2,1301,674,145,132,31
+Universal Academy,2009,2,1472,731,290,278,31
+Universal Academy,2010,2,1396,650,276,260,22
+Universal Academy,2011,2,1511,677,363,348,26
+Universal Academy,2012,2,1444,649,350,334,24
+Universal Academy,2013,2,1469,665,405,390,27
+Universal Academy,2014,2,1518,650,453,437,29
+Universal Academy,2015,2,1790,704,486,473,33
+Universal Academy,2016,2,1985,658,533,523,38
+Universal Academy,2017,2,2083,610,629,622,33
+Universal Academy,2018,2,2160,683,598,591,46
+University of Houston Charter Schools,1998,1,40,0,0,0,0
+University of Houston Charter Schools,1999,1,81,0,0,0,0
+University of Houston Charter Schools,2000,1,101,0,2,2,1
+University of Houston Charter Schools,2001,1,132,19,2,2,7
+University of Houston Charter Schools,2002,1,129,22,2,2,10
+University of Houston Charter Schools,2003,1,122,0,1,1,14
+University of Houston Charter Schools,2004,1,135,38,1,1,18
+University of Houston Charter Schools,2005,1,127,31,1,1,24
+University of Houston Charter Schools,2006,1,133,39,2,1,16
+University of Houston Charter Schools,2007,1,132,31,3,3,12
+University of Houston Charter Schools,2008,1,130,36,3,3,14
+University of Houston Charter Schools,2009,1,129,24,2,2,10
+University of Houston Charter Schools,2010,1,133,19,4,4,7
+University of Houston Charter Schools,2011,1,135,23,4,4,9
+University of Houston Charter Schools,2012,1,132,51,3,3,13
+University of Houston Charter Schools,2013,1,133,54,3,3,14
+University of Houston Charter Schools,2014,1,138,48,4,4,11
+University of Houston Charter Schools,2015,1,139,36,4,4,10
+University of Houston Charter Schools,2016,1,121,30,2,2,8
+University of Houston Charter Schools,2017,1,128,42,7,4,12
+University of Houston Charter Schools,2018,1,127,66,2,1,15
+university Of Texas Elementary Charters,2004,1,113,79,3,3,8
+university Of Texas Elementary Charters,2005,1,150,113,7,7,10
+university Of Texas Elementary Charters,2006,1,178,111,12,12,18
+university Of Texas Elementary Charters,2007,1,216,143,20,20,17
+university Of Texas Elementary Charters,2008,1,255,155,20,20,25
+university Of Texas Elementary Charters,2009,1,252,157,28,28,24
+university Of Texas Elementary Charters,2010,1,256,177,42,42,22
+university Of Texas Elementary Charters,2011,1,259,176,38,38,20
+university Of Texas Elementary Charters,2012,1,296,174,53,59,22
+university Of Texas Elementary Charters,2013,1,298,193,60,60,28
+university Of Texas Elementary Charters,2014,1,305,153,66,61,24
+university Of Texas Elementary Charters,2015,1,304,168,61,57,18
+university Of Texas Elementary Charters,2016,1,303,161,72,68,15
+university Of Texas Elementary Charters,2017,1,304,176,78,75,19
+university Of Texas Elementary Charters,2018,1,295,158,76,75,20
+University Of Texas University Charters,2000,4,44,0,0,0,32
+University Of Texas University Charters,2001,7,125,0,0,0,100
+University Of Texas University Charters,2002,11,229,118,0,0,166
+University Of Texas University Charters,2003,16,524,447,0,0,373
+University Of Texas University Charters,2004,16,648,563,6,8,461
+University Of Texas University Charters,2005,18,902,895,3,5,700
+University Of Texas University Charters,2006,19,1024,527,7,11,725
+University Of Texas University Charters,2007,16,971,400,1,0,583
+University Of Texas University Charters,2008,17,944,611,9,11,580
+University Of Texas University Charters,2009,17,900,576,23,22,531
+University Of Texas University Charters,2010,16,907,658,24,24,485
+University Of Texas University Charters,2011,15,752,516,27,26,339
+University Of Texas University Charters,2012,15,776,524,35,33,325
+University Of Texas University Charters,2013,14,770,532,36,33,319
+University Of Texas University Charters,2014,14,638,395,33,31,220
+University Of Texas University Charters,2015,13,439,296,31,30,162
+University Of Texas University Charters,2016,20,567,354,32,32,192
+University Of Texas University Charters,2017,21,583,330,28,28,196
+University Of Texas University Charters,2018,20,674,389,76,76,218
+Uplift Education,1998,1,218,5,0,0,4
+Uplift Education,1999,1,360,0,0,0,9
+Uplift Education,2000,1,409,0,0,0,9
+Uplift Education,2001,1,753,19,0,0,13
+Uplift Education,2002,1,799,13,9,3,14
+Uplift Education,2003,1,821,7,2,1,20
+Uplift Education,2004,1,885,7,0,3,29
+Uplift Education,2005,1,923,0,9,11,46
+Uplift Education,2006,2,1056,72,14,14,48
+Uplift Education,2007,3,1505,234,38,35,51
+Uplift Education,2008,4,1705,461,102,44,70
+Uplift Education,2009,15,3324,1640,518,376,143
+Uplift Education,2010,15,3961,2228,752,661,181
+Uplift Education,2011,17,4676,2773,933,771,232
+Uplift Education,2012,22,5780,3706,1395,1285,286
+Uplift Education,2013,24,7570,5148,1975,1852,415
+Uplift Education,2014,26,9805,6852,2809,2538,565
+Uplift Education,2015,27,11958,8589,3540,3365,729
+Uplift Education,2016,29,13959,10402,4447,4393,852
+Uplift Education,2017,34,15768,11890,4973,4906,1050
+Uplift Education,2018,37,17291,13409,5485,5596,1208
+Ut Tyler Innovation Academy,2013,3,278,36,1,0,10
+Ut Tyler Innovation Academy,2014,3,467,104,0,0,32
+Ut Tyler Innovation Academy,2015,3,545,105,6,4,33
+Ut Tyler Innovation Academy,2016,3,548,116,18,17,32
+Ut Tyler Innovation Academy,2017,3,636,146,15,14,43
+Ut Tyler Innovation Academy,2018,3,700,126,14,12,44
+UTPB Stem Academy,2015,1,301,29,0,0,14
+UTPB Stem Academy,2016,1,323,32,1,1,17
+UTPB Stem Academy,2017,1,563,95,0,0,23
+UTPB Stem Academy,2018,1,654,76,13,13,31
+Valley High,2000,1,199,196,0,0,2
+Valley High,2001,1,257,239,0,0,0
+Valley High,2002,1,382,307,0,0,9
+Vanguard Academy,2002,1,48,44,0,0,4
+Vanguard Academy,2003,1,119,99,39,39,10
+Vanguard Academy,2004,1,167,146,58,58,11
+Vanguard Academy,2005,1,220,170,72,71,12
+Vanguard Academy,2006,1,286,227,88,87,12
+Vanguard Academy,2007,1,369,272,106,104,13
+Vanguard Academy,2008,1,423,331,103,102,12
+Vanguard Academy,2009,1,673,533,208,206,17
+Vanguard Academy,2010,1,860,691,264,262,16
+Vanguard Academy,2011,1,1062,880,286,280,20
+Vanguard Academy,2012,1,1295,1086,355,350,33
+Vanguard Academy,2013,2,1695,1408,515,511,42
+Vanguard Academy,2014,3,2112,1743,705,699,64
+Vanguard Academy,2015,3,2333,1897,817,810,76
+Vanguard Academy,2016,3,2397,2002,869,862,84
+Vanguard Academy,2017,4,2883,2388,1049,1041,96
+Vanguard Academy,2018,4,3283,2703,1188,1177,131
+Victory Prep,2012,3,590,383,0,0,41
+Victory Prep,2013,3,658,534,0,0,40
+Victory Prep,2014,3,564,452,0,0,42
+Victory Prep,2015,3,634,560,0,0,41
+Victory Prep,2016,3,607,526,0,0,35
+Village Tech Schools,2014,1,636,175,0,0,5
+Village Tech Schools,2015,1,727,234,13,4,21
+Village Tech Schools,2016,1,725,220,16,16,24
+Village Tech Schools,2017,1,823,283,16,15,42
+Village Tech Schools,2018,1,920,371,17,16,43
+Vista Del Futuro Charter School,2011,1,115,76,57,56,5
+Vista Del Futuro Charter School,2012,1,131,74,42,38,10
+Vista Del Futuro Charter School,2013,1,182,99,46,45,7
+Vista Del Futuro Charter School,2014,1,255,143,63,55,14
+Vista Del Futuro Charter School,2015,1,339,160,86,83,17
+Vista Del Futuro Charter School,2016,1,364,180,97,87,27
+Vista Del Futuro Charter School,2017,1,352,141,101,93,14
+Vista Del Futuro Charter School,2018,1,336,81,90,69,14
+Waco Charter School,1997,1,62,59,0,0,0
+Waco Charter School,1998,1,145,145,0,0,14
+Waco Charter School,1999,1,187,177,24,23,16
+Waco Charter School,2000,1,202,165,44,41,34
+Waco Charter School,2001,1,168,154,38,38,31
+Waco Charter School,2002,1,173,163,50,47,26
+Waco Charter School,2003,1,159,141,57,50,23
+Waco Charter School,2004,1,143,143,48,48,21
+Waco Charter School,2005,1,158,158,60,59,18
+Waco Charter School,2006,1,145,145,59,59,19
+Waco Charter School,2007,1,153,153,61,56,15
+Waco Charter School,2008,1,158,149,55,55,8
+Waco Charter School,2009,1,182,173,67,67,9
+Waco Charter School,2010,1,182,181,62,62,16
+Waco Charter School,2011,1,258,257,83,80,24
+Waco Charter School,2012,1,235,235,73,73,18
+Waco Charter School,2013,1,263,260,70,70,17
+Waco Charter School,2014,1,216,213,57,57,16
+Waco Charter School,2015,1,223,222,57,57,18
+Waco Charter School,2016,1,221,221,53,53,21
+Waco Charter School,2017,1,205,205,54,54,17
+Waco Charter School,2018,1,215,215,47,47,13
+Wa-Set Preparatory Academy,2000,1,24,0,0,0,0
+Wa-Set Preparatory Academy,2001,1,84,61,0,0,5
+Wa-Set Preparatory Academy,2002,1,168,137,0,0,7
+Wa-Set Preparatory Academy,2003,1,147,130,0,0,13
+Waxahachie Faith Family Academy,2000,1,172,94,2,2,11
+Waxahachie Faith Family Academy,2001,1,241,130,0,0,22
+Waxahachie Faith Family Academy,2002,1,291,140,0,0,38
+Waxahachie Faith Family Academy,2003,1,343,167,0,0,54
+Waxahachie Faith Family Academy,2004,1,319,211,0,0,57
+Waxahachie Faith Family Academy,2005,1,408,249,0,0,45
+Waxahachie Faith Family Academy,2006,1,269,166,8,8,33
+Waxahachie Faith Family Academy,2007,1,282,183,9,9,24
+Waxahachie Faith Family Academy,2008,1,250,160,4,4,22
+Waxahachie Faith Family Academy,2009,3,253,154,8,4,25
+Waxahachie Faith Family Academy,2010,3,260,157,6,4,36
+Waxahachie Faith Family Academy,2011,3,207,113,11,9,21
+Waxahachie Faith Family Academy,2012,3,420,283,28,26,22
+Waxahachie Faith Family Academy,2013,3,450,197,49,48,21
+Waxahachie Faith Family Academy,2014,3,414,180,51,49,26
+Waxahachie Faith Family Academy,2015,3,509,432,61,57,26
+Waxahachie Faith Family Academy,2016,4,2566,2122,1293,1262,121
+Waxahachie Faith Family Academy,2017,3,2551,2247,1374,1337,131
+Waxahachie Faith Family Academy,2018,2,2538,2493,1303,1409,133
+Wayside Schools,1999,1,188,32,0,1,17
+Wayside Schools,2000,1,270,33,0,4,22
+Wayside Schools,2001,1,191,16,2,1,19
+Wayside Schools,2002,1,162,8,2,0,23
+Wayside Schools,2003,1,153,41,0,0,23
+Wayside Schools,2004,1,131,45,0,0,15
+Wayside Schools,2005,1,149,47,0,0,21
+Wayside Schools,2006,1,151,65,2,0,16
+Wayside Schools,2007,1,156,59,1,1,19
+Wayside Schools,2008,1,157,62,1,1,26
+Wayside Schools,2009,1,171,80,1,1,29
+Wayside Schools,2010,1,188,78,1,1,25
+Wayside Schools,2011,1,232,81,0,0,20
+Wayside Schools,2012,1,253,81,0,0,17
+Wayside Schools,2013,2,653,366,81,79,37
+Wayside Schools,2014,3,1111,600,269,268,71
+Wayside Schools,2015,3,1368,814,381,376,92
+Wayside Schools,2016,4,1863,1100,596,595,111
+Wayside Schools,2017,4,1991,1074,633,629,106
+Wayside Schools,2018,4,2116,1335,675,679,113
+Westlake Academy Charter School,2004,1,197,0,0,0,0
+Westlake Academy Charter School,2005,1,267,0,0,0,16
+Westlake Academy Charter School,2006,1,322,0,0,0,32
+Westlake Academy Charter School,2007,1,350,0,0,0,41
+Westlake Academy Charter School,2008,1,379,0,0,0,38
+Westlake Academy Charter School,2009,1,408,0,0,0,33
+Westlake Academy Charter School,2010,1,480,0,2,2,35
+Westlake Academy Charter School,2011,1,520,0,2,2,31
+Westlake Academy Charter School,2012,1,617,0,1,1,27
+Westlake Academy Charter School,2013,1,670,0,0,0,30
+Westlake Academy Charter School,2014,1,695,0,1,1,29
+Westlake Academy Charter School,2015,1,815,0,0,0,36
+Westlake Academy Charter School,2016,1,831,0,3,3,32
+Westlake Academy Charter School,2017,1,843,0,2,2,35
+Westlake Academy Charter School,2018,1,853,0,5,5,26
+Whispering Oaks Charter School,1999,1,46,46,0,0,30
+Whispering Oaks Charter School,2000,1,28,26,0,0,18
+Whispering Oaks Charter School,2001,1,41,39,0,0,32
+Whispering Oaks Charter School,2002,1,74,71,0,0,42
+Whispering Oaks Charter School,2003,1,77,70,2,2,35
+Whispering Oaks Charter School,2004,1,70,64,0,0,36
+Whispering Oaks Charter School,2005,1,129,90,2,2,47
+Whispering Oaks Charter School,2006,1,72,51,1,0,26
+Winfree Academy Charter Schools,2001,2,533,109,0,0,71
+Winfree Academy Charter Schools,2002,3,959,231,11,0,171
+Winfree Academy Charter Schools,2003,4,1181,321,28,0,181
+Winfree Academy Charter Schools,2004,4,1498,430,18,2,167
+Winfree Academy Charter Schools,2005,4,1423,566,131,79,168
+Winfree Academy Charter Schools,2006,4,1519,631,156,100,195
+Winfree Academy Charter Schools,2007,5,1823,704,161,116,243
+Winfree Academy Charter Schools,2008,6,1789,702,197,151,250
+Winfree Academy Charter Schools,2009,6,1959,907,182,148,269
+Winfree Academy Charter Schools,2010,6,1861,760,174,157,240
+Winfree Academy Charter Schools,2011,6,1583,846,119,112,165
+Winfree Academy Charter Schools,2012,6,1488,836,79,79,173
+Winfree Academy Charter Schools,2013,6,1506,840,107,96,184
+Winfree Academy Charter Schools,2014,6,1406,758,134,121,196
+Winfree Academy Charter Schools,2015,6,1248,714,104,98,126
+Winfree Academy Charter Schools,2016,6,1380,925,117,102,161
+Winfree Academy Charter Schools,2017,6,1425,897,137,125,164
+Winfree Academy Charter Schools,2018,6,1295,757,145,118,130
+Yes Prep Public Schools Inc,2001,1,380,288,0,0,10
+Yes Prep Public Schools Inc,2002,1,423,231,0,11,17
+Yes Prep Public Schools Inc,2003,1,505,378,119,10,19
+Yes Prep Public Schools Inc,2004,2,668,484,69,7,21
+Yes Prep Public Schools Inc,2005,2,884,538,42,7,12
+Yes Prep Public Schools Inc,2006,3,1072,793,1,0,32
+Yes Prep Public Schools Inc,2007,4,1453,1121,1,0,54
+Yes Prep Public Schools Inc,2008,5,2043,1544,51,51,97
+Yes Prep Public Schools Inc,2009,5,2638,2058,68,68,135
+Yes Prep Public Schools Inc,2010,7,3374,2632,590,584,155
+Yes Prep Public Schools Inc,2011,7,4078,3232,571,567,201
+Yes Prep Public Schools Inc,2012,9,5028,4232,569,569,259
+Yes Prep Public Schools Inc,2013,9,5934,4767,652,649,308
+Yes Prep Public Schools Inc,2014,11,7534,6537,1037,1039,417
+Yes Prep Public Schools Inc,2015,11,8450,6991,1173,1109,483
+Yes Prep Public Schools Inc,2016,12,9514,7918,1286,1207,546
+Yes Prep Public Schools Inc,2017,12,10258,8897,1683,1621,600
+Yes Prep Public Schools Inc,2018,13,10895,5631,2120,2005,661
+Zoe Learning Academy,2002,1,167,167,0,0,13
+Zoe Learning Academy,2003,1,219,210,0,0,26
+Zoe Learning Academy,2004,1,303,279,0,0,31
+Zoe Learning Academy,2005,2,513,430,0,0,84
+Zoe Learning Academy,2006,2,420,387,0,0,42
+Zoe Learning Academy,2007,2,586,511,0,0,43
+Zoe Learning Academy,2008,2,516,479,0,0,28
+Zoe Learning Academy,2009,2,512,478,0,0,29
+Zoe Learning Academy,2010,2,553,506,0,0,34
+Zoe Learning Academy,2011,2,544,519,0,0,31
+Zoe Learning Academy,2012,2,490,480,0,0,53
+Zoe Learning Academy,2013,2,481,446,0,0,37
+Zoe Learning Academy,2014,2,457,447,0,0,30
+Zoe Learning Academy,2015,3,491,335,0,0,31
+Zoe Learning Academy,2016,3,498,424,0,0,26
+Zoe Learning Academy,2017,2,370,355,0,0,13
