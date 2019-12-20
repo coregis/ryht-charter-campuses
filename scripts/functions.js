@@ -326,8 +326,6 @@ function getFeatureBounds(coords, startingBBOX) {
 
 function zoomToPolygon(sourceID, coords, filterField) {
 	if (typeof coords !== 'undefined') {
-		console.log(map.getFilter(sourceID));
-		console.log(toString(map.getFilter(sourceID)))
 		coords = coords.split(",");
 		bbox = [
 			[coords[0], coords[1]],
