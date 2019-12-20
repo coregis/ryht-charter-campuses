@@ -87,6 +87,7 @@ var chartFields = [
 var chartData = {
 	svgID: 'chart',
 	visible: true,
+	title: 'All charter schools in Texas',
 	districtName: 'Statewide',
 	leftField: fieldMappings.campuses,
 	leftColor: '#ee5e2a',
@@ -318,15 +319,17 @@ function zoomToPolygon(sourceID, coords, filterField) {
 				['!=', 'NAME', coords[4]]
 			);
 		}
+		// and filter by charter if appropriate, or remove the filter otherwise, and set an appropriate chart title
+		if (filterField && coords[4] !== 'Statewide') {
+			map.setFilter(sourceID, ['==', filterField, coords[4]]);
+			chartData.title = coords[4];
+		} else {
+			map.setFilter(sourceID, null);
+			chartData.title = 'Charter schools located within ' + coords[4];
+		}
 		// while the zoom goes, update the chart
 		chartData.districtName = coords[4];
 		redrawChart();
-		// and filter by charter if appropriate, or remove the filter otherwise
-		if (filterField && coords[4] !== 'Statewide') {
-			map.setFilter(sourceID, ['==', filterField, coords[4]]);
-		} else {
-			map.setFilter(sourceID, null);
-		}
 	}
 }
 
@@ -473,7 +476,7 @@ function drawChart() {
 			.attr("id", "chart-title")
 			.attr("x", (width/2)).attr("y", (-margin.top/4))
 			.attr("text-anchor", "middle")
-			.text((chartData.districtName === "Statewide" ? "All charter schools in Texas" : "Charter schools located within " + chartData.districtName));
+			.text((chartData.districtName === "Statewide" ? "All charter schools in Texas" : chartData.title));
 		g.append("text")
 			.attr("id", "left-axis-label")
 			.attr("fill", chartData.leftColor)
