@@ -25,13 +25,13 @@
 
 				<!-- Text box with autocomplete -->
 				<span class='autocomplete-container'>
-					<input id='districtAutocomplete' type='text' name='districtText' placeholder='' />
+					<input class='autocompleteTextbox' id='districtAutocomplete' type='text' name='districtText' placeholder='' />
 				</span>
 				<br /><br />
 
 				<!--Drop down controls-->
 
-				<select id="school-districts-control" onchange="zoomToPolygon('campuses', this.value, false);"></select>
+				<select class='dropdown' id="school-districts-control" onchange="zoomToPolygon('campuses', this.value, false);"></select>
 				<br /><br />
 
 <!--END 'ZOOM TO DISTRICT'-->
@@ -43,13 +43,13 @@
 
 				<!-- Text box with autocomplete -->
 				<span class='autocomplete-container'>
-					<input id='charterAutocomplete' type='text' name='charterText' placeholder='' />
+					<input class='autocompleteTextbox' id='charterAutocomplete' type='text' name='charterText' placeholder='' />
 				</span>
 				<br /><br />
 
 				<!--Drop down controls-->
 
-				<select id="charter-filter-control" onchange="zoomToPolygon('campuses', this.value, 'ref_distnm');"></select>
+				<select class='dropdown' id="charter-filter-control" onchange="zoomToPolygon('campuses', this.value, 'ref_distnm');"></select>
 				<br /><br />
 
 		</div> <!-- id="mySidenav" -->

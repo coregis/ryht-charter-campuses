@@ -326,6 +326,18 @@ function getFeatureBounds(coords, startingBBOX) {
 
 function zoomToPolygon(sourceID, coords, filterField) {
 	if (typeof coords !== 'undefined') {
+		// first sync the dropdowns to reflect this selection
+		var dropdowns = document.getElementsByClassName('dropdown');
+		for (var i=0; i < dropdowns.length; i++) {
+			var el = dropdowns[i];
+			el.selectedIndex = 0;
+			for (var j=0; j < el.options.length; j++) {
+				if (el.options[j].value == coords) {
+					el.selectedIndex = j;
+				}
+			}
+		}
+		// then parse coords to use the individual elements of it
 		coords = coords.split(",");
 		bbox = [
 			[coords[0], coords[1]],
@@ -761,7 +773,7 @@ function autocomplete(inp, obj, sourceID, filterField) {
 	inp.addEventListener("input", function(e) {
 		var a, b, i, val = this.value;
 		/*close any already open lists of autocompleted values*/
-		closeAllLists();
+		closeAllLists(this);
 		if (!val) { return false;}
 		currentFocus = -1;
 		/*create a DIV element that will contain the items (values):*/
@@ -800,14 +812,12 @@ function autocomplete(inp, obj, sourceID, filterField) {
 		var x = document.getElementById(this.id + "autocomplete-list");
 		if (x) x = x.getElementsByTagName("div");
 		if (e.keyCode == 40) {
-			/*If the arrow DOWN key is pressed,
-			increase the currentFocus variable:*/
+			/*If the arrow DOWN key is pressed, increase the currentFocus variable:*/
 			currentFocus++;
 			/*and and make the current item more visible:*/
 			addActive(x);
 		} else if (e.keyCode == 38) { //up
-			/*If the arrow UP key is pressed,
-			decrease the currentFocus variable:*/
+			/*If the arrow UP key is pressed, decrease the currentFocus variable:*/
 			currentFocus--;
 			/*and and make the current item more visible:*/
 			addActive(x);
@@ -817,8 +827,6 @@ function autocomplete(inp, obj, sourceID, filterField) {
 			if (active.length > 0) {
 				if (autocompleteEntries[this.id].indexOf(active[0].innerText) > -1) {
 					zoomToPolygon(sourceID, obj[active[0].innerText], filterField);
-					// and put the name into the text box so it's clear what happened
-					this.value = active[0].innerText;
 					closeAllLists();
 				}
 			}
@@ -842,18 +850,27 @@ function autocomplete(inp, obj, sourceID, filterField) {
 			x[i].classList.remove("autocomplete-active");
 		}
 	}
-	function closeAllLists(elmnt) {
-		/*close all autocomplete lists in the document,
-		except the one passed as an argument:*/
-		var x = document.getElementsByClassName("autocomplete-items");
-		for (var i = 0; i < x.length; i++) {
-			if (elmnt != x[i] && elmnt != inp) {
-			x[i].parentNode.removeChild(x[i]);
-		}
-	}
-}
 /*execute a function when someone clicks in the document:*/
 	document.addEventListener("click", function (e) {
 		closeAllLists(e.target);
 	});
+}
+
+
+
+function closeAllLists(elmnt) {
+	/*close all autocomplete lists in the document */
+	var x = document.getElementsByClassName("autocomplete-items");
+	for (var i = 0; i < x.length; i++) {
+		if (elmnt != x[i]) {
+			x[i].parentNode.removeChild(x[i]);
+		}
+	}
+	// and blank the autocomplete boxes
+	x = document.getElementsByClassName('autocompleteTextbox');
+	for (var i = 0; i < x.length; i++) {
+		if (elmnt != x[i]) {
+			x[i].value = '';
+		}
+	}
 }
