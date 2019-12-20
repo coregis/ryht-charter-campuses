@@ -199,7 +199,7 @@ function runWhenLoadComplete() {
 		]);
 		moveYearSlider('slider', 'active-year', 0); // calling this with a 0 increment will make sure that the filter, caption and slider position all match.  Without doing this, the browser seems to keep the slider position between refreshes, but reset the filter and caption so they get out of sync.
 		populateZoomControl("school-districts-control", "texas-school-districts", "NAME", "Texas School Districts", districts, districts.Statewide);
-		populateZoomControl("charter-filter-control", "texas-charter-companies", "DISTNAME", "All charter schools", charters, charters.All);
+		populateZoomControl("charter-filter-control", "texas-charter-companies", "grouped_ID", "All charter schools", charters, charters.All);
 		map.moveLayer('texas-school-districts-lines', 'country-label-sm');
 		map.moveLayer('texas-school-districts-poly', 'texas-school-districts-lines');
 		for (i=0; i < loadedLineLayers.length; i++) {
