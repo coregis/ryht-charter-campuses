@@ -209,8 +209,8 @@ function runWhenLoadComplete() {
 			}
 		}
 		// start the autocompletion event loop
-		autocomplete(document.getElementById('districtAutocomplete'), districts, "texas-school-districts");
-		autocomplete(document.getElementById('charterAutocomplete'), charters, "texas-charter-companies");
+		autocomplete(document.getElementById('districtAutocomplete'), districts, "texas-school-districts", false);
+		autocomplete(document.getElementById('charterAutocomplete'), charters, "campuses", 'grouped_ID');
 	}
 }
 
@@ -725,7 +725,7 @@ function fillpopup(data){
 
 
 // text box autocompletion functions adapted from https://www.w3schools.com/howto/howto_js_autocomplete.asp
-function autocomplete(inp, obj, sourceID) {
+function autocomplete(inp, obj, sourceID, filterField) {
 	arr = Object.keys(obj);
 	/*the autocomplete function takes two arguments,
 	the text field element and an array of possible autocompleted values:*/
@@ -759,7 +759,7 @@ function autocomplete(inp, obj, sourceID) {
 					/*insert the value for the autocomplete text field:*/
 					inp.value = this.getElementsByTagName("input")[0].value;
 					// zoom to it
-					zoomToPolygon(sourceID, obj[inp.value]);
+					zoomToPolygon(sourceID, obj[inp.value], filterField);
 					/*close the list of autocompleted values,
 					(or any other open lists of autocompleted values:*/
 					closeAllLists();
