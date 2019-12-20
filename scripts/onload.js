@@ -163,48 +163,52 @@ map.addControl(new mapboxgl.NavigationControl({showCompass: false}), 'bottom-rig
 
 // load and parse districtsFile and then call the chart-drawing function
 d3.csv(districtsFile).then(function(data) {
-	populateChartControls();
-	var districtHistory = {'Statewide': {}};
-	data.forEach(function(d) {
-		// pre-parse the numbers to avoid repetition
-		vals = {};
+	d3.csv(chartersFile).then(function(charterData) {
+		data = data.concat(charterData)
+		console.log(data);
+		populateChartControls();
+		var districtHistory = {'Statewide': {}};
+		data.forEach(function(d) {
+			// pre-parse the numbers to avoid repetition
+			vals = {};
+			for (i in chartFields) {
+				varName = fieldMappings[chartFields[i]].csvVarName;
+				vals[varName] = {};
+				vals[varName].abs = parseInt(d[varName], 10);
+				if (fieldMappings[chartFields[i]].hasOwnProperty('ratioBase')) {
+					vals[varName].pct = vals[varName].abs / parseInt(d[fieldMappings[fieldMappings[chartFields[i]].ratioBase].csvVarName], 10);
+				}
+			}
+			year = parseInt(d.year, 10);
+			// add blank object to history for each new district
+			if (!districtHistory.hasOwnProperty(d.NAME)) {
+				districtHistory[d.NAME] = {};
+			}
+			// add one year of data to the relevant district's object
+			districtHistory[d.NAME][year] = vals;
+			// add year to statewide totals object if this is the first data for it
+			if (!districtHistory['Statewide'].hasOwnProperty(year)) {
+				districtHistory['Statewide'][year] = vals;
+			} else { // or add to the running totals otherwise
+				keys = Object.keys(vals);
+				for (i in keys) {
+					districtHistory['Statewide'][year][keys[i]].abs += vals[keys[i]].abs;
+				}
+			}
+		});
+		// then after iterating over the whole file, recalculate percentages for the statewide totals
 		for (i in chartFields) {
-			varName = fieldMappings[chartFields[i]].csvVarName;
-			vals[varName] = {};
-			vals[varName].abs = parseInt(d[varName], 10);
 			if (fieldMappings[chartFields[i]].hasOwnProperty('ratioBase')) {
-				vals[varName].pct = vals[varName].abs / parseInt(d[fieldMappings[fieldMappings[chartFields[i]].ratioBase].csvVarName], 10);
+				for (j in districtHistory['Statewide']) {
+					datum = districtHistory['Statewide'][j];
+					field = fieldMappings[chartFields[i]].csvVarName;
+					base = fieldMappings[chartFields[i]].ratioBase;
+					datum[field].pct = datum[field].abs / datum[fieldMappings[base].csvVarName].abs;
+				}
 			}
 		}
-		year = parseInt(d.year, 10);
-		// add blank object to history for each new district
-		if (!districtHistory.hasOwnProperty(d.NAME)) {
-			districtHistory[d.NAME] = {};
-		}
-		// add one year of data to the relevant district's object
-		districtHistory[d.NAME][year] = vals;
-		// add year to statewide totals object if this is the first data for it
-		if (!districtHistory['Statewide'].hasOwnProperty(year)) {
-			districtHistory['Statewide'][year] = vals;
-		} else { // or add to the running totals otherwise
-			keys = Object.keys(vals);
-			for (i in keys) {
-				districtHistory['Statewide'][year][keys[i]].abs += vals[keys[i]].abs;
-			}
-		}
+		chartData.dataset = districtHistory;
+		drawChart();
+		window.addEventListener("resize", redrawChart);
 	});
-	// then after iterating over the whole file, recalculate percentages for the statewide totals
-	for (i in chartFields) {
-		if (fieldMappings[chartFields[i]].hasOwnProperty('ratioBase')) {
-			for (j in districtHistory['Statewide']) {
-				datum = districtHistory['Statewide'][j];
-				field = fieldMappings[chartFields[i]].csvVarName;
-				base = fieldMappings[chartFields[i]].ratioBase;
-				datum[field].pct = datum[field].abs / datum[fieldMappings[base].csvVarName].abs;
-			}
-		}
-	}
-	chartData.dataset = districtHistory;
-	drawChart();
-	window.addEventListener("resize", redrawChart);
 });

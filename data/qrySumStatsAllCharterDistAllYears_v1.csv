@@ -1,4 +1,4 @@
-"ref_distnm","year","CountOfCAMPNAME","SumOfCPETALLC","SumOfCPETECOC","SumOfCPETLEPC","SumOfCPETBILC","SumOfCPETSPEC"
+"NAME","year","CountOfCAMPNAME","SumOfCPETALLC","SumOfCPETECOC","SumOfCPETLEPC","SumOfCPETBILC","SumOfCPETSPEC"
 "A W Brown Leadership Academy",2000,1,171.00,140.00,0.00,0.00,2.00
 "A W Brown Leadership Academy",2001,1,231.00,201.00,0.00,0.00,0.00
 "A W Brown Leadership Academy",2002,1,450.00,397.00,0.00,0.00,9.00
