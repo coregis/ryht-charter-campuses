@@ -99,6 +99,12 @@ var chartData = {
 	}
 };
 
+// same for filter states so we can filter by year and/or districts
+var filterStates = {
+	year: false,
+	district: false
+};
+
 // data structure to hold a list of districts and their bounding boxes.  Format for each entry is:
 // 'Name': 'W,N,E,S,Name'  // WNES being how Mapbox gives us bboxes, and the name repetition being what we feed to the chart updater
 // and individual districts' values will be auto-populated from data
@@ -176,9 +182,30 @@ function showHideLayer(layerName, markerName, showOnly=false, hideOnly=false) {
 
 // Update the year slider and corresponding map filter
 function updateYearSlider(numberID, year) {
-	map.setFilter('campuses', ['==', ['number', ['get', 'year']], parseInt(year, 10)]);
+	filterStates.year = parseInt(year, 10);
+	setFilter('campuses');
 	// update text in the UI
 	document.getElementById(numberID).innerText = year;
+}
+
+// apply map filters persistently
+function setFilter(sourceID) {
+	if (filterStates.year && filterStates.district) {
+		map.setFilter(
+			sourceID,
+			['all',
+				['==', ['number', ['get', 'year']], filterStates.year],
+				['==', ['string', ['get', filterStates.district.field]], filterStates.district.val]
+			]
+		);
+	} else if (filterStates.year) {
+		map.setFilter(
+			sourceID,
+			['==', ['number', ['get', 'year']], filterStates.year]
+		);
+	} else {
+		console.log('something`s wrong, there should never be no year filter', filterStates);
+	}
 }
 
 
@@ -299,6 +326,8 @@ function getFeatureBounds(coords, startingBBOX) {
 
 function zoomToPolygon(sourceID, coords, filterField) {
 	if (typeof coords !== 'undefined') {
+		console.log(map.getFilter(sourceID));
+		console.log(toString(map.getFilter(sourceID)))
 		coords = coords.split(",");
 		bbox = [
 			[coords[0], coords[1]],
@@ -318,10 +347,15 @@ function zoomToPolygon(sourceID, coords, filterField) {
 		}
 		// and filter by charter if appropriate, or remove the filter otherwise, and set an appropriate chart title
 		if (filterField && coords[4] !== 'Statewide') {
-			map.setFilter(sourceID, ['==', filterField, coords[4]]);
+			filterStates.district = {
+				'field': filterField,
+				'val':   coords[4]
+			};
+			setFilter(sourceID);
 			chartData.title = coords[4];
 		} else {
-			map.setFilter(sourceID, null);
+			filterStates.district = false;
+			setFilter(sourceID);
 			chartData.title = 'Charter schools located within ' + coords[4];
 		}
 		// while the zoom goes, update the chart
