@@ -215,9 +215,7 @@ function runWhenLoadComplete() {
 }
 
 function populateZoomControl(selectID, sourceID, fieldName, layerName, globalDataStruct, defaultVal) {
-	console.log(selectID, sourceID, fieldName, layerName, globalDataStruct, defaultVal);
 	polygons = getPolygons(sourceID, fieldName);
-	console.log(polygons);
 	var select = document.getElementById(selectID);
 	select.options[0] = new Option(layerName, defaultVal + ",Statewide");
 	for (i in polygons) {
@@ -236,7 +234,6 @@ function populateZoomControl(selectID, sourceID, fieldName, layerName, globalDat
 function getPolygons(sourceID, nameField) {
 	layerID = map.getSource(sourceID).vectorLayerIds[0];
 	features = map.querySourceFeatures(sourceID, {'sourceLayer': layerID});
-	console.log(features);
 	polygons = [];
 	existingItems = [];
 	for (i in features) {
@@ -730,7 +727,6 @@ function autocomplete(inp, obj, sourceID, filterField) {
 	var currentFocus;
 	/*execute a function when someone writes in the text field:*/
 	inp.addEventListener("input", function(e) {
-		console.log(this, e);
 		var a, b, i, val = this.value;
 		/*close any already open lists of autocompleted values*/
 		closeAllLists();

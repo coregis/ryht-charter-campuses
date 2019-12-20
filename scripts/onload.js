@@ -161,11 +161,10 @@ map.addControl(new mapboxgl.NavigationControl({showCompass: false}), 'bottom-rig
 
 
 
-// load and parse districtsFile and then call the chart-drawing function
+// load and parse districtsFile + chartersFile and then call the chart-drawing function
 d3.csv(districtsFile).then(function(data) {
 	d3.csv(chartersFile).then(function(charterData) {
 		data = data.concat(charterData)
-		console.log(data);
 		populateChartControls();
 		var districtHistory = {'Statewide': {}};
 		data.forEach(function(d) {
