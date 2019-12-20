@@ -209,7 +209,7 @@ function runWhenLoadComplete() {
 			}
 		}
 		// start the autocompletion event loop
-		autocomplete(document.getElementById('districtAutocomplete'), districts, "texas-school-districts", false);
+		autocomplete(document.getElementById('districtAutocomplete'), districts, "campuses", false);
 		autocomplete(document.getElementById('charterAutocomplete'), charters, "campuses", 'grouped_ID');
 	}
 }
@@ -723,15 +723,14 @@ function fillpopup(data){
 
 
 
-
+var autocompleteEntries = {};
 // text box autocompletion functions adapted from https://www.w3schools.com/howto/howto_js_autocomplete.asp
 function autocomplete(inp, obj, sourceID, filterField) {
-	arr = Object.keys(obj);
-	/*the autocomplete function takes two arguments,
-	the text field element and an array of possible autocompleted values:*/
+	autocompleteEntries[inp.id] = Object.keys(obj);
 	var currentFocus;
 	/*execute a function when someone writes in the text field:*/
 	inp.addEventListener("input", function(e) {
+		console.log(this, e);
 		var a, b, i, val = this.value;
 		/*close any already open lists of autocompleted values*/
 		closeAllLists();
@@ -744,16 +743,16 @@ function autocomplete(inp, obj, sourceID, filterField) {
 		/*append the DIV element as a child of the autocomplete container:*/
 		this.parentNode.appendChild(a);
 		/*for each item in the array...*/
-		for (i = 0; i < arr.length; i++) {
+		for (i = 0; i < autocompleteEntries[this.id].length; i++) {
 			/*check if the item starts with the same letters as the text field value:*/
-			if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+			if (autocompleteEntries[this.id][i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
 				/*create a DIV element for each matching element:*/
 				b = document.createElement("div");
 				/*make the matching letters bold:*/
-				b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
-				b.innerHTML += arr[i].substr(val.length);
+				b.innerHTML = "<strong>" + autocompleteEntries[this.id][i].substr(0, val.length) + "</strong>";
+				b.innerHTML += autocompleteEntries[this.id][i].substr(val.length);
 				/*insert a input field that will hold the current array item's value:*/
-				b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+				b.innerHTML += "<input type='hidden' value='" + autocompleteEntries[this.id][i] + "'>";
 				/*execute a function when someone clicks on the item value (DIV element):*/
 					b.addEventListener("click", function(e) {
 					/*insert the value for the autocomplete text field:*/
@@ -785,22 +784,14 @@ function autocomplete(inp, obj, sourceID, filterField) {
 			/*and and make the current item more visible:*/
 			addActive(x);
 		} else if (e.keyCode == 13) {
-			/*If the ENTER key is pressed, see if this district is in the list */
-			if (arr.indexOf(this.value) > -1) {
-				// and if so, then zoom to it
-				zoomToPolygon(sourceID, obj[this.value]);
-				// and close open suggestions
-				closeAllLists();
-			} else {
-				// if we have an active item, go to its district
-				var active = document.getElementsByClassName('autocomplete-active');
-				if (active.length > 0) {
-					if (arr.indexOf(active[0].innerText) > -1) {
-						zoomToPolygon(sourceID, obj[active[0].innerText]);
-						// and put the name into the text box so it's clear what happened
-						this.value = active[0].innerText;
-						closeAllLists();
-					}
+			//If the ENTER key is pressed, and we have an active item, go to its district
+			var active = document.getElementsByClassName('autocomplete-active');
+			if (active.length > 0) {
+				if (autocompleteEntries[this.id].indexOf(active[0].innerText) > -1) {
+					zoomToPolygon(sourceID, obj[active[0].innerText], filterField);
+					// and put the name into the text box so it's clear what happened
+					this.value = active[0].innerText;
+					closeAllLists();
 				}
 			}
 		}
