@@ -3,7 +3,7 @@
 
 // global variable for the path to the historical districts data file
 var districtsFile = 'data/qrySumStatsAllDistAllYears_v2.csv';
-var chartersFile  = 'data/fake names qrySumStatsAllCharterDistAllYears_v1.csv';
+var chartersFile  = 'data/qrySumStatsAllCharterDistAllYears_v1.csv';
 
 // mappings of field names in the CSV & mapbox account to variable names for local use.  Update references here to follow any field renaming in the data sources; add items using the same basic structure to add options.
 var fieldMappings = {
@@ -200,7 +200,7 @@ function runWhenLoadComplete() {
 		]);
 		moveYearSlider('slider', 'active-year', 0); // calling this with a 0 increment will make sure that the filter, caption and slider position all match.  Without doing this, the browser seems to keep the slider position between refreshes, but reset the filter and caption so they get out of sync.
 		populateZoomControl("school-districts-control", "texas-school-districts", "NAME", "Texas School Districts", districts, districts.Statewide);
-		populateZoomControl("charter-filter-control", "texas-charter-companies", "grouped_ID", "All charter schools", charters, charters.All);
+		populateZoomControl("charter-filter-control", "texas-charter-companies", "ref_distnm", "All charter schools", charters, charters.All);
 		map.moveLayer('texas-school-districts-lines', 'country-label-sm');
 		map.moveLayer('texas-school-districts-poly', 'texas-school-districts-lines');
 		for (i=0; i < loadedLineLayers.length; i++) {
@@ -210,7 +210,7 @@ function runWhenLoadComplete() {
 		}
 		// start the autocompletion event loop
 		autocomplete(document.getElementById('districtAutocomplete'), districts, "campuses", false);
-		autocomplete(document.getElementById('charterAutocomplete'), charters, "campuses", 'grouped_ID');
+		autocomplete(document.getElementById('charterAutocomplete'), charters, "campuses", 'ref_distnm');
 	}
 }
 
