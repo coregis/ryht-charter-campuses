@@ -299,7 +299,7 @@ function getFeatureBounds(coords, startingBBOX) {
 	return [[minX, minY], [maxX, maxY]];
 }
 
-function zoomToPolygon(sourceID, coords) {
+function zoomToPolygon(sourceID, coords, filterField) {
 	if (typeof coords !== 'undefined') {
 		coords = coords.split(",");
 		bbox = [
@@ -307,7 +307,7 @@ function zoomToPolygon(sourceID, coords) {
 			[coords[2], coords[3]]
 		];
 		map.fitBounds(bbox, options={padding: 10, duration: 5000});
-		if (coords[4] === "Statewide") { // if we're zooming out to the whole state again
+		if (coords[4] === "Statewide" || filterField) { // if we're zooming out to the whole state again, or zooming to a charter district which has no boundary image
 			showHideLayer('texas-school-districts-poly', markerName='', showOnly=false, hideOnly=true);
 			showHideLayer('texas-school-districts-lines', markerName='', showOnly=false, hideOnly=true);
 		} else {
@@ -321,6 +321,12 @@ function zoomToPolygon(sourceID, coords) {
 		// while the zoom goes, update the chart
 		chartData.districtName = coords[4];
 		redrawChart();
+		// and filter by charter if appropriate, or remove the filter otherwise
+		if (filterField && coords[4] !== 'Statewide') {
+			map.setFilter(sourceID, ['==', filterField, coords[4]]);
+		} else {
+			map.setFilter(sourceID, null);
+		}
 	}
 }
 
