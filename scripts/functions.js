@@ -3,6 +3,7 @@
 
 // global variable for the path to the historical districts data file
 var districtsFile = 'data/qrySumStatsAllDistAllYears_v2.csv';
+var chartersFile  = 'data/qrySumStatsAllCharterDistAllYears_v1.csv';
 
 // mappings of field names in the CSV & mapbox account to variable names for local use.  Update references here to follow any field renaming in the data sources; add items using the same basic structure to add options.
 var fieldMappings = {
@@ -86,6 +87,7 @@ var chartFields = [
 var chartData = {
 	svgID: 'chart',
 	visible: true,
+	title: 'All charter schools in Texas',
 	districtName: 'Statewide',
 	leftField: fieldMappings.campuses,
 	leftColor: '#ee5e2a',
@@ -97,18 +99,30 @@ var chartData = {
 	}
 };
 
+// same for filter states so we can filter by year and/or districts
+var filterStates = {
+	year: false,
+	district: false
+};
+
 // data structure to hold a list of districts and their bounding boxes.  Format for each entry is:
 // 'Name': 'W,N,E,S,Name'  // WNES being how Mapbox gives us bboxes, and the name repetition being what we feed to the chart updater
 // and individual districts' values will be auto-populated from data
 var districts = {
 	'Statewide': '-108,25,-88,37,Statewide'
-}
+};
 
 // now let's give "Statewide" some synonyms for usability
-districts['Texas'] = districts['Statewide']
-districts['All'] = districts['Statewide']
-districts['zoom out'] = districts['Statewide']
-districts[''] = districts['Statewide']
+districts['Texas'] = districts['Statewide'];
+districts['All'] = districts['Statewide'];
+districts['zoom out'] = districts['Statewide'];
+districts[''] = districts['Statewide'];
+
+// same as districts, but for the charter companies
+var charters = {};
+charters['All'] = districts['Statewide'];
+charters[''] = charters['All'];
+charters['select all'] = charters['All'];
 
 // global variable for whether the animation should be playing or not
 var animationRunning = false;
@@ -168,9 +182,30 @@ function showHideLayer(layerName, markerName, showOnly=false, hideOnly=false) {
 
 // Update the year slider and corresponding map filter
 function updateYearSlider(numberID, year) {
-	map.setFilter('campuses', ['==', ['number', ['get', 'year']], parseInt(year, 10)]);
+	filterStates.year = parseInt(year, 10);
+	setFilter('campuses');
 	// update text in the UI
 	document.getElementById(numberID).innerText = year;
+}
+
+// apply map filters persistently
+function setFilter(sourceID) {
+	if (filterStates.year && filterStates.district) {
+		map.setFilter(
+			sourceID,
+			['all',
+				['==', ['number', ['get', 'year']], filterStates.year],
+				['==', ['string', ['get', filterStates.district.field]], filterStates.district.val]
+			]
+		);
+	} else if (filterStates.year) {
+		map.setFilter(
+			sourceID,
+			['==', ['number', ['get', 'year']], filterStates.year]
+		);
+	} else {
+		console.log('something`s wrong, there should never be no year filter', filterStates);
+	}
 }
 
 
@@ -191,7 +226,8 @@ function runWhenLoadComplete() {
 			[-93.25, 36.75] // northeast coords, exaggerated somewhat towards the NE to make the state appear more visually centred
 		]);
 		moveYearSlider('slider', 'active-year', 0); // calling this with a 0 increment will make sure that the filter, caption and slider position all match.  Without doing this, the browser seems to keep the slider position between refreshes, but reset the filter and caption so they get out of sync.
-		populateZoomControl("school-districts-control", "texas-school-districts", "NAME", "Texas School Districts");
+		populateZoomControl("school-districts-control", "texas-school-districts", "NAME", "Texas School Districts", districts, districts.Statewide);
+		populateZoomControl("charter-filter-control", "texas-charter-companies", "ref_distnm", "All charter schools", charters, charters.All);
 		map.moveLayer('texas-school-districts-lines', 'country-label-sm');
 		map.moveLayer('texas-school-districts-poly', 'texas-school-districts-lines');
 		for (i=0; i < loadedLineLayers.length; i++) {
@@ -199,31 +235,32 @@ function runWhenLoadComplete() {
 				map.moveLayer(loadedLineLayers[i][0], 'texas-school-districts-poly');
 			}
 		}
+		// start the autocompletion event loop
+		autocomplete(document.getElementById('districtAutocomplete'), districts, "campuses", false);
+		autocomplete(document.getElementById('charterAutocomplete'), charters, "campuses", 'ref_distnm');
 	}
 }
 
-function populateZoomControl(selectID, sourceID, fieldName, layerName) {
+function populateZoomControl(selectID, sourceID, fieldName, layerName, globalDataStruct, defaultVal) {
 	polygons = getPolygons(sourceID, fieldName);
 	var select = document.getElementById(selectID);
-	select.options[0] = new Option(layerName, districts.Statewide + ",Statewide");
+	select.options[0] = new Option(layerName, defaultVal + ",Statewide");
 	for (i in polygons) {
 		payload = polygons[i].bbox.toString() + ',' + polygons[i].name;
 		select.options[select.options.length] = new Option(
 			polygons[i].name, payload
 		);
-		districts[polygons[i].name] = payload;
+		globalDataStruct[polygons[i].name] = payload;
 	}
 	map.setLayoutProperty(sourceID + '-poly', 'visibility', 'none');
 // IMPORTANT: these paint properties define the appearance of the mask layer that deemphasises districts outside the one we've zoomed to.  They will overrule anything that's set when that mask layer was loaded.
 	map.setPaintProperty(sourceID + '-poly', 'fill-color', 'rgba(200, 200, 200, 0.5)');
 	map.setPaintProperty(sourceID + '-lines', 'line-color', 'rgba(50, 50, 50, .7)');
-	// start the autocompletion event loop
-	autocomplete(document.getElementById('districtAutocomplete'), districts, sourceID);
 }
 
 function getPolygons(sourceID, nameField) {
 	layerID = map.getSource(sourceID).vectorLayerIds[0];
-	features = map.querySourceFeatures(sourceID, {'sourceLayer': layerID})
+	features = map.querySourceFeatures(sourceID, {'sourceLayer': layerID});
 	polygons = [];
 	existingItems = [];
 	for (i in features) {
@@ -287,15 +324,27 @@ function getFeatureBounds(coords, startingBBOX) {
 	return [[minX, minY], [maxX, maxY]];
 }
 
-function zoomToPolygon(sourceID, coords) {
+function zoomToPolygon(sourceID, coords, filterField) {
 	if (typeof coords !== 'undefined') {
+		// first sync the dropdowns to reflect this selection
+		var dropdowns = document.getElementsByClassName('dropdown');
+		for (var i=0; i < dropdowns.length; i++) {
+			var el = dropdowns[i];
+			el.selectedIndex = 0;
+			for (var j=0; j < el.options.length; j++) {
+				if (el.options[j].value == coords) {
+					el.selectedIndex = j;
+				}
+			}
+		}
+		// then parse coords to use the individual elements of it
 		coords = coords.split(",");
 		bbox = [
 			[coords[0], coords[1]],
 			[coords[2], coords[3]]
 		];
 		map.fitBounds(bbox, options={padding: 10, duration: 5000});
-		if (coords[4] === "Statewide") { // if we're zooming out to the whole state again
+		if (coords[4] === "Statewide" || filterField) { // if we're zooming out to the whole state again, or zooming to a charter district which has no boundary image
 			showHideLayer('texas-school-districts-poly', markerName='', showOnly=false, hideOnly=true);
 			showHideLayer('texas-school-districts-lines', markerName='', showOnly=false, hideOnly=true);
 		} else {
@@ -305,6 +354,19 @@ function zoomToPolygon(sourceID, coords) {
 				'texas-school-districts-poly',
 				['!=', 'NAME', coords[4]]
 			);
+		}
+		// and filter by charter if appropriate, or remove the filter otherwise, and set an appropriate chart title
+		if (filterField && coords[4] !== 'Statewide') {
+			filterStates.district = {
+				'field': filterField,
+				'val':   coords[4]
+			};
+			setFilter(sourceID);
+			chartData.title = coords[4];
+		} else {
+			filterStates.district = false;
+			setFilter(sourceID);
+			chartData.title = 'Charter schools located within ' + coords[4];
 		}
 		// while the zoom goes, update the chart
 		chartData.districtName = coords[4];
@@ -455,7 +517,7 @@ function drawChart() {
 			.attr("id", "chart-title")
 			.attr("x", (width/2)).attr("y", (-margin.top/4))
 			.attr("text-anchor", "middle")
-			.text((chartData.districtName === "Statewide" ? "All charter schools in Texas" : "Charter schools located within " + chartData.districtName));
+			.text((chartData.districtName === "Statewide" ? "All charter schools in Texas" : chartData.title));
 		g.append("text")
 			.attr("id", "left-axis-label")
 			.attr("fill", chartData.leftColor)
@@ -702,18 +764,16 @@ function fillpopup(data){
 
 
 
-
+var autocompleteEntries = {};
 // text box autocompletion functions adapted from https://www.w3schools.com/howto/howto_js_autocomplete.asp
-function autocomplete(inp, obj, sourceID) {
-	arr = Object.keys(obj);
-	/*the autocomplete function takes two arguments,
-	the text field element and an array of possible autocompleted values:*/
+function autocomplete(inp, obj, sourceID, filterField) {
+	autocompleteEntries[inp.id] = Object.keys(obj);
 	var currentFocus;
 	/*execute a function when someone writes in the text field:*/
 	inp.addEventListener("input", function(e) {
 		var a, b, i, val = this.value;
 		/*close any already open lists of autocompleted values*/
-		closeAllLists();
+		closeAllLists(this);
 		if (!val) { return false;}
 		currentFocus = -1;
 		/*create a DIV element that will contain the items (values):*/
@@ -723,22 +783,22 @@ function autocomplete(inp, obj, sourceID) {
 		/*append the DIV element as a child of the autocomplete container:*/
 		this.parentNode.appendChild(a);
 		/*for each item in the array...*/
-		for (i = 0; i < arr.length; i++) {
+		for (i = 0; i < autocompleteEntries[this.id].length; i++) {
 			/*check if the item starts with the same letters as the text field value:*/
-			if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+			if (autocompleteEntries[this.id][i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
 				/*create a DIV element for each matching element:*/
 				b = document.createElement("div");
 				/*make the matching letters bold:*/
-				b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
-				b.innerHTML += arr[i].substr(val.length);
+				b.innerHTML = "<strong>" + autocompleteEntries[this.id][i].substr(0, val.length) + "</strong>";
+				b.innerHTML += autocompleteEntries[this.id][i].substr(val.length);
 				/*insert a input field that will hold the current array item's value:*/
-				b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+				b.innerHTML += "<input type='hidden' value='" + autocompleteEntries[this.id][i] + "'>";
 				/*execute a function when someone clicks on the item value (DIV element):*/
 					b.addEventListener("click", function(e) {
 					/*insert the value for the autocomplete text field:*/
 					inp.value = this.getElementsByTagName("input")[0].value;
 					// zoom to it
-					zoomToPolygon(sourceID, obj[inp.value]);
+					zoomToPolygon(sourceID, obj[inp.value], filterField);
 					/*close the list of autocompleted values,
 					(or any other open lists of autocompleted values:*/
 					closeAllLists();
@@ -752,34 +812,22 @@ function autocomplete(inp, obj, sourceID) {
 		var x = document.getElementById(this.id + "autocomplete-list");
 		if (x) x = x.getElementsByTagName("div");
 		if (e.keyCode == 40) {
-			/*If the arrow DOWN key is pressed,
-			increase the currentFocus variable:*/
+			/*If the arrow DOWN key is pressed, increase the currentFocus variable:*/
 			currentFocus++;
 			/*and and make the current item more visible:*/
 			addActive(x);
 		} else if (e.keyCode == 38) { //up
-			/*If the arrow UP key is pressed,
-			decrease the currentFocus variable:*/
+			/*If the arrow UP key is pressed, decrease the currentFocus variable:*/
 			currentFocus--;
 			/*and and make the current item more visible:*/
 			addActive(x);
 		} else if (e.keyCode == 13) {
-			/*If the ENTER key is pressed, see if this district is in the list */
-			if (arr.indexOf(this.value) > -1) {
-				// and if so, then zoom to it
-				zoomToPolygon(sourceID, obj[this.value]);
-				// and close open suggestions
-				closeAllLists();
-			} else {
-				// if we have an active item, go to its district
-				var active = document.getElementsByClassName('autocomplete-active');
-				if (active.length > 0) {
-					if (arr.indexOf(active[0].innerText) > -1) {
-						zoomToPolygon(sourceID, obj[active[0].innerText]);
-						// and put the name into the text box so it's clear what happened
-						this.value = active[0].innerText;
-						closeAllLists();
-					}
+			//If the ENTER key is pressed, and we have an active item, go to its district
+			var active = document.getElementsByClassName('autocomplete-active');
+			if (active.length > 0) {
+				if (autocompleteEntries[this.id].indexOf(active[0].innerText) > -1) {
+					zoomToPolygon(sourceID, obj[active[0].innerText], filterField);
+					closeAllLists();
 				}
 			}
 		}
@@ -802,18 +850,27 @@ function autocomplete(inp, obj, sourceID) {
 			x[i].classList.remove("autocomplete-active");
 		}
 	}
-	function closeAllLists(elmnt) {
-		/*close all autocomplete lists in the document,
-		except the one passed as an argument:*/
-		var x = document.getElementsByClassName("autocomplete-items");
-		for (var i = 0; i < x.length; i++) {
-			if (elmnt != x[i] && elmnt != inp) {
-			x[i].parentNode.removeChild(x[i]);
-		}
-	}
-}
 /*execute a function when someone clicks in the document:*/
 	document.addEventListener("click", function (e) {
 		closeAllLists(e.target);
 	});
+}
+
+
+
+function closeAllLists(elmnt) {
+	/*close all autocomplete lists in the document */
+	var x = document.getElementsByClassName("autocomplete-items");
+	for (var i = 0; i < x.length; i++) {
+		if (elmnt != x[i]) {
+			x[i].parentNode.removeChild(x[i]);
+		}
+	}
+	// and blank the autocomplete boxes
+	x = document.getElementsByClassName('autocompleteTextbox');
+	for (var i = 0; i < x.length; i++) {
+		if (elmnt != x[i]) {
+			x[i].value = '';
+		}
+	}
 }

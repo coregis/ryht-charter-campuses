@@ -556,3 +556,7 @@ p.moreinfo  {
   background-color: #ee5e2a !important;
   color: #ffffff;
 }
+
+select {
+	max-width: 200px;
+}
