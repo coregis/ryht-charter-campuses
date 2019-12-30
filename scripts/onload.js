@@ -133,8 +133,10 @@ map.on('load', function() {
 			.setLngLat(e.lngLat)
 			.setHTML(fillpopup(e.features[0].properties))
 			.addTo(map);
+/* uncomment this block to restore the functionality that has clicks on points filtering the chart as well.
 		chartData.districtName = e.features[0].properties.NAME;
 		chartData.title = 'Charter schools located within ' + e.features[0].properties.NAME;
+*/
 		redrawChart();
 	});
 
