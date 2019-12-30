@@ -135,12 +135,8 @@ function allocateScreenSpace() {
 	var viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 	var viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 	// adjust text size + spacing for sidenav
-	console.log(document.getElementById('console'));
-	console.log(document.getElementById('console').offsetHeight);
-	console.log(document.getElementById('console').style.height);
 	var sidenav = document.getElementById('mySidenav');
 	sidenav.style.height = viewportHeight - document.getElementById('console').offsetHeight;
-	console.log(viewportWidth, viewportHeight);
 	if (viewportHeight > 840) {
 		sidenav.classList.add('tallpage');
 		sidenav.classList.remove('shortpage');
