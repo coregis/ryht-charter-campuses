@@ -534,6 +534,16 @@ p.moreinfo  {
     display: none;
 }
 
+p.moreinfo {
+	margin-bottom: 2ex;
+	padding-right: 2ex;
+}
+
+input.autocompleteTextbox, select.dropdown {
+	display: block;
+	margin-top: 1ex;
+	margin-bottom: 1ex;
+}
 
 .autocomplete-items {
   border: 1px solid #363635;
