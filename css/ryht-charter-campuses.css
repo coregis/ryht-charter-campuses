@@ -456,7 +456,8 @@ p.navtitle {
 }
 
 p.moreinfo  {
-  padding: 8px 8px 8px 32px;
+  padding: 8px 16px 8px 32px;
+	margin-bottom: 2ex;
   background: #ffff;
   color:#4a4a4a;
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
@@ -534,6 +535,25 @@ p.moreinfo  {
     display: none;
 }
 
+input.autocompleteTextbox, select.dropdown {
+	display: block;
+	margin-top: 1ex;
+	margin-bottom: 1ex;
+}
+
+div.sidenav.tallpage p.moreinfo {
+	margin-top: 2em;
+	font-size: 14px;
+}
+
+div.sidenav.shortpage p.moreinfo {
+	margin-top: 0.5ex;
+	margin-bottom: 1ex;
+	padding-right: 8px;
+	font-size: 10px;
+	line-height: 11px;
+	overflow-y: auto;
+}
 
 .autocomplete-items {
   border: 1px solid #363635;

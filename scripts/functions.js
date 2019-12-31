@@ -134,7 +134,21 @@ var popupState = {};
 function allocateScreenSpace() {
 	var viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 	var viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-	var sidenavWidth = Math.max(document.getElementById('mySidenav').clientWidth, document.getElementById('mySidenav').innerWidth || 0);
+	// adjust text size + spacing for sidenav
+	var sidenav = document.getElementById('mySidenav');
+	sidenav.style.height = viewportHeight - document.getElementById('console').offsetHeight;
+	if (viewportHeight > 840) {
+		sidenav.classList.add('tallpage');
+		sidenav.classList.remove('shortpage');
+	}
+	else if (viewportHeight < 700) {
+		sidenav.classList.remove('tallpage');
+		sidenav.classList.add('shortpage');
+	} else {
+		sidenav.classList.remove('tallpage');
+		sidenav.classList.remove('shortpage');
+	}
+	var sidenavWidth = Math.max(sidenav.clientWidth, sidenav.innerWidth || 0);
 	var activeControlDiv = document.getElementById(
 		(chartData.visible ? 'chart-controls' : 'chart-open-link')
 	);
