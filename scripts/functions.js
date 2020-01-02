@@ -3,7 +3,7 @@
 
 // global variable for the path to the historical districts data file
 var districtsFile = 'data/qrySumStatsAllDistAllYears_v2.csv';
-var chartersFile  = 'data/qrySumStatsAllCharterDistAllYears_v1.csv';
+var chartersFile  = 'data/qrySumStatsAllCharterDistAllYears_v2.csv';
 
 // mappings of field names in the CSV & mapbox account to variable names for local use.  Update references here to follow any field renaming in the data sources; add items using the same basic structure to add options.
 var fieldMappings = {
