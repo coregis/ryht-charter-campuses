@@ -260,7 +260,13 @@ function populateZoomControl(selectID, sourceID, fieldName, layerName, globalDat
 	var select = document.getElementById(selectID);
 	select.options[0] = new Option(layerName, defaultVal + ",Statewide");
 	for (i in polygons) {
-		payload = polygons[i].bbox.toString() + ',' + polygons[i].name;
+		// for the charter holders controls, make all zoom targets the whole state
+		if (selectID === 'charter-filter-control') {
+			payload = '-108,25,-88,37';
+		} else { // for any other controls, use bounding boxes from the polygons
+			payload = polygons[i].bbox.toString();
+		}
+		payload += ',' + polygons[i].name;
 		select.options[select.options.length] = new Option(
 			polygons[i].name, payload
 		);
