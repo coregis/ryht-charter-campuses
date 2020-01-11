@@ -174,7 +174,6 @@ d3.csv(districtsFile).then(function(data) {
 			d.sumData = false;
 		})
 		data = data.concat(charterData);
-		console.log(data);
 		populateChartControls();
 		var districtHistory = {'Statewide': {}};
 		data.forEach(function(d) {
@@ -219,8 +218,6 @@ d3.csv(districtsFile).then(function(data) {
 			}
 		}
 		chartData.dataset = districtHistory;
-		console.log(districtHistory);
-		console.log(districtHistory.Statewide);
 		drawChart();
 		window.addEventListener("resize", redrawChart);
 	});
