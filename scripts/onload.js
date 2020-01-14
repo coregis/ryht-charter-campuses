@@ -166,7 +166,14 @@ map.addControl(new mapboxgl.NavigationControl({showCompass: false}), 'bottom-rig
 // load and parse districtsFile + chartersFile and then call the chart-drawing function
 d3.csv(districtsFile).then(function(data) {
 	d3.csv(chartersFile).then(function(charterData) {
-		data = data.concat(charterData)
+		// first tag the datasets so that we only build the statewide totals from one, not both
+		data.forEach(function(d) {
+			d.sumData = true;
+		});
+		charterData.forEach(function(d) {
+			d.sumData = false;
+		})
+		data = data.concat(charterData);
 		populateChartControls();
 		var districtHistory = {'Statewide': {}};
 		data.forEach(function(d) {
@@ -187,13 +194,15 @@ d3.csv(districtsFile).then(function(data) {
 			}
 			// add one year of data to the relevant district's object
 			districtHistory[d.NAME][year] = vals;
-			// add year to statewide totals object if this is the first data for it
-			if (!districtHistory['Statewide'].hasOwnProperty(year)) {
-				districtHistory['Statewide'][year] = vals;
-			} else { // or add to the running totals otherwise
-				keys = Object.keys(vals);
-				for (i in keys) {
-					districtHistory['Statewide'][year][keys[i]].abs += vals[keys[i]].abs;
+			if (d.sumData) {
+				// add year to statewide totals object if this is the first data for it
+				if (!districtHistory['Statewide'].hasOwnProperty(year)) {
+					districtHistory['Statewide'][year] = vals;
+				} else { // or add to the running totals otherwise
+					keys = Object.keys(vals);
+					for (i in keys) {
+						districtHistory['Statewide'][year][keys[i]].abs += vals[keys[i]].abs;
+					}
 				}
 			}
 		});
