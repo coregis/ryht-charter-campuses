@@ -111,9 +111,8 @@ a {
 /* container for the show chart control */
 #chart-open-link {
 	cursor: pointer;
-	width: 75%;
-	float: right;
-	text-align: right;
+	width: 100%;
+	text-align: center;
 	margin-right: 0;
 }
 
