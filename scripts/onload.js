@@ -102,7 +102,7 @@ map.on('load', function() {
 		}
 	);
 
-
+/*
 	// add charters as invisible data layer
 	addVectorLayer(
 		map,
@@ -115,10 +115,11 @@ map.on('load', function() {
 			'polygonLayerName': 'texas-charter-companies-poly',
 			'polygonFillColor': 'rgba(124, 124, 124, 0)',
 			'polygonOutlineColor': 'rgba(103, 65, 30, 0)',
-			'visibleOnLoad': false,
+			'visibleOnLoad': true,
 			'usedInZoomControl': true
 		}
 	);
+*/
 
 	//add interactivity to the time slider
 	document.getElementById('slider').addEventListener('input', function(e) {
@@ -172,6 +173,9 @@ d3.csv(districtsFile).then(function(data) {
 		});
 		charterData.forEach(function(d) {
 			d.sumData = false;
+			if (!charters.hasOwnProperty('d.NAME')) {
+				charters[d.NAME] = '-108,25,-88,37';
+			}
 		})
 		data = data.concat(charterData);
 		populateChartControls();
@@ -220,5 +224,6 @@ d3.csv(districtsFile).then(function(data) {
 		chartData.dataset = districtHistory;
 		drawChart();
 		window.addEventListener("resize", redrawChart);
+		populateZoomControl("charter-filter-control", "texas-charter-companies", "ref_distnm", "All charter holders", charters, charters.All);
 	});
 });

@@ -241,7 +241,6 @@ function runWhenLoadComplete() {
 		]);
 		moveYearSlider('slider', 'active-year', 0); // calling this with a 0 increment will make sure that the filter, caption and slider position all match.  Without doing this, the browser seems to keep the slider position between refreshes, but reset the filter and caption so they get out of sync.
 		populateZoomControl("school-districts-control", "texas-school-districts", "NAME", "Texas school districts", districts, districts.Statewide);
-		populateZoomControl("charter-filter-control", "texas-charter-companies", "ref_distnm", "All charter holders", charters, charters.All);
 		map.moveLayer('texas-school-districts-lines', 'country-label-sm');
 		map.moveLayer('texas-school-districts-poly', 'texas-school-districts-lines');
 		for (i=0; i < loadedLineLayers.length; i++) {
@@ -256,26 +255,34 @@ function runWhenLoadComplete() {
 }
 
 function populateZoomControl(selectID, sourceID, fieldName, layerName, globalDataStruct, defaultVal) {
-	polygons = getPolygons(sourceID, fieldName);
 	var select = document.getElementById(selectID);
-	select.options[0] = new Option(layerName, defaultVal + ",Statewide");
-	for (i in polygons) {
-		// for the charter holders controls, make all zoom targets the whole state
-		if (selectID === 'charter-filter-control') {
-			payload = '-108,25,-88,37';
-		} else { // for any other controls, use bounding boxes from the polygons
-			payload = polygons[i].bbox.toString();
+	if (selectID === 'charter-filter-control') {
+		select.options[0] = new Option(layerName, defaultVal + ",Statewide");
+		for (i in charters) {
+			if (!charters[i].includes('Statewide')) {
+				payload = '-108,25,-88,37,' + i;
+				select.options[select.options.length] = new Option(
+					i, payload
+				);
+				globalDataStruct[i] = payload;
+			}
 		}
-		payload += ',' + polygons[i].name;
-		select.options[select.options.length] = new Option(
-			polygons[i].name, payload
-		);
-		globalDataStruct[polygons[i].name] = payload;
-	}
+	} else {
+		polygons = getPolygons(sourceID, fieldName);
+		select.options[0] = new Option(layerName, defaultVal + ",Statewide");
+		for (i in polygons) {
+			payload = polygons[i].bbox.toString();
+			payload += ',' + polygons[i].name;
+			select.options[select.options.length] = new Option(
+				polygons[i].name, payload
+			);
+			globalDataStruct[polygons[i].name] = payload;
+		}
 	map.setLayoutProperty(sourceID + '-poly', 'visibility', 'none');
 // IMPORTANT: these paint properties define the appearance of the mask layer that deemphasises districts outside the one we've zoomed to.  They will overrule anything that's set when that mask layer was loaded.
 	map.setPaintProperty(sourceID + '-poly', 'fill-color', 'rgba(200, 200, 200, 0.5)');
 	map.setPaintProperty(sourceID + '-lines', 'line-color', 'rgba(50, 50, 50, .7)');
+	}
 }
 
 function getPolygons(sourceID, nameField) {
