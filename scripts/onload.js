@@ -178,9 +178,9 @@ d3.csv(districtsFile).then(function(data) {
 		});
 		charterData.forEach(function(d) {
 			d.sumData = false;
-			if (!charters_seen.includes(d.NAME)) {
-				charters_seen.push(d.NAME);
-				console.log(d.NAME, charters_seen.length);
+			if (!charters.hasOwnProperty('d.NAME')) {
+				charters[d.NAME] = '-108,25,-88,37';
+				console.log(d.NAME, charters.length);
 			}
 		})
 		data = data.concat(charterData);
@@ -231,5 +231,6 @@ d3.csv(districtsFile).then(function(data) {
 		console.log(chartData.dataset);
 		drawChart();
 		window.addEventListener("resize", redrawChart);
+		populateZoomControl("charter-filter-control", "texas-charter-companies", "ref_distnm", "All charter holders", charters, charters.All);
 	});
 });
