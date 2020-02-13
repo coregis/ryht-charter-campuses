@@ -102,7 +102,7 @@ map.on('load', function() {
 		}
 	);
 
-
+/*
 	// add charters as invisible data layer
 	addVectorLayer(
 		map,
@@ -119,6 +119,7 @@ map.on('load', function() {
 			'usedInZoomControl': true
 		}
 	);
+*/
 
 	//add interactivity to the time slider
 	document.getElementById('slider').addEventListener('input', function(e) {
