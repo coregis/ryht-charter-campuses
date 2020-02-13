@@ -86,7 +86,7 @@ var chartFields = [
 // data structure to hold state for the chart; the actual data will be attached on load, and the leftField and rightField values specify the default variables
 var chartData = {
 	svgID: 'chart',
-	visible: true,
+	visible: false,
 	title: 'All charter schools in Texas',
 	districtName: 'Statewide',
 	leftField: fieldMappings.campuses,
