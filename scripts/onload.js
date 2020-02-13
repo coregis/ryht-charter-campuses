@@ -115,7 +115,7 @@ map.on('load', function() {
 			'polygonLayerName': 'texas-charter-companies-poly',
 			'polygonFillColor': 'rgba(124, 124, 124, 0)',
 			'polygonOutlineColor': 'rgba(103, 65, 30, 0)',
-			'visibleOnLoad': false,
+			'visibleOnLoad': true,
 			'usedInZoomControl': true
 		}
 	);
@@ -167,11 +167,21 @@ map.addControl(new mapboxgl.NavigationControl({showCompass: false}), 'bottom-rig
 d3.csv(districtsFile).then(function(data) {
 	d3.csv(chartersFile).then(function(charterData) {
 		// first tag the datasets so that we only build the statewide totals from one, not both
+		var ISDs_seen = [];
+		var charters_seen = [];
 		data.forEach(function(d) {
 			d.sumData = true;
+//			if (!ISDs_seen.includes(d.NAME)) {
+//				console.log(d.NAME);
+//				ISDs_seen.push(d.NAME);
+//			}
 		});
 		charterData.forEach(function(d) {
 			d.sumData = false;
+			if (!charters_seen.includes(d.NAME)) {
+				charters_seen.push(d.NAME);
+				console.log(d.NAME, charters_seen.length);
+			}
 		})
 		data = data.concat(charterData);
 		populateChartControls();
@@ -218,6 +228,7 @@ d3.csv(districtsFile).then(function(data) {
 			}
 		}
 		chartData.dataset = districtHistory;
+		console.log(chartData.dataset);
 		drawChart();
 		window.addEventListener("resize", redrawChart);
 	});

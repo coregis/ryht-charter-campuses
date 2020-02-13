@@ -271,6 +271,7 @@ function populateZoomControl(selectID, sourceID, fieldName, layerName, globalDat
 			polygons[i].name, payload
 		);
 		globalDataStruct[polygons[i].name] = payload;
+		console.log(polygons[i].name, i);
 	}
 	map.setLayoutProperty(sourceID + '-poly', 'visibility', 'none');
 // IMPORTANT: these paint properties define the appearance of the mask layer that deemphasises districts outside the one we've zoomed to.  They will overrule anything that's set when that mask layer was loaded.
