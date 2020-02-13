@@ -257,11 +257,9 @@ function runWhenLoadComplete() {
 function populateZoomControl(selectID, sourceID, fieldName, layerName, globalDataStruct, defaultVal) {
 	var select = document.getElementById(selectID);
 	if (selectID === 'charter-filter-control') {
-		console.log(charters);
 		select.options[0] = new Option(layerName, defaultVal + ",Statewide");
 		for (i in charters) {
 			if (!charters[i].includes('Statewide')) {
-				console.log(i, charters[i]);
 				payload = '-108,25,-88,37,' + i;
 				select.options[select.options.length] = new Option(
 					i, payload

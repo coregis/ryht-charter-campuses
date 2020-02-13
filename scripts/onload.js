@@ -167,20 +167,13 @@ map.addControl(new mapboxgl.NavigationControl({showCompass: false}), 'bottom-rig
 d3.csv(districtsFile).then(function(data) {
 	d3.csv(chartersFile).then(function(charterData) {
 		// first tag the datasets so that we only build the statewide totals from one, not both
-		var ISDs_seen = [];
-		var charters_seen = [];
 		data.forEach(function(d) {
 			d.sumData = true;
-//			if (!ISDs_seen.includes(d.NAME)) {
-//				console.log(d.NAME);
-//				ISDs_seen.push(d.NAME);
-//			}
 		});
 		charterData.forEach(function(d) {
 			d.sumData = false;
 			if (!charters.hasOwnProperty('d.NAME')) {
 				charters[d.NAME] = '-108,25,-88,37';
-				console.log(d.NAME, charters.length);
 			}
 		})
 		data = data.concat(charterData);
@@ -228,7 +221,6 @@ d3.csv(districtsFile).then(function(data) {
 			}
 		}
 		chartData.dataset = districtHistory;
-		console.log(chartData.dataset);
 		drawChart();
 		window.addEventListener("resize", redrawChart);
 		populateZoomControl("charter-filter-control", "texas-charter-companies", "ref_distnm", "All charter holders", charters, charters.All);
