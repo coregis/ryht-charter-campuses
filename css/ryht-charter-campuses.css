@@ -455,7 +455,7 @@ p.navtitle {
 }
 
 p.moreinfo  {
-  padding: 8px 16px 8px 32px;
+  padding: 8px 16px 0px 32px;
 	margin-bottom: 2ex;
   background: #ffff;
   color:#4a4a4a;
@@ -464,27 +464,27 @@ p.moreinfo  {
   text-align:left;
  /* width:auto !important;*/
   }
-  
+
 p.instructionstitle  {
   padding: 0px 0px 0px 32px;
   margin-bottom: 0em;
   background: #ffff;
   color:#ee5e2a;
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  font-size:11px;
+  font-size:14px;
   font-weight:bold;
   text-align:left;
  /* width:auto !important;*/
   }
-  
+
 p.instructionstext  {
-  padding: 8px 16px 8px 32px;
+  padding: 2px 16px 8px 32px;
   margin-top: 0em;
   margin-bottom: 0em;
   background: #ffff;
   color:#4a4a4a;
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  font-size:10px;
+  font-size:12px;
   text-align:left;
  /* width:auto !important;*/
   }
@@ -590,12 +590,37 @@ input.autocompleteTextbox, select.dropdown {
 }
 
 div.sidenav.tallpage p.moreinfo {
-	margin-top: 2em;
+	margin-top: 1em;
+	font-size: 14px;
+}
+
+div.sidenav.tallpage p.instructionstitle {
+	margin-top: 1em;
+	font-size: 16px;
+}
+
+div.sidenav.tallpage p.instructionstext {
 	font-size: 14px;
 }
 
 div.sidenav.shortpage p.moreinfo {
 	margin-top: 0.5ex;
+	margin-bottom: 1ex;
+	padding-right: 8px;
+	font-size: 10px;
+	line-height: 11px;
+	overflow-y: auto;
+}
+
+div.sidenav.shortpage p.instructionstitle {
+	margin-top: 0.5ex;
+	padding-right: 8px;
+	font-size: 12px;
+	line-height: 12px;
+	overflow-y: auto;
+}
+
+div.sidenav.shortpage p.instructionstext {
 	margin-bottom: 1ex;
 	padding-right: 8px;
 	font-size: 10px;
